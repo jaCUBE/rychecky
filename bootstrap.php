@@ -6,6 +6,7 @@ include 'config.php';
 global $_RYC;
 
 $_RYC = new Rychecky();
+$_RYC->databaseConnect();
 
 
 if(!empty($_GET['action'])){

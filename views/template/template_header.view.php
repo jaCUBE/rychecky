@@ -3,7 +3,7 @@
 </h1>
 
 <div class="lead">
-  Full Stack Developer
+  <i class="fa fa-code"></i> Full Stack Developer
 </div>
 
 
@@ -39,3 +39,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+
+<div id="content">

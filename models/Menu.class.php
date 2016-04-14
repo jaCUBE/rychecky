@@ -28,8 +28,10 @@ class Menu {
   
   private function generateMenu(){
     $this->addMenu('Informace', '', 'fa-home');
-    $this->addMenu('Dovednosti', 'skills', 'fa-star');
+    $this->addMenu('Dovednosti', 'skills', 'fa-database');
     $this->addMenu('Portfolio', 'portfolio', 'fa-bookmark');
+    $this->addMenu('Zkušenosti', 'experiences', 'fa-star');
+    $this->addMenu('Certifikace', 'certificate', 'fa-certificate');
     $this->addMenu('Kontakt', 'contact', 'fa-envelope');
   }
   

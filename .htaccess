@@ -2,5 +2,8 @@ Options +FollowSymLinks
 
 RewriteEngine On 
 RewriteRule ^portfolio(.*)$ index.php?action=portfolio
+RewriteRule ^skills(.*)/(.*)$ index.php?action=skills&type=$2
 RewriteRule ^skills(.*)$ index.php?action=skills
+RewriteRule ^experiences(.*)$ index.php?action=experiences
+RewriteRule ^certificate(.*)$ index.php?action=certificate
 RewriteRule ^contact(.*)$ index.php?action=contact

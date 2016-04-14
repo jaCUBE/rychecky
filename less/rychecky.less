@@ -1,10 +1,52 @@
 @col-primary: #2B3E50;
-@col-primary-lighter: #5F7386;
+@col-primary-lighter: #4E5D6C;
 @col-primary-darker: #0C1F32;
 
 @col-secondary: #295344;
 @col-secondary-lighter: #578A7B;
 @col-secondary-darker: #093324;
+
+@col-white: #EBEBEB;
+
+
+
+
+
+
+
+
+
+
+
+* { // Nastavení fontu na webu
+  font-family: 'Open Sans';
+}
+
+h1, .lead { // Jiný font pro nadpis a podnadpis
+  font-family: 'Lato';
+}
+
+
+a {
+  color: @col-secondary-lighter;
+  font-weight: bold;
+  
+  &:hover, &:focus {
+    color: @col-secondary;
+    text-decoration: none;
+  }
+}
+
+
+.center { // Obecná třída pro zarovnání na střed
+  text-align: center;
+  margin: auto;
+}
+
+
+.right { // Obecná třída pro zarovnání vpravo
+  text-align: right;
+}
 
 
 
@@ -24,10 +66,120 @@ nav { // Navigační menu webu
 }
 
 
+.lead {
+  i { // Ikona v podnadpisu
+    margin-right: 10px;
+  }
+}
 
 
 
 
+
+#content { // Hlavní obsah
+  width: 100%;
+  min-height: 100px;
+  background: @col-white;
+  color: @col-primary;
+  padding: 1em 3em 2em;
+  font-size: 0.9em;
+  
+  
+  h2 { // Hlavní nadpis
+    color: @col-secondary-lighter;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+
+
+
+.skill { // Box jedné dovednosti
+  margin: 10px;
+  width: 200px;
+  height: 100px;
+  float: left;
+  
+  .name { // Název dovednosti
+    font-weight: bold;
+  }
+  
+  .progress { // Progressbar
+    margin: 3px 0px;
+    height: 0.3em;
+    background: #C1C1C1;
+    
+    .progress-bar {
+      background: @col-secondary-lighter;
+    }
+  }
+  
+  .detail { // Detailní popis
+    font-size: 0.8em;
+  }
+}
+
+
+
+
+
+.list-group { // Seznam skupin dovedností
+  .badge {
+    background: @col-primary;
+  }
+  
+  .active { // Práve zvolená skupina
+    background: @col-secondary-lighter;
+    
+    .badge {
+      color: @col-secondary-lighter;
+    }
+    
+    &:hover {
+      background: @col-primary;
+    }
+  }
+}
+
+
+
+
+
+footer {
+  font-size: 0.7em;
+  text-align: right;
+  background: @col-white;
+  border-top: 1px solid @col-secondary-lighter;
+  padding: 0.2em 1em;
+  
+  .item {
+    display: inline-block;
+    margin-left: 2em;
+  }
+}
+
+
+body {
+  padding-bottom: 3em;
+}
+
+
+.hobby-list {
+  .hobby {
+    margin: 2px;
+  }
+}
+
+
+@media (max-width: 800px) { // Zobrazení mobilního navbaru na displejích se šířkou 1080px a menší...
+ .skill {
+   height: auto;
+   width: 100%;
+ }
+}
 
 
 
@@ -68,3 +220,4 @@ nav { // Navigační menu webu
       overflow: hidden!important;
   }
 }
+
