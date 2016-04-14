@@ -1,0 +1,6 @@
+Options +FollowSymLinks
+
+RewriteEngine On 
+RewriteRule ^portfolio(.*)$ index.php?action=portfolio
+RewriteRule ^skills(.*)$ index.php?action=skills
+RewriteRule ^contact(.*)$ index.php?action=contact
