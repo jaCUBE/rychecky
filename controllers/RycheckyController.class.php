@@ -44,4 +44,29 @@ class RycheckyController {
     $_RYC->view('skills', $skill_list);
   }
   
+  
+  public function portfolio(){
+    global $_RYC;
+    
+    $portfolio_list = new PortfolioList();
+    
+    $_RYC->view('portfolio', $portfolio_list);
+  }
+  
+  
+  public function experiences(){
+    
+  }
+  
+  
+  public function certificate(){
+    
+  }
+  
+  
+  public function contact(){
+    
+  }
+  
+  
 }

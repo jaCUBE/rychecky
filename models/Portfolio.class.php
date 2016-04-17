@@ -100,4 +100,63 @@ class Portfolio {
   public $timestamp;
   
   
+  
+  
+  
+  public function htmlPortfolio(){
+    ob_start(); ?>
+
+<div class="portfolio <?= Rychecky::makeCssName($this->type) ?>" onclick="portfolio(<?= $this->portfolio_id ?>)" <?= $this->htmlData() ?>>
+      <div class="image">
+        
+      </div>
+      
+      <div class="info">
+        <div class="name">
+          <?= $this->nameShortest() ?>
+        </div>
+
+        <div class="company">
+          <?= $this->company ?>
+        </div>
+      </div>
+    </div>
+
+
+    <?php return ob_get_clean();
+  }
+  
+  
+  private function nameShortest(){
+    if(!empty($this->name_short)){
+      return $this->name_short;
+    }else{
+      return $this->name;
+    }
+  }
+  
+  
+  private function age(){
+    $difference = time() - strtotime($this->date_create);
+    return round($difference / (24 * 60 * 60));
+  }
+  
+  
+  private function htmlData(){
+    $data = [];
+    
+    $data['age'] = $this->age();
+    $data['name'] = Rychecky::removeCzechChars($this->nameShortest());
+    $data['size'] = $this->size * -1;
+    
+    $output = '';
+    
+    foreach($data as $a => $v){
+      $output .= ' data-'.$a.'="'.$v.'" ';
+    }
+    
+    return $output;
+  }
+  
+  
 }
