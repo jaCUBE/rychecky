@@ -22,6 +22,12 @@ class Gallery {
   public $portfolio_id;
   
   /**
+   * @brief Cesta k souboru
+   * @var string $path
+   */
+  public $path;
+  
+  /**
    * @brief Název souboru
    * @var string $filename
    */
@@ -44,6 +50,42 @@ class Gallery {
    * @var string $timestamp 
    */
   public $timestamp;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /**
+   * 
+   * @return type
+   */
+  
+  public function url(){
+    return URL.'/images'.$this->path.$this->filename;
+  }
+  
+  public function htmlThumbnail(){
+    return '<img src="'.$this->url().'" alt="" />';
+  }
+  
+  static function htmlPlaceholder(){
+    return '<img src="'.URL.'/images/placeholder.png" alt="" />';
+  }
+  
+  
+  public function isThumbnail(){
+    if(strpos($this->filename, '_th.')){
+      return true;
+    }else{
+      return false;
+    }
+  }
   
   
 }

@@ -30,7 +30,7 @@ class Menu {
     $this->addMenu('Informace', '', 'fa-home');
     $this->addMenu('Dovednosti', 'skills', 'fa-database');
     $this->addMenu('Portfolio', 'portfolio', 'fa-bookmark');
-    $this->addMenu('Zkušenosti', 'experiences', 'fa-star');
+    $this->addMenu('Zkušenosti', 'experiences', 'fa-briefcase');
     $this->addMenu('Certifikace', 'certificate', 'fa-certificate');
     $this->addMenu('Kontakt', 'contact', 'fa-envelope');
   }

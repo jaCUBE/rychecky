@@ -20,8 +20,6 @@ class PortfolioList {
   
   
   
-  
-  
   public function __construct(){
     $this->fetchPortfolioList();
   }
@@ -42,7 +40,11 @@ class PortfolioList {
     $STH->execute();
     
     while($portfolio = $STH->fetch()){ /* @var $portfolio Portfolio */
-      $this->portfolio_list[] = $portfolio;
+      $portfolio->fetchPortfolioGallery();
+      
+      $this->portfolio_list[$portfolio->portfolio_id] = $portfolio;
     }
-  }
+  } 
+  
+
 }

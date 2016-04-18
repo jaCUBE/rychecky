@@ -1,44 +1,68 @@
-
+var host = window.location.hostname; // Adresa E2
+var relative_path = '/'; // Základní relativní cesta  
 
 
 $(function(){
-  
   if($('.portfolio').length > 0){
     initialize_isotope();
   }
-
-
+  
+  if(host == 'localhost'){
+    relative_path = '/rychecky/';
+  }
 });
 
 
 
 
+
+function portfolio(portfolio_id){
+  
+  var modal = $('#portfolio-modal');
+  
+  $.ajax({
+    type: 'GET',
+    url: relative_path+'ajax_portfolio.php',
+    data: {
+      'portfolio_id': portfolio_id
+    },
+    success: function(data, textStatus, xhr) {
+      var obj = $.parseJSON(data);
+      
+      modal.find('.modal-title').html(obj.title);
+      modal.find('.modal-body').html(obj.body);
+    }
+  });
+  
+  
+  modal.modal('show');
+}
+
+
+
+
+
+
 function initialize_isotope(){
-
-
   var $container = $('.isotope').isotope({
     itemSelector: '.portfolio',
     layoutMode: 'fitRows',
     getSortData: {
       name: '[data-name]',
-      age: '[data-age]',
-      size: '[data-size]'
+      age: function(item){
+        return parseInt($(item).data('age'));
+      },
+      size: function(item){
+        return parseInt($(item).data('size'));
+      },
     }
   });
   
+  
+  
   // filter functions
-  var filterFns = {
-    // show if number is greater than 50
-    numberGreaterThan50: function() {
-      var number = $(this).find('.number').text();
-      return parseInt( number, 10 ) > 50;
-    },
-    // show if name ends with -ium
-    ium: function() {
-      var name = $(this).find('.name').text();
-      return name.match( /ium$/ );
-    }
-  };
+  var filterFns = {};
+  
   
   
  // bind filter button click
@@ -52,11 +76,12 @@ function initialize_isotope(){
     $(this).addClass('btn-success');
   });
 
+
+
   // bind sort button click
   $('#sorts .btn').click(function() {
     var sortByValue = $(this).attr('data-sort-by');
     $container.isotope({ sortBy: sortByValue });
-
   });
   
   
@@ -67,6 +92,4 @@ function initialize_isotope(){
     $(this).removeClass('btn-default');
     $(this).addClass('btn-success');
   });
-  
-
 }

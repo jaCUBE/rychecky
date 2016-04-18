@@ -169,10 +169,12 @@ body {
 
 
 .portfolio {
-  width: 230px;
-  height: 100px;
+  width: 200px;
+  height: 150px;
   border:  1px solid @col-secondary-lighter;
   margin: 10px;
+  border-radius: 0px 0px 5px 5px;
+  background: #FFFFFF;
   
   &:hover {
     cursor: pointer;
@@ -184,10 +186,12 @@ body {
   }
   
   .image {
-    width: 25%;
-    height: 100%;
-    background: @col-secondary-darker;
-    float: left;
+    width: 198px;
+    height: 80px;
+    
+    img {
+      border-bottom: 1px solid #CCCCCC;
+    }
   }
   
   .info {
@@ -198,14 +202,32 @@ body {
   .name {
     color: @col-secondary-lighter;
     font-weight: bold;
+    
+    .fa {
+      color: #6B6990;
+      
+      &:first-child{
+        margin-left: 5px;
+      }
+    }
   }
   
-  .company {
+  .detail {
     color: @col-secondary-lighter;
     font-size: 0.7em;
   }
 }
 
+
+.portfolio-menu{
+  .col-md-6 {
+    padding: 10px 25px;
+  }
+}
+
+.isotope {
+  margin-top: 10px;
+}
 
 .btn-label {
   font-size: 0.8em;
@@ -220,6 +242,39 @@ body {
     background: @col-secondary;
   }
 }
+
+
+.modal {
+  .modal-title, .modal-body {
+    color: @col-white;
+  }
+}
+
+
+.portfolio-modal {
+  .detail {
+    margin: 10px;
+    font-size: 0.9em;
+  }
+  
+  .url {
+    margin: 10px;
+  }
+}
+
+
+.label {
+  font-size: 80%;
+  
+  &.label-primary {
+    background: @col-primary-darker;
+  }
+  
+  &.label-success {
+    background: @col-secondary-lighter;
+  }
+}
+
 
 @media (max-width: 800px) { // Zobrazení mobilního navbaru na displejích se šířkou 1080px a menší...
  .skill {
