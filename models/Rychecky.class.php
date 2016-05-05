@@ -77,6 +77,19 @@ class Rychecky {
   
   
   
+  static function title(){
+    $rnd = rand(1, 100);
+    
+    $adj = '';
+    
+    if($rnd >= 90){
+      $adj = 'Code Monkey';
+    }elseif($rnd >= 80){
+      $adj = 'Cowboy';
+    }
+    
+    return 'Full Stack '.$adj.' Developer';
+  }
   
   
 }

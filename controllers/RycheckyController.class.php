@@ -27,9 +27,12 @@ class RycheckyController {
   public function index(){
     global $_RYC;
     
-    $hobby_list = new HobbyList();
+    $data = [];
     
-    $_RYC->view('index', $hobby_list);
+    $data['hobby'] = new HobbyList();
+    $data['social'] = new SocialList();
+    
+    $_RYC->view('index', $data);
   }
   
   
@@ -55,18 +58,28 @@ class RycheckyController {
   
   
   public function experiences(){
+    global $_RYC;
     
+    $experience_list = new ExperienceList();
+    
+    $_RYC->view('experiences', $experience_list);
   }
   
   
   public function certificate(){
+    global $_RYC;
     
+    $certificate_list = new CertificateList();
+    
+    $_RYC->view('certificate', $certificate_list);
   }
   
   
   public function contact(){
     
   }
+  
+
   
   
 }

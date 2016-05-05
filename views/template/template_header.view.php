@@ -3,7 +3,7 @@
 </h1>
 
 <div class="lead">
-  <i class="fa fa-code"></i> Full Stack Developer
+  <i class="fa fa-code"></i> <?= Rychecky::title() ?>
 </div>
 
 

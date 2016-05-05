@@ -1,7 +1,5 @@
-<?php /* @var $data HobbyList */ ?>
-
-<?php $hl =& $data; ?>
-
+<?php $hl =& $data['hobby']; /* @var $hl HobbyList */  ?>
+<?php $sl =& $data['social']; /* @var $sl SocialList */  ?>
 
 
 <div class="row">
@@ -9,24 +7,45 @@
   
   
   
-  <div class="col-md-8">
+  
+  <div class="col-md-6">
     <h2>
-      Portfolio
+      O mně
     </h2>
 
-    <div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <div clas="index-text">
+      <p>
+        Momentálně se živím jako vývojář webového software ve vědecké organizaci, která se věnuje jadernému výzkumu.
+        Mám na starosti celý cyklus – od počátečního modelování dat a návrhu architektury relační databáze, přes kód samotný až po front end a UX našich zaměstnanců.
+      </p>
+      <p>
+        <a href="javascript:void(0)" onclick="portfolio(7);">Systém zajišťuje personální i projektové řízení pro společnost o ~350 zaměstnancích.</a> Jedná se určitě o můj největší projekt,
+        ale najde se i spousta menších věcí a fanouškovských záležitostí, <a href="<?= URL ?>/portfolio">o kterých se můžete dočíst v portfoliu</a>.
+      </p>
+      <p>
+        Vše okolo počítačů je mým koníčkem už od dětství, ale čas trávím i četbou, sledováním filmů nebo fotografováním.
+        Určitě mi neváhejte napsat s čímkoliv.
+      </p>
     </div>
-    <div>
-      Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.
+    
+    
+    
+    <div class="social-bar">
+      <?php foreach($sl->social_list as $s){ // Procházení jednotlivých profilů na sociálních sítích... ?>
+        <?= $s->htmlSocialButton() // Vykreslení jednoho tlačítka sociálních sítí ?>
+      <?php } ?>
     </div>
-    <div>
-      Fusce convallis, mauris imperdiet gravida bibendum, nisl turpis suscipit mauris, sed placerat ipsum urna sed risus. In convallis tellus a mauris. Curabitur non elit ut libero tristique sodales. Mauris a lacus. Donec mattis semper leo. In hac habitasse platea dictumst. Vivamus facilisis diam at odio. Mauris dictum, nisi eget consequat elementum, lacus ligula molestie metus, non feugiat orci magna ac sem. Donec turpis. Donec vitae metus. Morbi tristique neque eu mauris. Quisque gravida ipsum non sapien. Proin turpis lacus, scelerisque vitae, elementum at, lobortis ac, quam. Aliquam dictum eleifend risus. In hac habitasse platea dictumst. Etiam sit amet diam. Suspendisse odio. Suspendisse nunc. In semper bibendum libero.
-    </div>
+    
+    
+    
+    <hr style="clear: right; visibility: hidden;" />
   </div>
   
   
-  <div class="col-md-4">
+  
+  
+  
+  <div class="col-md-6">
     <h2>
       Zájmy
     </h2>
@@ -35,7 +54,11 @@
     <?php foreach($hl->hobby_list as $h){ ?>
       <?= $h->htmlHobby() ?>
     <?php } ?>
-    </div>
+    </div> 
   </div>
+  
+  
+  
+  
   
 </div>

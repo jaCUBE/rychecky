@@ -10,6 +10,24 @@ $(function(){
   if(host == 'localhost'){
     relative_path = '/rychecky/';
   }
+  
+  
+  
+  $('.btn-social').tipsy({ // Inicializace jQuery Tipsy (tooltipy)
+    html: true,
+    fade: true,
+    offset: 3,
+    opacity: 1.0
+  });
+  
+  
+  if($('#experiences-timeline').length > 0){
+    experiences_timeline();
+  }
+  
+  if($('#certificate-timeline').length > 0){
+    certificate_timeline();
+  }  
 });
 
 
@@ -91,5 +109,58 @@ function initialize_isotope(){
     
     $(this).removeClass('btn-default');
     $(this).addClass('btn-success');
+  });
+}
+
+
+
+function experiences_timeline(){
+  $.ajax({ // Přebírání informací přes AJAX
+    type: 'GET',
+    url: relative_path+'ajax_experiences.php', // Dotazované URL
+    datatype: 'json', // JSON výstup
+    success: function(data, textStatus, xhr) {
+      var timeline_data = $.parseJSON(data); // Parsování JSON do JS array
+      console.log(timeline_data);
+      var timeline = new Timeline($('#experiences-timeline'), timeline_data);
+      
+      timeline.setOptions({
+        animation:   true, // Animovaná timeline?
+        lightbox:    true, // Lightbox jako prohlížeč fotek?
+        allowDelete: true, // Povolit skrývání událostí?
+        separator:   'month_year', // Oddělovač timeline
+        columnMode:  'dual', // Počet sloupců
+        order:       'desc', // Pořadí událostí
+        defaultElementWidth: 250 // Šířka události
+      });
+      
+      timeline.display(); // Zobrazení timeline
+    }
+  });
+}
+
+
+function certificate_timeline(){
+  $.ajax({ // Přebírání informací přes AJAX
+    type: 'GET',
+    url: relative_path+'ajax_certificate.php', // Dotazované URL
+    datatype: 'json', // JSON výstup
+    success: function(data, textStatus, xhr) {
+      var timeline_data = $.parseJSON(data); // Parsování JSON do JS array
+      console.log(timeline_data);
+      var timeline = new Timeline($('#certificate-timeline'), timeline_data);
+      
+      timeline.setOptions({
+        animation:   true, // Animovaná timeline?
+        lightbox:    true, // Lightbox jako prohlížeč fotek?
+        allowDelete: true, // Povolit skrývání událostí?
+        separator:   'month_year', // Oddělovač timeline
+        columnMode:  'dual', // Počet sloupců
+        order:       'desc', // Pořadí událostí
+        defaultElementWidth: 250 // Šířka události
+      });
+      
+      timeline.display(); // Zobrazení timeline
+    }
   });
 }
