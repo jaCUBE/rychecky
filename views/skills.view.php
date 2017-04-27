@@ -1,6 +1,4 @@
-<?php /* @var $data SkillList */ ?>
-
-<?php $sl =& $data; ?>
+<?php $sl =& $data; /* @var $data SkillList */ ?>
 
 
 
@@ -10,14 +8,7 @@
 
 
 
-
-
 <div class="row">
-  
-  
-  
-  
-  
   <div class="col-md-3">
     <div class="list-group">
       <?php foreach($sl->skill_list as $type => $skill_group){ // Procházení jednotlivých skupin dovedností... ?>
@@ -45,9 +36,4 @@
         <?php } ?>
     <?php } ?>    
   </div>
-  
-  
-  
-  
-  
 </div>

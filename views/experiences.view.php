@@ -1,10 +1,4 @@
-<?php /* @var $data ExperienceList */ ?>
-
-
-
-<?php $el =& $data; ?>
-
-
+<?php $el =& $data; /* @var $data ExperienceList */ ?>
 
 
 
@@ -15,17 +9,9 @@
 
 <div id="experiences">
   <div class="row">
-    
-    
-    
-    
-    
     <div class="col-md-4">
       <div id="experiences-timeline"></div>
-    </div>
-    
-    
-    
+    </div>    
     
     
     <div class="col-md-8">
@@ -47,11 +33,5 @@
         </div>
       <?php } ?>
     </div>
-    
-    
-    
-    
-    
-    
   </div>
 </div>

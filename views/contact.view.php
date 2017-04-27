@@ -1,8 +1,5 @@
-<?php
+<?php $sl =& $data; /* @var $sl SocialList */ ?>
 
-$sl =& $data; /* @var $sl SocialList */
-
-?>
 
 
 <div id="contact">
@@ -56,9 +53,6 @@ $sl =& $data; /* @var $sl SocialList */
   
   
   <?php $gmap_address = ADDR_STREET.' '.ADDR_CITY ?>
-
-  
-
   <iframe height="450" frameborder="0" id="gmap-iframe" src="https://www.google.com/maps/embed/v1/place?q=<?= $gmap_address ?>&amp;key=AIzaSyDNcVRTFRK2Ljn8n4PQzESMZtkNFDeABNQ&amp;zoom=10">
   </iframe>
 </div>

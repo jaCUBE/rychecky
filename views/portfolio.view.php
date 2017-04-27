@@ -1,14 +1,10 @@
-<?php /* @var $data PortfolioList */ ?>
-
-<?php $pl =& $data; ?>
+<?php $pl =& $data; /* @var $data PortfolioList */ ?>
 
 
 
 <h2>
   <i class="fa fa-bookmark"></i> Portfolio
 </h2>
-
-
 
 <div class="row portfolio-menu">
   <div class="col-md-6">
@@ -33,10 +29,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 
 
 

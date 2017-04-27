@@ -26,15 +26,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="rychecky-menu">
       <ul class="nav navbar-nav">
-        <?php
-        
-        $menu = new Menu();
+        <?php $menu = new Menu();
         
         foreach($menu->menu_item_list as $m){
           echo $m->htmlMenuItem();
-        }
-        
-        ?>
+        } ?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -42,4 +38,4 @@
 
 
 
-<div id="content">
+<main id="content">

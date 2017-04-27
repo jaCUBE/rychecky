@@ -3,7 +3,7 @@
 
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5">
     <h2>
       O mně
     </h2>
@@ -38,15 +38,35 @@
   
   
   
-  <div class="col-md-6">
+  <div class="col-md-4">
     <h2>
       Zájmy
     </h2>
 
     <div class="hobby-list">
-    <?php foreach($hl->hobby_list as $h){ ?>
-      <?= $h->htmlHobby() ?>
-    <?php } ?>
-    </div> 
-  </div>  
+      <?php foreach($hl->hobby_list as $h){ ?>
+        <?= $h->htmlHobby() ?>
+      <?php } ?>
+    </div>
+    
+    <hr style="visibility: hidden; clear: both" />
+  </div>
+  
+  
+  
+  
+  
+  <div class="col-md-3">
+    <div class="center" style="margin-top: 80px">
+      <a href="http://cv.rychecky.cz/" class="btn btn-lg btn-info">
+        <i class="fa fa-download"></i> Stáhnout CV
+      </a>
+    </div>
+      
+    <div class="center" style="margin-top: 40px;">
+      <a href="mailto:jakub@rychecky.cz" class="btn btn-default">
+        <i class="fa fa-envelope-o"></i> jakub@rychecky.cz
+      </a>
+    </div>
+  </div>
 </div>

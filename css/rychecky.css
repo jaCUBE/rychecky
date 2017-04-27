@@ -46,6 +46,7 @@ nav .fa {
   color: #2B3E50;
   padding: 1em 3em 2em;
   font-size: 0.9em;
+  border: 1px solid #4E5D6C;
 }
 #content h2 {
   color: #578A7B;
@@ -83,17 +84,6 @@ nav .fa {
 }
 .list-group .active:hover {
   background: #2B3E50;
-}
-footer {
-  font-size: 0.7em;
-  text-align: right;
-  background: #EBEBEB;
-  border-top: 1px solid #578A7B;
-  padding: 0.2em 1em;
-}
-footer .item {
-  display: inline-block;
-  margin-left: 2em;
 }
 .portfolio {
   width: 200px;

@@ -1,9 +1,28 @@
-Options +FollowSymLinks
-
 RewriteEngine On 
+
+# Stránka portfolia/tvorby
 RewriteRule ^portfolio(.*)$ index.php?action=portfolio
+RewriteRule ^tvorba(.*)$ index.php?action=portfolio
+
+# Stránka dovedností/znalostí
 RewriteRule ^skills(.*)/(.*)$ index.php?action=skills&type=$2
 RewriteRule ^skills(.*)$ index.php?action=skills
+RewriteRule ^dovednosti(.*)/(.*)$ index.php?action=skills&type=$2
+RewriteRule ^dovednosti(.*)$ index.php?action=skills
+RewriteRule ^znalosti(.*)/(.*)$ index.php?action=skills&type=$2
+RewriteRule ^znalosti(.*)$ index.php?action=skills
+
+# Stránka pracovníách zkušeností
 RewriteRule ^experiences(.*)$ index.php?action=experiences
+RewriteRule ^zkusenosti(.*)$ index.php?action=experiences
+RewriteRule ^pozice(.*)$ index.php?action=experiences
+RewriteRule ^prace(.*)$ index.php?action=experiences
+
+# Stránka certifikátů
 RewriteRule ^certificate(.*)$ index.php?action=certificate
+RewriteRule ^certifikace(.*)$ index.php?action=certificate
+RewriteRule ^certifikaty(.*)$ index.php?action=certificate
+
+# Stránka kontaktu
 RewriteRule ^contact(.*)$ index.php?action=contact
+RewriteRule ^kontakt(.*)$ index.php?action=contact
