@@ -192,30 +192,37 @@ class Portfolio {
 
 
     <div class="row portfolio-modal">
-
       <div class="col-md-4">
-
+        <div class="image">
+          <?= is_a($this->thumbnail, 'Gallery') ? $this->thumbnail->htmlThumbnail() : Gallery::htmlPlaceholder() ?>
+        </div>
+        
+        <div class="gallery">
+          <?php foreach($this->gallery as $g){ ?>
+            <?= $g->htmlFancybox() ?>
+          <?php } ?>
+        </div>
       </div>
 
 
       <div class="col-md-8">
-        <div class="label">
-          <?= $this->interesting ? '<span class="label label-primary"><i class="fa fa-star"></i> Zajímavá položka</span>' : '' ?>
-          <?= $this->isRunning() ? '<span class="label label-success"><i class="fa fa-cog"></i> Ve vývoji</span>' : '' ?>
-        </div>
-        
-        
-        
         <div class="detail">
-          <?= $this->detail ?>
-        </div>
-        
-        <div class="center">
-          <div class="url">
-            <?= !empty($this->url) ? '<a href="'.$this->url.'" class="btn btn-sm btn-success"><i class="fa fa-globe"></i> '.$this->nameShortest().'</a>' : '' ?>
+          <div class="label">
+            <?= $this->interesting ? '<span class="label label-primary"><i class="fa fa-star"></i> Zajímavá položka</span>' : '' ?>
+            <?= $this->isRunning() ? '<span class="label label-success"><i class="fa fa-cog"></i> Ve vývoji</span>' : '' ?>
           </div>
-          
-          <?= !empty($this->github) ? '<a href="'.$this->github.'" class="btn btn-xs btn-default"><i class="fa fa-github"></i> '.$this->nameShortest().' GitHub</a>' : '' ?>
+
+          <div class="text">
+            <?= $this->detail ?>
+          </div>
+
+          <div class="center">
+            <div class="url">
+              <?= !empty($this->url) ? '<a href="'.$this->url.'" class="btn btn-sm btn-success"><i class="fa fa-globe"></i> '.$this->nameShortest().'</a>' : '' ?>
+            </div>
+
+            <?= !empty($this->github) ? '<a href="'.$this->github.'" class="btn btn-xs btn-default"><i class="fa fa-github"></i> '.$this->nameShortest().' GitHub</a>' : '' ?>
+          </div>
         </div>
       </div>
     </div>
@@ -296,7 +303,7 @@ class Portfolio {
       FROM gallery AS g
       WHERE g.portfolio_id = :portfolio_id
         AND g.visible = 1
-      ORDER BY RAND()';
+      ORDER BY g.order DESC';
     
     $STH = $_DB->prepare($sql);
     $STH->bindParam(':portfolio_id', $this->portfolio_id);

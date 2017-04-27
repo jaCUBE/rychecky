@@ -76,7 +76,11 @@ class RycheckyController {
   
   
   public function contact(){
+    global $_RYC;
+        
+    $social_list = new SocialList();
     
+    $_RYC->view('contact', $social_list);
   }
   
 

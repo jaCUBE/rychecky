@@ -56,18 +56,21 @@ class Hobby {
   public function htmlHobby(){
     ob_start(); ?>
 
-<div class="hobby" style="<?= $this->css() ?>">
-  <?= $this->name ?>
-</div>
+    <div class="hobby" style="<?= $this->css() ?>">
+      <?= $this->name ?>
+    </div>
 
     <?php return ob_get_clean();
   }
   
   
+  
+  
+  
   private function css(){
     $css = [];
     
-    $css['font-size'] = $this->size * 1.8.'em';
+    $css['font-size'] = $this->size * 0.02.'em';
     $css['margin-left'] = rand(0, 10).'px';
     $css['margin-right'] = rand(0, 10).'px';
     $css['margin-top'] = rand(0, 5).'px';
@@ -85,7 +88,7 @@ class Hobby {
       $output .= $property.': '.$value.'; ';
     }
     
-    return $output;
+    return trim($output);
   }
   
   

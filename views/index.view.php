@@ -3,17 +3,13 @@
 
 
 <div class="row">
-  
-  
-  
-  
-  
   <div class="col-md-6">
     <h2>
       O mně
     </h2>
 
-    <div clas="index-text">
+
+    <div class="index-text">
       <p>
         Momentálně se živím jako vývojář webového software ve vědecké organizaci, která se věnuje jadernému výzkumu.
         Mám na starosti celý cyklus – od počátečního modelování dat a návrhu architektury relační databáze, přes kód samotný až po front end a UX našich zaměstnanců.
@@ -29,16 +25,13 @@
     </div>
     
     
-    
     <div class="social-bar">
       <?php foreach($sl->social_list as $s){ // Procházení jednotlivých profilů na sociálních sítích... ?>
         <?= $s->htmlSocialButton() // Vykreslení jednoho tlačítka sociálních sítí ?>
       <?php } ?>
     </div>
     
-    
-    
-    <hr style="clear: right; visibility: hidden;" />
+    <hr class="clear" />
   </div>
   
   
@@ -55,10 +48,5 @@
       <?= $h->htmlHobby() ?>
     <?php } ?>
     </div> 
-  </div>
-  
-  
-  
-  
-  
+  </div>  
 </div>

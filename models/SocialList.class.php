@@ -35,7 +35,7 @@ class SocialList {
       SELECT s.*
       FROM social AS s
       WHERE s.visible = 1
-      ORDER BY s.value DESC, s.name ASC';
+      ORDER BY s.order DESC, s.name ASC';
     
     $STH = $_DB->prepare($sql);
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Social');

@@ -33,7 +33,7 @@ class PortfolioList {
       SELECT p.*
       FROM portfolio AS p
       WHERE p.visible = 1
-      ORDER BY p.name_short ASC';
+      ORDER BY p.size DESC';
     
     $STH = $_DB->prepare($sql);
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Portfolio');

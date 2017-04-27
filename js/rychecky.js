@@ -27,7 +27,21 @@ $(function(){
   
   if($('#certificate-timeline').length > 0){
     certificate_timeline();
-  }  
+  } 
+  
+  $('.fancybox').fancybox({
+    overlayColor: '#FFF',
+    helpers: {
+      title: {
+        type: 'over'
+      }
+    }
+  });
+  
+  if($('#gmap-iframe').length > 0){
+    gmap_resize();
+    $(window).resize(gmap_resize);
+  }
 });
 
 
@@ -147,7 +161,7 @@ function certificate_timeline(){
     datatype: 'json', // JSON výstup
     success: function(data, textStatus, xhr) {
       var timeline_data = $.parseJSON(data); // Parsování JSON do JS array
-      console.log(timeline_data);
+
       var timeline = new Timeline($('#certificate-timeline'), timeline_data);
       
       timeline.setOptions({
@@ -163,4 +177,18 @@ function certificate_timeline(){
       timeline.display(); // Zobrazení timeline
     }
   });
+}
+
+
+function gmap_resize(){
+  var c = $('#content');
+  var gm = $('#gmap-iframe');
+  
+  var css = {
+    'width': c.css('width'),
+    'margin-left': '-'+c.css('padding-left'),
+    'margin-bottom': '-'+c.css('padding-bottom')
+  }
+  
+  gm.css(css);
 }

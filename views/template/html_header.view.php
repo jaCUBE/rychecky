@@ -10,35 +10,49 @@
   <head>
     <title>rychecky.cz</title>
     
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <meta name="theme-color" content="#41576D">
     <link rel="icon" href="<?= URL ?>/favicon.ico" type="image/x-icon" />
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800&subset=latin,latin-ext" rel="stylesheet" type="text/css" />
     
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.1/isotope.pkgd.min.js"></script>
     
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tipsy/1.0.3/jquery.tipsy.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tipsy/1.0.3/jquery.tipsy.min.js"></script>
     
-    <link  rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/superhero/bootstrap.min.css" />
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link  rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" />    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css" />
+    <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
    
-    <!-- JQUERY: MELONHTML5 TIMELINE -->
     <link type="text/css" rel="stylesheet" href="<?= URL; ?>/libraries/melonhtml5_timeline/files/css/timeline.css" />  
     <link type="text/css" rel="stylesheet" href="<?= URL; ?>/libraries/melonhtml5_timeline/files/css/timeline_light.css" />  
     <script src="<?= URL; ?>/libraries/melonhtml5_timeline/files/javascript/timeline.min.js" type="text/javascript"></script>
     
     
     
-    
-    
     <link rel="stylesheet" type="text/css" href="<?= URL.'/css/rychecky.css' ?>">
     <script src="<?= URL.'/js/rychecky.min.js' ?>"></script>
+    
+    
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-33858105-3', 'auto');
+      ga('send', 'pageview');
+    </script>
   </head>
   
   

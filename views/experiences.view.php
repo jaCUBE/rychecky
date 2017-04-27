@@ -32,10 +32,13 @@
       <?php foreach($el->experience_list as $e){ ?>
         <div class="experience <?= $e->cssClass() ?>">
           <div class="title">
-            <?= $e->title ?> <?= $e->htmlExperienceLabel() ?> <?= $e->htmlExperienceDateLabel() ?>
+            <?= $e->title ?>
           </div>
-          <div class="company">
+          <div class="meta">
+            <span class="company">
             <?= $e->type == 'Vzdělání' ? '<i class="fa fa-graduation-cap"></i> '.$e->company : '<i class="fa fa-industry"></i> '.$e->company ?>
+            </span>            
+            <?= $e->htmlExperienceLabel() ?> <?= $e->htmlExperienceDateLabel() ?>
           </div>
           <div class="detail">
             <?= $e->detail ?>

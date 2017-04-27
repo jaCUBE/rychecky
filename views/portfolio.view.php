@@ -11,9 +11,6 @@
 
 
 <div class="row portfolio-menu">
-  
-  
-  
   <div class="col-md-6">
     <div class="btn-label"><i class="fa fa-filter"></i> Filtrování:</div>
     <div id="filters" class="btn-group">
@@ -26,16 +23,15 @@
   </div>
   
   
+  
   <div class="col-md-6">
     <div class="btn-label"><i class="fa fa-sort-alpha-asc"></i> Řazení:</div>
     <div id="sorts" class="btn-group">
-      <div class="btn btn-sm btn-success" data-sort-by="name"><i class="fa fa-sort-alpha-asc"></i> Název</div>
+      <div class="btn btn-sm btn-success" data-sort-by="size"><i class="fa fa-sort-amount-desc"></i> Rozsah</div>
+      <div class="btn btn-sm btn-default" data-sort-by="name"><i class="fa fa-sort-alpha-asc"></i> Název</div>
       <div class="btn btn-sm btn-default" data-sort-by="age"><i class="fa fa-history"></i> Stáří</div>
-      <div class="btn btn-sm btn-default" data-sort-by="size"><i class="fa fa-sort-amount-desc"></i> Rozsah</div>
     </div>
   </div>
-  
-  
 </div>
 
 

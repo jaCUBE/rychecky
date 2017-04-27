@@ -22,17 +22,29 @@ class Gallery {
   public $portfolio_id;
   
   /**
-   * @brief Cesta k souboru
-   * @var string $path
-   */
-  public $path;
-  
-  /**
    * @brief Název souboru
    * @var string $filename
    */
   public $filename;
+  
+  /**
+   * @brief Popis obrázku
+   * @var string $title
+   */
+  public $title;
+  
+  /**
+   * @brief Jedná se o thumbnail?
+   * @var boolean $thumbnail
+   */
+  public $thumbnail;
    
+  /**
+   * @brief Hodnota pořadí
+   * @var integer $order
+   */
+  public $order;
+  
   /**
    * @brief Viditelný?
    * @var boolean $visible
@@ -67,7 +79,7 @@ class Gallery {
    */
   
   public function url(){
-    return URL.'/images'.$this->path.$this->filename;
+    return URL.'/images/portfolio/'.$this->portfolio_id.'/'.$this->filename;
   }
   
   public function htmlThumbnail(){
@@ -78,13 +90,12 @@ class Gallery {
     return '<img src="'.URL.'/images/placeholder.png" alt="" />';
   }
   
+  public function htmlFancyBox(){    
+    return '<a href="'.$this->url().'" title="'.htmlspecialchars($this->title).'" rel="gallery-porfolio-'.$this->portfolio_id.'" class="fancybox">'.$this->htmlThumbnail().'</a>';
+  }
   
   public function isThumbnail(){
-    if(strpos($this->filename, '_th.')){
-      return true;
-    }else{
-      return false;
-    }
+    return (boolean) $this->thumbnail;
   }
   
   

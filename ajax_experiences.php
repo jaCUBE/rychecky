@@ -7,6 +7,8 @@ $el = new ExperienceList();
 $output = [];
 
 foreach($el->experience_list as $e){
+  if($e->timeline == 0) continue;
+  
   $one = [];
   $one['type'] = 'blog_post';
   $one['date'] = date('Y-m-d', strtotime($e->date_start));
