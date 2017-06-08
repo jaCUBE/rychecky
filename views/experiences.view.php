@@ -9,12 +9,7 @@
 
 <div id="experiences">
   <div class="row">
-    <div class="col-md-4">
-      <div id="experiences-timeline"></div>
-    </div>    
-    
-    
-    <div class="col-md-8">
+    <div class="col-lg-8">
       <?php foreach($el->experience_list as $e){ ?>
         <div class="experience <?= $e->cssClass() ?>">
           <div class="title">
@@ -32,6 +27,11 @@
           <?= !empty($e->note) ? '<div class="note">'.$e->note.'</div>' : '' ?>
         </div>
       <?php } ?>
+    </div>
+    
+    
+    <div class="col-lg-4">
+      <div id="experiences-timeline"></div>
     </div>
   </div>
 </div>

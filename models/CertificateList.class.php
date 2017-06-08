@@ -34,7 +34,7 @@ class CertificateList {
       SELECT c.*
       FROM certificate AS c
       WHERE c.visible = 1
-      ORDER BY c.issue_date';
+      ORDER BY c.issue_date DESC';
     
     $STH = $_DB->prepare($sql);
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Certificate');

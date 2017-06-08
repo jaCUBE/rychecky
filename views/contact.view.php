@@ -14,10 +14,6 @@
           <td class="icon"><i class="fa fa-mobile"></i></td>
           <td class="value"><a href="tel:<?= str_replace(' ', '', PHONE) ?>"><?= PHONE ?></a></td>
         </tr>
-        <tr class="skype">
-          <td class="icon"><i class="fa fa-skype"></i></td>
-          <td class="value"><?= SKYPE ?></td>
-        </tr>        
       </table>       
       
       <div class="social-bar" style="margin-top: 20px;">

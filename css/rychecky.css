@@ -176,6 +176,7 @@ nav .fa {
 }
 .label {
   font-size: 80%;
+  margin-right: 3px;
 }
 .label.label-primary {
   background: #0C1F32;
@@ -221,10 +222,6 @@ nav .fa {
   font-weight: bold;
   color: #4E5D6C;
   font-size: 1.2em;
-}
-#experiences .experience .title .label {
-  font-size: 0.7em;
-  margin-right: 1em;
 }
 #experiences .experience .company {
   font-size: 0.9em;
@@ -325,6 +322,12 @@ nav .fa {
   .skill {
     height: auto;
     width: 100%;
+  }
+  #container {
+    width: 93%;
+  }
+  #container #content {
+    padding: 1em 2em 2em;
   }
 }
 @media (max-width: 1080px) {

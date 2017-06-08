@@ -173,9 +173,10 @@ function certificate_timeline(){
 function gmap_resize(){
   var c = $('#content');
   var gm = $('#gmap-iframe');
+  var w = parseInt(c.css('width')) - 2;
   
   var css = {
-    'width': c.css('width'),
+    'width': w+'px',
     'margin-left': '-'+c.css('padding-left'),
     'margin-bottom': '-'+c.css('padding-bottom')
   }
