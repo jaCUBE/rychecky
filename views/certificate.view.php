@@ -16,7 +16,7 @@
 
 <div id="certificate-list">
   <div class="row">    
-    <div class="col-md-8">
+    <div class="col-lg-8">
       <?php foreach($cl->certificate_list as $c){ ?>
         <div class="certificate">
           <div class="name">
@@ -44,7 +44,7 @@
     
     
     
-    <div class="col-md-4">
+    <div class="col-lg-4">
       <div id="certificate-timeline"></div>
     </div>
   </div>
