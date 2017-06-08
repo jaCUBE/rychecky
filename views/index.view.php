@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-md-5">
     <h2>
-      O mně
+      <i class="fa fa-user"></i> O mně
     </h2>
 
 
@@ -40,7 +40,7 @@
   
   <div class="col-md-4">
     <h2>
-      Zájmy
+      <i class="fa fa-cloud"></i> Zájmy
     </h2>
 
     <div class="hobby-list">

@@ -12,15 +12,6 @@ $(function(){
   }
   
   
-  
-  $('.btn-social').tipsy({ // Inicializace jQuery Tipsy (tooltipy)
-    html: true,
-    fade: true,
-    offset: 3,
-    opacity: 1.0
-  });
-  
-  
   if($('#experiences-timeline').length > 0){
     experiences_timeline();
   }
@@ -29,14 +20,7 @@ $(function(){
     certificate_timeline();
   } 
   
-  $('.fancybox').fancybox({
-    overlayColor: '#FFF',
-    helpers: {
-      title: {
-        type: 'over'
-      }
-    }
-  });
+  $('.gallery a').fancybox(); // Fancybox pro galerii obrázků
   
   if($('#gmap-iframe').length > 0){
     gmap_resize();
@@ -68,9 +52,15 @@ function portfolio(portfolio_id){
   
   
   modal.modal('show');
+  
+  setTimeout(initialize_fancybox, '300');
+  
 }
 
 
+function initialize_fancybox(){
+  $('.gallery a').fancybox(); // Fancybox pro galerii obrázků
+}
 
 
 

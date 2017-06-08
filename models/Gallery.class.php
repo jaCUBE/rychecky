@@ -91,7 +91,7 @@ class Gallery {
   }
   
   public function htmlFancyBox(){    
-    return '<a href="'.$this->url().'" title="'.htmlspecialchars($this->title).'" rel="gallery-porfolio-'.$this->portfolio_id.'" class="fancybox">'.$this->htmlThumbnail().'</a>';
+    return '<a href="'.$this->url().'" data-fancybox="portfolio-'.$this->portfolio_id.'" data-caption="'.htmlspecialchars($this->title).'" class="fancybox">'.$this->htmlThumbnail().'</a>';
   }
   
   public function isThumbnail(){
