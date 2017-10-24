@@ -7,15 +7,10 @@
 </div>
 
 
-
 <nav class="navbar navbar-default">
-
-
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#rychecky-menu" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#rychecky-menu">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -23,7 +18,7 @@
       <a class="navbar-brand" href="<?= URL ?>">JR</a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+    
     <div class="collapse navbar-collapse" id="rychecky-menu">
       <ul class="nav navbar-nav">
         <?php $menu = new Menu();
@@ -32,9 +27,14 @@
           echo $m->htmlMenuItem();
         } ?>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
+
+
+<div class="alert alert-success">
+  <i class="fa fa-briefcase"></i> Hledám nové pracovní příležitosti, kde bych mohl uplatnit a zlepšovat své dovednosti. Budu vděčný za všechny zajímavé nabídky. :)
+</div>
 
 
 

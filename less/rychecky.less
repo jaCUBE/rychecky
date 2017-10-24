@@ -160,22 +160,37 @@ nav { // Navigační menu webu
   width: 200px;
   height: 150px;
   border:  1px solid @col-secondary-lighter;
-  margin: 10px;
-  border-radius: 0px 0px 5px 5px;
+  margin: 3px;
   background: #FFFFFF;
   
   &:hover { // Položka porfolia při najetí kurzorem
     cursor: pointer;
-    border-color: @col-secondary;
+    border-color: @col-secondary;    
+    background: @col-primary-lighter;
+    color: #FFFFFF !important;
+    opacity: 1.0;
+    
+    .imgage {
+      opacity: 1.0;
+    }
     
     .name {
-      color: @col-secondary;
+      color: @col-white;
+      
+      .fa {
+        color: @col-white;
+      }
+    }
+    
+    .detail {
+      color: #FFFFFF;
     }
   }
   
   .image { // Obrázek portfolia
     width: 198px;
     height: 80px;
+    opacity: 0.7;
     
     img {
       border-bottom: 1px solid #CCCCCC;
@@ -201,7 +216,7 @@ nav { // Navigační menu webu
   }
   
   .detail {
-    color: @col-secondary-lighter;
+    color: @col-primary-darker;
     font-size: 0.7em;
   }
 }
