@@ -270,7 +270,7 @@ nav { // Navigační menu webu
       margin: 10px;
     }
   }
-
+  
   
   .image { // Obrázek portfolia v dialogu
     img {
@@ -294,23 +294,6 @@ nav { // Navigační menu webu
         opacity: 1.0;
       }      
     }
-  }
-}
-
-
-
-
-
-.label {
-  font-size: 80%;
-  margin-right: 3px;
-  
-  &.label-primary {
-    background: @col-primary-darker;
-  }
-  
-  &.label-success {
-    background: @col-secondary-lighter;
   }
 }
 
@@ -364,123 +347,50 @@ nav { // Navigační menu webu
 
 
 
-
-#experiences { // Zkušenosti (práce + vzdělání)
-  .experience { // Jedna zkušenost
-    margin: 10px 0px;
-    padding: 0px 10px;
-    border-left: 5px solid;
+.timeline { // Nastavení vzhledu CSS časové osy
+  max-width: 900px;
+  
+  .event { // Událost časové osy
+    text-align: left;
+    border-color: #888888;
+    transition: opacity 0.5s ease;
     
-    
-    .title {
-      font-weight: bold;
-      color: @col-primary-lighter;
-      font-size: 1.2em;
+    &:hover {
+      background: #FFFFFF;
+      border-color: @col-primary;
     }
     
-    .company {
-      font-size: 0.9em;
-      color: @col-secondary-lighter;
-      margin-bottom: 5px;
+    &.odd {
+      margin-top: 35px;
+    }
+
+    .title {
+      color: @col-primary;
+      font-weight: bold;
+      font-size: 17px;
     }
     
     .detail {
-      font-size: 0.9em;
+      font-size: 12px;
+      margin: 5px 0px;
     }
     
-    .note {
-      font-size: 0.8em;
-      font-style: italic;
-    }
-    
-    .time {      
-      &.start {
-        background: @col-secondary-lighter;
-      }
-      
-      &.end {
-        background: @col-primary-lighter;
-      }
-    }
-  
-    &.job { // Práce
-      border-color: @col-secondary-lighter;
-    }
-
-    &.education { // Vzdělání
-      border-color: #AAAAAA;
-    }
-  }
-  
-  
-  
-  .experience-timeline {
-    text-align: center;
-    
-    .name {
+    .date {
+      text-align: right;
+      font-size: 11px;
       font-weight: bold;
+      color: @col-primary-lighter;
     }
     
     .company {
-      .experience .company();
-    }
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-#certificate-list {
-  .certificate {
-    margin-top: 15px;
-    margin-left: 20px;
-    border-left: 3px solid @col-secondary-lighter;
-    padding-left: 10px;
-    
-    .name {
+      color: @col-secondary-lighter;
       font-weight: bold;
-      color: @col-secondary-lighter;
-      font-size: 1.2em;
+      font-size: 11px;
     }
     
-    
-    .meta {
-      margin: 5px 3px;
-      
-      span {
-        margin-right: 8px;
-      }
-      
-      .type {
-        background: @col-primary-lighter;
-      }
-      
-      .time {
-        background: @col-secondary-lighter;
-      }
-      
-      .issue-by {
-        font-weight: bold;
-        font-style: italic;
-      }
-    }
-  }
-  
-  
-  .certificate-timeline {
-    .name {
-      .certificate .name();
-    }
-    
-    .issue-by {
-      .certificate .meta .issue-by();
+    .note {
+      font-size: 10px;
+      font-style: italic;
     }
   }
 }
@@ -488,33 +398,51 @@ nav { // Navigační menu webu
 
 
 
-#contact {
-  #contact-table {
-    margin-top: 60px;
-    font-size: 21px;
-    color: @col-primary;
+
+
+
+
+
+
+
+#contact { // Stránka kontaktů
+  #contact-table { // Tabulka kontaktů
+    margin-top: 50px;               
     
-    a {
-      color: @col-secondary-lighter;
-      text-decoration: none;
+    #channels { // Kanály pro komunikaci
+      text-align: center;
       
-      &:hover {
-        color: @col-secondary;
+      .email a { // E-mailová adresa
+        color: @col-secondary-lighter;
+        font-size: 25px;
+        text-decoration: none;
+        
+        &:hover {
+          color: @col-primary-lighter;
+        }
+      }
+      
+      .tel a { // E-mailová adresa
+        color: @col-secondary-lighter;
+        text-decoration: none;
+        
+        &:hover {
+          color: @col-primary-lighter;
+        }
+      }
+      
+      .bank { // Číslo účtu
+        text-align: left;
+        font-size: 12px;
       }
     }
     
-    .icon {
-      width: 32px;
-      text-align: center;
+    #address { // Fyzická adresa
+      font-size: 18px;
     }
   }
   
-  #address {
-    font-size: 18px;
-    margin-top: 65px;
-  }
-  
-  #gmap-iframe {
+  #gmap-iframe { // Iframe Google Maps
     width: 100%;
     border-top: 1px solid @col-primary;
   }
@@ -539,6 +467,24 @@ nav { // Navigační menu webu
      padding: 1em 2em 2em;
    }
  }
+}
+
+
+
+
+
+footer { // Zápatí webu
+  text-align: right;
+  font-size: 11px;
+  padding-right: 5px;
+  
+  a { // Odkazy v zápatí (e-mail, telefon)
+    color: #EEEEEE;
+    
+    &:hover {
+      color: @col-secondary-lighter;
+    }
+  }
 }
 
 

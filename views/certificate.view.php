@@ -1,10 +1,4 @@
-<?php /* @var $data CertificateList */ ?>
-
-
-
-<?php $cl =& $data ?>
-
-
+<?php $cl =& $data; /* @var $data CertificateList */ ?>
 
 
 
@@ -13,39 +7,28 @@
 </h2>
 
 
-
-<div id="certificate-list">
-  <div class="row">    
-    <div class="col-lg-8">
-      <?php foreach($cl->certificate_list as $c){ ?>
-        <div class="certificate">
-          <div class="name">
-            <?= $c->name ?>
-          </div>
-
-          <div class="meta">
-            <span class="label type">
-              <?= $c->type ?>
-            </span>
-            <span class="label time">
-              <i class="fa fa-calendar"></i> <?= date('n/Y', strtotime($c->issue_date)) ?>
-            </span>
-            <span class="issue-by">
-              <?= $c->issue_by ?>
-            </span>
-          </div>        
-
-          <div class="detail">
-            <?= $c->detail ?>
-          </div>
+<div id="certificate">
+  <ul class="timeline">
+    <?php foreach($cl->certificate_list as $i => $c){ ?>
+      <li class="event <?= Rychecky::makeCssName($c->type) ?> <?= $i % 2 == 1 ? 'odd' : 'even' // Sudá-lichá událost ?>" data-type="<?= $c->type ?>">
+        <div class="date">
+          <span class="start"><?= date('n/Y', strtotime($c->issue_date)) ?></span>
         </div>
-      <?php } ?>
-    </div>
-    
-    
-    
-    <div class="col-lg-4">
-      <div id="certificate-timeline"></div>
-    </div>
-  </div>
+        
+        <div class="title"><?= $c->name ?></div>
+        
+        <div class="company">
+          <i class="fa fa-certificate"></i> <?= $c->issue_by ?>
+        </div>
+        
+        <div class="detail"><?= $c->detail ?></div>
+        
+        <div class="center">
+          <a href="<?= $c->url ?>" class="btn btn-xs btn-default">
+            <i class="fa fa-globe"></i> Certifikát
+          </a>
+        </div>
+      </li>    
+    <?php } ?>
+  </ul>
 </div>

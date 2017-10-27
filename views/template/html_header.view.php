@@ -19,14 +19,11 @@
     
     <link  rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" />    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    
     <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css" />    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
-   
-    <link type="text/css" rel="stylesheet" href="<?= URL; ?>/libraries/melonhtml5_timeline/files/css/timeline.css" />  
-    <link type="text/css" rel="stylesheet" href="<?= URL; ?>/libraries/melonhtml5_timeline/files/css/timeline_light.css" />  
-    <script src="<?= URL; ?>/libraries/melonhtml5_timeline/files/javascript/timeline.min.js" type="text/javascript"></script>
     
+    <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/timeline.css/1.0.0/timeline.min.css" />
     
     
     <link rel="stylesheet" type="text/css" href="<?= URL.'/css/rychecky.css?v='.time() ?>">

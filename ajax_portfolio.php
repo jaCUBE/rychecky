@@ -13,6 +13,3 @@ $output['body'] = $p->htmlPortfolioModal();
 
 
 echo json_encode($output);
-
-
-?>

@@ -28,6 +28,12 @@ class Experience {
   public $type;
   
   /**
+   * @brief Název zkušenosti.
+   * @var string $title
+   */
+  public $title;
+  
+  /**
    * @brief Společnost
    * @var string $company
    */
