@@ -4,7 +4,7 @@
  * @author Jakub Rychecký <jakub@rychecky.cz>
  * 
  * @class Experience
- * @brief Objekt zkušenosti na webu.
+ * @brief Zkušenost (zaměstnání/vzdělání) na webu.
  */
 
 class Experience {
@@ -81,37 +81,5 @@ class Experience {
    */
   public $timestamp;
   
-  
-  
-  
-  public function cssClass(){
-    if($this->type == 'Vzdělání'){
-      return 'education';
-    }else{
-      return 'job';
-    }
-  }
-  
-  
-  
-  public function htmlExperienceLabel(){
-    if(strpos($this->note, 'nedokončeno') !== false){
-      $this->note = null;
-      return '<span class="label label-danger"><i class="fa fa-times"></i> Nedokončeno</span>';
-    }
-  }
-  
-  
-  public function htmlExperienceDateLabel(){
-    $html = '<span class="label time start"><i class="fa fa-play"></i> '.date('n/Y', strtotime($this->date_start)).'</span>';
-    
-    if(!empty($this->date_end)){
-      $html .= '<span class="label time end"><i class="fa fa-stop"></i> '.date('n/Y', strtotime($this->date_end)).'</span>';
-    }else{
-      $html .= '<span class="label time end">současnost</span>';
-    }
-    
-    return $html;
-  }
   
 }

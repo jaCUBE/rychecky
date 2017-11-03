@@ -11,6 +11,7 @@
  *
  * @author jaCUBE
  */
+
 class Social {
   public $row_id;
   public $social_id;
@@ -34,5 +35,6 @@ class Social {
 
     <?php return ob_get_clean();
   }
+  
   
 }

@@ -46,8 +46,12 @@ class Rychecky {
    */ 
   
   static function removeCzechChars($string){
-    $original = Array('á', 'č', 'ď', 'é', 'ě', 'í', 'ľ', 'ň', 'ó', 'ř', 'š', 'ť', 'ú', 'ů', 'ý', 'ž', 'Á', 'Č', 'Ď', 'É', 'Ě', 'Í', 'Ľ', 'Ň', 'Ó', 'Ř', 'Š', 'Ť', 'Ú', 'Ů', 'Ý', 'Ž', 'ö', 'ü'); // Česká diakritika
-    $replace  = Array('a', 'c', 'd', 'e', 'e', 'i', 'l', 'n', 'o', 'r', 's', 't', 'u', 'u', 'y', 'z', 'A', 'C', 'D', 'E', 'E', 'I', 'L', 'N', 'O', 'R', 'S', 'T', 'U', 'U', 'Y', 'Z', 'o', 'u'); // Znaky bez diakritiky
+    $original = [ 'á', 'č', 'ď', 'é', 'ě', 'í', 'ľ', 'ň', 'ó', 'ř', 'š', 'ť', 'ú', 'ů', 'ý', 'ž',
+                  'Á', 'Č', 'Ď', 'É', 'Ě', 'Í', 'Ľ', 'Ň', 'Ó', 'Ř', 'Š', 'Ť', 'Ú', 'Ů', 'Ý', 'Ž',
+                  'ö', 'ü']; // Česká diakritika
+    $replace  = [ 'a', 'c', 'd', 'e', 'e', 'i', 'l', 'n', 'o', 'r', 's', 't', 'u', 'u', 'y', 'z',
+                  'A', 'C', 'D', 'E', 'E', 'I', 'L', 'N', 'O', 'R', 'S', 'T', 'U', 'U', 'Y', 'Z',
+                  'o', 'u']; // Znaky bez diakritiky
     
     return str_replace($original, $replace, $string); // Vrací řetězec s odstraněnou diakritikou    
   }
@@ -55,22 +59,19 @@ class Rychecky {
   
   
   /**
-   * Řetězec v parametru připraví do formátu názvu CSS třídy.
-   * 
+   * @brief Převádí řetěžec do formátu názvu CSS třídy.   * 
    * @param string $string Vstup k přípravě na CSS třídu.
-   * 
    * @return string Formátovaný řetězec na CSS třídu.
    */ 
   
   static function makeCssName($string){
     $string = Rychecky::removeCzechChars($string);
     
-    $original = Array(':', '.', '/', ' ', '(', ')', ',', '[', ']', '_');
-    $replace  = Array('', '-', '-', '-', '-', '-', '', '-', '', '-');
+    $original = [':', '.', '/', ' ', '(', ')', ',', '[', ']', '_'];
+    $replace  = ['', '-', '-', '-', '-', '-', '', '-', '', '-'];
     
-    $string = str_replace($original, $replace, $string);
-    
-    $string = strtolower($string);
+    $string = str_replace($original, $replace, $string);    
+    $string = mb_strtolower($string);
     
     return $string;   
   }  
@@ -82,9 +83,9 @@ class Rychecky {
     
     $adj = '';
     
-    if($rnd >= 90){
+    if($rnd >= 95){
       $adj = 'Code Monkey';
-    }elseif($rnd >= 80){
+    }elseif($rnd >= 90){
       $adj = 'Cowboy';
     }
     

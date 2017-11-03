@@ -4,7 +4,7 @@
  * @author Jakub Rychecký <jakub@rychecky.cz>
  * 
  * @class Gallery
- * @brief Objekt obrázku galerie na webu.
+ * @brief Obrázek galerie na webu.
  */
 
 class Gallery {
@@ -74,28 +74,64 @@ class Gallery {
   
   
   /**
-   * 
-   * @return type
+   * @brief Generuje URL samotného obrázku.
+   * @return string URL obrázku
    */
   
   public function url(){
-    return URL.'/images/portfolio/'.$this->portfolio_id.'/'.$this->filename;
+    return URL.'/images/portfolio/'.$this->portfolio_id.'/'.$this->filename; // URL obrázku
   }
+  
+  
+  
+  
+  
+  /**
+   * @briefj Generuje HTML s obrázkem.
+   * @return string HTML s obrázkem
+   */
   
   public function htmlThumbnail(){
-    return '<img src="'.$this->url().'" alt="" />';
+    return '<img src="'.$this->url().'" alt="" />'; // HTML s obrázkem
+  }
+
+  
+  
+  
+  
+  /**
+   * @brief Generuje HTML s náhledem obrázku pro Fancybox.
+   * @return string HTML náhledu obrázku
+   */
+  
+  public function htmlFancyBox(){
+    return '<a href="'.$this->url().'" data-fancybox="portfolio-'.$this->portfolio_id.'" data-caption="'.htmlspecialchars($this->title).'" class="fancybox">'.$this->htmlThumbnail().'</a>'; // HTML náhledu obrázku
   }
   
-  static function htmlPlaceholder(){
-    return '<img src="'.URL.'/images/placeholder.png" alt="" />';
-  }
   
-  public function htmlFancyBox(){    
-    return '<a href="'.$this->url().'" data-fancybox="portfolio-'.$this->portfolio_id.'" data-caption="'.htmlspecialchars($this->title).'" class="fancybox">'.$this->htmlThumbnail().'</a>';
-  }
+  
+  
+  
+  /**
+   * @brief Jedná se o náhled obrázku?
+   * @return boolan Náhled?
+   */
   
   public function isThumbnail(){
-    return (boolean) $this->thumbnail;
+    return (boolean) $this->thumbnail; // Náhled?
+  }
+  
+  
+  
+  
+  
+  /**
+   * @brief Generuje HTML kód placeholderu obrázku.
+   * @return string HTML placeholderu
+   */
+  
+  static function htmlPlaceholder(){
+    return '<img src="'.URL.'/images/placeholder.png" alt="" />'; // HTML placeholderu
   }
   
   

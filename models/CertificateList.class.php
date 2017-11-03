@@ -1,19 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Jakub Rychecký <jakub@rychecky.cz>
+ * 
+ * @class Certificate
+ * @brief Stahuje a zpracovává seznam certifikátů.
  */
 
-/**
- * Description of CertificateList
- *
- * @author jaCUBE
- */
 class CertificateList {
-    /**
-   * @brief
+  
+  /**
+   * @brief Seznam certifikátů.
    * @var Certificate $certificate_list
    */
   public $certificate_list = [];
@@ -21,27 +18,48 @@ class CertificateList {
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  /**
+   * @brief Konstruktor, stahuje seznam certifikátů.
+   * @return void
+   */
+  
   public function __construct(){
-    $this->fetchCertificateList();
+    $this->fetchCertificateList(); // Stahuje seznam certifikátů
   }
-    
+  
+  
+  
+  
+  
+  /**
+   * @brief Stahuje z databáze seznam certifikátů.
+   * @return void
+   */
   
   private function fetchCertificateList(){
     global $_DB;
-    
-    
+        
     $sql = '
       SELECT c.*
       FROM certificate AS c
       WHERE c.visible = 1
-      ORDER BY c.issue_date DESC';
+      ORDER BY c.issue_date DESC'; // SQL pro stažení certifikátů
     
     $STH = $_DB->prepare($sql);
-    $STH->setFetchMode(PDO::FETCH_CLASS, 'Certificate');
+    $STH->setFetchMode(PDO::FETCH_CLASS, 'Certificate'); // Stažení do objektů certifikátů
     $STH->execute();
     
-    while($c = $STH->fetch()){ /* @var $certificate Certificate */
-      $this->certificate_list[] = $c;
+    while($c = $STH->fetch()){ /* @var $certificate Certificate */ // Procházení certifikátů...
+      $this->certificate_list[] = $c; // Uložení certifikátů do pole
     }
   }
+  
+  
 }

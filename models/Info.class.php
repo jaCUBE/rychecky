@@ -1,22 +1,31 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Jakub Rychecký <jakub@rychecky.cz>
+ * 
+ * @class Hobby
+ * @brief Stahuje a zpracovává základní informace (telefonní číslo, e-mail, atd.)
  */
 
-/**
- * Description of Info
- *
- * @author jaCUBE
- */
 class Info {
   
+  /**
+   * @brief Konstruktor, stahuje základní informace.
+   * @return void
+   */
   
   public function __construct(){
-    $this->fetchInfo();
+    $this->fetchInfo(); // Stahuje základní informace
   }
+  
+  
+  
+  
+  
+  /**
+   * @brief Stahuje základní informace a definuje je konstantu.
+   * @return void
+   */
   
   private function fetchInfo(){
     global $_DB;
@@ -24,16 +33,18 @@ class Info {
     $sql = '
       SELECT i.*
       FROM info AS i
-      WHERE i.visible = 1';
+      WHERE i.visible = 1'; // SQL dotaz pro stažení základních informací
     
     $STH = $_DB->prepare($sql);
     $STH->setFetchMode(PDO::FETCH_OBJ);
     $STH->execute();
     
-    while($obj = $STH->fetch()){
-      $name = mb_strtoupper($obj->name);
+    while($obj = $STH->fetch()){ // Procházení jednotlivých základních informací...
+      $name = mb_strtoupper($obj->name); // Převod jména na uppercase
       
-      define($name, $obj->value);
+      define($name, $obj->value); // Definování jedné konstanty
     }
   }
+  
+  
 }

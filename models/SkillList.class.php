@@ -69,11 +69,7 @@ class SkillList {
   
   
   public function isSkillTypeSelected($type){
-    if($this->type == $this->skillTypePlainName($type)){
-      return true;
-    }else{
-      return false;
-    }
+    return $this->type == $this->skillTypePlainName($type);
   }
   
 }

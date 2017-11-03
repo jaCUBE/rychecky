@@ -13,7 +13,7 @@
  */
 class SocialList {
   
-    /**
+  /**
    * @brief
    * @var Social $social_list
    */

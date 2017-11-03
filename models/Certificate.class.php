@@ -4,7 +4,7 @@
  * @author Jakub Rychecký <jakub@rychecky.cz>
  * 
  * @class Certificate
- * @brief Objekt certifikátu na webu.
+ * @brief Certifikátu na webu.
  */
 
 class Certificate {

@@ -118,21 +118,20 @@ class Portfolio {
    */
   public $timestamp;
   
+  /**
+   *
+   * @var type 
+   */
   public $thumbnail;
   
   public $gallery = [];
   
   
   public function __construct($portfolio_id = false){
-    if(!$portfolio_id){
-      return false;
+    if($portfolio_id){
+      $this->portfolio_id = (int) $portfolio_id;
+      $this->fetchPortfolio();
     }
-    
-    $this->portfolio_id = (int) $portfolio_id;
-    
-    $this->fetchPortfolio();
-    
-    return true;
   }
   
   
@@ -155,8 +154,41 @@ class Portfolio {
     $STH->fetch();
   }
   
+
   
   
+  public function fetchPortfolioGallery(){
+    global $_DB;
+    
+    $sql = '
+      SELECT g.*
+      FROM gallery AS g
+      WHERE g.portfolio_id = :portfolio_id
+        AND g.visible = 1
+      ORDER BY g.order DESC';
+    
+    $STH = $_DB->prepare($sql);
+    $STH->bindParam(':portfolio_id', $this->portfolio_id);
+    $STH->setFetchMode(PDO::FETCH_CLASS, 'Gallery');
+    $STH->execute();
+    
+    while($gallery = $STH->fetch()){
+      if($gallery->isThumbnail()){
+        $this->thumbnail = $gallery;
+      }else{
+        $this->gallery[] = $gallery;
+      }
+    }
+  }
+  
+  
+  
+  
+  
+  /**
+   * 
+   * @return type
+   */
   
   public function htmlPortfolio(){
     ob_start(); ?>
@@ -170,7 +202,7 @@ class Portfolio {
         <div class="name">
           <?= $this->nameShortest() ?>
           
-          <?= $this->interesting ? '<i class="fa fa-star" title="Zajímavá položka"></i>' : '' ?>
+          <?= $this->isInteresting() ? '<i class="fa fa-star" title="Zajímavá položka"></i>' : '' ?>
           <?= $this->isRunning() ? '<i class="fa fa-cog" title="Položka stále ve vývoji"></i>' : '' ?>
         </div>
         
@@ -185,55 +217,7 @@ class Portfolio {
   }
   
   
-  
-  
-  public function htmlPortfolioModal(){
-    ob_start(); ?>
-
-
-    <div class="row portfolio-modal">
-      <div class="col-md-4">
-        <div class="image">
-          <?= is_a($this->thumbnail, 'Gallery') ? $this->thumbnail->htmlThumbnail() : Gallery::htmlPlaceholder() ?>
-        </div>
-        
-        <div class="gallery">
-          <?php foreach($this->gallery as $g){ ?>
-            <?= $g->htmlFancybox() ?>
-          <?php } ?>
-        </div>
-      </div>
-
-
-      <div class="col-md-8">
-        <div class="detail">
-          <div class="label">
-            <?= $this->interesting ? '<span class="label label-primary"><i class="fa fa-star"></i> Zajímavá položka</span>' : '' ?>
-            <?= $this->isRunning() ? '<span class="label label-success"><i class="fa fa-cog"></i> Ve vývoji</span>' : '' ?>
-          </div>
-
-          <div class="text">
-            <?= $this->detail ?>
-          </div>
-
-          <div class="center">
-            <div class="url">
-              <?= !empty($this->url) ? '<a href="'.$this->url.'" class="btn btn-sm btn-success"><i class="fa fa-globe"></i> '.$this->nameShortest().'</a>' : '' ?>
-            </div>
-
-            <?= !empty($this->github) ? '<a href="'.$this->github.'" class="btn btn-xs btn-default"><i class="fa fa-github"></i> '.$this->nameShortest().' GitHub</a>' : '' ?>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <?php return ob_get_clean();
-  }
-  
-  
-  private function nameShortest(){
+  public function nameShortest(){
     if(!empty($this->name_short)){
       return $this->name_short;
     }else{
@@ -272,7 +256,7 @@ class Portfolio {
     $css[] = 'portfolio';
     $css[] = Rychecky::makeCssName($this->type);
     
-    if($this->interesting){
+    if($this->isInteresting()){
       $css[] = 'interesting';
     }
     
@@ -285,39 +269,15 @@ class Portfolio {
   
   
   public function isRunning(){
-    if(strtotime($this->date_start) <= strtotime('today')){
-      if(empty($this->date_end) OR strtotime($this->date_end) >= strtotime('today')){
-        return true;
-      }
-    }
+    $started = !empty($this->date_start) AND  strtotime($this->date_start) <= strtotime('today'); // Začato: datum začátku existuje a proběhlo
+    $ended = !empty($this->date_end) AND strtotime($this->date_end) <= strtotime('today'); // Ukončeno: datum konce existuje a proběhlo
     
-    return false;
+    return $started AND !$ended; // Začalo a neskončilo
   }
   
   
-  public function fetchPortfolioGallery(){
-    global $_DB;
-    
-    $sql = '
-      SELECT g.*
-      FROM gallery AS g
-      WHERE g.portfolio_id = :portfolio_id
-        AND g.visible = 1
-      ORDER BY g.order DESC';
-    
-    $STH = $_DB->prepare($sql);
-    $STH->bindParam(':portfolio_id', $this->portfolio_id);
-    $STH->setFetchMode(PDO::FETCH_CLASS, 'Gallery');
-    $STH->execute();
-    
-    while($gallery = $STH->fetch()){
-      if($gallery->isThumbnail()){
-        $this->thumbnail = $gallery;
-      }else{
-        $this->gallery[] = $gallery;
-      }
-    }
+  public function isInteresting(){
+    return !empty($this->interesting);
   }
-  
   
 }

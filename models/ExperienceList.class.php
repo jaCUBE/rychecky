@@ -1,20 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Jakub Rychecký <jakub@rychecky.cz>
+ * 
+ * @class Certificate
+ * @brief Stahuje a zpracovává seznam zkušeností.
  */
 
-/**
- * Description of ExperiencesList
- *
- * @author jaCUBE
- */
 class ExperienceList {
   
   /**
-   * @brief
+   * @brief Seznam zkušeností
    * @var Experience $experience_list
    */
   public $experience_list = [];
@@ -22,28 +18,48 @@ class ExperienceList {
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  /**
+   * @brief Konstruktor, stahuje seznam zkušeností.
+   * @return void
+   */
+  
   public function __construct(){
-    $this->fetchExperienceList();
+    $this->fetchExperienceList(); // Stahuje seznam zkušeností
   }
-    
+  
+  
+  
+  
+  
+  /**
+   * @brief Stahuje a zpracovává seznam zkušeností.
+   * @return void
+   */
   
   private function fetchExperienceList(){
-    global $_DB;
-    
+    global $_DB;    
     
     $sql = '
       SELECT e.*
       FROM experience AS e
       WHERE e.visible = 1
-      ORDER BY e.date_start DESC';
+      ORDER BY e.date_start DESC'; // SQL pro stažení seznamu zkušeností
     
     $STH = $_DB->prepare($sql);
-    $STH->setFetchMode(PDO::FETCH_CLASS, 'Experience');
+    $STH->setFetchMode(PDO::FETCH_CLASS, 'Experience'); // Do objektů zkušeností
     $STH->execute();
     
-    while($e = $STH->fetch()){ /* @var $e Experience */
-      $this->experience_list[] = $e;
+    while($e = $STH->fetch()){ /* @var $e Experience */ // Procházení jednotlivých zkušeností...
+      $this->experience_list[] = $e; // Uložení zkušenosti do pole
     }
   }
+  
   
 }

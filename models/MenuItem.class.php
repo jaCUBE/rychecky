@@ -1,34 +1,37 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Jakub Rychecký <jakub@rychecky.cz>
+ * 
+ * @class MenuItem
+ * @brief Položka nabídky (menu) webu.
  */
 
-/**
- * Description of MenuItem
- *
- * @author jaCUBE
- */
 class MenuItem {
+  
+  /**
+   * @brief 
+   * @var string $name
+   */
   public $name;
   public $name_display;
   public $icon;
   
   
   
+  
+  /**
+   * @brief Generuje URL položky menu.
+   * @return string URL
+   */
+  
   private function url(){
-    return URL.'/'.$this->name;
+    return URL.'/'.$this->name; // URL
   }
   
   
   private function isActive(){
-    if(ACTION == $this->name){
-      return true;
-    }else{
-      return false;
-    }
+    return ACTION == $this->name;
   }
   
   

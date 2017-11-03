@@ -53,42 +53,60 @@ class Hobby {
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  /**
+   * @brief Generuje HTML kód koníčku.
+   * @return string HTML koníčku
+   */
+  
   public function htmlHobby(){
-    ob_start(); ?>
+    ob_start(); // Začátek bufferu ?>
 
-    <div class="hobby" style="<?= $this->css() ?>">
-      <?= $this->name ?>
+    <div class="hobby" style="<?= $this->css() // CSS ?>">
+      <?= $this->name // Název koníčku ?>
     </div>
 
-    <?php return ob_get_clean();
+    <?php return ob_get_clean(); // Vrací obsah bufferu
   }
   
   
   
   
   
+  /**
+   * @brief Generuje náhodný CSS tohoto koníčku.
+   * @return string Náhodný CSS
+   */
+  
   private function css(){
-    $css = [];
+    $css = []; // Iniciace CSS
     
-    $css['font-size'] = $this->size * 0.02.'em';
-    $css['margin-left'] = rand(0, 10).'px';
-    $css['margin-right'] = rand(0, 10).'px';
-    $css['margin-top'] = rand(0, 5).'px';
+    $css['font-size'] = $this->size * 0.02.'em'; // Velikost
+    $css['margin-left'] = rand(0, 10).'px'; // Odsazení zleva
+    $css['margin-right'] = rand(0, 10).'px'; // Odsazení zprava
+    $css['margin-top'] = rand(0, 5).'px'; // Odsazení zeshora
     
-    if(rand(0, 1) == 0){
+    if(rand(0, 1) == 0){ // 1:1 zarovnání doleva/doprava...
       $css['float'] = 'left';
     }else{
       $css['float'] = 'right';
     }
     
     
-    $output = '';
+    $output = ''; // Iniciace výstupu
     
-    foreach($css as $property => $value){
-      $output .= $property.': '.$value.'; ';
+    foreach($css as $property => $value){ // Procházení pole CSS hodnot...
+      $output .= $property.': '.$value.'; '; // Generování výstupu
     }
     
-    return trim($output);
+    return trim($output); // Vrací vygenerovaný CSS
   }
   
   
