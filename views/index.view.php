@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-md-5">
     <h2>
-      <i class="fa fa-user"></i> <?= e('Certifikace', 'About Me') ?>
+      <i class="fa fa-user"></i> <?= e('O mně', 'About Me') ?>
     </h2>
 
 

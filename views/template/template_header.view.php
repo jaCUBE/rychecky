@@ -26,6 +26,13 @@
         foreach($menu->menu_item_list as $m){
           echo $m->htmlMenuItem();
         } ?>
+        
+        <li class="">
+          <a href="javascript:void(0)" onclick="$('.locale-switcher').submit()">
+            <img src="<?= URL ?>/images/flags/<?= e('gb.png', 'cz.png') ?>" style="margin-right: 5px;" alt="" />
+            <?= e('English', 'Česky') ?>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -35,8 +42,14 @@
 <div class="alert alert-success">
   <i class="fa fa-briefcase"></i>
   <?= e('Hledám nové pracovní příležitosti, kde bych mohl uplatnit a zlepšovat své dovednosti. Budu vděčný za všechny zajímavé nabídky. :)',
-        'I\'m currently looking for new job opportunities to apply and improve my skills. I will be glad for any interesting offers. :)') ?>
+        'I seek new job opportunities to utilize and improve my skills. I will be glad for any interesting offers. :)') ?>
 </div>
+
+
+          
+<form action="#" method="post" class="locale-switcher">
+  <input type="hidden" name="locale" value="<?= e('en', 'cs') ?>" />
+</form>
 
 
 

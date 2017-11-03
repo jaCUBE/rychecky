@@ -15,14 +15,12 @@ class Language {
   
   
   static function getLocale(){
-    if(Language::getCookie()){
+    if(!empty($_POST['locale'])){
+      $locale = $_POST['locale'];
+    }elseif(Language::getCookie()){
       $locale = Language::getCookie();
     }else{
       $locale = Language::getBrowserLocale();
-    }
-
-    if(!empty($_GET['locale'])){
-      $locale = $_GET['locale'];
     }
     
     Language::setCookie($locale);

@@ -64,6 +64,12 @@ class Experience {
   public $note;
   
   /**
+   * @brief Lokalizace (cs/en)
+   * @return string $locale
+   */
+  public $locale;
+  
+  /**
    * @brief Viditelný?
    * @var boolean $visible
    */

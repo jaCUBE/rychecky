@@ -58,6 +58,12 @@ class Certificate {
   public $url;
   
   /**
+   * @brief Lokalizace (cs/en)
+   * @return string $locale
+   */
+  public $locale;
+  
+  /**
    * @brief Viditelný?
    * @var boolean $visible
    */

@@ -95,10 +95,10 @@ class Portfolio {
   public $interesting;
   
   /**
-   * @brief Funguje tato položka portfolia?
-   * @var string $working
+   * @brief Lokalizace (cs/en)
+   * @return string $locale
    */
-  public $working;
+  public $locale;
   
   /**
    * @brief Viditelný?
@@ -143,6 +143,7 @@ class Portfolio {
       SELECT p.*
       FROM portfolio AS p
       WHERE p.portfolio_id = :portfolio_id
+        AND p.locale = "'.LOCALE.'"
         AND p.visible = 1
       LIMIT 1';
     
