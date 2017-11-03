@@ -32,7 +32,8 @@ class PortfolioList {
     $sql = '
       SELECT p.*
       FROM portfolio AS p
-      WHERE p.visible = 1
+      WHERE p.locale = "'.LOCALE.'"
+        AND p.visible = 1
       ORDER BY p.size DESC';
     
     $STH = $_DB->prepare($sql);

@@ -49,7 +49,8 @@ class CertificateList {
     $sql = '
       SELECT c.*
       FROM certificate AS c
-      WHERE c.visible = 1
+      WHERE c.locale = "'.LOCALE.'"
+        AND c.visible = 1
       ORDER BY c.issue_date DESC'; // SQL pro stažení certifikátů
     
     $STH = $_DB->prepare($sql);

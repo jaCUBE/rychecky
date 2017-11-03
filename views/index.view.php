@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-md-5">
     <h2>
-      <i class="fa fa-user"></i> O mně
+      <i class="fa fa-user"></i> <?= e('Certifikace', 'About Me') ?>
     </h2>
 
 
@@ -40,7 +40,7 @@
   
   <div class="col-md-4">
     <h2>
-      <i class="fa fa-cloud"></i> Zájmy
+      <i class="fa fa-cloud"></i> <?= e('Zájmy', 'Hobbies') ?>
     </h2>
 
     <div class="hobby-list">
@@ -59,7 +59,7 @@
   <div class="col-md-3">
     <div class="center" style="margin-top: 80px">
       <a href="http://cv.rychecky.cz/" class="btn btn-lg btn-info">
-        <i class="fa fa-download"></i> Stáhnout CV
+        <i class="fa fa-download"></i> <?= e('Stáhnout resumé', 'Download Resumé') ?>
       </a>
     </div>
       

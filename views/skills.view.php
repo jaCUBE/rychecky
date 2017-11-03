@@ -3,7 +3,7 @@
 
 
 <h2>
-  <i class="fa fa-database"></i> Dovednosti
+  <i class="fa fa-database"></i> <?= e('Dovednosti', 'Skills') ?>
 </h2>
 
 

@@ -8,24 +8,24 @@
 
 <div class="row portfolio-menu">
   <div class="col-md-6">
-    <div class="btn-label"><i class="fa fa-filter"></i> Filtrování:</div>
+    <div class="btn-label"><i class="fa fa-filter"></i> <?= e('Filtr', 'Filter') ?>:</div>
     <div id="filters" class="btn-group">
-      <div class="btn btn-sm btn-success" data-filter="*"><i class="fa fa-th-list"></i> Vše</div>
-      <div class="btn btn-sm btn-default" data-filter=".profesionalni"><i class="fa fa-briefcase"></i> Profesionální</div>
-      <div class="btn btn-sm btn-default" data-filter=".osobni"><i class="fa fa-user"></i> Osobní</div>
-      <div class="btn btn-sm btn-default" data-filter=".interesting"><i class="fa fa-star"></i> Zajímavé</div>
-      <div class="btn btn-sm btn-default" data-filter=".running"><i class="fa fa-cog"></i> Ve vývoji</div>
+      <div class="btn btn-sm btn-success" data-filter="*"><i class="fa fa-th-list"></i> <?= e('Vše', 'All') ?></div>
+      <div class="btn btn-sm btn-default" data-filter=".profesionalni"><i class="fa fa-briefcase"></i> <?= e('Profesionální', 'Professional') ?></div>
+      <div class="btn btn-sm btn-default" data-filter=".osobni"><i class="fa fa-user"></i> <?= e('Osobní', 'Personal') ?></div>
+      <div class="btn btn-sm btn-default" data-filter=".interesting"><i class="fa fa-star"></i> <?= e('Zajímavé', 'Interesting') ?></div>
+      <div class="btn btn-sm btn-default" data-filter=".running"><i class="fa fa-cog"></i> <?= e('Ve vývoji', 'Under Development') ?></div>
     </div>
   </div>
   
   
   
   <div class="col-md-6">
-    <div class="btn-label"><i class="fa fa-sort-alpha-asc"></i> Řazení:</div>
+    <div class="btn-label"><i class="fa fa-sort-alpha-asc"></i> <?= e('Řazení', 'Sorting') ?>:</div>
     <div id="sorts" class="btn-group">
-      <div class="btn btn-sm btn-success" data-sort-by="size"><i class="fa fa-sort-amount-desc"></i> Rozsah</div>
-      <div class="btn btn-sm btn-default" data-sort-by="name"><i class="fa fa-sort-alpha-asc"></i> Název</div>
-      <div class="btn btn-sm btn-default" data-sort-by="age"><i class="fa fa-history"></i> Stáří</div>
+      <div class="btn btn-sm btn-success" data-sort-by="size"><i class="fa fa-sort-amount-desc"></i> <?= e('Rozsah', 'Size') ?></div>
+      <div class="btn btn-sm btn-default" data-sort-by="name"><i class="fa fa-sort-alpha-asc"></i> <?= e('Název', 'Name') ?></div>
+      <div class="btn btn-sm btn-default" data-sort-by="age"><i class="fa fa-history"></i> <?= e('Stáří', 'Age') ?></div>
     </div>
   </div>
 </div>

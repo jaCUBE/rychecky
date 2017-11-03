@@ -2,12 +2,7 @@
 
 
 
-<div id="contact">
-  
-  
-  
-  
-  
+<div id="contact">  
   <div class="row">   
     <div class="col-md-7">
       <div class="social-bar" style="margin-top: 20px;">
@@ -23,9 +18,9 @@
       <div class="row" id="contact-table">
         <div class="col-md-6" id="channels">
           <div class="email"><a href="mailto:<?= EMAIL ?>"> <?= EMAIL ?></a></div>
-          <div class="tel"><a href="tel:<?= str_replace(' ', '', PHONE) ?>"> <?= PHONE ?></a></div>
+          <div class="tel"><a href="tel:<?= str_replace(' ', '', PHONE) ?>"> <?= e('', '+420').' '.PHONE ?></a></div>
           <br />
-          <div class="bank"><i class="fa fa-institution"></i> Číslo účtu: <?= BANK ?></a></div>
+          <div class="bank"><i class="fa fa-institution"></i> <?= e('Číslo účtu', 'Bank account') ?>: <?= BANK ?></a></div>
         </div>
         
         <div class="col-md-6" id="address">

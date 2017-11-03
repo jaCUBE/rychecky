@@ -3,7 +3,7 @@
 
 
 <h2>
-  <i class="fa fa-certificate"></i> Certifikace
+  <i class="fa fa-certificate"></i> <?= e('Certifikace', 'Certificates') ?>
 </h2>
 
 
@@ -25,7 +25,7 @@
         
         <div class="center">
           <a href="<?= $c->url ?>" class="btn btn-xs btn-default">
-            <i class="fa fa-globe"></i> Certifikát
+            <i class="fa fa-globe"></i> <?= e('Certifikát', 'Certificate') ?>
           </a>
         </div>
       </li>    

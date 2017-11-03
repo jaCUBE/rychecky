@@ -12,14 +12,10 @@
  * @author jaCUBE
  */
 class SkillList {
+
+  public $type;
   
-  /**
-   * @brief
-   * @var Skill $skill_list
-   */
-  public $skill_list = ['Webdev' => [], 'ICT' => [], 'Jazyky' => [], 'Ostatní' => []];
-  
-  public $type = 'webdev';
+  public $skill_list = [];
   
   public function __construct(){
     $this->fetchSkillList();
@@ -29,6 +25,16 @@ class SkillList {
   private function prepareSkillType(){
     if(!empty($_GET['type'])){
       $this->type = $_GET['type'];
+    }else{
+      $this->type = 'webdev';
+    }
+  }
+  
+  private function skillList(){
+    if(LOCALE == 'cs'){
+      return ['Webdev' => [], 'ICT' => [], 'Jazyky' => [], 'Ostatní' => []];
+    }else{
+      return ['Webdev' => [], 'ICT' => [], 'Languages' => [], 'Others' => []];
     }
   }
   
@@ -36,11 +42,13 @@ class SkillList {
   private function fetchSkillList(){
     global $_DB;
     
+    $this->skill_list = $this->skillList();
     
     $sql = '
       SELECT s.*
       FROM skill AS s
-      WHERE s.visible = 1
+      WHERE s.locale = "'.LOCALE.'"
+        AND s.visible = 1
       ORDER BY s.value DESC';
     
     $STH = $_DB->prepare($sql);

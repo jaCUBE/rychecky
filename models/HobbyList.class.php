@@ -49,7 +49,8 @@ class HobbyList {
     $sql = '
     SELECT h.*
     FROM hobby AS h
-    WHERE h.visible = 1
+    WHERE h.locale = "'.LOCALE.'"
+      AND h.visible = 1
     ORDER BY RAND()'; // SQL dotaz pro stažení koníčků
     
     $STH = $_DB->prepare($sql);

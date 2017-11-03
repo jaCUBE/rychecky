@@ -44,12 +44,12 @@ class Menu {
    */
   
   private function generateMenu(){
-    $this->addMenu('', 'Informace', 'fa-home');
-    $this->addMenu('skills', 'Dovednosti', 'fa-database');
+    $this->addMenu('', e('Informace', 'Information'), 'fa-home');
+    $this->addMenu('skills', e('Dovednosti', 'Skills'), 'fa-database');
     $this->addMenu('portfolio', 'Portfolio', 'fa-bookmark');
-    $this->addMenu('experiences', 'Zkušenosti', 'fa-briefcase');
-    $this->addMenu('certificate', 'Certifikace', 'fa-certificate');
-    $this->addMenu('contact', 'Kontakt', 'fa-envelope');
+    $this->addMenu('experiences', e('Zkušenosti', 'Experiences'), 'fa-briefcase');
+    $this->addMenu('certificate', e('Certifikace', 'Certificates'), 'fa-certificate');
+    $this->addMenu('contact', e('Kontakt', 'Contact'), 'fa-envelope');
   }
   
   

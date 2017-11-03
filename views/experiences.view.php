@@ -3,7 +3,7 @@
 
 
 <h2>
-  <i class="fa fa-briefcase"></i> Zkušenosti
+  <i class="fa fa-briefcase"></i> <?= e('Zkušenosti', 'Experiences') ?>
 </h2>
 
 <div id="experiences">

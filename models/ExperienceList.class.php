@@ -49,7 +49,8 @@ class ExperienceList {
     $sql = '
       SELECT e.*
       FROM experience AS e
-      WHERE e.visible = 1
+      WHERE e.locale = "'.LOCALE.'"
+        AND e.visible = 1
       ORDER BY e.date_start DESC'; // SQL pro stažení seznamu zkušeností
     
     $STH = $_DB->prepare($sql);
