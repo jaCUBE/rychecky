@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 
-<html>
+<html lang="<?= LOCALE ?>">
   <head>
     <title>rychecky.cz</title>
     

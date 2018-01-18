@@ -54,3 +54,9 @@
 
 
 <main id="content">
+  <?php if(LOCALE == 'en'){ // Upozornění na dočasnou anglickou verzi ?>
+  <div class="alert alert-warning">
+    <i class="fa fa-globe"></i>
+    The English version is currently under development and there are still Czech texts here and there. I apologize, I'm working on that.
+  </div>
+<?php } ?>

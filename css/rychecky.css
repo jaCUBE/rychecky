@@ -39,6 +39,10 @@ nav .fa {
 .lead i {
   margin-right: 10px;
 }
+.alert {
+  margin: 0px;
+  padding: 10px 15px;
+}
 #content {
   width: 100%;
   min-height: 100px;
@@ -46,7 +50,6 @@ nav .fa {
   color: #2B3E50;
   padding: 1em 3em 2em;
   font-size: 0.9em;
-  border: 1px solid #4E5D6C;
 }
 #content h2 {
   color: #578A7B;
