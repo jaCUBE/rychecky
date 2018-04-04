@@ -26,13 +26,6 @@
         foreach($menu->menu_item_list as $m){
           echo $m->htmlMenuItem();
         } ?>
-        
-        <li class="">
-          <a href="javascript:void(0)" onclick="$('.locale-switcher').submit()">
-            <img src="<?= URL ?>/images/flags/<?= e('gb.png', 'cz.png') ?>" style="margin-right: 5px;" alt="" />
-            <?= e('English', 'Česky') ?>
-          </a>
-        </li>
       </ul>
     </div>
   </div>
@@ -54,9 +47,3 @@
 
 
 <main id="content">
-  <?php if(LOCALE == 'en'){ // Upozornění na dočasnou anglickou verzi ?>
-  <div class="alert alert-warning">
-    <i class="fa fa-globe"></i>
-    The English version is currently under development and there are still Czech texts here and there. I apologize, I'm working on that.
-  </div>
-<?php } ?>

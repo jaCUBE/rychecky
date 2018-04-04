@@ -24,13 +24,13 @@ class Language {
     }
     
     Language::setCookie($locale);
-    
+    return 'cs';
     return $locale == 'cs' ? 'cs' : 'en';
   }
   
   static function getBrowserLocale(){
     $locale = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-    
+    return 'cs'; // SMAZAT!!
     if($locale == 'cs'){
       return 'cs';
     }else{
