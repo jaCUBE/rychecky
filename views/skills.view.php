@@ -15,7 +15,7 @@
         <a href="<?= $sl->skillTypeUrl($type) ?>"
          class="list-group-item <?= $sl->isSkillTypeSelected($type) ? 'active' : '' // Pokud je skupina zvolená, má třídu active ?>">
           <?= $type // Název skupiny ?>
-          <span class="badge">
+          <span class="badge badge-light">
             <?= $sl->countSkill($type) // Počet dovedností ve skupině ?>
           </span>
         </a>

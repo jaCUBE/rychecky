@@ -122,19 +122,18 @@ body {
 
 
 .list-group { // Seznam skupin dovedností
-  .badge {
-    background: @col-primary;
-  }
-  
-  .active { // Práve zvolená skupina
-    background: @col-secondary-lighter;
-    
-    .badge {
-      color: @col-secondary-lighter;
-    }
-    
+  background: @col-primary-lighter;
+
+  a {
+    color: #EBEBEB;
+
     &:hover {
-      background: @col-primary;
+      background: @col-primary !important;
+    }
+
+    &.active { // Práve zvolená skupi
+      background: #657483;
+      border: none;
     }
   }
 }
