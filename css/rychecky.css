@@ -1,3 +1,34 @@
+nav {
+  padding: 0px 20px !important;
+  margin: 20px 0px;
+}
+nav ul.navbar-nav li {
+  padding: 0px 0px;
+}
+nav ul.navbar-nav li:hover {
+  background: #667584;
+}
+nav ul.navbar-nav li.active {
+  background: #3b4756;
+}
+nav ul.navbar-nav li a {
+  display: block;
+  color: #EBEBEB;
+  font-size: 12px;
+  padding: 11px 15px 10px !important;
+  height: 40px;
+}
+nav ul.navbar-nav li a:hover {
+  color: #EBEBEB;
+}
+@media (min-width: 767px) {
+  nav ul.navbar-nav {
+    height: 40px;
+  }
+}
+.navbar-toggler {
+  border: none !important;
+}
 * {
   font-family: 'Open Sans';
 }
@@ -28,13 +59,10 @@ a:focus {
 hr.clear {
   clear: both;
   visibility: hidden;
-  margin: 0px;
+  margin: 1px;
 }
 body {
   padding-bottom: 3em;
-}
-nav .fa {
-  margin-right: 5px;
 }
 .lead i {
   margin-right: 10px;
@@ -151,12 +179,6 @@ nav .fa {
   font-weight: bold;
   margin-bottom: 3px;
 }
-.btn-success {
-  background: #578A7B;
-}
-.btn-success:hover {
-  background: #295344;
-}
 .modal .modal-title,
 .modal .modal-body {
   color: #EBEBEB;
@@ -210,7 +232,7 @@ nav .fa {
   height: 33px;
   border: 1px solid #2B3E50;
   text-align: center;
-  padding: 0.5em;
+  padding: 0.35em;
   margin-top: 5px;
   opacity: 0.6;
 }
@@ -313,38 +335,6 @@ footer a:hover {
   color: #578A7B;
 }
 @media (max-width: 1080px) {
-  .navbar-header {
-    float: none;
-  }
-  .navbar-toggle {
-    display: block;
-  }
-  .navbar-collapse {
-    border-top: 1px solid transparent;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  .navbar-collapse.collapse {
-    display: none!important;
-  }
-  .navbar-nav {
-    float: none!important;
-    margin: 7.5px -15px;
-  }
-  .navbar-nav > li {
-    float: none;
-  }
-  .navbar-nav > li > a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  .navbar-text {
-    float: none;
-    margin: 15px 0;
-  }
-  /* since 3.1.0 */
-  .navbar-collapse.collapse.in {
-    display: block!important;
-  }
   .collapsing {
     overflow: hidden!important;
   }
@@ -357,9 +347,8 @@ footer a:hover {
     display: none;
   }
 }
-@media (min-width: 1080px) {
+@media (min-width: 768px) {
   .modal-dialog {
     width: 700px;
   }
 }
-/*# sourceMappingURL=rychecky.css.map */

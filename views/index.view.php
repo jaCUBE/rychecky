@@ -64,7 +64,7 @@
     </div>
       
     <div class="center" style="margin-top: 40px;">
-      <a href="mailto:jakub@rychecky.cz" class="btn btn-default">
+      <a href="mailto:jakub@rychecky.cz" class="btn btn-dark">
         <i class="fa fa-envelope-o"></i> jakub@rychecky.cz
       </a>
     </div>

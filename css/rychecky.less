@@ -1,14 +1,5 @@
-@col-primary: #2B3E50;
-@col-primary-lighter: #4E5D6C;
-@col-primary-darker: #0C1F32;
-
-@col-secondary: #295344;
-@col-secondary-lighter: #578A7B;
-@col-secondary-darker: #093324;
-
-@col-white: #EBEBEB;
-
-
+@import '_vars.less';
+@import 'rychecky_nav.less';
 
 
 
@@ -57,19 +48,12 @@ a { // Odkazy
 hr.clear {
   clear: both;
   visibility: hidden;
-  margin: 0px;
+  margin: 1px;
 }
 
 
 body {
   padding-bottom: 3em;
-}
-
-
-nav { // Navigační menu webu
-  .fa { // Ikony v menu
-    margin-right: 5px;
-  }
 }
 
 
@@ -241,14 +225,6 @@ nav { // Navigační menu webu
   margin-bottom: 3px;
 }
 
-.btn-success {
-  background: @col-secondary-lighter;
-  
-  &:hover {
-    background: @col-secondary;
-  }
-}
-
 
 .modal {
   .modal-title, .modal-body {
@@ -334,7 +310,7 @@ nav { // Navigační menu webu
     height: 33px;
     border: 1px solid @col-primary;
     text-align: center;
-    padding: 0.5em;
+    padding: 0.35em;    
     margin-top: 5px;
     opacity: 0.6;
     
@@ -501,38 +477,6 @@ footer { // Zápatí webu
 
 
 @media (max-width: 1080px) { // Zobrazení mobilního navbaru na displejích se šířkou 1080px a menší...
-  .navbar-header {
-    float: none;
-  }
-  .navbar-toggle {
-    display: block;
-  }
-  .navbar-collapse {
-    border-top: 1px solid transparent;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-  }
-  .navbar-collapse.collapse {
-    display: none!important;
-  }
-  .navbar-nav {
-    float: none!important;
-    margin: 7.5px -15px;
-  }
-  .navbar-nav>li {
-    float: none;
-  }
-  .navbar-nav>li>a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  .navbar-text {
-      float: none;
-      margin: 15px 0;
-  }
-  /* since 3.1.0 */
-  .navbar-collapse.collapse.in { 
-      display: block!important;
-  }
   .collapsing {
       overflow: hidden!important;
   }
@@ -551,7 +495,8 @@ footer { // Zápatí webu
 
 
 
-@media (min-width: 1080px) { // Zobrazení širokých displejů
+
+@media (min-width: 768px) { // Zobrazení širokých displejů
   .modal-dialog { // Širší modální dialog pro široké displeje
     width: 700px;
   }

@@ -7,27 +7,22 @@
 </div>
 
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#rychecky-menu">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="<?= URL ?>">JR</a>
-    </div>
 
-    
-    <div class="collapse navbar-collapse" id="rychecky-menu">
-      <ul class="nav navbar-nav">
-        <?php $menu = new Menu();
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="<?= URL ?>">JR</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <?php $menu = new Menu(); ?>
         
-        foreach($menu->menu_item_list as $m){
-          echo $m->htmlMenuItem();
-        } ?>
-      </ul>
-    </div>
+        
+        <?php foreach($menu->menu_item_list as $item){ ?>
+          <?= $item->htmlMenuItem() ?>
+        <?php } ?>
+    </ul>
   </div>
 </nav>
 

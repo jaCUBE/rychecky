@@ -30,7 +30,7 @@ class MenuItem {
   }
   
   
-  private function isActive(){
+  public function isActive(){
     return ACTION == $this->name;
   }
   
@@ -44,7 +44,7 @@ class MenuItem {
     
     $text = '<i class="fa '.$this->icon.'"></i> '.$this->name_display;
     
-    return '<li class="'.$class.'"><a href="'.$this->url().'">'.$text.'</a></li>';
+    return '<li class="nav-item '.$class.'"><a href="'.$this->url().'">'.$text.'</a></li>';
   }
   
 }

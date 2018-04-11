@@ -1,5 +1,5 @@
 var host = window.location.hostname; // Adresa E2
-var relative_path = '/'; // Základní relativní cesta  
+var relative_path = '/'; // Základní relativní cesta
 
 
 $(function(){
@@ -89,8 +89,8 @@ function initialize_isotope(){
     filterValue = filterFns[ filterValue ] || filterValue;
     $container.isotope({ filter: filterValue });
     
-    $(this).closest('.btn-group').find('.btn').removeClass('btn-success');
-    $(this).addClass('btn-success');
+    $(this).closest('.btn-group').find('.btn').removeClass('btn-light');
+    $(this).addClass('btn-light');
   });
 
 
@@ -103,11 +103,11 @@ function initialize_isotope(){
   
   
   $('#filters .btn, #sorts .btn').click(function(){
-    $(this).closest('.btn-group').find('.btn').removeClass('btn-success');
-    $(this).closest('.btn-group').find('.btn').addClass('btn-default');
+    $(this).closest('.btn-group').find('.btn').removeClass('btn-light');
+    $(this).closest('.btn-group').find('.btn').addClass('btn-dark');
     
-    $(this).removeClass('btn-default');
-    $(this).addClass('btn-success');
+    $(this).removeClass('btn-dark');
+    $(this).addClass('btn-light');
   });
 }
 

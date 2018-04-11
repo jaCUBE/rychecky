@@ -1,0 +1,47 @@
+@import '_vars.less';
+
+nav {
+  padding: 0px 20px !important;
+  margin: 20px 0px;
+
+  ul.navbar-nav { // Navigační lišta
+    li {
+      padding: 0px 0px;
+
+      &:hover {
+         background: #667584;
+       }
+
+      &.active {
+        background: #3b4756;
+      }
+
+      a {
+
+        display: block;
+        color: #EBEBEB;
+        font-size: 12px;
+        padding: 11px 15px 10px !important;
+        height: 40px;
+
+        &:hover {
+          color: #EBEBEB;
+        }
+      }
+    }       
+  }
+}
+
+
+@media (min-width: 767px) { // Zobrazení mobilního menu
+  nav {
+    ul.navbar-nav {
+      height: 40px;
+    }
+  }
+}
+
+
+.navbar-toggler {
+  border: none !important;
+}
