@@ -226,13 +226,14 @@ body {
 }
 
 
-.modal {
-  .modal-title, .modal-body {
-    color: @col-white;
+
+.modal-lg {
+  max-width: 100% !important;
+
+  .modal-dialog {
+    max-width: 768px !important;
   }
 }
-
-
 
 
 
@@ -493,16 +494,5 @@ footer { // Zápatí webu
   
   .qr { // Skrytí QR kód na malých displejích
     display: none;
-  }
-}
-
-
-
-
-
-
-@media (min-width: 768px) { // Zobrazení širokých displejů
-  .modal-dialog { // Širší modální dialog pro široké displeje
-    width: 700px;
   }
 }

@@ -28,7 +28,6 @@ $(function(){
 
 
 function portfolio(portfolio_id){
-  
   var modal = $('#portfolio-modal');
   
   $.ajax({
@@ -44,12 +43,10 @@ function portfolio(portfolio_id){
       modal.find('.modal-body').html(obj.body);
     }
   });
-  
-  
+
   modal.modal('show');
   
   setTimeout(initialize_fancybox, '300');
-  
 }
 
 
