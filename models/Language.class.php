@@ -23,7 +23,7 @@ class Language {
       $locale = Language::getBrowserLocale();
     }
     
-    Language::setCookie($locale);
+
     return 'cs';
     return $locale == 'cs' ? 'cs' : 'en';
   }

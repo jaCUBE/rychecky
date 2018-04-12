@@ -20,11 +20,12 @@ class HobbyList {
     $sql = '
     SELECT h.*
     FROM hobby AS h
-    WHERE h.locale = "'.LOCALE.'"
+    WHERE h.locale = :locale
       AND h.visible = 1
     ORDER BY RAND()'; // SQL dotaz pro stažení koníčků
     
     $STH = db()->prepare($sql);
+		$STH->bindParam(':locale', Language::getLocale());
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Hobby'); // Stahování do objektů koníčků
     $STH->execute();
     

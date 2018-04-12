@@ -19,11 +19,12 @@ class PortfolioList {
     $sql = '
       SELECT p.*
       FROM portfolio AS p
-      WHERE p.locale = "'.LOCALE.'"
+      WHERE p.locale = :locale
         AND p.visible = 1
       ORDER BY p.size DESC';
     
     $STH = db()->prepare($sql);
+		$STH->bindParam(':locale', Language::getLocale());
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Portfolio');
     $STH->execute();
     

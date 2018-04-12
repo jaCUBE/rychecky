@@ -56,31 +56,7 @@ class Hobby {
    * @var string $timestamp 
    */
   public $timestamp;
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  /**
-   * @brief Generuje HTML kód koníčku.
-   * @return string HTML koníčku
-   */
-  
-  public function htmlHobby(){
-    ob_start(); // Začátek bufferu ?>
 
-    <div class="hobby" style="<?= $this->css() // CSS ?>">
-      <?= $this->name // Název koníčku ?>
-    </div>
-
-    <?php return ob_get_clean(); // Vrací obsah bufferu
-  }
   
   
   

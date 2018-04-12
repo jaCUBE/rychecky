@@ -1,9 +1,9 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: jaCUBE
- * Date: 12.04.2018
- * Time: 18:29
+ * @author Jakub Rychecký <jakub@rychecky.cz>
+ * @class Certificate
+ * @brief Certifikátu na webu.
  */
 
 
@@ -26,7 +26,7 @@ class Menu {
 			'certificate' => [
 				'name' => e('Certifikace', 'Certificates'),
 				'icon' => 'fa-certificate'],
-			'certificate' => [
+			'contact' => [
 					'name' => e('Kontakt', 'Contact'),
 					'icon' => 'fa-envelope'],
 		];

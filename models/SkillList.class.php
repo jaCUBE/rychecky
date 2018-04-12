@@ -23,11 +23,12 @@ class SkillList {
       SELECT s.*
       FROM skill AS s
       WHERE s.type = :type
-        AND s.locale = "'.LOCALE.'"
+        AND s.locale = :locale
         AND s.visible = 1
       ORDER BY s.value DESC';
     
     $STH = db()->prepare($sql);
+		$STH->bindParam(':locale', Language::getLocale());
     $STH->bindParam(':type', $type);
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Skill');
     $STH->execute();

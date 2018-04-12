@@ -8,11 +8,9 @@ include 'libraries/kint/Kint.class.php'; // Debugging pro PHP
 
 
 
-
-
-define('LOCALE', Language::getLocale()); // Nastavení jazyka webu
-
 Rychecky::databaseConnect(); // Vytvoření připojení k databázi
+Language::setCookie(Language::getLocale()); // Nastavení zvoleného jazyka do cookies
 
-$info = new Info();
 
+
+error_reporting(E_ERROR | E_PARSE);

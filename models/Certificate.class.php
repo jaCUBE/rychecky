@@ -2,10 +2,11 @@
 
 /**
  * @author Jakub Rychecký <jakub@rychecky.cz>
- * 
  * @class Certificate
- * @brief Certifikátu na webu.
+ * @brief Certifikát na webu.
  */
+
+
 
 class Certificate {
   
@@ -80,6 +81,5 @@ class Certificate {
    * @var string $timestamp 
    */
   public $timestamp;
-  
   
 }

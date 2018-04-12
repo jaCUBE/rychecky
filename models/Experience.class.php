@@ -2,10 +2,11 @@
 
 /**
  * @author Jakub Rychecký <jakub@rychecky.cz>
- * 
  * @class Experience
  * @brief Zkušenost (zaměstnání/vzdělání) na webu.
  */
+
+
 
 class Experience {
   
@@ -86,6 +87,5 @@ class Experience {
    * @var string $timestamp 
    */
   public $timestamp;
-  
-  
+
 }

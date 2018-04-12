@@ -8,7 +8,7 @@
  */
 
 function e($cs = '', $en = ''){
-	return LOCALE == 'cs' ? $cs : $en;
+	return Language::getLocale() == 'cs' ? $cs : $en;
 }
 
 
@@ -35,4 +35,9 @@ function db(){
 
 function action(){
 	return $_GET['action'] ?? 'index';
+}
+
+
+function locale(){
+	return Language::getLocale();
 }
