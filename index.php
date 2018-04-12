@@ -2,7 +2,6 @@
 
 require 'bootstrap.php';
 
-
 Rychecky::view('template.html_header');
 Rychecky::view('template.template_header');
 

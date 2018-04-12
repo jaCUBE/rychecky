@@ -76,20 +76,6 @@ class Skill {
     ob_start(); ?>
 
 
-    <div class="skill">
-      <div class="name">
-        <?= $this->name ?>
-      </div>
-
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: <?= $this->value ?>%;">
-        </div>
-      </div>
-      
-      <div class="detail">
-        <?= $this->detail ?>
-      </div>
-    </div>
 
 
     <?php return ob_get_clean();

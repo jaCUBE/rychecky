@@ -11,12 +11,10 @@ class ExperienceList {
 
   /**
    * @brief Stahuje a zpracovává seznam zkušeností.
-   * @return array Seznam zkušeností
+   * @return Experience[] Seznam zkušeností
    */
   
   static function fetchExperienceList(){
-    global $_DB;    
-
     $experience_list = [];
 
     $sql = '
@@ -26,7 +24,7 @@ class ExperienceList {
         AND e.visible = 1
       ORDER BY e.date_start DESC'; // SQL pro stažení seznamu zkušeností
     
-    $STH = $_DB->prepare($sql);
+    $STH = db()->prepare($sql);
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Experience'); // Do objektů zkušeností
     $STH->execute();
     

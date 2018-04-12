@@ -13,71 +13,31 @@
  */
 class SkillList {
 
-  public $type;
-  
-  public $skill_list = [];
-  
-  public function __construct(){
-    $this->fetchSkillList();
-    $this->prepareSkillType();
-  }
-  
-  private function prepareSkillType(){
-    if(!empty($_GET['type'])){
-      $this->type = $_GET['type'];
-    }else{
-      $this->type = 'webdev';
-    }
-  }
-  
-  private function skillList(){
-    if(LOCALE == 'cs'){
-      return ['Webdev' => [], 'ICT' => [], 'Jazyky' => [], 'Ostatní' => []];
-    }else{
-      return ['Webdev' => [], 'ICT' => [], 'Languages' => [], 'Others' => []];
-    }
-  }
+
   
   
-  private function fetchSkillList(){
-    global $_DB;
-    
-    $this->skill_list = $this->skillList();
-    
+  static function fetchSkillListByType($type){
+    $skill_list = [];
+
     $sql = '
       SELECT s.*
       FROM skill AS s
-      WHERE s.locale = "'.LOCALE.'"
+      WHERE s.type = :type
+        AND s.locale = "'.LOCALE.'"
         AND s.visible = 1
       ORDER BY s.value DESC';
     
-    $STH = $_DB->prepare($sql);
+    $STH = db()->prepare($sql);
+    $STH->bindParam(':type', $type);
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Skill');
     $STH->execute();
     
     while($skill = $STH->fetch()){ /* @var $skill Skill */
-      $this->skill_list[$skill->type][] = $skill;
+      $skill_list[] = $skill;
     }
+
+    return $skill_list;
   }
-  
-  
-  public function countSkill($type){
-    return (int) count($this->skill_list[$type]);
-  }
-  
-  
-  public function skillTypeUrl($type){
-    return URL.'/skills/'.$this->skillTypePlainName($type);
-  }
-  
-  
-  public function skillTypePlainName($type){
-    return Rychecky::makeCssName($type);
-  }
-  
-  
-  public function isSkillTypeSelected($type){
-    return $this->type == $this->skillTypePlainName($type);
-  }
+
   
 }

@@ -14,8 +14,6 @@
 class SocialList {
   
   static function fetchSocialList(){
-    global $_DB;
-
     $social_list = [];
 
     $sql = '
@@ -24,7 +22,7 @@ class SocialList {
       WHERE s.visible = 1
       ORDER BY s.order DESC, s.name ASC';
     
-    $STH = $_DB->prepare($sql);
+    $STH = db()->prepare($sql);
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Social');
     $STH->execute();
     

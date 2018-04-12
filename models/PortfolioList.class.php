@@ -14,8 +14,6 @@
 class PortfolioList {
   
   static function fetchPortfolioList(){
-    global $_DB;
-
     $portfolio_list = [];
 
     $sql = '
@@ -25,7 +23,7 @@ class PortfolioList {
         AND p.visible = 1
       ORDER BY p.size DESC';
     
-    $STH = $_DB->prepare($sql);
+    $STH = db()->prepare($sql);
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Portfolio');
     $STH->execute();
     

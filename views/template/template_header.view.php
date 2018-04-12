@@ -7,24 +7,7 @@
 </div>
 
 
-
-
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="<?= URL ?>">JR</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-        <?php $menu = new Menu(); ?>
-        
-        
-        <?php foreach($menu->menu_item_list as $item){ ?>
-          <?= $item->htmlMenuItem() ?>
-        <?php } ?>
-    </ul>
-  </div>
-</nav>
+<?php Rychecky::view('template.nav') ?>
 
 
 <div class="alert alert-success">

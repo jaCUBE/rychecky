@@ -11,36 +11,32 @@
  *
  * @author jaCUBE
  */
-class RycheckyController {
+class RycheckyController extends Controller  {
   
-  public function __construct() {
-    $action = ACTION;
-    
-    if(empty($action)){
-      $action = 'index';
-    }
-    
-    $this->$action();
+	public function __construct(){
+		parent::__construct();
+	}
+
+	public function index(){
+    Rychecky::view('index', [
+        'hobby' => HobbyList::fetchHobbyList(),
+        'social' => SocialList::fetchSocialList()
+    ]);
   }
-  
-  
-  public function index(){
-    $data = [];
-    
-    $data['hobby'] = HobbyList::fetchHobbyList();
-    $data['social'] = SocialList::fetchSocialList();
-    
-    Rychecky::view('index', $data);
-  }
-  
-  
-  
-  
+
+
+
+
+
+	/**
+	 *
+	 */
   
   public function skills(){
-    $skill_list = new SkillList();
-
-      Rychecky::view('skills', $skill_list);
+    Rychecky::view('skill.master', [
+        'skill_list' => SkillList::fetchSkillListByType(SkillType::selectedSkillType()),
+        'skill_stats' => SkillType::fetchSkillTypeStats()
+    ]);
   }
   
   

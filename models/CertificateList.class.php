@@ -3,7 +3,7 @@
 /**
  * @author Jakub Rychecký <jakub@rychecky.cz>
  * 
- * @class Certificate
+ * @class CertificateList
  * @brief Stahuje a zpracovává seznam certifikátů.
  */
 
@@ -11,12 +11,10 @@ class CertificateList {
   
   /**
    * @brief Stahuje z databáze seznam certifikátů.
-   * @return array Seznam certifikátů
+   * @return Certificate[] Seznam certifikátů
    */
 
   static function fetchCertificateList(){
-    global $_DB;
-
     $certificate_list = [];
 
     $sql = '
@@ -26,7 +24,7 @@ class CertificateList {
         AND c.visible = 1
       ORDER BY c.issue_date DESC'; // SQL pro stažení certifikátů
     
-    $STH = $_DB->prepare($sql);
+    $STH = db()->prepare($sql);
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Certificate'); // Stažení do objektů certifikátů
     $STH->execute();
     
@@ -34,7 +32,7 @@ class CertificateList {
       $certificate_list[] = $c; // Uložení certifikátů do pole
     }
 
-    return $certificate_list; // Vrací seznam certifikátů
+    return $certificate_list; // Seznam certifikátů
   }
 
 
