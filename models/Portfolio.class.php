@@ -143,12 +143,13 @@ class Portfolio {
       SELECT p.*
       FROM portfolio AS p
       WHERE p.portfolio_id = :portfolio_id
-        AND p.locale = "'.LOCALE.'"
+        AND p.locale = :locale
         AND p.visible = 1
       LIMIT 1';
     
     $STH = $_DB->prepare($sql);
     $STH->bindParam(':portfolio_id', $this->portfolio_id);
+		$STH->bindParam(':locale', Language::getLocale());
     $STH->setFetchMode(PDO::FETCH_INTO, $this);
     $STH->execute();
     

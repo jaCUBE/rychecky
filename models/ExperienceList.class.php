@@ -9,7 +9,7 @@
 class ExperienceList {
 
   /**
-   * @brief Stahuje a zpracovává seznam zkušeností (práce/vzdělání).
+   * @brief Stáhne a zpracuje seznam zkušeností (práce/vzdělání).
    * @return Experience[] Seznam zkušeností
    */
   
@@ -28,8 +28,8 @@ class ExperienceList {
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Experience');
     $STH->execute();
 
-    while($e = $STH->fetch()){ /* @var $e Experience */ // Procházení jednotlivých zkušeností...
-      $experience_list[] = $e; // Uložení zkušenosti do pole
+    while($e = $STH->fetch()){ /* @var $e Experience */ // Prochá jednotlivé zkušenosti...
+      $experience_list[] = $e; // Uloží zkušenost do pole
     }
 
     return $experience_list;

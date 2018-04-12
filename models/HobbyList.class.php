@@ -2,7 +2,6 @@
 
 /**
  * @author Jakub Rychecký <jakub@rychecky.cz>
- * 
  * @class HobbyList
  * @brief Stahuje a zpracovává seznam koníčků.
  */
@@ -10,7 +9,7 @@
 class HobbyList {
   
   /**
-   * @brief Stahuje a zpracovává seznam koníčků.
+   * @brief Stáhne a zpracuje seznam koníčků.
    * @return Hobby[] // Seznam koníčků
    */
 
@@ -26,11 +25,11 @@ class HobbyList {
     
     $STH = db()->prepare($sql);
 		$STH->bindParam(':locale', Language::getLocale());
-    $STH->setFetchMode(PDO::FETCH_CLASS, 'Hobby'); // Stahování do objektů koníčků
+    $STH->setFetchMode(PDO::FETCH_CLASS, 'Hobby');
     $STH->execute();
     
-    while($hobby = $STH->fetch()){ /* @var $hobby Hobby */ // Procházení jednotlivých koníčků...
-      $hobby_list[] = $hobby; // Přidání koníčku do seznamu
+    while($hobby = $STH->fetch()){ /* @var $hobby Hobby */ // Prochází jednotlivé koníčky...
+      $hobby_list[] = $hobby; // Přidá koníček do seznamu
     }
 
     return $hobby_list;

@@ -10,7 +10,7 @@
 class CertificateList {
   
   /**
-   * @brief Stahuje z databáze seznam certifikátů.
+   * @brief Stáhne a zpracuje seznam certifikátů z databáze.
    * @return Certificate[] Seznam certifikátů
    */
 
@@ -26,14 +26,14 @@ class CertificateList {
     
     $STH = db()->prepare($sql);
 		$STH->bindParam(':locale', Language::getLocale());
-    $STH->setFetchMode(PDO::FETCH_CLASS, 'Certificate'); // Stažení do objektů certifikátů
+    $STH->setFetchMode(PDO::FETCH_CLASS, 'Certificate');
     $STH->execute();
     
-    while($certificate = $STH->fetch()){ /* @var $certificate Certificate */ // Procházení certifikátů...
-      $certificate_list[] = $certificate; // Uložení certifikátů do pole
+    while($certificate = $STH->fetch()){ /* @var $certificate Certificate */ // Prochází certifikáty...
+      $certificate_list[] = $certificate; // Uloží certifikát do pole
     }
 
-    return $certificate_list; // Seznam certifikátů
+    return $certificate_list;
   }
 
 }
