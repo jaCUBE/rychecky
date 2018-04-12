@@ -5,12 +5,24 @@
         <item url="file://$PROJECT_DIR$/js/rychecky.min.js" />
         <item url="file://$PROJECT_DIR$/vendor/kint-php/kint/resources/compiled/rich.min.js" />
         <item url="file://$PROJECT_DIR$/vendor/kint-php/kint/resources/compiled/rich_microtime.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/tracy/tracy/.eslintrc.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/tracy/tracy/src/Tracy/assets/Bar/bar.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/tracy/tracy/src/Tracy/assets/BlueScreen/bluescreen.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/tracy/tracy/src/Tracy/assets/Dumper/dumper.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/tracy/tracy/src/Tracy/assets/Toggle/toggle.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/tracy/tracy/tools/open-in-editor/windows/open-editor.min.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/js/rychecky.min.js" />
       <root url="file://$PROJECT_DIR$/vendor/kint-php/kint/resources/compiled/rich.min.js" />
       <root url="file://$PROJECT_DIR$/vendor/kint-php/kint/resources/compiled/rich_microtime.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/tracy/tracy/.eslintrc.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/tracy/tracy/src/Tracy/assets/Bar/bar.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/tracy/tracy/src/Tracy/assets/BlueScreen/bluescreen.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/tracy/tracy/src/Tracy/assets/Dumper/dumper.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/tracy/tracy/src/Tracy/assets/Toggle/toggle.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/tracy/tracy/tools/open-in-editor/windows/open-editor.min.js" />
     </CLASSES>
     <SOURCES />
   </library>

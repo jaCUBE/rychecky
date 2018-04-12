@@ -53,5 +53,5 @@ class Rychecky {
 	static function action(){
 		return $_GET['action'] ?? 'index';
 	}
-  
+	
 }

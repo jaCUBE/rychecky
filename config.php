@@ -26,3 +26,6 @@ define('EMAIL', 'jakub@rychecky.cz');
 define('URL_CV', 'http://cv.rychecky.cz/');
 define('SKYPE', 'fext.cz');
 define('BANK', '670100-2206152631/6210');
+
+
+define('DEVELOPMENT', true);
