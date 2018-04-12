@@ -1,29 +1,56 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of Social
- *
- * @author jaCUBE
+ * Záznam jednoho odkazu na sociální sítě.
+ * @class Social
+ * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 class Social {
+
+	/**
+	 * @var integer $row_id ID záznamu
+	 */
   public $row_id;
+
+	/**
+	 * @var integer $social_id
+	 */
   public $social_id;
+
+	/**
+	 * @var string $name Název sociální sítě
+	 */
   public $name;
+
+	/**
+	 * @var string $url URL profilu na síti
+	 */
   public $url;
-  public $text;
+
+	/**
+	 * @var string $icon Ikona z Font Awesome
+	 */
   public $icon;
+
+	/**
+	 * @var string $color HEX kód barvy
+	 */
   public $color;
-  public $value;
-  public $visible;
-  public $added;
-  public $timestamp;
-  
+
+	/**
+	 * @var boolean $visible Viditelný?
+	 */
+	public $visible;
+
+	/**
+	 * @var string $added Datum a čas přidání záznamu
+	 */
+	public $added;
+
+	/**
+	 * @var string $timestamp Datum a čas změny záznamu
+	 */
+	public $timestamp;
   
 }

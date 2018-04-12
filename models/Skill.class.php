@@ -1,85 +1,61 @@
 <?php
 
 /**
+ * Jedna dovednost na webu.
  * @author Jakub Rychecký <jakub@rychecky.cz>
- * 
  * @class Skill
- * @brief Objekt jedné dovednosti na webu.
  */
 
 class Skill {
 
   /**
-   * @brief ID záznamu
-   * @var integer $row_id
+   * @var integer $row_id ID záznamu
    */
   public $row_id;
   
   /**
-   * @brief ID dovednosti
-   * @var integer $skill_id
+   * @var integer $skill_id ID dovednosti
    */
   public $skill_id;
   
   /**
-   * @brief Typ dovednosti
-   * @var string $type
+   * @var string $type Typ dovednosti
    */
   public $type;
   
   /**
-   * @brief Název dovednosti
-   * @var string $name
+   * @var string $name Název dovednosti
    */
   public $name;
   
   /**
-   * @brief Hodnota dovednosti (0–100)
-   * @var integer $value
+   * @var integer $value Hodnota dovednosti (0–100)
    */
   public $value;
   
   /**
-   * @brief Detailní popis dovednosti
-   * @var string $detail
+   * @var string $detail Detailní popis dovednosti
    */
   public $detail;
   
   /**
-   * @brief Lokalizace (cs/en)
-   * @return string $locale
+   * @return string $locale Lokalizace (cs/en)
    */
   public $locale;
   
   /**
-   * @brief Viditelný?
-   * @var boolean $visible
+   * @var boolean $visible Viditelný?
    */
   public $visible;
   
   /**
-   * @brief Datum a čas přidání záznamu
-   * @var string $added
+   * @var string $added Datum a čas přidání záznamu
    */
   public $added;
   
   /**
-   * @brief Datum a čas změny záznamu
-   * @var string $timestamp 
+   * @var string $timestamp Datum a čas změny záznamu
    */
   public $timestamp;
-  
-  
-  
-  
-  public function htmlSkill(){
-    ob_start(); ?>
 
-
-
-
-    <?php return ob_get_clean();
-  }
-  
-  
 }

@@ -1,16 +1,17 @@
 <?php
 
 /**
- * @author Jakub Rychecký <jakub@rychecky.cz>
+ * Stahuje a zpracovává seznam certifikátů.
  * @class CertificateList
- * @brief Stahuje a zpracovává seznam certifikátů.
+ * @author Jakub Rychecký <jakub@rychecky.cz>
  */
+
 
 
 class CertificateList {
   
   /**
-   * @brief Stáhne a zpracuje seznam certifikátů z databáze.
+   * Stáhne a zpracuje seznam certifikátů z databáze.
    * @return Certificate[] Seznam certifikátů
    */
 

@@ -4,61 +4,61 @@
  * @author Jakub Rychecký <jakub@rychecky.cz>
  * 
  * @class Gallery
- * @brief Obrázek galerie na webu.
+ * Obrázek galerie na webu.
  */
 
 class Gallery {
  
   /**
-   * @brief ID záznamu
+   * ID záznamu
    * @var integer $row_id
    */
   public $row_id;
   
   /**
-   * @brief ID zkušenosti k této galerii
+   * ID zkušenosti k této galerii
    * @var integer $portfolio_id
    */
   public $portfolio_id;
   
   /**
-   * @brief Název souboru
+   * Název souboru
    * @var string $filename
    */
   public $filename;
   
   /**
-   * @brief Popis obrázku
+   * Popis obrázku
    * @var string $title
    */
   public $title;
   
   /**
-   * @brief Jedná se o thumbnail?
+   * Jedná se o thumbnail?
    * @var boolean $thumbnail
    */
   public $thumbnail;
    
   /**
-   * @brief Hodnota pořadí
+   * Hodnota pořadí
    * @var integer $order
    */
   public $order;
   
   /**
-   * @brief Viditelný?
+   * Viditelný?
    * @var boolean $visible
    */
   public $visible;
   
   /**
-   * @brief Datum a čas přidání záznamu
+   * Datum a čas přidání záznamu
    * @var string $added
    */
   public $added;
   
   /**
-   * @brief Datum a čas změny záznamu
+   * Datum a čas změny záznamu
    * @var string $timestamp 
    */
   public $timestamp;
@@ -74,7 +74,7 @@ class Gallery {
   
   
   /**
-   * @brief Generuje URL samotného obrázku.
+   * Generuje URL samotného obrázku.
    * @return string URL obrázku
    */
   
@@ -100,7 +100,7 @@ class Gallery {
   
   
   /**
-   * @brief Generuje HTML s náhledem obrázku pro Fancybox.
+   * Generuje HTML s náhledem obrázku pro Fancybox.
    * @return string HTML náhledu obrázku
    */
   
@@ -113,7 +113,7 @@ class Gallery {
   
   
   /**
-   * @brief Jedná se o náhled obrázku?
+   * Jedná se o náhled obrázku?
    * @return boolean Náhled?
    */
   
@@ -126,7 +126,7 @@ class Gallery {
   
   
   /**
-   * @brief Generuje HTML kód placeholderu obrázku.
+   * Generuje HTML kód placeholderu obrázku.
    * @return string HTML placeholderu
    */
   

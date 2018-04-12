@@ -1,4 +1,4 @@
-<?php $social_list =& $data; /* @var $data Social */ ?>
+<?php $social_list =& $data; /* @var $social_list Social[] */ ?>
 
 
 <div class="social-bar">

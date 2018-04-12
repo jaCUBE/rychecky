@@ -1,18 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Třída, která obsahuje pár důležitých věcích pro běh webu (např. připojení k databázi)
+ * @class Rychecky
+ * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
-/**
- * Description of Rychecky
- *
- * @author jaCUBE
- */
 class Rychecky {
-  
+
+	/**
+	 * Vytvoří PDO připojení k databázi v globální proměnné.
+	 */
   
   static function databaseConnect(){
     global $_DB;
@@ -22,36 +20,38 @@ class Rychecky {
       $_DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $_DB->query('SET NAMES utf8'); // Česká diakritika. Husa upálili příliš pozdě... :)
     }catch(PDOException $e) {  
-        echo $e->getMessage(); // Něco se nepodařilo? 
+    	echo $e->getMessage();
     }
   }
-  
-  
+
+
+
+
+
+	/**
+	 * Zobrazuje view.
+	 * @param string $name Název view (např. 'layout.master')
+	 * @param mixed $data Data potřebná pro vykreslení view
+	 */
+
   static function view($name, $data = NULL){
-    $path = 'views/';
-    $filename = str_replace('.', '/', $name).'.view.php';
+    $path = 'views/'; // Cesta k views
+    $filename = str_replace('.', '/', $name).'.view.php'; // Název souboru views
 
-    include $path.$filename;    
+    include $path.$filename; // Načtení view
   }
-  
 
-  
 
-  
-  
-  
-  static function title(){
-    $rnd = rand(1, 100);
-    
-    if($rnd >= 95){
-      $adj = 'Code Monkey';
-    }elseif($rnd >= 90){
-      $adj = 'Cowboy';
-    }else{
-    $adj = '';
-    }
-    
-    return 'Full Stack '.$adj.' Developer';
-  }
+
+
+
+	/**
+	 * Poskytuje hodnotu akce z routingu, důležité zejména pro řadič.
+	 * @return string Hodnota akce
+	 */
+
+	static function action(){
+		return $_GET['action'] ?? 'index';
+	}
   
 }

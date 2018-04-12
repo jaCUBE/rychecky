@@ -10,7 +10,7 @@ spl_autoload_register('rychecky_autoloader'); // Registrace autoloaderu
 
 
 /**
- * @brief Automaticky načte neznámé třídy dle názvu.
+ * Automaticky načte neznámé třídy dle názvu.
  * @param $classname Název třídy
  * @return boolean Existuje soubor?
  */

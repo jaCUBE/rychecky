@@ -1,15 +1,15 @@
 <?php
 
 /**
- * @author Jakub Rychecký <jakub@rychecky.cz>
+ * Stahuje a zpracovává seznam portfolia.
  * @class PortfolioList
- * @brief Stahuje a zpracovává seznam portfolia.
+ * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 class PortfolioList {
 
 	/**
-	 * @brief Stáhne a zpracuje seznam portfolia.
+	 * Stáhne a zpracuje seznam portfolia.
 	 * @return Portfolio[] Seznam portfolia
 	 */
 

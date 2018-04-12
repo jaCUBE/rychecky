@@ -1,59 +1,50 @@
 <?php
 
 /**
- * @author Jakub Rychecký <jakub@rychecky.cz>
- * 
+ * Koníček (zájem) na webu.
  * @class Hobby
- * @brief Objekt koníčku na webu.
+ * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 class Hobby {
  
   /**
-   * @brief ID záznamu
-   * @var integer $row_id
+   * @var integer $row_id ID záznamu
    */
   public $row_id;
   
   /**
-   * @brief ID koníčku
-   * @var integer $hobby_id
+   * @var integer $hobby_id ID koníčku
    */
   public $hobby_id;
   
   /**
-   * @brief Název koníčku
-   * @var string $name
+   * @var string $name Název koníčku
    */
   public $name;
   
   /**
-   * @brief Velikost textu tohoto koníčku
-   * @var float $size
+   * @var float $size Velikost textu tohoto koníčku
    */
   public $size;
   
   /**
-   * @brief Lokalizace (cs/en)
-   * @return string $locale
+   * @return string $locale Lokalizace (cs/en)
    */
   public $locale;
   
   /**
-   * @brief Viditelný?
-   * @var boolean $visible
+   * @var boolean $visible Viditelný?
    */
   public $visible;
   
   /**
-   * @brief Datum a čas přidání záznamu
-   * @var string $added
+   * @var string $added Datum a čas přidání záznamu
    */
   public $added;
   
   /**
-   * @brief Datum a čas změny záznamu
-   * @var string $timestamp 
+   * @var string $timestamp Datum a čas změny záznamu
    */
   public $timestamp;
 
@@ -63,8 +54,8 @@ class Hobby {
   
   
   /**
-   * @brief Generuje náhodný CSS tohoto koníčku.
-   * @return array Náhodné css v poli
+   * Generuje náhodný CSS tohoto koníčku dle jeho velikosti.
+   * @return array Náhodné CSS v poli
    */
   
   public function randomHobbyCss(){
@@ -74,15 +65,9 @@ class Hobby {
     $css['margin-left'] = rand(0, 10).'px'; // Odsazení zleva
     $css['margin-right'] = rand(0, 10).'px'; // Odsazení zprava
     $css['margin-top'] = rand(0, 5).'px'; // Odsazení zeshora
-    
-    if(rand(0, 1) == 0){ // 1:1 zarovnání doleva/doprava...
-      $css['float'] = 'left';
-    }else{
-      $css['float'] = 'right';
-    }
+    $css['float'] = rand(0, 1) ? 'left' : 'right'; // 1:1 zarovnání doleva/doprava...
 
     return $css;
   }
-  
   
 }

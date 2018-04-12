@@ -1,23 +1,21 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Stahuje a zpracovává seznam dovedností.
+ * @author Jakub Rychecký <jakub@rychecky.cz>
+ * @class SkillList
  */
 
-/**
- * Description of SkillList
- *
- * @author jaCUBE
- */
 class SkillList {
 
-
-  
+	/**
+	 * Stahuje seznam dovedností dle typu dovednosti.
+	 * @param string $type Typ dovedností
+	 * @return Skill[] Dovednosti daného typu
+	 */
   
   static function fetchSkillListByType($type){
-    $skill_list = [];
+    $skill_list = []; // Seznam dovedností
 
     $sql = '
       SELECT s.*
@@ -25,7 +23,7 @@ class SkillList {
       WHERE s.type = :type
         AND s.locale = :locale
         AND s.visible = 1
-      ORDER BY s.value DESC';
+      ORDER BY s.value DESC'; // Stahuje seznam dovedností daného typu
     
     $STH = db()->prepare($sql);
 		$STH->bindParam(':locale', Language::getLocale());
@@ -33,12 +31,11 @@ class SkillList {
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Skill');
     $STH->execute();
     
-    while($skill = $STH->fetch()){ /* @var $skill Skill */
-      $skill_list[] = $skill;
+    while($skill = $STH->fetch()){ /* @var $skill Skill */ // Prochází jednotlivé dovednosti...
+      $skill_list[] = $skill; // Uloží dovednost do pole
     }
 
     return $skill_list;
   }
-
   
 }

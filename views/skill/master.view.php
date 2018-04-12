@@ -1,4 +1,4 @@
-<?php $skill_list =& $data['skill_list']; /* @var $data Skill */ // Seznam dovedností ve zvolené skupině ?>
+<?php $skill_list =& $data['skill_list']; /* @var $skill_list Skill[] */ // Seznam dovedností ve zvolené skupině ?>
 <?php $skill_stats =& $data['skill_stats']; // Statistiky skupin dovedností ?>
 
 
@@ -13,7 +13,7 @@
   <div class="col-md-3">
     <div class="list-group">
       <?php foreach($skill_stats as $type => $count){ // Procházení jednotlivých skupin dovedností... ?>
-          <a href="<?= URL ?>/skills/<?= make_css_name($type) ?>" class="list-group-item <?= SkillType::isSelectedType($type) ? 'active' : '' ?>">
+          <a href="<?= URL ?>/skills/<?= make_css_name($type) ?>" class="list-group-item <?= SkillListType::isSelectedType($type) ? 'active' : '' ?>">
           <?= $type // Název skupiny ?>
           <span class="badge badge-light">
             <?= $count // Počet dovedností ve skupině ?>

@@ -1,15 +1,17 @@
 <?php
 
 /**
- * @author Jakub Rychecký <jakub@rychecky.cz>
+ * Stahuje a zpracovává seznam zkušeností (práce/vzdělání).
  * @class ExperienceList
- * @brief Stahuje a zpracovává seznam zkušeností (práce/vzdělání).
+ * @author Jakub Rychecký <jakub@rychecky.cz>
  */
+
+
 
 class ExperienceList {
 
   /**
-   * @brief Stáhne a zpracuje seznam zkušeností (práce/vzdělání).
+   * Stáhne a zpracuje seznam zkušeností (práce/vzdělání).
    * @return Experience[] Seznam zkušeností
    */
   
@@ -34,6 +36,5 @@ class ExperienceList {
 
     return $experience_list;
   }
-  
   
 }

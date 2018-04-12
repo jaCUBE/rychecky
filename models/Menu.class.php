@@ -1,15 +1,20 @@
 <?php
 
 /**
+ * Poskytuje potřebné metody pro vygenerování hlavní navigace.
+ * @class Menu
  * @author Jakub Rychecký <jakub@rychecky.cz>
- * @class Certificate
- * @brief Certifikátu na webu.
  */
-
 
 class Menu {
 
+	/**
+	 * Generuje celé menu jako PHP pole.
+	 * @return string[] Menu jako pole
+	 */
+
 	static function generateMenu(){
+		// @TODO: Odstranit hardcoded menu?
 		$menu = [
 			'' => [
 				'name' => e('Informace', 'Info'),
@@ -35,8 +40,17 @@ class Menu {
 	}
 
 
+
+
+
+	/**
+	 * Je zvolená URL právě vybraná?
+	 * @param string $url Kontrolovaná URL
+	 * @return boolean
+	 */
+
 	static function isMenuSelected($url){
-		return action() == $url;
+		return Rychecky::action() == $url;
 	}
 
 }

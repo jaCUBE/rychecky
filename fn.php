@@ -16,8 +16,8 @@ function e($cs = '', $en = ''){
 
 
 /**
- * @brief Funkce poskytuje objekt PDO s připojením k databázi.
- * @return PDO Objekt PDO
+ * Poskytuje objekt PDO s připojením k databázi.
+ * @return PDO Objekt připojení k databázi přes PDO
  */
 
 function db(){
@@ -30,22 +30,7 @@ function db(){
 
 
 /**
- * @brief Nastavuje kontan
- */
-
-function action(){
-	return $_GET['action'] ?? 'index';
-}
-
-
-function locale(){
-	return Language::getLocale();
-}
-
-
-
-/**
- * @brief Odstranění české diakritiky z řetězce v parametru.
+ * Odstranění české diakritiky z řetězce v parametru.
  * @param string $string Název s předpokládanou diakritikou
  * @return string Řetězec s odstraněnou diakritikou
  */
@@ -62,6 +47,14 @@ function replace_czech_characters($string){
 }
 
 
+
+
+
+/**
+ * @param $array
+ * @return string
+ */
+
 function array_to_css($array){
 	$css = '';
 
@@ -77,13 +70,13 @@ function array_to_css($array){
 
 
 /**
- * @brief Převádí řetěžec do formátu názvu CSS třídy.   *
+ * Převádí řetěžec do formátu názvu CSS třídy.   *
  * @param string $string Vstup k přípravě na CSS třídu.
  * @return string Formátovaný řetězec na CSS třídu.
  */
 
 function make_css_name($string){
-	$string = replace_czech_characters($string);
+	$string = replace_czech_characters($string); // Odstranění diakritiky
 
 	$original = [':', '.', '/', ' ', '(', ')', ',', '[', ']', '_'];
 	$replace  = ['', '-', '-', '-', '-', '-', '', '-', '', '-'];

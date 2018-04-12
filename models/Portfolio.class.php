@@ -1,254 +1,250 @@
 <?php
 
 /**
- * @author Jakub Rychecký <jakub@rychecky.cz>
- * 
+ * Položka portfolia na webu.
  * @class Portfolio
- * @brief Objekt portfolia na webu.
+ * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 class Portfolio {
 
   /**
-   * @brief ID záznamu
-   * @var integer $row_id
+   * @var integer $row_id ID záznamu
    */
   public $row_id;
   
   /**
-   * @brief ID portfolia
-   * @var integer $portfolio_id
+   * @var integer $portfolio_id ID portfolia
    */
   public $portfolio_id;
   
   /**
-   * @brief Typ portfolia
-   * @var string $type
+   * @var string $type Typ portfolia
    */
   public $type;
   
   /**
-   * @brief Název portfolia
-   * @var string $name
+   * @var string $name Název portfolia
    */
   public $name;
   
   /**
-   * @brief Název portfolia (zkrácený)
-   * @var string $name_short
+   * @var string $name_short Název portfolia (zkrácený)
    */
   public $name_short;
   
   /**
-   * @brief Detailní popis portfolia
-   * @var string $detail
+   * @var string $detail Detailní popis portfolia
    */
   public $detail;
   
   /**
-   * @brief Zkrácený textový popis
-   * @var string $detail_short
+   * @var string $detail_short Zkrácený textový popis
    */
   public $detail_short;
   
   /**
-   * @brief Název společnosti
-   * @var string $company
+   * @var string $company Název společnosti
    */
   public $company;
 
   /**
-   * @brief URL portfolia
-   * @var string $url
+   * @var string $url URL portfolia
    */
   public $url;
   
   /**
-   * @brief Datum začátku vývoje položky
-   * @var string $date_start
+   * @var string $date_start Datum začátku vývoje položky
    */
   public $date_start;
   
   /**
-   * @brief Datum konce vývoje položky
-   * @var string $date_end
+   * @var string $date_end Datum konce vývoje položky
    */
   public $date_end;
   
   
   /**
-   * @brief Velikost projektu portfolia
-   * @var integer $size
+   * @var integer $size Velikost projektu portfolia
    */
   public $size;
   
   /**
-   * @brief URL repozitáře GitHub
-   * @var string $github
+   * @var string $github URL repozitáře GitHub
    */
   public $github;
   
   /**
-   * @brief Je tato položka portfolia zajímavá?
-   * @var boolean $interesting
+   * @var boolean $interesting Je tato položka portfolia zajímavá?
    */
   public $interesting;
   
   /**
-   * @brief Lokalizace (cs/en)
-   * @return string $locale
+   * @return string $locale Lokalizace (cs/en)
    */
   public $locale;
   
   /**
-   * @brief Viditelný?
-   * @var boolean $visible
+   * @var boolean $visible Viditelný?
    */
   public $visible;
   
   /**
-   * @brief Datum a čas přidání záznamu
-   * @var string $added
+   * @var string $added Datum a čas přidání záznamu
    */
   public $added;
   
   /**
-   * @brief Datum a čas změny záznamu
-   * @var string $timestamp 
+   * @var string $timestamp Datum a čas změny záznamu
    */
   public $timestamp;
-  
-  /**
-   *
-   * @var type 
-   */
-  public $thumbnail;
-  
-  public $gallery = [];
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * Konstruktor pro portfolio umožňuje podle ID stáhnout položku "do sebe".
+	 * @param boolean|integer $portfolio_id ID portfolia (nabo false)
+	 */
+
   public function __construct($portfolio_id = false){
-    if($portfolio_id){
-      $this->portfolio_id = (int) $portfolio_id;
-      $this->fetchPortfolio();
+    if($portfolio_id){ // Vyplněné ID...
+      $this->portfolio_id = (int) $portfolio_id; // Přebrání ID
+      $this->fetchPortfolio(); // Stažení portfolia
     }
   }
-  
-  
-  
+
+
+
+
+
+	/**
+	 * Stahuje portofolio do této instance třídy.
+	 */
+
   private function fetchPortfolio(){
-    global $_DB;
-    
     $sql = '
       SELECT p.*
       FROM portfolio AS p
       WHERE p.portfolio_id = :portfolio_id
         AND p.locale = :locale
         AND p.visible = 1
-      LIMIT 1';
-    
-    $STH = $_DB->prepare($sql);
+      LIMIT 1'; // SQL pro stažení jednoho portfolia dle ID
+
+    $STH = db()->prepare($sql);
     $STH->bindParam(':portfolio_id', $this->portfolio_id);
 		$STH->bindParam(':locale', Language::getLocale());
     $STH->setFetchMode(PDO::FETCH_INTO, $this);
     $STH->execute();
-    
-    $STH->fetch();
-  }
-  
 
-  
-  
-  public function fetchPortfolioGallery(){
-    global $_DB;
-    
-    $sql = '
-      SELECT g.*
-      FROM gallery AS g
-      WHERE g.portfolio_id = :portfolio_id
-        AND g.visible = 1
-      ORDER BY g.order DESC';
-    
-    $STH = $_DB->prepare($sql);
-    $STH->bindParam(':portfolio_id', $this->portfolio_id);
-    $STH->setFetchMode(PDO::FETCH_CLASS, 'Gallery');
-    $STH->execute();
-    
-    while($gallery = $STH->fetch()){
-      if($gallery->isThumbnail()){
-        $this->thumbnail = $gallery;
-      }else{
-        $this->gallery[] = $gallery;
-      }
-    }
+    $STH->fetch(); // Stažení do této instance třídy
   }
-  
-  
-  
 
-  
+
+
+
+
+	/**
+	 * Co nejkratší název položky portfolia.
+	 * @return string Nejkratší název
+	 */
   
   public function nameShortest(){
-    if(!empty($this->name_short)){
-      return $this->name_short;
-    }else{
-      return $this->name;
-    }
+  	// PHP 7: Null Coalescence https://wiki.php.net/rfc/isset_ternary
+  	return $this->name_short ?? $this->name; // Pokud existuje zkrácený, použije se ten
   }
-  
+
+
+
+
+
+	/**
+	 * Stáří této položky portfolia.
+	 * @return float Stáří ve dnech
+	 */
   
   public function age(){
-    $difference = time() - strtotime($this->date_start);
-    return round($difference / (24 * 60 * 60));
+    $difference = time() - strtotime($this->date_start); // Počet sekund od začátku vývoje
+    return round($difference / (24 * 60 * 60)); // Převod na dny
   }
-  
-  
-  public function htmlData(){
-    $data = [];
-    
-    $data['age'] = $this->age();
-    $data['name'] = Rychecky::removeCzechChars($this->nameShortest());
-    $data['size'] = $this->size * -1;
-    
-    $output = '';
-    
-    foreach($data as $a => $v){
-      $output .= ' data-'.$a.'="'.$v.'" ';
-    }
-    
-    return $output;
-  }
-  
-  
-  
-  public function css(){
-    $css = [];
-    
-    $css[] = 'portfolio';
-    $css[] = Rychecky::makeCssName($this->type);
-    
-    if($this->isInteresting()){
-      $css[] = 'interesting';
-    }
-    
-    if($this->isRunning()){
-      $css[] = 'running';
-    }
-    
-    return implode(' ', $css);
-  }
-  
-  
+
+
+
+
+
+	/**
+	 * Je tato položka portfolia právě ve vývoji?
+	 * @return boolean Je ve vývoji?
+	 */
+
   public function isRunning(){
     $started = !empty($this->date_start) AND  strtotime($this->date_start) <= strtotime('today'); // Začato: datum začátku existuje a proběhlo
     $ended = !empty($this->date_end) AND strtotime($this->date_end) <= strtotime('today'); // Ukončeno: datum konce existuje a proběhlo
     
     return $started AND !$ended; // Začalo a neskončilo
   }
-  
+
+
+
+
+
+	/**
+	 * Jedná se o zajímavou položku portfolia?
+	 * @return boolean Zajímavá položka?
+	 */
   
   public function isInteresting(){
-    return !empty($this->interesting);
+    return (boolean) $this->interesting;
   }
-  
+
+
+
+
+
+
+	// @TODO Předělat galerii
+
+	/**
+	 *
+	 * @var type
+	 */
+	public $thumbnail;
+
+	public $gallery = [];
+
+	public function fetchPortfolioGallery(){
+		global $_DB;
+
+		$sql = '
+      SELECT g.*
+      FROM gallery AS g
+      WHERE g.portfolio_id = :portfolio_id
+        AND g.visible = 1
+      ORDER BY g.order DESC';
+
+		$STH = $_DB->prepare($sql);
+		$STH->bindParam(':portfolio_id', $this->portfolio_id);
+		$STH->setFetchMode(PDO::FETCH_CLASS, 'Gallery');
+		$STH->execute();
+
+		while($gallery = $STH->fetch()){
+			if($gallery->isThumbnail()){
+				$this->thumbnail = $gallery;
+			}else{
+				$this->gallery[] = $gallery;
+			}
+		}
+	}
+
+
+
+
+
 }

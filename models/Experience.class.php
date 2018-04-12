@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @author Jakub Rychecký <jakub@rychecky.cz>
+ * Zkušenost (zaměstnání/vzdělání) na webu.
  * @class Experience
- * @brief Zkušenost (zaměstnání/vzdělání) na webu.
+ * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 
@@ -11,80 +11,67 @@
 class Experience {
   
   /**
-   * @brief ID záznamu
-   * @var integer $row_id
+   * @var integer $row_id ID záznamu
    */
   public $row_id;
   
   /**
-   * @brief ID zkušenosti
-   * @var integer $experience_id
+   * @var integer $experience_id ID zkušenosti
    */
   public $experience_id;
   
   /**
-   * @brief Typ zkušenosti
-   * @var string $type
+   * @var string $type Typ zkušenosti
    */
   public $type;
   
   /**
-   * @brief Název zkušenosti.
-   * @var string $title
+   * @var string $title Název zkušenosti.
    */
   public $title;
   
   /**
-   * @brief Společnost
-   * @var string $company
+   * @var string $company Společnost
    */
   public $company;
   
   /**
-   * @brief Datum začátku zkušenosti
-   * @var string $date_start
+   * @var string $date_start Datum začátku zkušenosti
    */
   public $date_start;
   
   /**
-   * @brief Datum konce zkušenosti
-   * @var string|boolean $date_end
+   * @var string|boolean $date_end Datum konce zkušenosti
    */
   public $date_end;
   
   /**
-   * @brief Detailní popis zkušenosti
-   * @var string $detail
+   * @var string $detail Detailní popis zkušenosti
    */
   public $detail;
   
   /**
-   * @brief Poznámka
-   * @var string $note
+   * @var string $note Poznámka
    */
   public $note;
   
   /**
-   * @brief Lokalizace (cs/en)
-   * @return string $locale
+   * @return string $locale Lokalizace (cs/en)
    */
   public $locale;
   
   /**
-   * @brief Viditelný?
-   * @var boolean $visible
+   * @var boolean $visible Viditelný?
    */
   public $visible;
   
   /**
-   * @brief Datum a čas přidání záznamu
-   * @var string $added
+   * @var string $added Datum a čas přidání záznamu
    */
   public $added;
   
   /**
-   * @brief Datum a čas změny záznamu
-   * @var string $timestamp 
+   * @var string $timestamp Datum a čas změny záznamu
    */
   public $timestamp;
 

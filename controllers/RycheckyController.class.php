@@ -11,8 +11,12 @@
  *
  * @author jaCUBE
  */
+
 class RycheckyController extends Controller  {
-  
+
+	/**
+	 * @brief
+	 */
 	public function __construct(){
 		parent::__construct();
 	}
@@ -34,8 +38,8 @@ class RycheckyController extends Controller  {
   
   public function skills(){
     Rychecky::view('skill.master', [
-        'skill_list' => SkillList::fetchSkillListByType(SkillType::selectedSkillType()),
-        'skill_stats' => SkillType::fetchSkillTypeStats()
+        'skill_list' => SkillList::fetchSkillListByType(SkillListType::selectedSkillType()),
+        'skill_stats' => SkillListType::fetchSkillTypeStats()
     ]);
   }
   

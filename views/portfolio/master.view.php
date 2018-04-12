@@ -1,4 +1,4 @@
-<?php $portfolio_list =& $data; /* @var $data Portfolio */ ?>
+<?php $portfolio_list =& $data; /* @var $portfolio_list Portfolio[] */ ?>
 
 
 
@@ -35,7 +35,7 @@
 
 
 <div class="isotope">
-  <?php foreach($portfolio_list as $i => $portfolio){ ?>
+  <?php foreach($portfolio_list as $i => $portfolio){ // Vykresluje jednotlivé položky portfolia... ?>
     <?php Rychecky::view('portfolio.single', $portfolio) ?>
   <?php } ?>
 </div>

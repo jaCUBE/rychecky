@@ -1,4 +1,4 @@
-<?php $experience_list =& $data; /* @var $data Experience */ ?>
+<?php $experience_list =& $data; /* @var $experience_list Experience[] */ ?>
 
 
 
@@ -8,7 +8,7 @@
 
 <div id="experiences">
   <ul class="timeline">
-    <?php foreach($experience_list as $i => $experience){ ?>
+    <?php foreach($experience_list as $i => $experience){ // Vykresluje jednotlivé zkušenosti... ?>
         <?php Rychecky::view('experience.single', ['experience' => $experience, 'i' => $i]) ?>
     <?php } ?>
   </ul>

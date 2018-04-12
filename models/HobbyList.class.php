@@ -1,21 +1,20 @@
 <?php
 
 /**
- * @author Jakub Rychecký <jakub@rychecky.cz>
+ * Stahuje a zpracovává seznam koníčků.
  * @class HobbyList
- * @brief Stahuje a zpracovává seznam koníčků.
+ * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 class HobbyList {
   
   /**
-   * @brief Stáhne a zpracuje seznam koníčků.
+   * Stáhne a zpracuje seznam koníčků.
    * @return Hobby[] // Seznam koníčků
    */
 
-  static function fetchHobbyList()
-	{
-		$hobby_list = [];
+  static function fetchHobbyList(){
+		$hobby_list = []; // Seznam koníčků
 
 		$sql = '
     SELECT h.*
@@ -29,11 +28,11 @@ class HobbyList {
 		$STH->setFetchMode(PDO::FETCH_CLASS, 'Hobby');
 		$STH->execute();
 
-		while ($hobby = $STH->fetch()) {
-			/* @var $hobby Hobby */ // Prochází jednotlivé koníčky...
+		while ($hobby = $STH->fetch()){ /* @var $hobby Hobby */ // Prochází jednotlivé koníčky...
 			$hobby_list[] = $hobby; // Přidá koníček do seznamu
 		}
 
 		return $hobby_list;
 	}
+
 }

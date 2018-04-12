@@ -1,4 +1,4 @@
-<?php $skill =& $data; ?>
+<?php $skill =& $data; /* @var $skill Skill */ ?>
 
 
 

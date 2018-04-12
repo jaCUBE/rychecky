@@ -1,84 +1,70 @@
 <?php
 
 /**
- * @author Jakub Rychecký <jakub@rychecky.cz>
+ * Certifikát na webu.
  * @class Certificate
- * @brief Certifikát na webu.
+ * @author Jakub Rychecký <jakub@rychecky.cz>
  */
-
-
 
 class Certificate {
   
   /**
-   * @brief ID záznamu
-   * @var integer $row_id
+   * @var integer $row_id ID záznamu
    */
   public $row_id;
   
   /**
-   * @brief ID certifikátu
-   * @var integer $certificate_id
+   * @var integer $certificate_id ID certifikátu
    */
   public $certificate_id;
   
   /**
-   * @brief Typ certifikátu
-   * @var string $type
+   * @var string $type Typ certifikátu
    */
   public $type;
   
   /**
-   * @brief Název certifikátu
-   * @var string $name
+   * @var string $name Název certifikátu
    */
   public $name;
   
   /**
-   * @brief Detailní popis certifikátu
-   * @var string $detail
+   * @var string $detail Detailní popis certifikátu
    */
   public $detail;
   
   /**
-   * @brief Datum vydání certifikátu
-   * @var string $issue_date
+   * @var string $issue_date Datum vydání certifikátu
    */
   public $issue_date;
 
   /**
-   * @brief Vydavatel certifikátu
-   * @var string $issue_by
+   * @var string $issue_by Vydavatel certifikátu
    */
   public $issue_by;
   
   /**
-   * @brief URL certifikátu
-   * @var string $url
+   * @var string $url URL certifikátu
    */
   public $url;
   
   /**
-   * @brief Lokalizace (cs/en)
-   * @return string $locale
+   * @return string $locale Lokalizace (cs/en)
    */
   public $locale;
   
   /**
-   * @brief Viditelný?
-   * @var boolean $visible
+   * @var boolean $visible Viditelný?
    */
   public $visible;
   
   /**
-   * @brief Datum a čas přidání záznamu
-   * @var string $added
+   * @var string $added Datum a čas přidání záznamu
    */
   public $added;
   
   /**
-   * @brief Datum a čas změny záznamu
-   * @var string $timestamp 
+   * @var string $timestamp Datum a čas změny záznamu
    */
   public $timestamp;
   

@@ -1,4 +1,4 @@
-<?php $certificate_list =& $data; /* @var $data Certificate */ ?>
+<?php $certificate_list =& $data; /* @var $certificate_list Certificate[] */ ?>
 
 
 
@@ -9,7 +9,7 @@
 
 <div id="certificate">
   <ul class="timeline">
-    <?php foreach($certificate_list as $i => $certificate){ // Procházení jednotlivých certifikátů... ?>
+    <?php foreach($certificate_list as $i => $certificate){ // Vykresluje jednotlivé certifikáty... ?>
         <?php Rychecky::view('certificate.single', ['certificate' => $certificate, 'i' => $i]) ?>
     <?php } ?>
   </ul>

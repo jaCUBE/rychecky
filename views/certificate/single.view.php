@@ -1,4 +1,4 @@
-<?php $certificate = $data['certificate']; /* @var $certificate Objekt certifikátu */ ?>
+<?php $certificate = $data['certificate']; /* @var $certificate Certificate */ ?>
 
 
 
