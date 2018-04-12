@@ -15,6 +15,13 @@
           </a>
         </li>
       <?php } ?>
+
+      <li class="nav-item">
+        <a href="javascript:void(0)" onclick="$('.locale-switcher').submit()">
+          <img src="<?= URL ?>/images/flags/<?= e('gb.png', 'cz.png') ?>" style="margin-right: 5px;" alt="" />
+					<?= e('English', 'Česky') ?>
+        </a>
+      </li>
     </ul>
   </div>
 </nav>

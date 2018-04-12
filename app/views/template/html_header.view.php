@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 
-<html lang="<?= LOCALE ?>">
+<html lang="<?= Language::getLocale() ?>">
   <head>
     <title>rychecky.cz</title>
     

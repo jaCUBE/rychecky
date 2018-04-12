@@ -3,9 +3,9 @@
 
 
 <div class="portfolio
-        <?= make_css_name($portfolio->type) ?>
-        <?= $portfolio->isInteresting() ? 'interesting' : '' // CSS třída zajímavé položky ?>
-        <?= $portfolio->isRunning() ? 'running' : '' // CSS třída položky ve vývoji ?>"
+     <?= make_css_name($portfolio->type) ?>
+     <?= $portfolio->isInteresting() ? 'interesting' : '' // CSS třída zajímavé položky ?>
+     <?= $portfolio->isRunning() ? 'running' : '' // CSS třída položky ve vývoji ?>"
      data-age="<?= $portfolio->age() ?>"
      data-name="<?= replace_czech_characters($portfolio->nameShortest()) ?>"
      data-size="<?= $portfolio->size * -1 ?>"
