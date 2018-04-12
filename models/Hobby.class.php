@@ -88,10 +88,10 @@ class Hobby {
   
   /**
    * @brief Generuje náhodný CSS tohoto koníčku.
-   * @return string Náhodný CSS
+   * @return array Náhodné css v poli
    */
   
-  private function css(){
+  public function randomHobbyCss(){
     $css = []; // Iniciace CSS
     
     $css['font-size'] = $this->size * 0.02.'em'; // Velikost
@@ -104,15 +104,8 @@ class Hobby {
     }else{
       $css['float'] = 'right';
     }
-    
-    
-    $output = ''; // Iniciace výstupu
-    
-    foreach($css as $property => $value){ // Procházení pole CSS hodnot...
-      $output .= $property.': '.$value.'; '; // Generování výstupu
-    }
-    
-    return trim($output); // Vrací vygenerovaný CSS
+
+    return $css;
   }
   
   

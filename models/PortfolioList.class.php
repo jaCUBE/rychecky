@@ -12,23 +12,12 @@
  * @author jaCUBE
  */
 class PortfolioList {
-  /**
-   * 
-   * @type Portfolio $portfolio_list
-   */
-  public $portfolio_list = [];
   
-  
-  
-  public function __construct(){
-    $this->fetchPortfolioList();
-  }
-  
-  
-  
-  private function fetchPortfolioList(){
+  static function fetchPortfolioList(){
     global $_DB;
-    
+
+    $portfolio_list = [];
+
     $sql = '
       SELECT p.*
       FROM portfolio AS p
@@ -43,8 +32,10 @@ class PortfolioList {
     while($portfolio = $STH->fetch()){ /* @var $portfolio Portfolio */
       $portfolio->fetchPortfolioGallery();
       
-      $this->portfolio_list[$portfolio->portfolio_id] = $portfolio;
+      $portfolio_list[$portfolio->portfolio_id] = $portfolio;
     }
+
+    return $portfolio_list;
   } 
   
 

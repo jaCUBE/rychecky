@@ -13,24 +13,11 @@
  */
 class SocialList {
   
-  /**
-   * @brief
-   * @var Social $social_list
-   */
-  public $social_list = [];
-  
-  
-  
-  
-  public function __construct(){
-    $this->fetchSocialList();
-  }
-    
-  
-  private function fetchSocialList(){
+  static function fetchSocialList(){
     global $_DB;
-    
-    
+
+    $social_list = [];
+
     $sql = '
       SELECT s.*
       FROM social AS s
@@ -42,8 +29,10 @@ class SocialList {
     $STH->execute();
     
     while($social = $STH->fetch()){ /* @var $social Social */
-      $this->social_list[] = $social;
+      $social_list[] = $social;
     }
+
+    return $social_list;
   }
   
   

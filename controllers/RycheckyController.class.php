@@ -25,14 +25,12 @@ class RycheckyController {
   
   
   public function index(){
-    global $_RYC;
-    
     $data = [];
     
-    $data['hobby'] = new HobbyList();
-    $data['social'] = new SocialList();
+    $data['hobby'] = HobbyList::fetchHobbyList();
+    $data['social'] = SocialList::fetchSocialList();
     
-    $_RYC->view('index', $data);
+    Rychecky::view('index', $data);
   }
   
   
@@ -40,50 +38,30 @@ class RycheckyController {
   
   
   public function skills(){
-    global $_RYC;
-    
     $skill_list = new SkillList();
-    
-    $_RYC->view('skills', $skill_list);
+
+      Rychecky::view('skills', $skill_list);
   }
   
   
   public function portfolio(){
-    global $_RYC;
-    
-    $portfolio_list = new PortfolioList();
-    
-    $_RYC->view('portfolio', $portfolio_list);
+    Rychecky::view('portfolio.master', PortfolioList::fetchPortfolioList());
   }
   
   
   public function experiences(){
-    global $_RYC;
-    
-    $experience_list = new ExperienceList();
-    
-    $_RYC->view('experiences', $experience_list);
+    Rychecky::view('experience.master', ExperienceList::fetchExperienceList());
   }
   
   
   public function certificate(){
-    global $_RYC;
-    
-    $certificate_list = new CertificateList();
-    
-    $_RYC->view('certificate', $certificate_list);
+    Rychecky::view('certificate.master', CertificateList::fetchCertificateList());
   }
   
   
   public function contact(){
-    global $_RYC;
-        
-    $social_list = new SocialList();
-    
-    $_RYC->view('contact', $social_list);
+    Rychecky::view('contact', SocialList::fetchSocialList());
   }
-  
 
-  
-  
+
 }

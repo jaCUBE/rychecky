@@ -10,42 +10,15 @@
 class CertificateList {
   
   /**
-   * @brief Seznam certifikátů.
-   * @var Certificate $certificate_list
-   */
-  public $certificate_list = [];
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  /**
-   * @brief Konstruktor, stahuje seznam certifikátů.
-   * @return void
-   */
-  
-  public function __construct(){
-    $this->fetchCertificateList(); // Stahuje seznam certifikátů
-  }
-  
-  
-  
-  
-  
-  /**
    * @brief Stahuje z databáze seznam certifikátů.
-   * @return void
+   * @return array Seznam certifikátů
    */
-  
-  private function fetchCertificateList(){
+
+  static function fetchCertificateList(){
     global $_DB;
-        
+
+    $certificate_list = [];
+
     $sql = '
       SELECT c.*
       FROM certificate AS c
@@ -58,9 +31,11 @@ class CertificateList {
     $STH->execute();
     
     while($c = $STH->fetch()){ /* @var $certificate Certificate */ // Procházení certifikátů...
-      $this->certificate_list[] = $c; // Uložení certifikátů do pole
+      $certificate_list[] = $c; // Uložení certifikátů do pole
     }
+
+    return $certificate_list; // Vrací seznam certifikátů
   }
-  
-  
+
+
 }

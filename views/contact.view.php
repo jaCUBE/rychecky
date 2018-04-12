@@ -1,4 +1,4 @@
-<?php $sl =& $data; /* @var $sl SocialList */ ?>
+<?php $social_list =& $data; /* @var $social_list Social */ ?>
 
 
 
@@ -6,9 +6,7 @@
   <div class="row">   
     <div class="col-md-7">
       <div class="social-bar" style="margin-top: 20px;">
-        <?php foreach($sl->social_list as $s){ // Procházení jednotlivých profilů na sociálních sítích... ?>
-          <?= $s->htmlSocialButton() // Vykreslení jednoho tlačítka sociálních sítí ?>
-        <?php } ?>
+        <?php Rychecky::view('socialbar.master', $social_list); ?>
       </div>
       
       

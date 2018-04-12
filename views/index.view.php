@@ -1,5 +1,5 @@
-<?php $hl =& $data['hobby']; /* @var $hl HobbyList */  ?>
-<?php $sl =& $data['social']; /* @var $sl SocialList */  ?>
+<?php $hobby_list =& $data['hobby']; /* @var $hobby_list Hobby */  ?>
+<?php $social_list =& $data['social']; /* @var $social_list Social */  ?>
 
 
 <div class="row">
@@ -24,14 +24,9 @@
       </p>
     </div>
     
-    
-    <div class="social-bar">
-      <?php foreach($sl->social_list as $s){ // Procházení jednotlivých profilů na sociálních sítích... ?>
-        <?= $s->htmlSocialButton() // Vykreslení jednoho tlačítka sociálních sítí ?>
-      <?php } ?>
-    </div>
-    
     <hr class="clear" />
+
+      <?php Rychecky::view('socialbar.master', $social_list) ?>
   </div>
   
   
@@ -44,8 +39,10 @@
     </h2>
 
     <div class="hobby-list">
-      <?php foreach($hl->hobby_list as $h){ ?>
-        <?= $h->htmlHobby() ?>
+      <?php foreach($hobby_list as $hobby){ ?>
+        <div class="hobby" style="<?= Rychecky::arrayToCss($hobby->randomHobbyCss()) // Náhodná pozice ve wordcloudu ?>">
+          <?= $hobby->name // Název koníčku ?>
+        </div>
       <?php } ?>
     </div>
     

@@ -8,44 +8,17 @@
  */
 
 class ExperienceList {
-  
-  /**
-   * @brief Seznam zkušeností
-   * @var Experience $experience_list
-   */
-  public $experience_list = [];
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  /**
-   * @brief Konstruktor, stahuje seznam zkušeností.
-   * @return void
-   */
-  
-  public function __construct(){
-    $this->fetchExperienceList(); // Stahuje seznam zkušeností
-  }
-  
-  
-  
-  
-  
+
   /**
    * @brief Stahuje a zpracovává seznam zkušeností.
-   * @return void
+   * @return array Seznam zkušeností
    */
   
-  private function fetchExperienceList(){
+  static function fetchExperienceList(){
     global $_DB;    
-    
+
+    $experience_list = [];
+
     $sql = '
       SELECT e.*
       FROM experience AS e
@@ -58,8 +31,10 @@ class ExperienceList {
     $STH->execute();
     
     while($e = $STH->fetch()){ /* @var $e Experience */ // Procházení jednotlivých zkušeností...
-      $this->experience_list[] = $e; // Uložení zkušenosti do pole
+      $experience_list[] = $e; // Uložení zkušenosti do pole
     }
+
+    return $experience_list;
   }
   
   

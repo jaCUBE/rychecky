@@ -7,10 +7,8 @@ include 'libraries/kint/Kint.class.php';
 
 define('LOCALE', Language::getLocale());
 
-global $_RYC;
 
-$_RYC = new Rychecky();
-$_RYC->databaseConnect();
+Rychecky::databaseConnect();
 
 $info = new Info();
 

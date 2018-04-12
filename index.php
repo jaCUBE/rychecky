@@ -1,14 +1,12 @@
 <?php
 
-include 'bootstrap.php';
+require 'bootstrap.php';
 
 
-$_RYC->view('html_header');
-$_RYC->view('template_header');
-
+Rychecky::view('template.html_header');
+Rychecky::view('template.template_header');
 
 $main = new RycheckyController();
 
-
-$_RYC->view('template_footer');
-$_RYC->view('html_footer');
+Rychecky::view('template.template_footer');
+Rychecky::view('template.html_footer');

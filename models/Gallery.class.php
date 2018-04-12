@@ -114,7 +114,7 @@ class Gallery {
   
   /**
    * @brief Jedná se o náhled obrázku?
-   * @return boolan Náhled?
+   * @return boolean Náhled?
    */
   
   public function isThumbnail(){

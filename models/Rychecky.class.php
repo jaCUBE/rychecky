@@ -14,7 +14,7 @@
 class Rychecky {
   
   
-  public function databaseConnect(){
+  static function databaseConnect(){
     global $_DB;
 
     try {  // Připojení k databázi pomocí PDO
@@ -27,15 +27,11 @@ class Rychecky {
   }
   
   
-  public function view($name, $data = NULL){
+  static function view($name, $data = NULL){
     $path = 'views/';
-    $file = $name.'.view.php';
-    
-    if(preg_match('/^(html|template)_/', $name)){
-      $path .= 'template/';
-    }
-    
-    include $path.$file;    
+    $filename = str_replace('.', '/', $name).'.view.php';
+
+    include $path.$filename;    
   }
   
   
@@ -81,16 +77,26 @@ class Rychecky {
   static function title(){
     $rnd = rand(1, 100);
     
-    $adj = '';
-    
     if($rnd >= 95){
       $adj = 'Code Monkey';
     }elseif($rnd >= 90){
       $adj = 'Cowboy';
+    }else{
+    $adj = '';
     }
     
     return 'Full Stack '.$adj.' Developer';
   }
-  
+
+
+  static function arrayToCss($array){
+      $css = '';
+
+      foreach($array as $property => $value){
+          $css .= $property.': '.$value.';';
+      }
+
+      return $css;
+  }
   
 }

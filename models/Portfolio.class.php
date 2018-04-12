@@ -184,38 +184,7 @@ class Portfolio {
   
   
   
-  
-  
-  /**
-   * 
-   * @return type
-   */
-  
-  public function htmlPortfolio(){
-    ob_start(); ?>
 
-    <div class="<?= $this->css() ?>" onclick="portfolio(<?= $this->portfolio_id ?>)" <?= $this->htmlData() ?>>
-      <div class="image">
-        <?= is_a($this->thumbnail, 'Gallery') ? $this->thumbnail->htmlThumbnail() : Gallery::htmlPlaceholder() ?>
-      </div>
-      
-      <div class="info">
-        <div class="name">
-          <?= $this->nameShortest() ?>
-          
-          <?= $this->isInteresting() ? '<i class="fa fa-star" title="Zajímavá položka"></i>' : '' ?>
-          <?= $this->isRunning() ? '<i class="fa fa-cog" title="Položka stále ve vývoji"></i>' : '' ?>
-        </div>
-        
-        <div class="detail">
-          <?= $this->detail_short ?>
-        </div>
-      </div>
-    </div>
-
-
-    <?php return ob_get_clean();
-  }
   
   
   public function nameShortest(){
@@ -227,13 +196,13 @@ class Portfolio {
   }
   
   
-  private function age(){
+  public function age(){
     $difference = time() - strtotime($this->date_start);
     return round($difference / (24 * 60 * 60));
   }
   
   
-  private function htmlData(){
+  public function htmlData(){
     $data = [];
     
     $data['age'] = $this->age();
@@ -251,7 +220,7 @@ class Portfolio {
   
   
   
-  private function css(){
+  public function css(){
     $css = [];
     
     $css[] = 'portfolio';

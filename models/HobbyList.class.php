@@ -43,9 +43,11 @@ class HobbyList {
    * @return void
    */
   
-  private function fetchHobbyList(){
+  static function fetchHobbyList(){
     global $_DB;
-    
+
+    $hobby_list = [];
+
     $sql = '
     SELECT h.*
     FROM hobby AS h
@@ -58,8 +60,10 @@ class HobbyList {
     $STH->execute();
     
     while($hobby = $STH->fetch()){ /* @var $hobby Hobby */ // Procházení jednotlivých koníčků...
-      $this->hobby_list[] = $hobby; // Přidání koníčku do seznamu
+      $hobby_list[] = $hobby; // Přidání koníčku do seznamu
     }
+
+    return $hobby_list;
   }
   
   
