@@ -35,7 +35,7 @@ class Rychecky {
 	 */
 
   static function view($name, $data = NULL){
-    $path = 'views/'; // Cesta k views
+    $path = 'app/views/'; // Cesta k views
     $filename = str_replace('.', '/', $name).'.view.php'; // Název souboru views
 
     include $path.$filename; // Načtení view
@@ -53,5 +53,5 @@ class Rychecky {
 	static function action(){
 		return $_GET['action'] ?? 'index';
 	}
-	
+
 }

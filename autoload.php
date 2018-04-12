@@ -1,7 +1,7 @@
 <?php
 
-include 'controllers/default/Controller.class.php'; // Obecný řadič
-include 'controllers/RycheckyController.class.php'; // Řadič pro web
+include 'app/controllers/default/Controller.class.php'; // Obecný řadič
+include 'app/controllers/RycheckyController.class.php'; // Řadič pro web
 
 
 
@@ -16,7 +16,7 @@ spl_autoload_register('rychecky_autoloader'); // Registrace autoloaderu
  */
 
 function rychecky_autoloader($classname){
-  $filepath = 'models/'.$classname.'.class.php'; // Cesta ke třídě
+  $filepath = 'app/models/'.$classname.'.class.php'; // Cesta ke třídě
   include $filepath; // Načte třídu
 
   return file_exists($filepath); // Existuje soubor se třídou?

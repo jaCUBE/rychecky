@@ -2,7 +2,7 @@
 
 require 'autoload.php'; // Načítání tříd
 require 'config.php'; // Konfigurace
-require 'fn.php'; // Helper funkce pro PHP
+require 'app/fn.php'; // Helper funkce pro PHP
 
 
 if(DEVELOPMENT){ // Načtení nástrojů pro vývoj
