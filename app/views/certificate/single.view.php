@@ -18,7 +18,7 @@
     <div class="detail"><?= $certificate->detail ?></div>
 
     <div class="center">
-        <a href="<?= $certificate->url ?>" class="btn btn-xs btn-default">
+        <a href="<?= $certificate->url ?>" class="btn btn-sm btn-light">
             <i class="fa fa-globe"></i> <?= e('Certifikát', 'Certificate') ?>
         </a>
     </div>

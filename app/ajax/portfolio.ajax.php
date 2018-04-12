@@ -1,6 +1,6 @@
 <?php
 
-include 'bootstrap.php';
+include '../../bootstrap.php';
 
 $output = [];
 
@@ -16,10 +16,10 @@ ob_start(); ?>
 
 <div class="row portfolio-modal">
   <div class="col-md-4">
-      <div class="label" style="margin-bottom: 5px;">
-          <?= $p->isInteresting() ? '<span class="badge badge-info"><i class="fa fa-star"></i> Zajímavá položka</span>' : '' ?>
-          <?= $p->isRunning() ? '<span class="badge badge-success"><i class="fa fa-cog"></i> Ve vývoji</span>' : '' ?>
-      </div>
+    <div class="label" style="margin-bottom: 5px;">
+      <?= $p->isInteresting() ? '<span class="badge badge-info"><i class="fa fa-star"></i> Zajímavá položka</span>' : '' ?>
+      <?= $p->isRunning() ? '<span class="badge badge-success"><i class="fa fa-cog"></i> Ve vývoji</span>' : '' ?>
+    </div>
 
     <div class="image">
       <?= is_a($p->thumbnail, 'Gallery') ? $p->thumbnail->htmlThumbnail() : Gallery::htmlPlaceholder() ?>

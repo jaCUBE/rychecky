@@ -32,7 +32,7 @@ function portfolio(portfolio_id){
   
   $.ajax({
     type: 'GET',
-    url: relative_path+'ajax_portfolio.php',
+    url: relative_path+'/app/ajax/portfolio.ajax.php',
     data: {
       'portfolio_id': portfolio_id
     },
