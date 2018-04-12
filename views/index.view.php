@@ -40,7 +40,7 @@
 
     <div class="hobby-list">
       <?php foreach($hobby_list as $hobby){ ?>
-        <div class="hobby" style="<?= Rychecky::arrayToCss($hobby->randomHobbyCss()) // Náhodná pozice ve wordcloudu ?>">
+        <div class="hobby" style="<?= array_to_css($hobby->randomHobbyCss()) // Náhodná pozice ve wordcloudu ?>">
           <?= $hobby->name // Název koníčku ?>
         </div>
       <?php } ?>

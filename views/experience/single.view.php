@@ -1,7 +1,7 @@
 <?php $experience =& $data['experience']; /* @var $data Experience */ ?>
 
 
-<li class="event <?= Rychecky::makeCssName($experience->type) ?> <?= $i % 2 == 1 ? 'odd' : 'even' // Sudá-lichá událost ?>" data-type="<?= $experience->type ?>">
+<li class="event <?= make_css_name($experience->type) ?> <?= $i % 2 == 1 ? 'odd' : 'even' // Sudá-lichá událost ?>" data-type="<?= $experience->type ?>">
     <div class="date">
         <span class="start"><?= date('n/Y', strtotime($experience->date_start)) ?></span>
         –

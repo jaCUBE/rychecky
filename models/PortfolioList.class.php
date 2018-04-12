@@ -1,41 +1,40 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Jakub Rychecký <jakub@rychecky.cz>
+ * @class PortfolioList
+ * @brief Stahuje a zpracovává seznam portfolia.
  */
 
-/**
- * Description of PortfolioList
- *
- * @author jaCUBE
- */
 class PortfolioList {
-  
+
+	/**
+	 * @brief Stáhne a zpracuje seznam portfolia.
+	 * @return Portfolio[] Seznam portfolia
+	 */
+
   static function fetchPortfolioList(){
-    $portfolio_list = [];
+    $portfolio_list = []; // Seznam portfolia
 
     $sql = '
       SELECT p.*
       FROM portfolio AS p
       WHERE p.locale = :locale
         AND p.visible = 1
-      ORDER BY p.size DESC';
+      ORDER BY p.size DESC'; // SQL pro stažení veškerého portoflia
     
     $STH = db()->prepare($sql);
 		$STH->bindParam(':locale', Language::getLocale());
     $STH->setFetchMode(PDO::FETCH_CLASS, 'Portfolio');
     $STH->execute();
     
-    while($portfolio = $STH->fetch()){ /* @var $portfolio Portfolio */
-      $portfolio->fetchPortfolioGallery();
+    while($portfolio = $STH->fetch()){ /* @var $portfolio Portfolio */ // Prochází jednotlivá portfolia...
+      $portfolio->fetchPortfolioGallery(); // Stahuje galerii jednoho portoflia
       
-      $portfolio_list[$portfolio->portfolio_id] = $portfolio;
+      $portfolio_list[$portfolio->portfolio_id] = $portfolio; // Ukládá portfolio do seznamu
     }
 
     return $portfolio_list;
-  } 
-  
+  }
 
 }

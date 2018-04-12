@@ -20,7 +20,7 @@ class SkillType
 	}
 
 	static function isSelectedType($type){
-		return Rychecky::makeCssName($type) == self::selectedSkillType();
+		return make_css_name($type) == self::selectedSkillType();
 	}
 
 

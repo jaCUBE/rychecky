@@ -1,10 +1,10 @@
 <?php
 
 require 'autoload.php'; // Načítání tříd
+include 'vendor/autoload.php'; // Načítání tříd přes Composer
+
 require 'config.php'; // Konfigurace
 require 'fn.php'; // Helper funkce pro PHP
-
-include 'libraries/kint/Kint.class.php'; // Debugging pro PHP
 
 
 
