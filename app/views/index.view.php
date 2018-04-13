@@ -3,7 +3,7 @@
 
 
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-8">
     <h2>
       <i class="fa fa-user"></i> <?= e('O mně', 'About Me') ?>
     </h2>
@@ -49,7 +49,14 @@
     
     <hr class="clear" />
 
-    <?php Rychecky::view('socialbar.master', $social_list) ?>
+
+    <div class="center" style="margin: 20px">
+      <a href="http://cv.rychecky.cz/" class="btn btn-lg btn-dark">
+        <i class="fa fa-download"></i> <?= e('Stáhnout resumé', 'Download Resumé') ?>
+      </a>
+    </div>
+
+		<?php Rychecky::view('socialbar.master', $social_list) ?>
   </div>
   
   
@@ -70,23 +77,5 @@
     </div>
     
     <hr style="visibility: hidden; clear: both" />
-  </div>
-  
-  
-  
-  
-  
-  <div class="col-md-3">
-    <div class="center" style="margin-top: 80px">
-      <a href="http://cv.rychecky.cz/" class="btn btn-lg btn-info">
-        <i class="fa fa-download"></i> <?= e('Stáhnout resumé', 'Download Resumé') ?>
-      </a>
-    </div>
-      
-    <div class="center" style="margin-top: 40px;">
-      <a href="mailto:jakub@rychecky.cz" class="btn btn-dark">
-        <i class="fa fa-envelope-o"></i> jakub@rychecky.cz
-      </a>
-    </div>
   </div>
 </div>

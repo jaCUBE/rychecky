@@ -4,7 +4,7 @@
 
 <div id="contact">  
   <div class="row">   
-    <div class="col-md-7">
+    <div class="col-lg-7">
       <div class="social-bar" style="margin-top: 20px;">
         <?php Rychecky::view('socialbar.master', $social_list); ?>
       </div>
@@ -14,14 +14,14 @@
       
       
       <div class="row" id="contact-table">
-        <div class="col-md-6" id="channels">
+        <div class="col-lg-6" id="channels">
           <div class="email"><a href="mailto:<?= EMAIL ?>"> <?= EMAIL ?></a></div>
           <div class="tel"><a href="tel:<?= str_replace(' ', '', PHONE) ?>"> <?= e('', '+420').' '.PHONE ?></a></div>
           <br />
           <div class="bank"><i class="fa fa-institution"></i> <?= e('Číslo účtu', 'Bank account') ?>: <?= BANK ?></a></div>
         </div>
         
-        <div class="col-md-6" id="address">
+        <div class="col-lg-6" id="address">
           <div class="name">Jakub Rychecký</div>
           <div class="street"><?= ADDR_STREET.' '.ADDR_STREET_NUMBER ?></div>
           <div class="city"><?= ADDR_ZIP.' '.ADDR_CITY ?></div>
@@ -33,8 +33,8 @@
     
     
     
-    <div class="col-md-5 center">
-      <img src="<?= URL ?>/images/qr.png" alt="QR kód" title="QR kód" class="qr" />
+    <div class="col-lg-5 center">
+      <img src="<?= URL ?>/images/qr.png" alt="QR kód" title="QR kód" class="qr d-none d-lg-block" />
     </div>    
   </div>
 
