@@ -26,9 +26,11 @@ ob_start(); ?>
     </div>
 
     <div class="gallery">
-      <?php foreach($p->gallery as $g){ ?>
+      <?php foreach ($p->gallery as $g) {
+    ?>
         <?= $g->htmlFancybox() ?>
-      <?php } ?>
+      <?php
+} ?>
     </div>
   </div>
 
@@ -36,7 +38,7 @@ ob_start(); ?>
   <div class="col-md-8">
     <div class="detail">
       <div class="text">
-        <?= $p->detail ? $p->detail : $p->detail_short // Popis portfolio ?>
+        <?= $p->detail ? $p->detail : $p->detail_short // Popis portfolio?>
       </div>
 
       <div class="center">

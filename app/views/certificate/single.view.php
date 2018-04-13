@@ -2,7 +2,7 @@
 
 
 
-<li class="event <?= make_css_name($certificate->type) ?> <?= $i % 2 == 1 ? 'odd' : 'even' // Sudá-lichá událost ?>" data-type="<?= $certificate->type ?>">
+<li class="event <?= make_css_name($certificate->type) ?> <?= $i % 2 == 1 ? 'odd' : 'even' // Sudá-lichá událost?>" data-type="<?= $certificate->type ?>">
   <div class="date">
     <span class="start"><?= date('n/Y', strtotime($certificate->issue_date)) ?></span>
   </div>

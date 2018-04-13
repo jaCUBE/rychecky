@@ -27,7 +27,7 @@
           Vše okolo počítačů je mým koníčkem už od dětství, ale čas trávím i četbou, sledováním filmů nebo fotografováním.
           Určitě mi neváhejte napsat s čímkoliv.
         </p>
-      <?php $info_cs = ob_get_clean(); // České info z bufferu ?>
+      <?php $info_cs = ob_get_clean(); // České info z bufferu?>
 
 
 			<?php ob_start(); ?>
@@ -45,11 +45,11 @@
         All about computers has always been my hobby from the childhood. Also, I spend time reading books, watching films
         or making photos. Don’t hesitate to contact me with any question.
       </p>
-			<?php $info_en = ob_get_clean(); // Anglické info z bufferu ?>
+			<?php $info_en = ob_get_clean(); // Anglické info z bufferu?>
     </div>
 
 
-    <?= e($info_cs, $info_en) // České/anglické info ?>
+    <?= e($info_cs, $info_en) // České/anglické info?>
     
     <hr class="clear" />
 
@@ -73,11 +73,13 @@
     </h2>
 
     <div class="hobby-list">
-      <?php foreach($hobby_list as $hobby){ ?>
-        <div class="hobby" style="<?= array_to_css($hobby->randomHobbyCss()) // Náhodná pozice ve wordcloudu ?>">
-          <?= $hobby->name // Název koníčku ?>
+      <?php foreach ($hobby_list as $hobby) {
+    ?>
+        <div class="hobby" style="<?= array_to_css($hobby->randomHobbyCss()) // Náhodná pozice ve wordcloudu?>">
+          <?= $hobby->name // Název koníčku?>
         </div>
-      <?php } ?>
+      <?php
+} ?>
     </div>
     
     <hr style="visibility: hidden; clear: both" />

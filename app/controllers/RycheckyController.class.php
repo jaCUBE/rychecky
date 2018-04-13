@@ -12,56 +12,62 @@
  * @author jaCUBE
  */
 
-class RycheckyController extends Controller  {
+class RycheckyController extends Controller
+{
 
-	/**
-	 * @brief
-	 */
-	public function __construct(){
-		parent::__construct();
-	}
+    /**
+     * @brief
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
-	public function index(){
-    Rychecky::view('index', [
+    public function index()
+    {
+        Rychecky::view('index', [
         'hobby' => HobbyList::fetchHobbyList(),
         'social' => SocialList::fetchSocialList()
     ]);
-  }
+    }
 
 
 
 
 
-	/**
-	 *
-	 */
+    /**
+     *
+     */
   
-  public function skills(){
-    Rychecky::view('skill.master', [
+    public function skills()
+    {
+        Rychecky::view('skill.master', [
         'skill_list' => SkillList::fetchSkillListByType(SkillListType::selectedSkillType()),
         'skill_stats' => SkillListType::fetchSkillTypeStats()
     ]);
-  }
+    }
   
   
-  public function portfolio(){
-    Rychecky::view('portfolio.master', PortfolioList::fetchPortfolioList());
-  }
+    public function portfolio()
+    {
+        Rychecky::view('portfolio.master', PortfolioList::fetchPortfolioList());
+    }
   
   
-  public function experiences(){
-    Rychecky::view('experience.master', ExperienceList::fetchExperienceList());
-  }
+    public function experiences()
+    {
+        Rychecky::view('experience.master', ExperienceList::fetchExperienceList());
+    }
   
   
-  public function certificate(){
-    Rychecky::view('certificate.master', CertificateList::fetchCertificateList());
-  }
+    public function certificate()
+    {
+        Rychecky::view('certificate.master', CertificateList::fetchCertificateList());
+    }
   
   
-  public function contact(){
-    Rychecky::view('contact', SocialList::fetchSocialList());
-  }
-
-
+    public function contact()
+    {
+        Rychecky::view('contact', SocialList::fetchSocialList());
+    }
 }

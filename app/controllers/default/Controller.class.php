@@ -8,9 +8,9 @@
 
 class Controller
 {
-	public function __construct() {
-		$action = Rychecky::action();
-		$this->$action();
-	}
-
+    public function __construct()
+    {
+        $action = Rychecky::action();
+        $this->$action();
+    }
 }

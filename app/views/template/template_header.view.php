@@ -12,8 +12,10 @@
 
 <div class="alert alert-success">
   <i class="fa fa-briefcase"></i>
-  <?= e('Hledám nové pracovní příležitosti, kde bych mohl uplatnit a zlepšovat své dovednosti. Budu vděčný za všechny zajímavé nabídky. :)',
-        'I seek new job opportunities to utilize and improve my skills. I will be glad for any interesting offers. :)') ?>
+  <?= e(
+    'Hledám nové pracovní příležitosti, kde bych mohl uplatnit a zlepšovat své dovednosti. Budu vděčný za všechny zajímavé nabídky. :)',
+        'I seek new job opportunities to utilize and improve my skills. I will be glad for any interesting offers. :)'
+) ?>
 </div>
 
 

@@ -7,8 +7,9 @@
  * @return string Výsledný řetězec
  */
 
-function e($cs = '', $en = ''){
-	return Language::getLocale() == 'cs' ? $cs : $en;
+function e(string $cs = '', string $en = ''): string
+{
+  return Language::getLocale() == 'cs' ? $cs : $en;
 }
 
 
@@ -21,15 +22,16 @@ function e($cs = '', $en = ''){
  * @return string Řetězec s odstraněnou diakritikou
  */
 
-function replace_czech_characters($string){
-	$original = [ 'á', 'č', 'ď', 'é', 'ě', 'í', 'ľ', 'ň', 'ó', 'ř', 'š', 'ť', 'ú', 'ů', 'ý', 'ž',
-			'Á', 'Č', 'Ď', 'É', 'Ě', 'Í', 'Ľ', 'Ň', 'Ó', 'Ř', 'Š', 'Ť', 'Ú', 'Ů', 'Ý', 'Ž',
-			'ö', 'ü']; // Česká diakritika
-	$replace  = [ 'a', 'c', 'd', 'e', 'e', 'i', 'l', 'n', 'o', 'r', 's', 't', 'u', 'u', 'y', 'z',
-			'A', 'C', 'D', 'E', 'E', 'I', 'L', 'N', 'O', 'R', 'S', 'T', 'U', 'U', 'Y', 'Z',
-			'o', 'u']; // Znaky bez diakritiky
+function replace_czech_characters(string $string): string
+{
+  $original = [ 'á', 'č', 'ď', 'é', 'ě', 'í', 'ľ', 'ň', 'ó', 'ř', 'š', 'ť', 'ú', 'ů', 'ý', 'ž',
+          'Á', 'Č', 'Ď', 'É', 'Ě', 'Í', 'Ľ', 'Ň', 'Ó', 'Ř', 'Š', 'Ť', 'Ú', 'Ů', 'Ý', 'Ž',
+          'ö', 'ü']; // Česká diakritika
+  $replace  = [ 'a', 'c', 'd', 'e', 'e', 'i', 'l', 'n', 'o', 'r', 's', 't', 'u', 'u', 'y', 'z',
+          'A', 'C', 'D', 'E', 'E', 'I', 'L', 'N', 'O', 'R', 'S', 'T', 'U', 'U', 'Y', 'Z',
+          'o', 'u']; // Znaky bez diakritiky
 
-	return str_replace($original, $replace, $string); // Vrací řetězec s odstraněnou diakritikou
+  return str_replace($original, $replace, $string); // Vrací řetězec s odstraněnou diakritikou
 }
 
 
@@ -42,14 +44,15 @@ function replace_czech_characters($string){
  * @return string Výsledné CSS
  */
 
-function array_to_css($array){
-	$css = '';
+function array_to_css(array $array): string
+{
+  $css = '';
 
-	foreach($array as $property => $value){
-		$css .= $property.': '.$value.';';
-	}
+  foreach ($array as $property => $value) {
+    $css .= $property.': '.$value.';';
+  }
 
-	return $css;
+  return $css;
 }
 
 
@@ -62,16 +65,17 @@ function array_to_css($array){
  * @return string Formátovaný řetězec na CSS třídu.
  */
 
-function make_css_name($string){
-	$string = replace_czech_characters($string); // Odstranění diakritiky
+function make_css_name(string $string): string
+{
+  $string = replace_czech_characters($string); // Odstranění diakritiky
 
-	$original = [':', '.', '/', ' ', '(', ')', ',', '[', ']', '_'];
-	$replace  = ['', '-', '-', '-', '-', '-', '', '-', '', '-'];
+  $original = [':', '.', '/', ' ', '(', ')', ',', '[', ']', '_'];
+  $replace  = ['', '-', '-', '-', '-', '-', '', '-', '', '-'];
 
-	$string = str_replace($original, $replace, $string);
-	$string = mb_strtolower($string);
+  $string = str_replace($original, $replace, $string);
+  $string = mb_strtolower($string);
 
-	return $string;
+  return $string;
 }
 
 
@@ -84,8 +88,9 @@ function make_css_name($string){
  * @return string URL společně s hashem souboru
  */
 
-function asset_with_hash($asset){
-	return URL.'/'.$asset.'?sha1='.sha1_file($asset);
+function asset_with_hash(string $asset): string
+{
+  return URL.'/'.$asset.'?sha1='.sha1_file($asset);
 }
 
 
@@ -97,7 +102,8 @@ function asset_with_hash($asset){
  * @return PDO Objekt připojení k databázi přes PDO
  */
 
-function db(){
-	global $_DB;
-	return $_DB;
+function db(): PDO
+{
+  global $_DB;
+  return $_DB;
 }

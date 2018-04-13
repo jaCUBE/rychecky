@@ -35,7 +35,7 @@
 
 
 <div class="isotope">
-  <?php foreach($portfolio_list as $i => $portfolio): // Vykresluje jednotlivé položky portfolia...
+  <?php foreach ($portfolio_list as $i => $portfolio): // Vykresluje jednotlivé položky portfolia...
     Rychecky::view('portfolio.single', $portfolio);
   endforeach; ?>
 </div>

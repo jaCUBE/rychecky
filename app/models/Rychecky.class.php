@@ -6,21 +6,23 @@
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
-class Rychecky {
+class Rychecky
+{
 
-	/**
-	 * Vytvoří PDO připojení k databázi v globální proměnné.
-	 */
-  
-  static function databaseConnect(){
+  /**
+   * Vytvoří PDO připojení k databázi v globální proměnné.
+   */
+
+  public static function databaseConnect()
+  {
     global $_DB;
 
     try {  // Připojení k databázi pomocí PDO
       $_DB = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWORD); // Připojení s konstantami z Wordpressu
       $_DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $_DB->query('SET NAMES utf8'); // Česká diakritika. Husa upálili příliš pozdě... :)
-    }catch(PDOException $e) {  
-    	echo $e->getMessage();
+    } catch (PDOException $e) {
+      echo $e->getMessage();
     }
   }
 
@@ -28,13 +30,14 @@ class Rychecky {
 
 
 
-	/**
-	 * Zobrazuje view.
-	 * @param string $name Název view (např. 'layout.master')
-	 * @param mixed $data Data potřebná pro vykreslení view
-	 */
+  /**
+   * Zobrazuje view.
+   * @param string $name Název view (např. 'layout.master')
+   * @param mixed $data Data potřebná pro vykreslení view
+   */
 
-  static function view($name, $data = NULL){
+  public static function view(string $name, $data = null)
+  {
     $path = 'app/views/'; // Cesta k views
     $filename = str_replace('.', '/', $name).'.view.php'; // Název souboru views
 
@@ -45,13 +48,13 @@ class Rychecky {
 
 
 
-	/**
-	 * Poskytuje hodnotu akce z routingu, důležité zejména pro řadič.
-	 * @return string Hodnota akce
-	 */
+  /**
+   * Poskytuje hodnotu akce z routingu, důležité zejména pro řadič.
+   * @return string Hodnota akce
+   */
 
-	static function action(){
-		return $_GET['action'] ?? 'index';
-	}
-
+  public static function action(): string
+  {
+    return $_GET['action'] ?? 'index';
+  }
 }
