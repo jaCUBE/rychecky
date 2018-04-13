@@ -79,6 +79,20 @@ function make_css_name($string){
 
 
 /**
+ * Generuje odkaz na JS/CSS soubor společně s jeho hashem v GET kvůli cache.
+ * @param string $asset Cesta k JS/CSS souboru
+ * @return string URL společně s hashem souboru
+ */
+
+function asset_with_hash($asset){
+	return URL.'/'.$asset.'?sha1='.sha1_file($asset);
+}
+
+
+
+
+
+/**
  * Poskytuje objekt PDO s připojením k databázi.
  * @return PDO Objekt připojení k databázi přes PDO
  */

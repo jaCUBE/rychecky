@@ -26,8 +26,8 @@
     <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/timeline.css/1.0.0/timeline.min.css" />
     
     
-    <link rel="stylesheet" type="text/css" href="<?= URL.'/css/rychecky.css?v='.time() ?>">
-    <script src="<?= URL.'/js/rychecky.min.js?v='.time() ?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?= asset_with_hash('css/rychecky.css') ?>">
+    <script src="<?= asset_with_hash('js/rychecky.min.js') ?>"></script>
     
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33858105-3"></script>
