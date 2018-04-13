@@ -8,7 +8,7 @@ define('DB_PASSWORD', '');
 
 
 // URL webu a Google Analytics
-define('URL', 'http://localhost/rychecky');
+define('URL', 'http://rychecky.local');
 define('GOOGLE_ANALYTICS', 'UA-33858105-3');
 
 
