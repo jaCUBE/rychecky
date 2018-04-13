@@ -3,13 +3,17 @@
 
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-7">
     <h2>
       <i class="fa fa-user"></i> <?= e('O mně', 'About Me') ?>
     </h2>
 
 
     <div class="index-text">
+      <div class="photo">
+        <img src="<?= URL ?>/files/photo.jpg" alt="" />
+      </div>
+
       <?php ob_start(); ?>
         <p>
           Momentálně se živím jako vývojář webového software ve vědecké organizaci, která se věnuje jadernému výzkumu.
@@ -63,7 +67,7 @@
   
   
   
-  <div class="col-md-4">
+  <div class="col-md-5">
     <h2>
       <i class="fa fa-cloud"></i> <?= e('Zájmy', 'Hobbies') ?>
     </h2>
