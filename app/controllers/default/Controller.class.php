@@ -1,16 +1,23 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: jaCUBE
- * Date: 12.04.2018
- * Time: 18:08
+ * Základní řadič.
+ * @author Jakub Rychecký <jakub@rychecky.cz>
+ * @class Controller
  */
 
 class Controller
 {
-    public function __construct()
-    {
-        $action = Rychecky::action();
-        $this->$action();
+  /**
+   * Konstruktor spouští příslušnou metodu řadiče, která odpovídá akci.
+   */
+
+  public function __construct()
+  {
+    $action = Rychecky::action(); // Akce
+
+    if(method_exists($this, $action)){ // Reflexe. Pokud metoda existuje, spustí se.
+      $this->$action();
     }
+  }
 }
