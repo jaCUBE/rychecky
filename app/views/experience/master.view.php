@@ -8,8 +8,8 @@
 
 <div id="experiences">
   <ul class="timeline">
-    <?php foreach($experience_list as $i => $experience){ // Vykresluje jednotlivé zkušenosti... ?>
-        <?php Rychecky::view('experience.single', ['experience' => $experience, 'i' => $i]) ?>
-    <?php } ?>
+    <?php foreach($experience_list as $i => $experience): // Vykresluje jednotlivé zkušenosti...
+      Rychecky::view('experience.single', ['experience' => $experience, 'i' => $i]);
+    endforeach; ?>
   </ul>
 </div>

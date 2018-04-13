@@ -9,8 +9,8 @@
 
 <div id="certificate">
   <ul class="timeline">
-    <?php foreach($certificate_list as $i => $certificate){ // Vykresluje jednotlivé certifikáty... ?>
-        <?php Rychecky::view('certificate.single', ['certificate' => $certificate, 'i' => $i]) ?>
-    <?php } ?>
+    <?php foreach($certificate_list as $i => $certificate): // Vykresluje jednotlivé certifikáty...
+        Rychecky::view('certificate.single', ['certificate' => $certificate, 'i' => $i]);
+    endforeach; ?>
   </ul>
 </div>

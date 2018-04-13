@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @brief Funkce pro vypisování dvou řetězců dle jazyka.
+ * Vypisuje jeden ze dvou řetězců dle jazyka.
  * @param string $cs Řetězec pro českou mutaci
  * @param string $en Řetězec pro anglickou mutaci
  * @return string Výsledný řetězec
@@ -9,20 +9,6 @@
 
 function e($cs = '', $en = ''){
 	return Language::getLocale() == 'cs' ? $cs : $en;
-}
-
-
-
-
-
-/**
- * Poskytuje objekt PDO s připojením k databázi.
- * @return PDO Objekt připojení k databázi přes PDO
- */
-
-function db(){
-	global $_DB;
-	return $_DB;
 }
 
 
@@ -51,8 +37,9 @@ function replace_czech_characters($string){
 
 
 /**
- * @param $array
- * @return string
+ * Převádí pole ve formátu 'atribut => hodnota' na CSS.
+ * @param $array Pole 'atribut => hodnota'
+ * @return string Výsledné CSS
  */
 
 function array_to_css($array){
@@ -85,4 +72,18 @@ function make_css_name($string){
 	$string = mb_strtolower($string);
 
 	return $string;
-}  
+}
+
+
+
+
+
+/**
+ * Poskytuje objekt PDO s připojením k databázi.
+ * @return PDO Objekt připojení k databázi přes PDO
+ */
+
+function db(){
+	global $_DB;
+	return $_DB;
+}

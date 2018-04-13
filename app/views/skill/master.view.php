@@ -28,8 +28,8 @@
   
   
   <div class="col-md-9">
-    <?php foreach($skill_list as $skill){ // Procházení jednotlivých skupin dovedností... ?>
-      <?php Rychecky::view('skill.single', $skill) ?>
-    <?php } ?>    
+    <?php foreach($skill_list as $skill): // Procházení jednotlivých skupin dovedností...
+      Rychecky::view('skill.single', $skill);
+    endforeach; ?>
   </div>
 </div>
