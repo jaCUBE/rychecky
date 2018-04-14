@@ -126,7 +126,7 @@ function timeline_type_focus(){
 function gmap_resize(){
   var container = $('#content');
   var iframe = $('#gmap-iframe');
-  var width = parseInt(container.css('width')) - 2; // Šířka kontejneru
+  var width = parseInt(container.css('width')); // Šířka kontejneru
 
   var css = { // Nové CSS pro iframe
     'width': width+'px',

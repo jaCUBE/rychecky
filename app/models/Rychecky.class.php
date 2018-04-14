@@ -18,8 +18,8 @@ class Rychecky
     global $_DB;
 
     try {  // Připojení k databázi pomocí PDO
-        $dsn = 'mysql:host='.getenv('DB_HOST').';dbname='.getenv('DB_NAME');
-      $_DB = new PDO($dsn, getenv('DB_USER'), getenv('DB_PASSWORD')); // Připojení s konstantami z Wordpressu
+        $dsn = 'mysql:host='.env('DB_HOST').';dbname='.env('DB_NAME');
+      $_DB = new PDO($dsn, env('DB_USER'), env('DB_PASSWORD')); // Připojení s konstantami z Wordpressu
       $_DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $_DB->query('SET NAMES utf8'); // Česká diakritika. Husa upálili příliš pozdě... :)
     } catch (PDOException $e) {
@@ -58,4 +58,19 @@ class Rychecky
   {
     return $_GET['action'] ?? 'index';
   }
+
+
+
+
+
+  /**
+   * Poskytuje celou adresu (ulice, číslo popisné, PSČ, město).
+   * @return string Celá adresa
+   */
+
+  public static function fullAddress(): string
+  {
+    return env('ADDR_STREET').' '.env('ADDR_STREET_NUMBER').', '.env('ADDR_ZIP').' '.env('ADDR_CITY');
+  }
+
 }

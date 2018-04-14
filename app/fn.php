@@ -98,12 +98,27 @@ function asset_with_hash(string $asset): string
 
 
 /**
+ * Získává hodnotu proměnné prostředí dle názvu (alternativa k getenv(), které fungovalo divně).
+ * @param string $name Název proměnné prostředí
+ * @return string Hodnota proměnné prostředí
+ */
+
+function env(string $name): string
+{
+    return (string) $_ENV[$name] ?? $_SERVER[$name]; // $_ENV má přednost
+}
+
+
+
+
+
+/**
  * Poskytuje objekt PDO s připojením k databázi.
  * @return PDO Objekt připojení k databázi přes PDO
  */
 
 function db(): PDO
 {
-  global $_DB;
-  return $_DB;
+    global $_DB;
+    return $_DB;
 }
