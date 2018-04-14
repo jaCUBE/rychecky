@@ -1,517 +1,439 @@
 @import '_vars.less';
 @import 'rychecky_nav.less';
 
-
-
-
-
-
-
-
-
 * { // Nastavení fontu na webu
-  font-family: 'Open Sans';
+    font-family: 'Open Sans';
 }
 
 h1, .lead { // Jiný font pro nadpis a podnadpis
-  font-family: 'Lato';
+    font-family: 'Lato';
 }
-
 
 a { // Odkazy
-  color: @col-secondary-lighter;
-  font-weight: bold;
-  
-  &:hover, &:focus {
-    color: @col-secondary;
-    text-decoration: none;
-  }
-}
+    color: @col-secondary-lighter;
+    font-weight: bold;
 
+    &:hover, &:focus {
+        color: @col-secondary;
+        text-decoration: none;
+    }
+}
 
 .center { // Obecná třída pro zarovnání na střed
-  text-align: center;
-  margin: auto;
+    text-align: center;
+    margin: auto;
 }
-
 
 .right { // Obecná třída pro zarovnání vpravo
-  text-align: right;
+    text-align: right;
 }
 
-
 .container { // Hlavní container
-  width: 80%;
-  margin: auto;
-  padding-top: 20px;
+    width: 80%;
+    margin: auto;
+    padding-top: 20px;
 }
 
 hr.clear {
-  clear: both;
-  visibility: hidden;
-  margin: 1px;
+    clear: both;
+    visibility: hidden;
+    margin: 1px;
 }
-
 
 body {
-  padding-bottom: 3em;
+    padding-bottom: 3em;
 }
 
-
 .lead {
-  i { // Ikona v podnadpisu
-    margin-right: 10px;
-  }
+    i { // Ikona v podnadpisu
+        margin-right: 10px;
+    }
 }
 
 .alert {
-  margin: 0px;
-  padding: 10px 15px;
+    margin: 0px;
+    padding: 10px 15px;
 }
-
-
-
 
 #content { // Hlavní obsah
-  width: 100%;
-  min-height: 100px;
-  background: @col-white;
-  color: @col-primary;
-  padding: 1em 3em 2em;
-  font-size: 0.9em;
-  
-  
-  h2 { // Hlavní nadpis
-    color: @col-secondary-lighter;
-    font-weight: 500;
-    margin: 15px 0px 20px;
-  }
+    width: 100%;
+    min-height: 100px;
+    background: @col-white;
+    color: @col-primary;
+    padding: 1em 3em 2em;
+    font-size: 0.9em;
+
+    h2 { // Hlavní nadpis
+        color: @col-secondary-lighter;
+        font-weight: 500;
+        margin: 15px 0px 20px;
+    }
 }
-
-
-
-
-
 
 .skill { // Box jedné dovednosti
-  margin: 10px;
-  width: 200px;
-  height: 100px;
-  float: left;
-  
-  .name { // Název dovednosti
-    font-weight: bold;
-  }
-  
-  .progress { // Progressbar
-    margin: 3px 0px;
-    height: 0.3em;
-    background: #C1C1C1;
-    
-    .progress-bar {
-      background: @col-secondary-lighter;
+    margin: 10px;
+    width: 200px;
+    height: 100px;
+    float: left;
+
+    .name { // Název dovednosti
+        font-weight: bold;
     }
-  }
-  
-  .detail { // Detailní popis
-    font-size: 0.8em;
-  }
+
+    .progress { // Progressbar
+        margin: 3px 0px;
+        height: 0.3em;
+        background: #C1C1C1;
+
+        .progress-bar {
+            background: @col-secondary-lighter;
+        }
+    }
+
+    .detail { // Detailní popis
+        font-size: 0.8em;
+    }
 }
-
-
-
-
 
 .list-group { // Seznam skupin dovedností
-  background: @col-primary-lighter;
+    background: @col-primary-lighter;
 
-  a {
-    color: #EBEBEB;
+    a {
+        color: #EBEBEB;
 
-    &:hover {
-      background: @col-primary !important;
+        &:hover {
+            background: @col-primary !important;
+        }
+
+        &.active { // Práve zvolená skupi
+            background: #657483;
+            border: none;
+        }
     }
-
-    &.active { // Práve zvolená skupi
-      background: #657483;
-      border: none;
-    }
-  }
 }
-
-
-
-
 
 .portfolio { // Jedna položka portfolia
-  width: 200px;
-  height: 155px;
-  border:  1px solid @col-secondary-lighter;
-  margin: 2px;
-  background: #FFFFFF;
-  
-  &:hover { // Položka porfolia při najetí kurzorem
-    cursor: pointer;
-    border-color: @col-secondary;    
-    background: @col-primary-lighter;
-    color: #FFFFFF !important;
-    opacity: 1.0;
-    
-    .imgage {
-      opacity: 1.0;
+    width: 200px;
+    height: 155px;
+    border: 1px solid @col-secondary-lighter;
+    margin: 2px;
+    background: #FFFFFF;
+
+    &:hover { // Položka porfolia při najetí kurzorem
+        cursor: pointer;
+        border-color: @col-secondary;
+        background: @col-primary-lighter;
+        color: #FFFFFF !important;
+        opacity: 1.0;
+
+        .imgage {
+            opacity: 1.0;
+        }
+
+        .name {
+            color: @col-white;
+
+            .fa {
+                color: @col-white;
+            }
+        }
+
+        .detail {
+            color: #FFFFFF;
+        }
     }
-    
-    .name {
-      color: @col-white;
-      
-      .fa {
-        color: @col-white;
-      }
+
+    .image { // Obrázek portfolia
+        width: 198px;
+        height: 80px;
+        opacity: 0.7;
+
+        img {
+            border-bottom: 1px solid #CCCCCC;
+        }
     }
-    
+
+    .info { // Informace
+        float: left;
+        margin: 5px;
+    }
+
+    .name { // Název portfolia
+        color: @col-secondary-lighter;
+        font-weight: bold;
+
+        .fa {
+            color: #6B6990;
+
+            &:first-child {
+                margin-left: 5px;
+            }
+        }
+    }
+
     .detail {
-      color: #FFFFFF;
+        color: @col-primary-darker;
+        font-size: 0.7em;
     }
-  }
-  
-  .image { // Obrázek portfolia
-    width: 198px;
-    height: 80px;
-    opacity: 0.7;
-    
-    img {
-      border-bottom: 1px solid #CCCCCC;
-    }
-  }
-  
-  .info { // Informace
-    float: left;
-    margin: 5px;
-  }
-  
-  .name { // Název portfolia
-    color: @col-secondary-lighter;
-    font-weight: bold;
-    
-    .fa {
-      color: #6B6990;
-      
-      &:first-child{
-        margin-left: 5px;
-      }
-    }
-  }
-  
-  .detail {
-    color: @col-primary-darker;
-    font-size: 0.7em;
-  }
 }
 
-
-.portfolio-menu{
-  .col-md-6 {
-    padding: 10px 25px;
-  }
+.portfolio-menu {
+    .col-md-6 {
+        padding: 10px 25px;
+    }
 }
 
 .isotope {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .btn-label {
-  font-size: 0.8em;
-  font-weight: bold;
-  margin-bottom: 3px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-bottom: 3px;
 }
-
-
 
 .modal-lg {
-  max-width: 100% !important;
+    max-width: 100% !important;
 
-  .modal-dialog {
-    max-width: 768px !important;
-  }
+    .modal-dialog {
+        max-width: 768px !important;
+    }
 }
-
-
 
 .portfolio-modal { // Modální dialog jednoho portfolia
-  .detail { // Popis a labely portfolia v dialogu
-    padding-left: 20px;
-    font-size: 0.9em;
-    
-    .text { // Text portfolia
-      margin-top: 15px;
+    .detail { // Popis a labely portfolia v dialogu
+        padding-left: 20px;
+        font-size: 0.9em;
+
+        .text { // Text portfolia
+            margin-top: 15px;
+        }
+
+        .url { // Odkaz portfolia
+            margin: 10px;
+        }
     }
-      
-    .url { // Odkaz portfolia
-      margin: 10px;
+
+    .image { // Obrázek portfolia v dialogu
+        img {
+            border: 1px solid @col-primary;
+        }
     }
-  }
-  
-  
-  .image { // Obrázek portfolia v dialogu
-    img {
-      border: 1px solid @col-primary;
+
+    .gallery { // Galerie screenshotů
+        width: 100%;
+        text-align: center;
+        margin-top: 15px;
+
+        img { // Obrázek v galerii
+            height: 40px;
+            display: inline-block;
+            border: 2px solid @col-primary;
+            opacity: 0.8;
+            margin: 3px;
+
+            &:hover {
+                opacity: 1.0;
+            }
+        }
     }
-  }
-  
-  .gallery { // Galerie screenshotů
-    width: 100%;
-    text-align: center;
-    margin-top: 15px;
-    
-    img { // Obrázek v galerii
-      height: 40px;
-      display: inline-block;
-      border: 2px solid @col-primary;
-      opacity: 0.8;
-      margin: 3px;
-      
-      &:hover {
-        opacity: 1.0;
-      }      
-    }
-  }
 }
-
-
-
-
 
 .fancybox-overlay { // Overlay pro Fancybox
-  .fancybox-skin { // Vzhled Fancybox okna
-    background: @col-primary;
-    
-    .fancybox-title { // Popisek obrázku
-      color: #FFFFFF;
-      width: 100%;
-      background: @col-primary;
-      font-weight: bold;
-      opacity: 0.8;
+    .fancybox-skin { // Vzhled Fancybox okna
+        background: @col-primary;
+
+        .fancybox-title { // Popisek obrázku
+            color: #FFFFFF;
+            width: 100%;
+            background: @col-primary;
+            font-weight: bold;
+            opacity: 0.8;
+        }
     }
-  }
 }
-
-
-
-
-
 
 .social-bar { // Panel s tlačítky sociálních sítí
-  width: 100%;
-  text-align: center;
-              
-  .btn-social { // Jedno tlačítko sociální sítě
-    height: 36px;
-    width: 36px;
-    border-radius: 50%;
-    border: 1px solid #70808f;
-    display: inline-block;
-    color: #ffffff;
-    padding-top: 6px;
-    opacity: 0.7;
-    margin-top: 5px;
-    
-    &:hover { // Tlačítko sítě při najetí
-      cursor: pointer;
-      opacity: 1.0;
-    }
-  }
-}
+    width: 100%;
+    text-align: center;
 
+    .btn-social { // Jedno tlačítko sociální sítě
+        height: 36px;
+        width: 36px;
+        border-radius: 50%;
+        border: 1px solid #70808f;
+        display: inline-block;
+        color: #ffffff;
+        padding-top: 6px;
+        opacity: 0.7;
+        margin-top: 5px;
+
+        &:hover { // Tlačítko sítě při najetí
+            cursor: pointer;
+            opacity: 1.0;
+        }
+    }
+}
 
 .btn-sm {
-  font-size: 12px;
+    font-size: 12px;
 }
-
-
-
-
-
 
 .timeline { // Nastavení vzhledu CSS časové osy
-  max-width: 900px;
-  
-  .event { // Událost časové osy
-    text-align: left;
-    border-color: #888888;
-    transition: opacity 0.5s ease;
-    
-    &:hover {
-      background: #FFFFFF;
-      border-color: @col-primary;
-    }
-    
-    &.odd {
-      margin-top: 35px;
-    }
+    max-width: 900px;
 
-    .title {
-      color: @col-primary;
-      font-weight: bold;
-      font-size: 17px;
+    .event { // Událost časové osy
+        text-align: left;
+        border-color: #888888;
+        transition: opacity 0.5s ease;
+
+        &:hover {
+            background: #FFFFFF;
+            border-color: @col-primary;
+        }
+
+        &.odd {
+            margin-top: 35px;
+        }
+
+        .title {
+            color: @col-primary;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .detail {
+            font-size: 12px;
+            margin: 5px 0px;
+        }
+
+        .date {
+            text-align: right;
+            font-size: 11px;
+            font-weight: bold;
+            color: @col-primary-lighter;
+        }
+
+        .company {
+            color: @col-secondary-lighter;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .note {
+            font-size: 10px;
+            font-style: italic;
+        }
     }
-    
-    .detail {
-      font-size: 12px;
-      margin: 5px 0px;
-    }
-    
-    .date {
-      text-align: right;
-      font-size: 11px;
-      font-weight: bold;
-      color: @col-primary-lighter;
-    }
-    
-    .company {
-      color: @col-secondary-lighter;
-      font-weight: bold;
-      font-size: 11px;
-    }
-    
-    .note {
-      font-size: 10px;
-      font-style: italic;
-    }
-  }
 }
-
-
-
-
-
-
-
-
-
-
 
 #contact { // Stránka kontaktů
-  #contact-table { // Tabulka kontaktů
-    margin-top: 50px;               
-    
-    #channels { // Kanály pro komunikaci
-      text-align: center;
-      
-      .email a { // E-mailová adresa
-        color: @col-secondary-lighter;
-        font-size: 25px;
-        text-decoration: none;
-        
-        &:hover {
-          color: @col-primary-lighter;
+    #contact-table { // Tabulka kontaktů
+        margin-top: 50px;
+
+        #channels { // Kanály pro komunikaci
+            text-align: center;
+
+            .email a { // E-mailová adresa
+                color: @col-secondary-lighter;
+                font-size: 25px;
+                text-decoration: none;
+
+                &:hover {
+                    color: @col-primary-lighter;
+                }
+            }
+
+            .tel a { // E-mailová adresa
+                color: @col-secondary-lighter;
+                text-decoration: none;
+
+                &:hover {
+                    color: @col-primary-lighter;
+                }
+            }
+
+            .bank { // Číslo účtu
+                text-align: left;
+                font-size: 12px;
+            }
         }
-      }
-      
-      .tel a { // E-mailová adresa
-        color: @col-secondary-lighter;
-        text-decoration: none;
-        
-        &:hover {
-          color: @col-primary-lighter;
+
+        #address { // Fyzická adresa
+            font-size: 18px;
         }
-      }
-      
-      .bank { // Číslo účtu
-        text-align: left;
-        font-size: 12px;
-      }
     }
-    
-    #address { // Fyzická adresa
-      font-size: 18px;
+
+    #gmap-iframe { // Iframe Google Maps
+        width: 100%;
+        border-top: 1px solid @col-primary;
     }
-  }
-  
-  #gmap-iframe { // Iframe Google Maps
-    width: 100%;
-    border-top: 1px solid @col-primary;
-  }
 }
-
-
 
 .photo {
-  float: left;
-  max-width: 200px;
-  min-width: 100px;
-  width: 25%;
-  margin-right: 10px;
+    float: left;
+    max-width: 200px;
+    min-width: 100px;
+    width: 25%;
+    margin-right: 10px;
 
-  img {
-    opacity: 0.6;
-    border-radius: 50%;
-    width: 100%;
+    img {
+        opacity: 0.6;
+        border-radius: 50%;
+        width: 100%;
 
-    &:hover {
-      opacity: 0.8;
+        &:hover {
+            opacity: 0.8;
+        }
     }
-  }
 }
 
+@media (max-width: 800px) {
+    // Zobrazení mobilního navbaru na displejích se šířkou 1080px a menší...
+    .skill {
+        height: auto;
+        width: 100%;
+    }
 
+    .container {
+        width: 96%;
 
-@media (max-width: 800px) { // Zobrazení mobilního navbaru na displejích se šířkou 1080px a menší...
- .skill {
-   height: auto;
-   width: 100%;
- }
- 
- .container {
-   width: 96%;
-   
-   #content {
-     padding: 1em 2em 2em;
-   }
- }
+        #content {
+            padding: 1em 2em 2em;
+        }
+    }
 
- .btn-social {
-   width: 50px !important;
-   height: 50px !important;
-   font-size: 20px;
-   padding-top: 9px !important;
- }
+    .btn-social {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 20px;
+        padding-top: 9px !important;
+    }
 }
-
-
-
-
 
 footer { // Zápatí webu
-  text-align: right;
-  font-size: 11px;
-  padding-right: 5px;
-  
-  a { // Odkazy v zápatí (e-mail, telefon)
-    color: #EEEEEE;
-    
-    &:hover {
-      color: @col-secondary-lighter;
+    text-align: right;
+    font-size: 11px;
+    padding-right: 5px;
+
+    a { // Odkazy v zápatí (e-mail, telefon)
+        color: #EEEEEE;
+
+        &:hover {
+            color: @col-secondary-lighter;
+        }
     }
-  }
 }
 
+@media (max-width: 1080px) {
+    // Zobrazení mobilního navbaru na displejích se šířkou 1080px a menší...
+    .collapsing {
+        overflow: hidden !important;
+    }
 
-
-
-
-
-
-
-
-
-
-@media (max-width: 1080px) { // Zobrazení mobilního navbaru na displejích se šířkou 1080px a menší...
-  .collapsing {
-      overflow: hidden!important;
-  }
-  
-  #contact-table, #address { // Úprava odsazení adres
-    margin: 20px !important;
-    font-size: 16px !important;
-  }
+    #contact-table, #address { // Úprava odsazení adres
+        margin: 20px !important;
+        font-size: 16px !important;
+    }
 }

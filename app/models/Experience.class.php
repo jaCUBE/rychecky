@@ -7,72 +7,71 @@
  */
 
 
-
 class Experience
 {
-  
-  /**
-   * @var integer $row_id ID záznamu
-   */
-  public $row_id;
 
-  /**
-   * @var integer $experience_id ID zkušenosti
-   */
-  public $experience_id;
+    /**
+     * @var integer $row_id ID záznamu
+     */
+    public $row_id;
 
-  /**
-   * @var string $type Typ zkušenosti
-   */
-  public $type;
+    /**
+     * @var integer $experience_id ID zkušenosti
+     */
+    public $experience_id;
 
-  /**
-   * @var string $title Název zkušenosti.
-   */
-  public $title;
+    /**
+     * @var string $type Typ zkušenosti
+     */
+    public $type;
 
-  /**
-   * @var string $company Společnost
-   */
-  public $company;
+    /**
+     * @var string $title Název zkušenosti.
+     */
+    public $title;
 
-  /**
-   * @var string $date_start Datum začátku zkušenosti
-   */
-  public $date_start;
+    /**
+     * @var string $company Společnost
+     */
+    public $company;
 
-  /**
-   * @var string|boolean $date_end Datum konce zkušenosti
-   */
-  public $date_end;
+    /**
+     * @var string $date_start Datum začátku zkušenosti
+     */
+    public $date_start;
 
-  /**
-   * @var string $detail Detailní popis zkušenosti
-   */
-  public $detail;
+    /**
+     * @var string|boolean $date_end Datum konce zkušenosti
+     */
+    public $date_end;
 
-  /**
-   * @var string $note Poznámka
-   */
-  public $note;
+    /**
+     * @var string $detail Detailní popis zkušenosti
+     */
+    public $detail;
 
-  /**
-   * @return string $locale Lokalizace (cs/en)
-   */
-  public $locale;
+    /**
+     * @var string $note Poznámka
+     */
+    public $note;
 
-  /**
-   * @var boolean $visible Viditelný?
-   */
-  public $visible;
+    /**
+     * @return string $locale Lokalizace (cs/en)
+     */
+    public $locale;
 
-  /**
-   * @var string $added Datum a čas přidání záznamu
-   */
-  public $added;
+    /**
+     * @var boolean $visible Viditelný?
+     */
+    public $visible;
 
-  /**
-   * @var string $timestamp Datum a čas změny záznamu
-   */
-  public $timestamp;
+    /**
+     * @var string $added Datum a čas přidání záznamu
+     */
+    public $added;
+
+    /**
+     * @var string $timestamp Datum a čas změny záznamu
+     */
+    public $timestamp;
 }

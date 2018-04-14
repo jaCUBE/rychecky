@@ -8,67 +8,63 @@
 
 class Hobby
 {
- 
-  /**
-   * @var integer $row_id ID záznamu
-   */
-  public $row_id;
 
-  /**
-   * @var integer $hobby_id ID koníčku
-   */
-  public $hobby_id;
+    /**
+     * @var integer $row_id ID záznamu
+     */
+    public $row_id;
 
-  /**
-   * @var string $name Název koníčku
-   */
-  public $name;
+    /**
+     * @var integer $hobby_id ID koníčku
+     */
+    public $hobby_id;
 
-  /**
-   * @var float $size Velikost textu tohoto koníčku
-   */
-  public $size;
+    /**
+     * @var string $name Název koníčku
+     */
+    public $name;
 
-  /**
-   * @return string $locale Lokalizace (cs/en)
-   */
-  public $locale;
+    /**
+     * @var float $size Velikost textu tohoto koníčku
+     */
+    public $size;
 
-  /**
-   * @var boolean $visible Viditelný?
-   */
-  public $visible;
+    /**
+     * @return string $locale Lokalizace (cs/en)
+     */
+    public $locale;
 
-  /**
-   * @var string $added Datum a čas přidání záznamu
-   */
-  public $added;
+    /**
+     * @var boolean $visible Viditelný?
+     */
+    public $visible;
 
-  /**
-   * @var string $timestamp Datum a čas změny záznamu
-   */
-  public $timestamp;
+    /**
+     * @var string $added Datum a čas přidání záznamu
+     */
+    public $added;
 
-  
-  
-  
-  
-  
-  /**
-   * Generuje náhodný CSS tohoto koníčku dle jeho velikosti.
-   * @return array Náhodné CSS v poli
-   */
+    /**
+     * @var string $timestamp Datum a čas změny záznamu
+     */
+    public $timestamp;
 
-  public function randomHobbyCss(): array
-  {
-    $css = []; // Iniciace CSS
 
-    $css['font-size'] = $this->size * 0.02.'em'; // Velikost
-    $css['margin-left'] = rand(0, 10).'px'; // Odsazení zleva
-    $css['margin-right'] = rand(0, 10).'px'; // Odsazení zprava
-    $css['margin-top'] = rand(0, 5).'px'; // Odsazení zeshora
-    $css['float'] = rand(0, 1) ? 'left' : 'right'; // 1:1 zarovnání doleva/doprava...
+    /**
+     * Generuje náhodný CSS tohoto koníčku dle jeho velikosti.
+     * @return array Náhodné CSS v poli
+     */
 
-    return $css;
-  }
+    public function randomHobbyCss(): array
+    {
+        $css = []; // Iniciace CSS
+
+        $css['font-size'] = $this->size * 0.02 . 'em'; // Velikost
+        $css['margin-left'] = rand(0, 10) . 'px'; // Odsazení zleva
+        $css['margin-right'] = rand(0, 10) . 'px'; // Odsazení zprava
+        $css['margin-top'] = rand(0, 5) . 'px'; // Odsazení zeshora
+        $css['float'] = rand(0, 1) ? 'left' : 'right'; // 1:1 zarovnání doleva/doprava...
+
+        return $css;
+    }
 }

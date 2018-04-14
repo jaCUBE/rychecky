@@ -7,35 +7,35 @@
  */
 
 
-
 class ExperienceList
 {
 
-  /**
-   * Stáhne a zpracuje seznam zkušeností (práce/vzdělání).
-   * @return Experience[] Seznam zkušeností
-   */
-  
+    /**
+     * Stáhne a zpracuje seznam zkušeností (práce/vzdělání).
+     * @return Experience[] Seznam zkušeností
+     */
+
     public static function fetchExperienceList(): array
     {
-      $experience_list = []; // Seznam zkušeností
+        $experience_list = []; // Seznam zkušeností
 
-      $sql = '
+        $sql = '
       SELECT e.*
       FROM experience AS e
       WHERE e.locale = :locale
         AND e.visible = 1
       ORDER BY e.date_start DESC'; // SQL pro stažení seznamu zkušeností
-    
-      $STH = db()->prepare($sql);
-      $STH->bindParam(':locale', Language::getLocale());
-      $STH->setFetchMode(PDO::FETCH_CLASS, 'Experience');
-      $STH->execute();
 
-      while ($e = $STH->fetch()) { /* @var $e Experience */ // Prochá jednotlivé zkušenosti...
-        $experience_list[] = $e; // Uloží zkušenost do pole
-      }
+        $STH = db()->prepare($sql);
+        $STH->bindParam(':locale', Language::getLocale());
+        $STH->setFetchMode(PDO::FETCH_CLASS, 'Experience');
+        $STH->execute();
 
-      return $experience_list;
+        while ($e = $STH->fetch()) { // Prochá jednotlivé zkušenosti...
+            /* @var $e Experience */
+            $experience_list[] = $e; // Uloží zkušenost do pole
+        }
+
+        return $experience_list;
     }
 }

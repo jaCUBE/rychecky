@@ -16,33 +16,36 @@ class Menu
 
     public static function generateMenu()
     {
-      // @TODO: Odstranit hardcoded menu?
-      $menu = [
-        '' => [
-          'name' => e('Informace', 'Info'),
-          'icon' => 'fa-home'],
-        'skills' => [
-          'name' => e('Dovednosti', 'Skills'),
-          'icon' => 'fa-database'],
-        'portfolio' => [
-          'name' => e('Portfolio', 'Portfolio'),
-          'icon' => 'fa-bookmark'],
-        'experiences' => [
-          'name' => e('Zkušenosti', 'Experiences'),
-          'icon' => 'fa-briefcase'],
-        'certificate' => [
-          'name' => e('Certifikace', 'Certificates'),
-          'icon' => 'fa-certificate'],
-        'contact' => [
-          'name' => e('Kontakt', 'Contact'),
-          'icon' => 'fa-envelope'],
-      ];
+        // @TODO: Odstranit hardcoded menu?
+        $menu = [
+            '' => [
+                'name' => e('Informace', 'Info'),
+                'icon' => 'fa-home'
+            ],
+            'skills' => [
+                'name' => e('Dovednosti', 'Skills'),
+                'icon' => 'fa-database'
+            ],
+            'portfolio' => [
+                'name' => e('Portfolio', 'Portfolio'),
+                'icon' => 'fa-bookmark'
+            ],
+            'experiences' => [
+                'name' => e('Zkušenosti', 'Experiences'),
+                'icon' => 'fa-briefcase'
+            ],
+            'certificate' => [
+                'name' => e('Certifikace', 'Certificates'),
+                'icon' => 'fa-certificate'
+            ],
+            'contact' => [
+                'name' => e('Kontakt', 'Contact'),
+                'icon' => 'fa-envelope'
+            ],
+        ];
 
-      return $menu;
+        return $menu;
     }
-
-
-
 
 
     /**
@@ -51,8 +54,8 @@ class Menu
      * @return bool Je URL zvoleno?
      */
 
-    public static function isMenuSelected(string $url):bool
+    public static function isMenuSelected(string $url): bool
     {
-      return Rychecky::action() == $url;
+        return Rychecky::action() == $url;
     }
 }

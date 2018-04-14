@@ -9,11 +9,8 @@
 
 function e(string $cs = '', string $en = ''): string
 {
-  return Language::getLocale() == 'cs' ? $cs : $en;
+    return Language::getLocale() == 'cs' ? $cs : $en;
 }
-
-
-
 
 
 /**
@@ -31,11 +28,8 @@ function replace_czech_characters(string $string): string
           'A', 'C', 'D', 'E', 'E', 'I', 'L', 'N', 'O', 'R', 'S', 'T', 'U', 'U', 'Y', 'Z',
           'o', 'u']; // Znaky bez diakritiky
 
-  return str_replace($original, $replace, $string); // Vrací řetězec s odstraněnou diakritikou
+    return str_replace($original, $replace, $string); // Vrací řetězec s odstraněnou diakritikou
 }
-
-
-
 
 
 /**
@@ -46,17 +40,14 @@ function replace_czech_characters(string $string): string
 
 function array_to_css(array $array): string
 {
-  $css = '';
+    $css = '';
 
-  foreach ($array as $property => $value) {
-    $css .= $property.': '.$value.';';
-  }
+    foreach ($array as $property => $value) {
+        $css .= $property . ': ' . $value . ';';
+    }
 
-  return $css;
+    return $css;
 }
-
-
-
 
 
 /**
@@ -67,19 +58,16 @@ function array_to_css(array $array): string
 
 function make_css_name(string $string): string
 {
-  $string = replace_czech_characters($string); // Odstranění diakritiky
+    $string = replace_czech_characters($string); // Odstranění diakritiky
 
-  $original = [':', '.', '/', ' ', '(', ')', ',', '[', ']', '_'];
-  $replace  = ['', '-', '-', '-', '-', '-', '', '-', '', '-'];
+    $original = [':', '.', '/', ' ', '(', ')', ',', '[', ']', '_'];
+    $replace = ['', '-', '-', '-', '-', '-', '', '-', '', '-'];
 
-  $string = str_replace($original, $replace, $string);
-  $string = mb_strtolower($string);
+    $string = str_replace($original, $replace, $string);
+    $string = mb_strtolower($string);
 
-  return $string;
+    return $string;
 }
-
-
-
 
 
 /**
@@ -90,11 +78,8 @@ function make_css_name(string $string): string
 
 function asset_with_hash(string $asset): string
 {
-  return URL.'/'.$asset.'?sha1='.sha1_file($asset);
+    return URL . '/' . $asset . '?sha1=' . sha1_file($asset);
 }
-
-
-
 
 
 /**
@@ -105,11 +90,8 @@ function asset_with_hash(string $asset): string
 
 function env(string $name): string
 {
-    return (string) $_ENV[$name] ?? $_SERVER[$name]; // $_ENV má přednost
+    return (string)$_ENV[$name] ?? $_SERVER[$name]; // $_ENV má přednost
 }
-
-
-
 
 
 /**

@@ -1,18 +1,18 @@
 <?php $portfolio =& $data; /* @var $portfolio Portfolio */ ?>
 
 
-
 <div class="portfolio
      <?= make_css_name($portfolio->type) ?>
-     <?= $portfolio->isInteresting() ? 'interesting' : '' // CSS třída zajímavé položky?>
-     <?= $portfolio->isRunning() ? 'running' : '' // CSS třída položky ve vývoji?>"
+     <?= $portfolio->isInteresting() ? 'interesting' : '' // CSS třída zajímavé položky ?>
+     <?= $portfolio->isRunning() ? 'running' : '' // CSS třída položky ve vývoji ?>"
      data-age="<?= $portfolio->age() ?>"
      data-name="<?= replace_czech_characters($portfolio->nameShortest()) ?>"
      data-size="<?= $portfolio->size * -1 ?>"
      onclick="portfolio(<?= $portfolio->portfolio_id ?>)">
 
     <div class="image">
-        <?= is_a($portfolio->thumbnail, 'Gallery') ? $portfolio->thumbnail->htmlThumbnail() : Gallery::htmlPlaceholder() ?>
+        <?= is_a($portfolio->thumbnail,
+            'Gallery') ? $portfolio->thumbnail->htmlThumbnail() : Gallery::htmlPlaceholder() ?>
     </div>
 
     <div class="info">

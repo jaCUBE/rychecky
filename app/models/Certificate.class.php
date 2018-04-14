@@ -8,64 +8,64 @@
 
 class Certificate
 {
-  
-  /**
-   * @var integer $row_id ID záznamu
-   */
-  public $row_id;
 
-  /**
-   * @var integer $certificate_id ID certifikátu
-   */
-  public $certificate_id;
+    /**
+     * @var integer $row_id ID záznamu
+     */
+    public $row_id;
 
-  /**
-   * @var string $type Typ certifikátu
-   */
-  public $type;
+    /**
+     * @var integer $certificate_id ID certifikátu
+     */
+    public $certificate_id;
 
-  /**
-   * @var string $name Název certifikátu
-   */
-  public $name;
+    /**
+     * @var string $type Typ certifikátu
+     */
+    public $type;
 
-  /**
-   * @var string $detail Detailní popis certifikátu
-   */
-  public $detail;
+    /**
+     * @var string $name Název certifikátu
+     */
+    public $name;
 
-  /**
-   * @var string $issue_date Datum vydání certifikátu
-   */
-  public $issue_date;
+    /**
+     * @var string $detail Detailní popis certifikátu
+     */
+    public $detail;
 
-  /**
-   * @var string $issue_by Vydavatel certifikátu
-   */
-  public $issue_by;
+    /**
+     * @var string $issue_date Datum vydání certifikátu
+     */
+    public $issue_date;
 
-  /**
-   * @var string $url URL certifikátu
-   */
-  public $url;
+    /**
+     * @var string $issue_by Vydavatel certifikátu
+     */
+    public $issue_by;
 
-  /**
-   * @return string $locale Lokalizace (cs/en)
-   */
-  public $locale;
+    /**
+     * @var string $url URL certifikátu
+     */
+    public $url;
 
-  /**
-   * @var boolean $visible Viditelný?
-   */
-  public $visible;
+    /**
+     * @return string $locale Lokalizace (cs/en)
+     */
+    public $locale;
 
-  /**
-   * @var string $added Datum a čas přidání záznamu
-   */
-  public $added;
+    /**
+     * @var boolean $visible Viditelný?
+     */
+    public $visible;
 
-  /**
-   * @var string $timestamp Datum a čas změny záznamu
-   */
-  public $timestamp;
+    /**
+     * @var string $added Datum a čas přidání záznamu
+     */
+    public $added;
+
+    /**
+     * @var string $timestamp Datum a čas změny záznamu
+     */
+    public $timestamp;
 }

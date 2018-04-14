@@ -9,92 +9,76 @@
 class RycheckyController extends Controller
 {
 
-  /**
-   * Konstruktor řadiče.
-   */
-  public function __construct()
-  {
-    parent::__construct();
-  }
+    /**
+     * Konstruktor řadiče.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
 
+    /**
+     *  Zobrazuje titulní stranu.
+     */
+
+    public function index()
+    {
+        Rychecky::view('index', [
+            'hobby' => HobbyList::fetchHobbyList(), // Seznam koníčků
+            'social' => SocialList::fetchSocialList() // Seznam tlačítek pro sociální sítě
+        ]);
+    }
 
 
+    /**
+     *  Zobrazuje dovednosti.
+     */
 
-  /**
-   *  Zobrazuje titulní stranu.
-   */
-
-  public function index()
-  {
-    Rychecky::view('index', [
-      'hobby' => HobbyList::fetchHobbyList(), // Seznam koníčků
-      'social' => SocialList::fetchSocialList() // Seznam tlačítek pro sociální sítě
-    ]);
-  }
-
-
-
+    public function skills()
+    {
+        Rychecky::view('skill.master', [
+            'skill_list' => SkillList::fetchSkillListByType(SkillListType::selectedSkillType()),
+            // Seznam dovedností zvolené skupiny
+            'skill_stats' => SkillListType::fetchSkillTypeStats()
+            // Skupiny a počet dovedností
+        ]);
+    }
 
 
-  /**
-   *  Zobrazuje dovednosti.
-   */
+    /**
+     *  Zobrazuje portfolio.
+     */
 
-  public function skills()
-  {
-      Rychecky::view('skill.master', [
-      'skill_list' => SkillList::fetchSkillListByType(SkillListType::selectedSkillType()), // Seznam dovedností zvolené skupiny
-      'skill_stats' => SkillListType::fetchSkillTypeStats() // Skupiny a počet dovedností
-  ]);
-  }
+    public function portfolio()
+    {
+        Rychecky::view('portfolio.master', PortfolioList::fetchPortfolioList());
+    }
 
 
+    /**
+     *  Zobrazuje zkušenosti.
+     */
+    public function experiences()
+    {
+        Rychecky::view('experience.master', ExperienceList::fetchExperienceList());
+    }
 
 
-
-  /**
-   *  Zobrazuje portfolio.
-   */
-
-  public function portfolio()
-  {
-    Rychecky::view('portfolio.master', PortfolioList::fetchPortfolioList());
-  }
+    /**
+     *  Zobrazuje výčet certifikátů.
+     */
+    public function certificate()
+    {
+        Rychecky::view('certificate.master', CertificateList::fetchCertificateList());
+    }
 
 
-
-
-
-  /**
-   *  Zobrazuje zkušenosti.
-   */
-  public function experiences()
-  {
-    Rychecky::view('experience.master', ExperienceList::fetchExperienceList());
-  }
-
-
-
-
-
-  /**
-   *  Zobrazuje výčet certifikátů.
-   */
-  public function certificate()
-  {
-    Rychecky::view('certificate.master', CertificateList::fetchCertificateList());
-  }
-
-
-
-
-
-  /**
-   *  Zobrazuje kontaktní stránku.
-   */
-  public function contact()
-  {
-    Rychecky::view('contact', SocialList::fetchSocialList());
-  }
+    /**
+     *  Zobrazuje kontaktní stránku.
+     */
+    public function contact()
+    {
+        Rychecky::view('contact', SocialList::fetchSocialList());
+    }
 }

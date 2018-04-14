@@ -16,25 +16,26 @@ class PortfolioList
 
     public static function fetchPortfolioList(): array
     {
-      $portfolio_list = []; // Seznam portfolia
+        $portfolio_list = []; // Seznam portfolia
 
-      $sql = '
+        $sql = '
         SELECT p.*
         FROM portfolio AS p
         WHERE p.locale = :locale
           AND p.visible = 1
         ORDER BY p.size DESC'; // SQL pro stažení veškerého portoflia
-    
-      $STH = db()->prepare($sql);
-      $STH->bindParam(':locale', Language::getLocale());
-      $STH->setFetchMode(PDO::FETCH_CLASS, 'Portfolio');
-      $STH->execute();
-    
-      while ($portfolio = $STH->fetch()) { /* @var $portfolio Portfolio */ // Prochází jednotlivá portfolia...
-        $portfolio->fetchPortfolioGallery(); // Stahuje galerii jednoho portoflia
-        $portfolio_list[$portfolio->portfolio_id] = $portfolio; // Ukládá portfolio do seznamu
-      }
 
-      return $portfolio_list;
+        $STH = db()->prepare($sql);
+        $STH->bindParam(':locale', Language::getLocale());
+        $STH->setFetchMode(PDO::FETCH_CLASS, 'Portfolio');
+        $STH->execute();
+
+        while ($portfolio = $STH->fetch()) {  // Prochází jednotlivá portfolia...
+            /* @var $portfolio Portfolio */
+            $portfolio->fetchPortfolioGallery(); // Stahuje galerii jednoho portoflia
+            $portfolio_list[$portfolio->portfolio_id] = $portfolio; // Ukládá portfolio do seznamu
+        }
+
+        return $portfolio_list;
     }
 }

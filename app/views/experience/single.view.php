@@ -1,11 +1,13 @@
 <?php $experience =& $data['experience']; /* @var $experience Experience */ ?>
 
 
-<li class="event <?= make_css_name($experience->type) ?> <?= $i % 2 == 1 ? 'odd' : 'even' // Sudá-lichá událost?>" data-type="<?= $experience->type ?>">
+<li class="event <?= make_css_name($experience->type) ?> <?= $i % 2 == 1 ? 'odd' : 'even' // Sudá-lichá událost ?>"
+    data-type="<?= $experience->type ?>">
     <div class="date">
         <span class="start"><?= date('n/Y', strtotime($experience->date_start)) ?></span>
         –
-        <span class="end"><?= $experience->date_end ? date('n/Y', strtotime($experience->date_end)) : '<em>(nyní)</em>' ?></span>
+        <span class="end"><?= $experience->date_end ? date('n/Y',
+                strtotime($experience->date_end)) : '<em>(nyní)</em>' ?></span>
     </div>
 
     <div class="title"><?= $experience->title ?></div>
