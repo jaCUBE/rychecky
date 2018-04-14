@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" uploadOnCheckin="c3c78224-13bc-4aa1-8244-7b2443a23878">
-    <option name="myUploadOnCheckinName" value="rychecky.cz (WEDOS)" />
+  <component name="PublishConfigData" autoUpload="Always">
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
