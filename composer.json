@@ -1,6 +1,7 @@
 {
     "require": {
         "kint-php/kint": "^2.2",
-        "tracy/tracy": "^2.4"
+        "tracy/tracy": "^2.4",
+        "vlucas/phpdotenv": "^2.4"
     }
 }

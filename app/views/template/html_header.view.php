@@ -30,13 +30,13 @@
     <script src="<?= asset_with_hash('js/rychecky.min.js') ?>"></script>
     
     
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33858105-3"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?= getenv('GOOGLE_ANALYTICS') ?>"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'UA-33858105-3');
+      gtag('config', '<?= getenv('GOOGLE_ANALYTICS') ?>');
     </script>
   </head>
   

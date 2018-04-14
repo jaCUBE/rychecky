@@ -18,7 +18,8 @@ class Rychecky
     global $_DB;
 
     try {  // Připojení k databázi pomocí PDO
-      $_DB = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWORD); // Připojení s konstantami z Wordpressu
+        $dsn = 'mysql:host='.getenv('DB_HOST').';dbname='.getenv('DB_NAME');
+      $_DB = new PDO($dsn, getenv('DB_USER'), getenv('DB_PASSWORD')); // Připojení s konstantami z Wordpressu
       $_DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $_DB->query('SET NAMES utf8'); // Česká diakritika. Husa upálili příliš pozdě... :)
     } catch (PDOException $e) {

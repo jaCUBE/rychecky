@@ -1,22 +1,27 @@
 <?php
 
 require 'autoload.php'; // Načítání tříd
-require 'config.php'; // Konfigurace
+include 'vendor/autoload.php'; // Načítání tříd přes Composer
 require 'app/fn.php'; // Helper funkce pro PHP
 
 
-if(DEVELOPMENT){ // Načtení nástrojů pro vývoj
-	include 'vendor/autoload.php'; // Načítání tříd přes Composer
-	Tracy\Debugger::enable(); // Tracy ^_^ https://github.com/nette/tracy
+// Načtení konfigurace před dotenv https://github.com/vlucas/phpdotenv (soubor .env)
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+define('URL', getenv('URL')); // URL webu jako konstanta
+
+
+
+
+if(getenv('DEVELOPMENT')){ // Hlášení chyb ve vývojovém prosředí
+    Tracy\Debugger::enable(); // Tracy ^_^ https://github.com/nette/tracy
+    error_reporting(E_ERROR | E_PARSE);
+}else{
+    error_reporting(0); // Žádné chyby mimo vývoj
 }
+
+
 
 
 Rychecky::databaseConnect(); // Vytvoření připojení k databázi
 Language::setCookie(Language::getLocale()); // Nastavení zvoleného jazyka do cookies
-
-
-if(DEVELOPMENT){ // Hlášení chyb ve vývojovém prosředí
-	error_reporting(E_ERROR | E_PARSE);
-}else{
-	error_reporting(0); // Žádné chyby mimo vývoj
-}
