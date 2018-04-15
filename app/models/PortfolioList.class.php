@@ -33,7 +33,6 @@ class PortfolioList
 
         while ($portfolio = $STH->fetch()) {  // Prochází jednotlivá portfolia...
             /* @var $portfolio Portfolio */
-            $portfolio->fetchPortfolioGallery(); // Stahuje galerii jednoho portoflia
             $portfolio_list[] = $portfolio; // Ukládá portfolio do seznamu
         }
 

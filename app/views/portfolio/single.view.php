@@ -11,8 +11,7 @@
      onclick="portfolio(<?= $portfolio->portfolio_id ?>)">
 
     <div class="image">
-        <?= is_a($portfolio->thumbnail,
-            'Gallery') ? $portfolio->thumbnail->htmlThumbnail() : Gallery::htmlPlaceholder() ?>
+        <img src="<?= Gallery::portfolioThumbnail($portfolio->portfolio_id)->url() // URL thumbnailu  ?>" alt=""/>
     </div>
 
     <div class="info">
@@ -26,5 +25,7 @@
         <div class="detail">
             <?= $portfolio->detail_short ?>
         </div>
+
+
     </div>
 </div>

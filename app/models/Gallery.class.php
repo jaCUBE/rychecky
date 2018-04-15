@@ -1,116 +1,76 @@
 <?php
-
 /**
+ * Stahuje a zpracovává obrázky pro jednotlivá portfolia.
+ * @class HobbyList
  * @author Jakub Rychecký <jakub@rychecky.cz>
- *
- * @class Gallery
- * Obrázek galerie na webu.
  */
 
 class Gallery
 {
 
     /**
-     * ID záznamu
-     * @var integer $row_id
+     * Generuje galerii jedné položky portfolia.
+     * @param int $portfolio_id ID portfolia
+     * @return Image[] Galerie portfolia
      */
-    public $row_id;
-
-    /**
-     * ID zkušenosti k této galerii
-     * @var integer $portfolio_id
-     */
-    public $portfolio_id;
-
-    /**
-     * Název souboru
-     * @var string $filename
-     */
-    public $filename;
-
-    /**
-     * Popis obrázku
-     * @var string $title
-     */
-    public $title;
-
-    /**
-     * Jedná se o thumbnail?
-     * @var boolean $thumbnail
-     */
-    public $thumbnail;
-
-    /**
-     * Hodnota pořadí
-     * @var integer $order
-     */
-    public $order;
-
-    /**
-     * Viditelný?
-     * @var boolean $visible
-     */
-    public $visible;
-
-    /**
-     * Datum a čas přidání záznamu
-     * @var string $added
-     */
-    public $added;
-
-    /**
-     * Datum a čas změny záznamu
-     * @var string $timestamp
-     */
-    public $timestamp;
-
-    /**
-     * Generuje HTML kód placeholderu obrázku.
-     * @return string HTML placeholderu
-     */
-
-    public static function htmlPlaceholder()
+    static function portoflioGallery(int $portfolio_id): array
     {
-        return '<img src="' . URL . '/images/placeholder.png" alt="" />'; // HTML placeholderu
+        $image_list = [];
+
+        foreach (self::fetchPortfolioImages($portfolio_id) as $image) { // Procházení všech obrázků...
+            if (!$image->isThumbnail()) { // Vyřazení thumbnaili
+                $image_list[] = $image;
+            }
+        }
+
+        return $image_list;
     }
 
     /**
-     * Generuje HTML s náhledem obrázku pro Fancybox.
-     * @return string HTML náhledu obrázku
+     * Stahuje všechny obrázky portfolia z databáze.
+     * @param int $portfolio_id ID portfolia
+     * @return Image[] Všechny obrázky portfolia
      */
 
-    public function htmlFancyBox()
+    static private function fetchPortfolioImages(int $portfolio_id): array
     {
-        return '<a href="' . $this->url() . '" data-fancybox="portfolio-' . $this->portfolio_id . '" data-caption="' . htmlspecialchars($this->title) . '" class="fancybox">' . $this->htmlThumbnail() . '</a>'; // HTML náhledu obrázku
+        $image_list = [];
+
+        $sql = '
+          SELECT g.*
+          FROM image AS g
+          WHERE g.portfolio_id = :portfolio_id
+            AND g.visible = 1
+          ORDER BY g.order DESC';
+
+        $STH = db()->prepare($sql);
+        $STH->bindParam(':portfolio_id', $portfolio_id);
+        $STH->setFetchMode(PDO::FETCH_CLASS, 'Image');
+        $STH->execute();
+
+
+        while ($image = $STH->fetch()) { // Procházení stažených obrázků...
+            /* @var $image Image */
+            $image_list[] = $image;
+        }
+
+        return $image_list;
     }
 
     /**
-     * Generuje URL samotného obrázku.
-     * @return string URL obrázku
+     * Generuje thumbnail (náhledový obrázek) pro portfolium.
+     * @param int $portfolio_id ID portfolia
+     * @return Image Thumbnail (náhledová obrázek)
      */
-
-    public function url()
+    static function portfolioThumbnail(int $portfolio_id): Image
     {
-        return URL . '/images/portfolio/' . $this->portfolio_id . '/' . $this->filename; // URL obrázku
+        foreach (self::fetchPortfolioImages($portfolio_id) as $image) { // Procházení všech obrázků...
+            if ($image->isThumbnail()) { // Pouze thumbnail...
+                return $image;
+            }
+        }
+
+        return new Image(); // Fallback na prázdný objekt obrázku
     }
 
-    /**
-     * @briefj Generuje HTML s obrázkem.
-     * @return string HTML s obrázkem
-     */
-
-    public function htmlThumbnail()
-    {
-        return '<img src="' . $this->url() . '" alt="" />'; // HTML s obrázkem
-    }
-
-    /**
-     * Jedná se o náhled obrázku?
-     * @return boolean Náhled?
-     */
-
-    public function isThumbnail()
-    {
-        return (boolean)$this->thumbnail; // Náhled?
-    }
 }

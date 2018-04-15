@@ -194,26 +194,4 @@ class Portfolio
         return (boolean)$this->interesting;
     }
 
-    public function fetchPortfolioGallery()
-    {
-        $sql = '
-      SELECT g.*
-      FROM gallery AS g
-      WHERE g.portfolio_id = :portfolio_id
-        AND g.visible = 1
-      ORDER BY g.order DESC';
-
-        $STH = db()->prepare($sql);
-        $STH->bindParam(':portfolio_id', $this->portfolio_id);
-        $STH->setFetchMode(PDO::FETCH_CLASS, 'Gallery');
-        $STH->execute();
-
-        while ($gallery = $STH->fetch()) {
-            if ($gallery->isThumbnail()) {
-                $this->thumbnail = $gallery;
-            } else {
-                $this->gallery[] = $gallery;
-            }
-        }
-    }
 }
