@@ -8,6 +8,11 @@
 
 class Rychecky
 {
+    /**
+     * @var PDO $db Připojení k databázi pomocí PDO
+     */
+    static $db;
+
 
     /**
      * Vytvoří PDO připojení k databázi v globální proměnné.
@@ -15,13 +20,11 @@ class Rychecky
 
     public static function databaseConnect()
     {
-        global $_DB;
-
         try {  // Připojení k databázi pomocí PDO
             $dsn = 'mysql:host=' . env('DB_HOST') . ';dbname=' . env('DB_NAME');
-            $_DB = new PDO($dsn, env('DB_USER'), env('DB_PASSWORD')); // Připojení s konstantami z Wordpressu
-            $_DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $_DB->query('SET NAMES utf8'); // Česká diakritika. Husa upálili příliš pozdě... :)
+            self::$db = new PDO($dsn, env('DB_USER'), env('DB_PASSWORD')); // Připojení s konstantami z Wordpressu
+            self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            self::$db->query('SET NAMES utf8'); // Česká diakritika. Husa upálili příliš pozdě... :)
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

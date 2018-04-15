@@ -21,12 +21,78 @@ function e(string $cs = '', string $en = ''): string
 
 function replace_czech_characters(string $string): string
 {
-  $original = [ 'á', 'č', 'ď', 'é', 'ě', 'í', 'ľ', 'ň', 'ó', 'ř', 'š', 'ť', 'ú', 'ů', 'ý', 'ž',
-          'Á', 'Č', 'Ď', 'É', 'Ě', 'Í', 'Ľ', 'Ň', 'Ó', 'Ř', 'Š', 'Ť', 'Ú', 'Ů', 'Ý', 'Ž',
-          'ö', 'ü']; // Česká diakritika
-  $replace  = [ 'a', 'c', 'd', 'e', 'e', 'i', 'l', 'n', 'o', 'r', 's', 't', 'u', 'u', 'y', 'z',
-          'A', 'C', 'D', 'E', 'E', 'I', 'L', 'N', 'O', 'R', 'S', 'T', 'U', 'U', 'Y', 'Z',
-          'o', 'u']; // Znaky bez diakritiky
+    $original = [
+        'á',
+        'č',
+        'ď',
+        'é',
+        'ě',
+        'í',
+        'ľ',
+        'ň',
+        'ó',
+        'ř',
+        'š',
+        'ť',
+        'ú',
+        'ů',
+        'ý',
+        'ž',
+        'Á',
+        'Č',
+        'Ď',
+        'É',
+        'Ě',
+        'Í',
+        'Ľ',
+        'Ň',
+        'Ó',
+        'Ř',
+        'Š',
+        'Ť',
+        'Ú',
+        'Ů',
+        'Ý',
+        'Ž',
+        'ö',
+        'ü'
+    ]; // Česká diakritika
+    $replace = [
+        'a',
+        'c',
+        'd',
+        'e',
+        'e',
+        'i',
+        'l',
+        'n',
+        'o',
+        'r',
+        's',
+        't',
+        'u',
+        'u',
+        'y',
+        'z',
+        'A',
+        'C',
+        'D',
+        'E',
+        'E',
+        'I',
+        'L',
+        'N',
+        'O',
+        'R',
+        'S',
+        'T',
+        'U',
+        'U',
+        'Y',
+        'Z',
+        'o',
+        'u'
+    ]; // Znaky bez diakritiky
 
     return str_replace($original, $replace, $string); // Vrací řetězec s odstraněnou diakritikou
 }
@@ -101,6 +167,5 @@ function env(string $name): string
 
 function db(): PDO
 {
-    global $_DB;
-    return $_DB;
+    return Rychecky::$db;
 }
