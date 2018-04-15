@@ -196,8 +196,6 @@ class Portfolio
 
     public function fetchPortfolioGallery()
     {
-        global $_DB;
-
         $sql = '
       SELECT g.*
       FROM gallery AS g
@@ -205,7 +203,7 @@ class Portfolio
         AND g.visible = 1
       ORDER BY g.order DESC';
 
-        $STH = $_DB->prepare($sql);
+        $STH = db()->prepare($sql);
         $STH->bindParam(':portfolio_id', $this->portfolio_id);
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Gallery');
         $STH->execute();

@@ -1,7 +1,10 @@
 {
     "require": {
+        "vlucas/phpdotenv": "^2.4"
+    },
+    "require-dev": {
         "kint-php/kint": "^2.2",
         "tracy/tracy": "^2.4",
-        "vlucas/phpdotenv": "^2.4"
+        "phpunit/phpunit": "^7.1"
     }
 }

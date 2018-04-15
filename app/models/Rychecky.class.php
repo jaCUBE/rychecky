@@ -8,27 +8,6 @@
 
 class Rychecky
 {
-    /**
-     * @var PDO $db Připojení k databázi pomocí PDO
-     */
-    static $db;
-
-
-    /**
-     * Vytvoří PDO připojení k databázi v globální proměnné.
-     */
-
-    public static function databaseConnect()
-    {
-        try {  // Připojení k databázi pomocí PDO
-            $dsn = 'mysql:host=' . env('DB_HOST') . ';dbname=' . env('DB_NAME');
-            self::$db = new PDO($dsn, env('DB_USER'), env('DB_PASSWORD')); // Připojení s konstantami z Wordpressu
-            self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            self::$db->query('SET NAMES utf8'); // Česká diakritika. Husa upálili příliš pozdě... :)
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
 
 
     /**

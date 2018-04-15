@@ -23,6 +23,7 @@ class PortfolioList
         FROM portfolio AS p
         WHERE p.locale = :locale
           AND p.visible = 1
+        GROUP BY p.portfolio_id
         ORDER BY p.size DESC'; // SQL pro stažení veškerého portoflia
 
         $STH = db()->prepare($sql);
@@ -33,7 +34,7 @@ class PortfolioList
         while ($portfolio = $STH->fetch()) {  // Prochází jednotlivá portfolia...
             /* @var $portfolio Portfolio */
             $portfolio->fetchPortfolioGallery(); // Stahuje galerii jednoho portoflia
-            $portfolio_list[$portfolio->portfolio_id] = $portfolio; // Ukládá portfolio do seznamu
+            $portfolio_list[] = $portfolio; // Ukládá portfolio do seznamu
         }
 
         return $portfolio_list;

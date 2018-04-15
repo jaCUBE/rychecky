@@ -1,8 +1,8 @@
 <?php
 
-require 'autoload.php'; // Načítání tříd
-include 'vendor/autoload.php'; // Načítání tříd přes Composer
-require 'app/fn.php'; // Helper funkce pro PHP
+require_once 'autoload.php'; // Načítání tříd
+require_once 'vendor/autoload.php'; // Načítání tříd přes Composer
+require_once 'app/fn.php'; // Helper funkce pro PHP
 
 
 // Načtení konfigurace před dotenv https://github.com/vlucas/phpdotenv (soubor .env)
@@ -10,6 +10,8 @@ $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
 define('URL', env('URL')); // URL webu jako konstanta
 
+
+require 'database.php';
 
 
 
@@ -21,7 +23,4 @@ if(env('DEVELOPMENT')){ // Hlášení chyb ve vývojovém prosředí
 }
 
 
-
-
-Rychecky::databaseConnect(); // Vytvoření připojení k databázi
 Language::setCookie(Language::getLocale()); // Nastavení zvoleného jazyka do cookies

@@ -167,5 +167,6 @@ function env(string $name): string
 
 function db(): PDO
 {
-    return Rychecky::$db;
+    global $_DB;
+    return $_DB;
 }
