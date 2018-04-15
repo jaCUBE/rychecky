@@ -3,13 +3,8 @@
 
 use PHPUnit\Framework\TestCase;
 
-class RycheckyTest extends TestCase
+class ListTest extends TestCase
 {
-
-    public function testLocale()
-    {
-        $this->assertEquals(strlen(Language::getLocale()), 2);
-    }
 
 
     public function testCertificateList()

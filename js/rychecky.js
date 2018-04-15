@@ -31,8 +31,9 @@ function portfolio(portfolio_id) {
 
     $.ajax({
         type: 'GET',
-        url: '/app/ajax/portfolio.ajax.php',
+        url: '/ajax.php',
         data: {
+            'action': 'portfolio',
             'portfolio_id': portfolio_id // ID portfolia odeslané v požadavku
         },
         success: function (data, textStatus, xhr) {
