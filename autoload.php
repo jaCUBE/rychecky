@@ -12,12 +12,9 @@ spl_autoload_register('rychecky_autoloader'); // Registrace autoloaderu
 /**
  * Automaticky načte neznámé třídy dle názvu.
  * @param $classname Název třídy
- * @return boolean Existuje soubor?
  */
 
 function rychecky_autoloader($classname){
   $filepath = 'app/models/'.$classname.'.class.php'; // Cesta ke třídě
   include $filepath; // Načte třídu
-
-  return file_exists($filepath); // Existuje soubor se třídou?
 }

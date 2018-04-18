@@ -164,13 +164,6 @@ class Portfolio
         return round($difference / (24 * 60 * 60)); // Převod na dny
     }
 
-
-
-
-
-
-    // @TODO Předělat galerii
-
     /**
      * Je tato položka portfolia právě ve vývoji?
      * @return bool Je ve vývoji?
