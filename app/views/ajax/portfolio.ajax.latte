@@ -15,7 +15,7 @@
         <div class="gallery">
             <a n:foreach="$gallery as $image"
                     href="{$image->url()}" data-fancybox="portfolio-{$portfolio->portfolio_id}"
-                    data-caption="$image->title" class="fancybox">
+                    data-caption="{$image->title}" class="fancybox">
                 <img src="{$image->url()}" alt=""/>
             </a>
         </div>
