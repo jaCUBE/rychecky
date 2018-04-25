@@ -27,5 +27,5 @@ function rychecky_autoloader(string $classname)
 
     $filepath = 'app/' . $folder . '/' . $classname . $suffix; // Cesta ke třídě
 
-    include $filepath; // Načte třídu
+    @include $filepath; // Načte třídu
 }
