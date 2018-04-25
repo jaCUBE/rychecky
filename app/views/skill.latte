@@ -26,7 +26,7 @@
     <div class="col-md-9">
         {block skill_list}
             <div class="skill" n:foreach="$list as $skill">
-                <div class="name">{$skill->name}</div>
+                <div class="name">{$skill->name|noescape}</div>
 
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" style="width: {$skill->value}%;">
