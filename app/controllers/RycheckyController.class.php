@@ -24,7 +24,7 @@ class RycheckyController extends Controller
 
     public function index()
     {
-        Rychecky::viewLatte('info', [
+        Rychecky::view('info', [
             'hobby' => HobbyList::all(), // Seznam koníčků
             'social' => SocialList::all() // Seznam tlačítek pro sociální sítě
         ]);
@@ -37,7 +37,7 @@ class RycheckyController extends Controller
 
     public function skills()
     {
-        Rychecky::viewLatte('skill', [
+        Rychecky::view('skill', [
             'list' => SkillList::findByType(SkillListType::selectedSkillType()),
             'stats' => SkillListType::fetchSkillTypeStats()
         ]);
@@ -50,7 +50,7 @@ class RycheckyController extends Controller
 
     public function portfolio()
     {
-        Rychecky::viewLatte('portfolio', [
+        Rychecky::view('portfolio', [
             'list' => PortfolioList::all()
         ]);
     }
@@ -61,7 +61,7 @@ class RycheckyController extends Controller
      */
     public function experiences()
     {
-        Rychecky::viewLatte('experiences', [
+        Rychecky::view('experiences', [
             'list' => ExperienceList::all()
         ]);
     }
@@ -72,7 +72,7 @@ class RycheckyController extends Controller
      */
     public function certificate()
     {
-        Rychecky::viewLatte('certificate', [
+        Rychecky::view('certificate', [
             'list' => CertificateList::all()
         ]);
     }
@@ -83,7 +83,7 @@ class RycheckyController extends Controller
      */
     public function contact()
     {
-        Rychecky::viewLatte('contact', [
+        Rychecky::view('contact', [
             'social' => SocialList::all()
         ]);
     }

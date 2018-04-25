@@ -8,36 +8,21 @@
 
 class Rychecky
 {
-
-
     /**
-     * Zobrazuje view.
-     * @param string $name Název view (např. 'layout.master')
-     * @param mixed  $data Data potřebná pro vykreslení view
+     * Zobrazuje view pomocí Latte.
+     * @param string $name Název view
+     * @param array  $data Potřebná data v poli
      */
 
-    public static function view(string $name, $data = null): void
-    {
-
-
-        $path = 'app/views/'; // Cesta k views
-        $filename = str_replace('.', '/', $name) . '.view.php'; // Název souboru views
-
-        include $path . $filename; // Načtení view
-    }
-
-
-    public static function viewLatte(string $name, array $data): void
+    public static function view(string $name, array $data): void
     {
         $latte = new Latte\Engine;
         $latte->setTempDirectory('temp');
 
-        $data['locale'] = Language::getLocale();
+        $data['locale'] = Language::getLocale(); // Jazyk pro každý view
 
-        $path = 'app/views/';
-        $filpath = $path . $name . '.latte';
-
-        $latte->render($filpath, (array)$data);
+        $filepath = 'app/views/' . $name . '.latte';
+        $latte->render($filepath, (array)$data);
     }
 
 

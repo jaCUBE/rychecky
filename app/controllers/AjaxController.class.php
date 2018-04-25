@@ -19,7 +19,7 @@ class AjaxController extends Controller
 
         ob_start();
 
-        Rychecky::viewLatte('ajax/portfolio.ajax', [
+        Rychecky::view('ajax/portfolio.ajax', [
             'portfolio' => $portfolio,
             'gallery' => Gallery::portoflioGallery($portfolio->portfolio_id)
         ]);
