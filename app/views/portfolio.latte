@@ -1,0 +1,36 @@
+{layout "@layout.latte"}
+{block content}
+
+
+<h2>
+    <i class="fa fa-bookmark"></i> Portfolio
+</h2>
+
+{include 'partials/portfolio_controls.latte'}
+
+<div class="isotope">
+    <div n:foreach="$list as $portfolio"
+            class="{$portfolio->css()}"
+            data-age="{$portfolio->age()}"
+            data-name="{? echo replace_czech_characters($portfolio->nameShortest()) }"
+            data-size="{? echo $portfolio->size * -1}"
+            onclick="portfolio({$portfolio->portfolio_id})">
+
+        <div class="image">
+            <img src="{? echo Gallery::portfolioThumbnail($portfolio->portfolio_id)->url() }" alt=""/>
+        </div>
+
+        <div class="info">
+            <div class="name">
+                {$portfolio->nameShortest()}
+
+                <i class="fa fa-star interesting" title="Zajímavá položka" n:if="$portfolio->isInteresting()"></i>
+                <i class="fa fa-cog running" title="Ve vývoji" n:if="$portfolio->isRunning()"></i>
+            </div>
+
+            <div class="detail">
+                {$portfolio->detail_short}
+            </div>
+        </div>
+    </div>
+</div>

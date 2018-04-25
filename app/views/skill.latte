@@ -1,0 +1,40 @@
+{layout "@layout.latte"}
+{block content}
+
+
+<h2>
+    <i class="fa fa-database"></i> {? echo e('Dovednosti', 'Skills') }
+</h2>
+
+
+<div class="row">
+    <div class="col-md-3">
+        {block skill_menu}
+
+            <div class="list-group">
+                <a n:foreach="$stats as $type => $count"
+                        href="/skills/{? echo make_css_name($type) }"
+                        class="list-group-item {? echo SkillListType::isSelectedType($type) ? 'active' : '' }">
+                    {$type}
+                    <span class="badge badge-light">{$count}</span>
+                </a>
+            </div>
+        {/block}
+    </div>
+
+
+    <div class="col-md-9">
+        {block skill_list}
+            <div class="skill" n:foreach="$list as $skill">
+                <div class="name">{$skill->name}</div>
+
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: {$skill->value}%;">
+                    </div>
+                </div>
+
+                <div class="detail">{$skill->detail}</div>
+            </div>
+        {/block}
+    </div>
+</div>

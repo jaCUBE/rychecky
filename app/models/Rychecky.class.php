@@ -18,10 +18,26 @@ class Rychecky
 
     public static function view(string $name, $data = null): void
     {
+
+
         $path = 'app/views/'; // Cesta k views
         $filename = str_replace('.', '/', $name) . '.view.php'; // Název souboru views
 
         include $path . $filename; // Načtení view
+    }
+
+
+    public static function viewLatte(string $name, array $data): void
+    {
+        $latte = new Latte\Engine;
+        $latte->setTempDirectory('temp');
+
+        $data['locale'] = Language::getLocale();
+
+        $path = 'app/views/';
+        $filpath = $path . $name . '.latte';
+
+        $latte->render($filpath, (array)$data);
     }
 
 

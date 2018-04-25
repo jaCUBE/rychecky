@@ -1,0 +1,36 @@
+{layout "@layout.latte"}
+{block content}
+
+
+<h2>
+    <i class="fa fa-certificate"></i> {? echo e('Certifikace', 'Certificates') }
+</h2>
+
+<div id="certificate">
+    <ul class="timeline">
+        <li n:foreach="$list as $certificate"
+                data-type="{$certificate->type}"
+                class="event {? echo make_css_name($certificate->type) }">
+
+            <div class="date">
+                <span class="start">{$certificate->issue_date|date:'n/Y'}</span>
+            </div>
+
+            <div class="title">
+                {$certificate->name}
+            </div>
+
+            <div class="company">
+                <i class="fa fa-certificate"></i> {$certificate->issue_by}
+            </div>
+
+            <div class="detail">{$certificate->detail}</div>
+
+            <div class="center">
+                <a href="{$certificate->url}" class="btn btn-sm btn-light">
+                    <i class="fa fa-globe"></i> {? echo e('Certifikát', 'Certificate') }
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>

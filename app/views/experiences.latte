@@ -1,0 +1,33 @@
+{layout "@layout.latte"}
+{block content}
+
+
+<h2>
+    <i class="fa fa-briefcase"></i> {? echo e('Zkušenosti', 'Experiences') }
+</h2>
+
+<div id="experiences">
+    <ul class="timeline">
+        <li n:foreach="$list as $experience"
+                class="event {? echo make_css_name($experience->type) }"
+                data-type="{$experience->type}">
+
+            <div class="date">
+                <span class="start">{$experience->date_start|date:'n/Y'}</span>
+                <span class="end" n:if="$experience->date_end">
+                    – {$experience->date_end|date:'n/Y'}
+                </span>
+            </div>
+
+            <div class="title">{$experience->title}</div>
+
+            <div class="company">
+                <i class="fa {? echo $experience->type == 'Zaměstnání' ? 'fa-briefcase' : 'fa-graduation-cap' }"></i>
+                {$experience->company}
+            </div>
+
+            <div class="detail">{$experience->detail}</div>
+            <div class="note">{$experience->note}</div>
+        </li>
+    </ul>
+</div>
