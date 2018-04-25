@@ -1,0 +1,37 @@
+{layout "@layout.latte"}
+{block content}
+{? d($locale) }
+<div class="row">
+    <div class="col-md-7">
+        <h2>
+            <i class="fa fa-user"></i> {? echo e('O mně', 'About Me') }
+        </h2>
+
+
+        <div class="index-text">
+            <div class="photo">
+                <img src="/files/photo.jpg" alt=""/>
+            </div>
+
+            {if $locale == 'cs'}
+                <p>
+                    Momentálně se živím jako vývojář webového software ve vědecké organizaci, která se věnuje jadernému
+                    výzkumu.
+                    Mám na starosti celý cyklus – od počátečního modelování dat a návrhu architektury relační databáze,
+                    přes
+                    kód samotný až po front end a UX našich zaměstnanců.
+                </p>
+                <p>
+                    <a href="javascript:void(0)" onclick="portfolio(7);">Systém zajišťuje personální i projektové řízení
+                        pro
+                        společnost o ~350 zaměstnancích.</a> Jedná se určitě o můj největší projekt,
+                    ale najde se i spousta menších věcí a fanouškovských záležitostí, <a href="/portfolio">o
+                        kterých se můžete dočíst v portfoliu</a>.
+                </p>
+                <p>
+                    Vše okolo počítačů je mým koníčkem už od dětství, ale čas trávím i četbou, sledováním filmů nebo
+                    fotografováním.
+                    Určitě mi neváhejte napsat s čímkoliv.
+                </p>
+            {/if}
+        </div>

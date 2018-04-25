@@ -1,0 +1,39 @@
+{block footer}
+    <footer>
+    <span class="tel">
+      <a href="tel:{? echo str_replace(' ', '', env('PHONE')) }">
+        {? echo env('PHONE') }
+      </a>
+    </span>
+        •
+        <span class="email">
+      <a href="mailto:{? echo env('EMAIL') }">
+        {? echo env('EMAIL') }
+      </a>
+    </span>
+    </footer>
+{/block}
+
+{block hidden_modal}
+    <div class="modal modal-lg fade" id="portfolio-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark"
+                            data-dismiss="modal">{? echo e('Zavřít', 'Close') }</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
+
+</body>
+</html>

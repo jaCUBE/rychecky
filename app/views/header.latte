@@ -1,0 +1,28 @@
+<header>
+    <h1>
+        Jakub Rychecký
+    </h1>
+
+    {block lead}
+        <div class="lead">
+            <i class="fa fa-code"></i> Full Stack Web Developer
+        </div>
+    {/block}
+
+    {include 'partials/menu.latte'}
+
+    {block alert}
+        <div class="alert alert-success">
+            <i class="fa fa-briefcase"></i>
+            {? echo e(
+                'Hledám nové pracovní příležitosti, kde bych mohl uplatnit a zlepšovat své dovednosti. Budu vděčný za všechny zajímavé nabídky. :)',
+                'I seek new job opportunities to utilize and improve my skills. I will be glad for any interesting offers. :)'
+            ) }
+        </div>
+    {/block}
+
+
+    <form action="#" method="post" class="locale-switcher">
+        <input type="hidden" name="locale" value="{? echo e('en', 'cs') }"/>
+    </form>
+</header>

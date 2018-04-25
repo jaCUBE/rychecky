@@ -1,6 +1,7 @@
 {
     "require": {
-        "vlucas/phpdotenv": "^2.4"
+        "vlucas/phpdotenv": "^2.4",
+        "latte/latte": "^2.4"
     },
     "require-dev": {
         "kint-php/kint": "^2.2",

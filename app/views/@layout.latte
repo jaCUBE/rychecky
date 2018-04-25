@@ -1,14 +1,19 @@
+{var locale = Language::getLocale()}
+{var asset_css = asset_with_hash('css/rychecky.css')}
+{var asset_js = asset_with_hash('js/rychecky.min.js')}
+
+
 <!DOCTYPE html>
 
 
-<html lang="<?= Language::getLocale() ?>">
+<html lang="{$locale}">
 <head>
     <title>rychecky.cz</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="theme-color" content="#41576D">
-    <link rel="icon" href="<?= URL ?>/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800&subset=latin,latin-ext"
           rel="stylesheet" type="text/css"/>
@@ -31,11 +36,11 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/timeline.css/1.0.0/timeline.min.css"/>
 
 
-    <link rel="stylesheet" type="text/css" href="<?= asset_with_hash('css/rychecky.css') ?>">
-    <script src="<?= asset_with_hash('js/rychecky.min.js') ?>"></script>
+    <link rel="stylesheet" type="text/css" href="{$asset_css}">
+    <script src="{$asset_js}"></script>
 
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=<?= env('GOOGLE_ANALYTICS') ?>"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id='{? echo env('GOOGLE_ANALYTICS') }'"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -45,10 +50,22 @@
 
         gtag('js', new Date());
 
-        gtag('config', '<?= env('GOOGLE_ANALYTICS') ?>');
+        gtag('config', '{? echo env('GOOGLE_ANALYTICS') }');
     </script>
 </head>
 
 
 <body>
 <div class="container">
+    {include 'header.latte'}
+
+    <main id="content">
+        {include content}
+    </main>
+
+    {include 'footer.latte'}
+</div>
+</body>
+
+
+</html>

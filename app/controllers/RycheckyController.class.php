@@ -24,7 +24,7 @@ class RycheckyController extends Controller
 
     public function index()
     {
-        Rychecky::view('index', [
+        Rychecky::viewLatte('info', [
             'hobby' => HobbyList::all(), // Seznam koníčků
             'social' => SocialList::all() // Seznam tlačítek pro sociální sítě
         ]);

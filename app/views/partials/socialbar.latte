@@ -1,0 +1,29 @@
+{var m}
+
+{block menu}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">JR</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li n:foreach="$menu as $url => $item" class="nav-item {? Menu::isMenuSelected($url) ? 'active' : '' }">
+                    <a href="{$url}">
+                        <i class="fa {$item['icon']}"></i> {$item['name']}
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="javascript:void(0)" onclick="$('.locale-switcher').submit()">
+                        <img src="/images/flags/{? echo e('gb.png', 'cz.png') }" style="margin-right: 5px;" alt=""/>
+                        {? echo e('English', 'Česky') }
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{/block}
