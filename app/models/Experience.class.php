@@ -9,11 +9,7 @@
 
 class Experience
 {
-
-    /**
-     * @var integer $row_id ID záznamu
-     */
-    public $row_id;
+    use DatabaseRecordTrait, LocalizedTrait;
 
     /**
      * @var integer $experience_id ID zkušenosti
@@ -54,24 +50,4 @@ class Experience
      * @var string $note Poznámka
      */
     public $note;
-
-    /**
-     * @return string $locale Lokalizace (cs/en)
-     */
-    public $locale;
-
-    /**
-     * @var boolean $visible Viditelný?
-     */
-    public $visible;
-
-    /**
-     * @var string $added Datum a čas přidání záznamu
-     */
-    public $added;
-
-    /**
-     * @var string $timestamp Datum a čas změny záznamu
-     */
-    public $timestamp;
 }

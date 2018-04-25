@@ -9,10 +9,7 @@
 class Skill
 {
 
-    /**
-     * @var integer $row_id ID záznamu
-     */
-    public $row_id;
+    use DatabaseRecordTrait, LocalizedTrait;
 
     /**
      * @var integer $skill_id ID dovednosti
@@ -38,24 +35,4 @@ class Skill
      * @var string $detail Detailní popis dovednosti
      */
     public $detail;
-
-    /**
-     * @return string $locale Lokalizace (cs/en)
-     */
-    public $locale;
-
-    /**
-     * @var boolean $visible Viditelný?
-     */
-    public $visible;
-
-    /**
-     * @var string $added Datum a čas přidání záznamu
-     */
-    public $added;
-
-    /**
-     * @var string $timestamp Datum a čas změny záznamu
-     */
-    public $timestamp;
 }

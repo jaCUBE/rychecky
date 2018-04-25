@@ -1,8 +1,6 @@
 <?php
 
 include 'app/controllers/default/Controller.class.php'; // Obecný řadič
-include 'app/controllers/RycheckyController.class.php'; // Řadič pro web
-include 'app/controllers/AjaxController.class.php'; // Řadič pro AJAX
 
 
 spl_autoload_register('rychecky_autoloader'); // Registrace autoloaderu
@@ -14,7 +12,20 @@ spl_autoload_register('rychecky_autoloader'); // Registrace autoloaderu
  * @param $classname Název třídy
  */
 
-function rychecky_autoloader($classname){
-  $filepath = 'app/models/'.$classname.'.class.php'; // Cesta ke třídě
-  include $filepath; // Načte třídu
+function rychecky_autoloader(string $classname)
+{
+    if (preg_match('/.+(Controller)$/', $classname)) { // Řadiče
+        $folder = 'controllers';
+        $suffix = '.class.php';
+    } elseif (preg_match('/.+Trait$/', $classname)) { // Traity
+        $folder = 'traits';
+        $suffix = '.trait.php';
+    } else { // Standardní modely
+        $folder = 'models';
+        $suffix = '.class.php';
+    }
+
+    $filepath = 'app/' . $folder . '/' . $classname . $suffix; // Cesta ke třídě
+
+    include $filepath; // Načte třídu
 }

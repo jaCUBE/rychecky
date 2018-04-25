@@ -38,10 +38,10 @@ class RycheckyController extends Controller
     public function skills()
     {
         Rychecky::view('skill.master', [
-            'skill_list' => SkillList::fetchSkillListByType(SkillListType::selectedSkillType()),
             // Seznam dovedností zvolené skupiny
-            'skill_stats' => SkillListType::fetchSkillTypeStats()
+            'skill_list' => SkillList::fetchSkillListByType(SkillListType::selectedSkillType()),
             // Skupiny a počet dovedností
+            'skill_stats' => SkillListType::fetchSkillTypeStats()
         ]);
     }
 

@@ -9,10 +9,7 @@
 class Social
 {
 
-    /**
-     * @var integer $row_id ID záznamu
-     */
-    public $row_id;
+    use DatabaseRecordTrait;
 
     /**
      * @var integer $social_id
@@ -38,19 +35,4 @@ class Social
      * @var string $color HEX kód barvy
      */
     public $color;
-
-    /**
-     * @var boolean $visible Viditelný?
-     */
-    public $visible;
-
-    /**
-     * @var string $added Datum a čas přidání záznamu
-     */
-    public $added;
-
-    /**
-     * @var string $timestamp Datum a čas změny záznamu
-     */
-    public $timestamp;
 }

@@ -9,11 +9,7 @@
 class Image
 {
 
-    /**
-     * ID záznamu
-     * @var integer $row_id
-     */
-    public $row_id;
+    use DatabaseRecordTrait;
 
     /**
      * ID zkušenosti k této galerii
@@ -44,24 +40,6 @@ class Image
      * @var integer $order
      */
     public $order;
-
-    /**
-     * Viditelný?
-     * @var boolean $visible
-     */
-    public $visible;
-
-    /**
-     * Datum a čas přidání záznamu
-     * @var string $added
-     */
-    public $added;
-
-    /**
-     * Datum a čas změny záznamu
-     * @var string $timestamp
-     */
-    public $timestamp;
 
 
     /**

@@ -9,10 +9,7 @@
 class Portfolio
 {
 
-    /**
-     * @var integer $row_id ID záznamu
-     */
-    public $row_id;
+    use DatabaseRecordTrait, LocalizedTrait;
 
     /**
      * @var integer $portfolio_id ID portfolia
@@ -79,26 +76,6 @@ class Portfolio
      * @var boolean $interesting Je tato položka portfolia zajímavá?
      */
     public $interesting;
-
-    /**
-     * @var string $locale Lokalizace (cs/en)
-     */
-    public $locale;
-
-    /**
-     * @var boolean $visible Viditelný?
-     */
-    public $visible;
-
-    /**
-     * @var string $added Datum a čas přidání záznamu
-     */
-    public $added;
-
-    /**
-     * @var string $timestamp Datum a čas změny záznamu
-     */
-    public $timestamp;
 
 
     /**
