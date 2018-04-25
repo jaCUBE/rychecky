@@ -15,7 +15,7 @@ class ExperienceList
      * @return Experience[] Seznam zkušeností
      */
 
-    public static function fetchExperienceList(): array
+    public static function all(): array
     {
         $experience_list = []; // Seznam zkušeností
 

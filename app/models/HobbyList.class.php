@@ -14,7 +14,7 @@ class HobbyList
      * @return Hobby[] // Seznam koníčků
      */
 
-    public static function fetchHobbyList(): array
+    public static function all(): array
     {
         $hobby_list = []; // Seznam koníčků
 

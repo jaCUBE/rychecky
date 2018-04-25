@@ -9,7 +9,7 @@ class ListTest extends TestCase
 
     public function testCertificateList()
     {
-        $list = CertificateList::fetchCertificateList();
+        $list = CertificateList::all();
         $this->assertInternalType('array', $list);
         $this->assertInstanceOf('Certificate', $list[0]);
     }
@@ -17,7 +17,7 @@ class ListTest extends TestCase
 
     public function testExperienceList()
     {
-        $list = ExperienceList::fetchExperienceList();
+        $list = ExperienceList::all();
         $this->assertInternalType('array', $list);
         $this->assertInstanceOf('Experience', $list[0]);
     }
@@ -25,7 +25,7 @@ class ListTest extends TestCase
 
     public function testHobbyList()
     {
-        $list = HobbyList::fetchHobbyList();
+        $list = HobbyList::all();
         $this->assertInternalType('array', $list);
         $this->assertInstanceOf('Hobby', $list[0]);
     }
@@ -33,7 +33,7 @@ class ListTest extends TestCase
 
     public function testPortfolioList()
     {
-        $list = PortfolioList::fetchPortfolioList();
+        $list = PortfolioList::all();
         $this->assertInternalType('array', $list);
         $this->assertInstanceOf('Portfolio', $list[0]);
     }
@@ -44,7 +44,7 @@ class ListTest extends TestCase
         $selected = SkillListType::selectedSkillType();
         $this->assertInternalType('string', $selected);
 
-        $list = SkillList::fetchSkillListByType($selected);
+        $list = SkillList::findByType($selected);
         $this->assertInternalType('array', $list);
         $this->assertInstanceOf('Skill', $list[0]);
     }
@@ -52,7 +52,7 @@ class ListTest extends TestCase
 
     public function testSocialList()
     {
-        $list = SocialList::fetchSocialList();
+        $list = SocialList::all();
         $this->assertInternalType('array', $list);
         $this->assertInstanceOf('Social', $list[0]);
     }

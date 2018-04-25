@@ -15,7 +15,7 @@ class CertificateList
      * @return Certificate[] Seznam certifikátů
      */
 
-    public static function fetchCertificateList(): array
+    public static function all(): array
     {
         $certificate_list = []; // Seznam certifikátů
 

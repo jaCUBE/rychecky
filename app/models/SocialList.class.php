@@ -13,7 +13,7 @@ class SocialList
      * Stáhne a zpracuje seznam ikonek sociálních sítí.
      * @return Social[] Seznam sociálních sítí
      */
-    public static function fetchSocialList(): array
+    public static function all(): array
     {
         $social_list = []; // Seznam sociálních sítí
 

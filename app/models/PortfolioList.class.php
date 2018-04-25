@@ -14,7 +14,7 @@ class PortfolioList
      * @return Portfolio[] Seznam portfolia
      */
 
-    public static function fetchPortfolioList(): array
+    public static function all(): array
     {
         $portfolio_list = []; // Seznam portfolia
 

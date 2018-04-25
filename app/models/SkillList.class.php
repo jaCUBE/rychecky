@@ -15,7 +15,7 @@ class SkillList
      * @return Skill[] Dovednosti daného typu
      */
 
-    public static function fetchSkillListByType(string $type): array
+    public static function findByType(string $type): array
     {
         $skill_list = []; // Seznam dovedností
 
