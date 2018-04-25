@@ -14,7 +14,7 @@ class AjaxController extends Controller
      */
     public function portfolio()
     {
-        $portofilo = new Portfolio($_GET['portfolio_id']); // Položka portfolia
+        $portofilo = Portfolio::findById($_GET['portfolio_id']); // Položka portfolia
 
         ob_start();
         Rychecky::view('portfolio.ajax', $portofilo); // View s obsahem AJAX
@@ -22,7 +22,7 @@ class AjaxController extends Controller
         // Výstup v JSON
         $json = [
             'title' => $portofilo->name,
-            'body' => ob_get_clean()
+            'body' => ob_get_clean() // HTML z bufferu
         ];
 
         echo json_encode($json);

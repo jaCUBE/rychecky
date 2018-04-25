@@ -81,7 +81,7 @@ class Portfolio
     public $interesting;
 
     /**
-     * @return string $locale Lokalizace (cs/en)
+     * @var string $locale Lokalizace (cs/en)
      */
     public $locale;
 
@@ -99,31 +99,15 @@ class Portfolio
      * @var string $timestamp Datum a čas změny záznamu
      */
     public $timestamp;
-    /**
-     *
-     * @var type
-     */
-    public $thumbnail;
-    public $gallery = [];
 
-    /**
-     * Konstruktor pro portfolio umožňuje podle ID stáhnout položku "do sebe".
-     * @param integer $portfolio_id ID portfolia
-     */
-
-    public function __construct(int $portfolio_id = 0)
-    {
-        if ($portfolio_id) { // Vyplněné ID...
-            $this->portfolio_id = (int)$portfolio_id; // Přebrání ID
-            $this->fetchPortfolio(); // Stažení portfolia
-        }
-    }
 
     /**
      * Stahuje portofolio do této instance třídy.
+     * @param integer $portfolio_id ID portfolia
+     * @return Portfolio Stažené portfolio
      */
 
-    private function fetchPortfolio()
+    static function findById(int $portfolio_id): Portfolio
     {
         $sql = '
       SELECT p.*
@@ -134,12 +118,14 @@ class Portfolio
       LIMIT 1'; // SQL pro stažení jednoho portfolia dle ID
 
         $STH = db()->prepare($sql);
-        $STH->bindParam(':portfolio_id', $this->portfolio_id);
+        $STH->bindParam(':portfolio_id', $portfolio_id);
         $STH->bindParam(':locale', Language::getLocale());
-        $STH->setFetchMode(PDO::FETCH_INTO, $this);
+        $STH->setFetchMode(PDO::FETCH_CLASS, 'Portfolio');
         $STH->execute();
 
-        $STH->fetch(); // Stažení do této instance třídy
+        $portfolio = $STH->fetch();
+
+        return $portfolio ? $portfolio : new Portfolio();
     }
 
     /**
