@@ -18,6 +18,10 @@ $(function () {
     }
 
     $('.timeline .event').on('mouseover click', timeline_type_focus); // Zvýraznění
+
+    $('*[title]').tooltipster({
+        'animation': 'grow'
+    });
 });
 
 
