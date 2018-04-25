@@ -27,14 +27,15 @@ class Rychecky
     }
 
 
-    public static function viewLatte(string $name, $data = null): void
+    public static function viewLatte(string $name, array $data): void
     {
         $latte = new Latte\Engine;
+        $latte->setTempDirectory('temp');
+
+        $data['locale'] = Language::getLocale();
 
         $path = 'app/views/';
         $filpath = $path . $name . '.latte';
-
-        $latte->setTempDirectory('temp');
 
         $latte->render($filpath, (array)$data);
     }

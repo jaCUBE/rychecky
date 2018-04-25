@@ -1,0 +1,48 @@
+<div class="row portfolio-modal">
+    <div class="col-md-4">
+        <div class="label" style="margin-bottom: 5px;">
+            <span class="badge badge-info" n:if="$portfolio->isInteresting()"><i class="fa fa-star"></i> Zajímavá položka</span>
+            <span class="badge badge-success" n:if="$portfolio->isRunning()"><i class="fa fa-cog"></i> Ve vývoji</span>
+        </div>
+
+        <div class="center">
+            <div class="image">
+                <img src="{? echo Gallery::portfolioThumbnail($portfolio->portfolio_id)->url() }" alt=""/>
+            </div>
+        </div>
+
+
+        <div class="gallery">
+            <a n:foreach="$gallery as $image"
+                    href="{$image->url()}" data-fancybox="portfolio-{$portfolio->portfolio_id}"
+                    data-caption="$image->title" class="fancybox">
+                <img src="{$image->url()}" alt=""/>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="col-md-8">
+        <div class="detail">
+            <div class="text">
+                {if $portfolio->detail}
+                    {$portfolio->detail|noescape}
+                {else}
+                    {$portfolio->detail_short}
+                {/if}
+            </div>
+
+            <div class="center">
+                <div class="url">
+                    <a n:if="$portfolio->url" href="{$portfolio->url}" class="btn btn btn-light">
+                        <i class="fa fa-globe"></i>{$portfolio->nameShortest()}
+                    </a>
+                </div>
+
+                <a n:if="$portfolio->github" href="{$portfolio->github}" class="btn btn-sm btn-secondary">
+                    <i class="fa fa-github"></i> {$portfolio->nameShortest()} GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

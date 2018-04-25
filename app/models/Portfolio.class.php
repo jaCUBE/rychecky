@@ -128,16 +128,24 @@ class Portfolio
     }
 
     /**
-     * Je tato položka portfolia právě ve vývoji?
-     * @return bool Je ve vývoji?
+     * Vrací CSS třídy toho portfolia.
+     * @return string CSS třídy
      */
 
-    public function isRunning(): bool
+    public function css(): string
     {
-        $started = !empty($this->date_start) and strtotime($this->date_start) <= strtotime('today'); // Začato: datum začátku existuje a proběhlo
-        $ended = !empty($this->date_end) and strtotime($this->date_end) <= strtotime('today'); // Ukončeno: datum konce existuje a proběhlo
+        // Základní třídy
+        $class = ['portfolio', make_css_name($this->type)];
 
-        return $started and !$ended; // Začalo a neskončilo
+        if ($this->isInteresting()) { // Zajímavé porfoliu?
+            $class[] = 'interesting';
+        }
+
+        if ($this->isRunning()) { // Portfolium ve vývoji?
+            $class[] = 'running';
+        }
+
+        return implode(' ', $class);
     }
 
     /**
@@ -148,6 +156,19 @@ class Portfolio
     public function isInteresting(): bool
     {
         return (boolean)$this->interesting;
+    }
+
+    /**
+     * Je tato položka portfolia právě ve vývoji?
+     * @return bool Je ve vývoji?
+     */
+
+    public function isRunning(): bool
+    {
+        $started = !empty($this->date_start) and strtotime($this->date_start) <= strtotime('today'); // Začato: datum začátku existuje a proběhlo
+        $ended = !empty($this->date_end) and strtotime($this->date_end) <= strtotime('today'); // Ukončeno: datum konce existuje a proběhlo
+
+        return $started and !$ended; // Začalo a neskončilo
     }
 
 }

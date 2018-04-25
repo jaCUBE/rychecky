@@ -11,8 +11,9 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li n:foreach="$menu as $url => $item" class="nav-item {? Menu::isMenuSelected($url) ? 'active' : '' }">
-                    <a href="{$url}">
+                <li n:foreach="$menu as $url => $item"
+                        class="nav-item {? echo Menu::isMenuSelected($url) ? 'active' : '' }">
+                    <a href="/{$url}">
                         <i class="fa {$item['icon']}"></i> {$item['name']}
                     </a>
                 </li>
