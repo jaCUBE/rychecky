@@ -266,7 +266,7 @@ body {
         display: inline-block;
         color: #ffffff;
         padding-top: 6px;
-        opacity: 0.7;
+        opacity: 0.6;
         margin-top: 5px;
 
         &:hover { // Tlačítko sítě při najetí
@@ -389,6 +389,39 @@ body {
     }
 }
 
+.stack { // Přehled používaných technologií
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+
+    img {
+        opacity: 0.2;
+        margin: 15px 0px 0px 15px;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+footer { // Zápatí webu
+    text-align: right;
+    font-size: 11px;
+    padding-right: 5px;
+
+    a { // Odkazy v zápatí (e-mail, telefon)
+        color: #EEEEEE;
+
+        &:hover {
+            color: @col-secondary-lighter;
+        }
+    }
+}
+
+
+
+
+
 @media (max-width: 800px) {
     // Zobrazení mobilního navbaru na displejích se šířkou 1080px a menší...
     .skill {
@@ -412,19 +445,6 @@ body {
     }
 }
 
-footer { // Zápatí webu
-    text-align: right;
-    font-size: 11px;
-    padding-right: 5px;
-
-    a { // Odkazy v zápatí (e-mail, telefon)
-        color: #EEEEEE;
-
-        &:hover {
-            color: @col-secondary-lighter;
-        }
-    }
-}
 
 @media (max-width: 1080px) {
     // Zobrazení mobilního navbaru na displejích se šířkou 1080px a menší...

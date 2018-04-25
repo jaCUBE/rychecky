@@ -1,16 +1,16 @@
 {block footer}
     <footer>
-    <span class="tel">
-      <a href="tel:{? echo str_replace(' ', '', env('PHONE')) }">
-        {? echo env('PHONE') }
-      </a>
-    </span>
+        <span class="tel">
+          <a href="tel:{? echo str_replace(' ', '', env('PHONE')) }">
+            {? echo env('PHONE') }
+          </a>
+        </span>
         •
         <span class="email">
-      <a href="mailto:{? echo env('EMAIL') }">
-        {? echo env('EMAIL') }
-      </a>
-    </span>
+          <a href="mailto:{? echo env('EMAIL') }">
+            {? echo env('EMAIL') }
+          </a>
+        </span>
     </footer>
 {/block}
 
