@@ -58,7 +58,7 @@
         </div>
 
 
-        <?= e($info_cs, $info_en) // České/anglické info ?>
+        <?= e($info_cs, $info_en) // České/anglické info   ?>
 
         <hr class="clear"/>
 
@@ -82,8 +82,8 @@
             <?php foreach ($hobby_list as $hobby) {
                 ?>
                 <div class="hobby"
-                     style="<?= array_to_css($hobby->randomHobbyCss()) // Náhodná pozice ve wordcloudu ?>">
-                    <?= $hobby->name // Název koníčku ?>
+                     style="<?= array_to_css($hobby->randomHobbyCss()) // Náhodná pozice ve wordcloudu   ?>">
+                    <?= $hobby->name // Název koníčku   ?>
                 </div>
                 <?php
             } ?>

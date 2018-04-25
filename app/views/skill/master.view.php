@@ -14,9 +14,9 @@
             <?php foreach ($skill_stats as $type => $count) { // Procházení jednotlivých skupin dovedností...?>
                 <a href="<?= URL ?>/skills/<?= make_css_name($type) ?>"
                    class="list-group-item <?= SkillListType::isSelectedType($type) ? 'active' : '' ?>">
-                    <?= $type // Název skupiny ?>
+                    <?= $type // Název skupiny   ?>
                     <span class="badge badge-light">
-            <?= $count // Počet dovedností ve skupině ?>
+            <?= $count // Počet dovedností ve skupině   ?>
           </span>
                 </a>
                 <?php

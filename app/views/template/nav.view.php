@@ -9,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <?php foreach (Menu::generateMenu() as $url => $button) { // Procházení jednotlivých tlačítek...?>
-                <li class="nav-item <?= Menu::isMenuSelected($url) ? 'active' : '' // Zvýraznění zvoleného ?>">
+                <li class="nav-item <?= Menu::isMenuSelected($url) ? 'active' : '' // Zvýraznění zvoleného   ?>">
                     <a href="<?= URL . '/' . $url ?>">
-                        <i class="fa <?= $button['icon'] // Ikona via Font Awesome ?>"></i>
-                        <?= $button['name'] // Název tlačítka ?>
+                        <i class="fa <?= $button['icon'] // Ikona via Font Awesome   ?>"></i>
+                        <?= $button['name'] // Název tlačítka   ?>
                     </a>
                 </li>
                 <?php

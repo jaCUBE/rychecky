@@ -16,7 +16,7 @@ class Rychecky
      * @param mixed  $data Data potřebná pro vykreslení view
      */
 
-    public static function view(string $name, $data = null)
+    public static function view(string $name, $data = null): void
     {
         $path = 'app/views/'; // Cesta k views
         $filename = str_replace('.', '/', $name) . '.view.php'; // Název souboru views

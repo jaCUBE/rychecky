@@ -54,7 +54,7 @@ class Language
      * @param string $locale Kód jazyku ISO 639-1
      */
 
-    public static function setCookie(string $locale = 'cs')
+    public static function setCookie(string $locale = 'cs'): void
     {
         $expire = time() + 14 * 24 * 60 * 60; // Platnost
         setcookie('locale', $locale, $expire, '/');

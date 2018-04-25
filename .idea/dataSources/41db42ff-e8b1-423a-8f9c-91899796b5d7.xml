@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="rychecky@localhost">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.7">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.8">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
     </root>
@@ -1062,7 +1062,7 @@
     <column id="273" parent="266" name="row_id">
       <Position>1</Position>
       <Comment>ID záznamu</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1070,48 +1070,48 @@
     <column id="274" parent="266" name="certificate_id">
       <Position>2</Position>
       <Comment>ID certifikátu</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="275" parent="266" name="type">
       <Position>3</Position>
       <Comment>Typ certifikátu</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="276" parent="266" name="name">
       <Position>4</Position>
       <Comment>Název certifikátu</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="277" parent="266" name="detail">
       <Position>5</Position>
       <Comment>Detailní popis</Comment>
-      <DataType>mediumtext|0</DataType>
+      <DataType>mediumtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="278" parent="266" name="issue_date">
       <Position>6</Position>
       <Comment>Datum vystavení</Comment>
-      <DataType>date|0</DataType>
+      <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="279" parent="266" name="issue_by">
       <Position>7</Position>
       <Comment>Vystavitel</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="280" parent="266" name="url">
       <Position>8</Position>
       <Comment>URL certifikátu</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="281" parent="266" name="locale">
       <Position>9</Position>
-      <DataType>varchar(2)|0</DataType>
+      <DataType>varchar(2)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;cs&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
@@ -1119,21 +1119,21 @@
     <column id="282" parent="266" name="visible">
       <Position>10</Position>
       <Comment>Viditelný?</Comment>
-      <DataType>tinyint(4)|0</DataType>
+      <DataType>tinyint(4)|0s</DataType>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="283" parent="266" name="added">
       <Position>11</Position>
       <Comment>Přidáno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="284" parent="266" name="timestamp">
       <Position>12</Position>
       <Comment>Změněno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
@@ -1152,7 +1152,7 @@
     <column id="288" parent="267" name="row_id">
       <Position>1</Position>
       <Comment>ID záznamu</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1160,54 +1160,54 @@
     <column id="289" parent="267" name="experience_id">
       <Position>2</Position>
       <Comment>ID zkušenosti</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="290" parent="267" name="type">
       <Position>3</Position>
       <Comment>Typ zkušenosti</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="291" parent="267" name="title">
       <Position>4</Position>
       <Comment>Název zkušenosti</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="292" parent="267" name="company">
       <Position>5</Position>
       <Comment>Společnost</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="293" parent="267" name="date_start">
       <Position>6</Position>
       <Comment>Datum začátku</Comment>
-      <DataType>date|0</DataType>
+      <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="294" parent="267" name="date_end">
       <Position>7</Position>
       <Comment>Datum konce</Comment>
-      <DataType>date|0</DataType>
+      <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="295" parent="267" name="detail">
       <Position>8</Position>
       <Comment>Detailní popis</Comment>
-      <DataType>mediumtext|0</DataType>
+      <DataType>mediumtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="296" parent="267" name="note">
       <Position>9</Position>
       <Comment>Poznámka</Comment>
-      <DataType>mediumtext|0</DataType>
+      <DataType>mediumtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="297" parent="267" name="locale">
       <Position>10</Position>
-      <DataType>varchar(2)|0</DataType>
+      <DataType>varchar(2)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;cs&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
@@ -1215,21 +1215,21 @@
     <column id="298" parent="267" name="visible">
       <Position>11</Position>
       <Comment>Viditelný?</Comment>
-      <DataType>tinyint(4)|0</DataType>
+      <DataType>tinyint(4)|0s</DataType>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="299" parent="267" name="added">
       <Position>12</Position>
       <Comment>Přidáno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="300" parent="267" name="timestamp">
       <Position>13</Position>
       <Comment>Změněno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
@@ -1246,7 +1246,7 @@ visible</ColNames>
     <column id="303" parent="268" name="row_id">
       <Position>1</Position>
       <Comment>ID záznamu</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1254,53 +1254,53 @@ visible</ColNames>
     <column id="304" parent="268" name="portfolio_id">
       <Position>2</Position>
       <Comment>ID portfolia</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="305" parent="268" name="filename">
       <Position>3</Position>
       <Comment>Název souboru</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="306" parent="268" name="title">
       <Position>4</Position>
       <Comment>Popis obrázku</Comment>
-      <DataType>varchar(512)|0</DataType>
+      <DataType>varchar(512)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="307" parent="268" name="thumbnail">
       <Position>5</Position>
       <Comment>Thumbnail?</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="308" parent="268" name="order">
       <Position>6</Position>
       <Comment>Hodnota pořadí</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="309" parent="268" name="visible">
       <Position>7</Position>
       <Comment>Viditelný?</Comment>
-      <DataType>tinyint(4)|0</DataType>
+      <DataType>tinyint(4)|0s</DataType>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="310" parent="268" name="added">
       <Position>8</Position>
       <Comment>Přidáno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="311" parent="268" name="timestamp">
       <Position>9</Position>
       <Comment>Změněno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
@@ -1330,7 +1330,7 @@ visible</ColNames>
     <column id="317" parent="269" name="row_id">
       <Position>1</Position>
       <Comment>ID záznamu</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1338,25 +1338,25 @@ visible</ColNames>
     <column id="318" parent="269" name="hobby_id">
       <Position>2</Position>
       <Comment>ID koníčku</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="319" parent="269" name="name">
       <Position>3</Position>
       <Comment>Název koníčku</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="320" parent="269" name="size">
       <Position>4</Position>
       <Comment>Velikost slova v cloudu</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="321" parent="269" name="locale">
       <Position>5</Position>
-      <DataType>varchar(2)|0</DataType>
+      <DataType>varchar(2)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;cs&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
@@ -1364,21 +1364,21 @@ visible</ColNames>
     <column id="322" parent="269" name="visible">
       <Position>6</Position>
       <Comment>Viditelný?</Comment>
-      <DataType>tinyint(4)|0</DataType>
+      <DataType>tinyint(4)|0s</DataType>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="323" parent="269" name="added">
       <Position>7</Position>
       <Comment>Přidáno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="324" parent="269" name="timestamp">
       <Position>8</Position>
       <Comment>Změněno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
@@ -1394,7 +1394,7 @@ visible</ColNames>
     <column id="327" parent="270" name="row_id">
       <Position>1</Position>
       <Comment>ID záznamu</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1402,79 +1402,79 @@ visible</ColNames>
     <column id="328" parent="270" name="portfolio_id">
       <Position>2</Position>
       <Comment>ID portfolia</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="329" parent="270" name="type">
       <Position>3</Position>
       <Comment>Typ (kategorie) portfolia</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="330" parent="270" name="name">
       <Position>4</Position>
       <Comment>Název dovednosti</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="331" parent="270" name="name_short">
       <Position>5</Position>
       <Comment>Hodnota (míra) dovednosti</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="332" parent="270" name="detail">
       <Position>6</Position>
       <Comment>Textový popis</Comment>
-      <DataType>mediumtext|0</DataType>
+      <DataType>mediumtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="333" parent="270" name="detail_short">
       <Position>7</Position>
       <Comment>Zkrácený textový popis</Comment>
-      <DataType>mediumtext|0</DataType>
+      <DataType>mediumtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="334" parent="270" name="company">
       <Position>8</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="335" parent="270" name="url">
       <Position>9</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="336" parent="270" name="date_start">
       <Position>10</Position>
-      <DataType>date|0</DataType>
+      <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="337" parent="270" name="date_end">
       <Position>11</Position>
-      <DataType>date|0</DataType>
+      <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="338" parent="270" name="size">
       <Position>12</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="339" parent="270" name="github">
       <Position>13</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="340" parent="270" name="interesting">
       <Position>14</Position>
       <Comment>Zajímavé?</Comment>
-      <DataType>tinyint(4)|0</DataType>
+      <DataType>tinyint(4)|0s</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="341" parent="270" name="locale">
       <Position>15</Position>
-      <DataType>varchar(2)|0</DataType>
+      <DataType>varchar(2)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;cs&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
@@ -1482,21 +1482,21 @@ visible</ColNames>
     <column id="342" parent="270" name="visible">
       <Position>16</Position>
       <Comment>Viditelný?</Comment>
-      <DataType>tinyint(4)|0</DataType>
+      <DataType>tinyint(4)|0s</DataType>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="343" parent="270" name="added">
       <Position>17</Position>
       <Comment>Přidáno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="344" parent="270" name="timestamp">
       <Position>18</Position>
       <Comment>Změněno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
@@ -1513,7 +1513,7 @@ visible</ColNames>
     <column id="347" parent="271" name="row_id">
       <Position>1</Position>
       <Comment>ID záznamu</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1521,36 +1521,36 @@ visible</ColNames>
     <column id="348" parent="271" name="skill_id">
       <Position>2</Position>
       <Comment>ID dovednosti</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="349" parent="271" name="type">
       <Position>3</Position>
       <Comment>Typ (kategorie) dovednosti</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="350" parent="271" name="name">
       <Position>4</Position>
       <Comment>Název dovednosti</Comment>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="351" parent="271" name="value">
       <Position>5</Position>
       <Comment>Hodnota (míra) dovednosti</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="352" parent="271" name="detail">
       <Position>6</Position>
       <Comment>Textový popis</Comment>
-      <DataType>mediumtext|0</DataType>
+      <DataType>mediumtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="353" parent="271" name="locale">
       <Position>7</Position>
-      <DataType>varchar(2)|0</DataType>
+      <DataType>varchar(2)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;cs&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
@@ -1558,21 +1558,21 @@ visible</ColNames>
     <column id="354" parent="271" name="visible">
       <Position>8</Position>
       <Comment>Viditelný?</Comment>
-      <DataType>tinyint(4)|0</DataType>
+      <DataType>tinyint(4)|0s</DataType>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="355" parent="271" name="added">
       <Position>9</Position>
       <Comment>Přidáno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="356" parent="271" name="timestamp">
       <Position>10</Position>
       <Comment>Změněno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
@@ -1592,7 +1592,7 @@ visible</ColNames>
     <column id="360" parent="272" name="row_id">
       <Position>1</Position>
       <Comment>ID záznamu</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1600,7 +1600,7 @@ visible</ColNames>
     <column id="361" parent="272" name="social_id">
       <Position>2</Position>
       <Comment>ID profilu na sociální síti</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
@@ -1608,52 +1608,52 @@ visible</ColNames>
     <column id="362" parent="272" name="name">
       <Position>3</Position>
       <Comment>Název sítě</Comment>
-      <DataType>varchar(1024)|0</DataType>
+      <DataType>varchar(1024)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="363" parent="272" name="url">
       <Position>4</Position>
       <Comment>URL profilu</Comment>
-      <DataType>varchar(1024)|0</DataType>
+      <DataType>varchar(1024)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="364" parent="272" name="icon">
       <Position>5</Position>
       <Comment>Ikona FontAwesome</Comment>
-      <DataType>varchar(1024)|0</DataType>
+      <DataType>varchar(1024)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="365" parent="272" name="color">
       <Position>6</Position>
       <Comment>Barva (hex)</Comment>
-      <DataType>varchar(32)|0</DataType>
+      <DataType>varchar(32)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="366" parent="272" name="order">
       <Position>7</Position>
       <Comment>Hodnota pořadí</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="367" parent="272" name="visible">
       <Position>8</Position>
       <Comment>Viditelný?</Comment>
-      <DataType>tinyint(4)|0</DataType>
+      <DataType>tinyint(4)|0s</DataType>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="368" parent="272" name="added">
       <Position>9</Position>
       <Comment>Přidáno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="369" parent="272" name="timestamp">
       <Position>10</Position>
       <Comment>Změněno</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>

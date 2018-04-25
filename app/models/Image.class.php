@@ -69,7 +69,7 @@ class Image
      * @return string URL obrázku
      */
 
-    public function url()
+    public function url(): string
     {
         if (!empty($this->filename)) {
             return URL . '/images/portfolio/' . $this->portfolio_id . '/' . $this->filename; // URL obrázku
@@ -83,7 +83,7 @@ class Image
      * @return boolean Náhled?
      */
 
-    public function isThumbnail()
+    public function isThumbnail(): bool
     {
         return (boolean)$this->thumbnail; // Náhled?
     }

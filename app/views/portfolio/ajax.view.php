@@ -10,7 +10,7 @@
 
         <div class="center">
             <div class="image">
-                <img src="<?= Gallery::portfolioThumbnail($portfolio->portfolio_id)->url() // URL thumbnailu    ?>"
+                <img src="<?= Gallery::portfolioThumbnail($portfolio->portfolio_id)->url() // URL thumbnailu      ?>"
                      alt=""/>
             </div>
         </div>
@@ -30,7 +30,7 @@
     <div class="col-md-8">
         <div class="detail">
             <div class="text">
-                <?= $portfolio->detail ? $portfolio->detail : $portfolio->detail_short // Popis portfolio    ?>
+                <?= $portfolio->detail ? $portfolio->detail : $portfolio->detail_short // Popis portfolio      ?>
             </div>
 
             <div class="center">

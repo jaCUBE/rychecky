@@ -14,7 +14,7 @@ class Menu
      * @return string[] Menu jako pole
      */
 
-    public static function generateMenu()
+    public static function generateMenu(): array
     {
         // @TODO: Odstranit hardcoded menu?
         $menu = [
