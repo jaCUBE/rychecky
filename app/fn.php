@@ -158,15 +158,3 @@ function env(string $name): string
 {
     return (string)$_ENV[$name] ?? $_SERVER[$name]; // $_ENV má přednost
 }
-
-
-/**
- * Poskytuje objekt PDO s připojením k databázi.
- * @return PDO Objekt připojení k databázi přes PDO
- */
-
-function db(): PDO
-{
-    global $_DB;
-    return $_DB;
-}

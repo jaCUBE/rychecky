@@ -31,10 +31,11 @@ class SkillListType
 
     /**
      * Stahuje počet jednotlivých typů dovedností v databázi.
+     * @param PDO $db Připojení k databázi (DI)
      * @return integer[] Počet typů dovedností v databázi (typ => počet)
      */
 
-    public static function fetchSkillTypeStats(): array
+    public static function fetchSkillTypeStats(PDO $db): array
     {
         $skill_stats = SkillListType::skillList(); // Seznam typů dovedností pro správné řazení
 
@@ -44,7 +45,7 @@ class SkillListType
       WHERE s.locale = :locale
       GROUP BY s.type'; // SQL dotaz pro spočítání typů dovedností
 
-        $STH = db()->prepare($sql);
+        $STH = $db->prepare($sql);
         $STH->bindParam(':locale', Language::getLocale());
         $STH->execute();
 

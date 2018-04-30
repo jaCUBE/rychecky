@@ -9,19 +9,19 @@
 class Rychecky
 {
 
-
     /**
-     *
+     * Vytváří připojení k databázi.
      * @return PDO
      */
 
     public static function connectDatabase(): PDO
     {
+        // Údaje z .env
         $dsn = 'mysql:host=' . env('DB_HOST') . ';dbname=' . env('DB_NAME');
 
         $db = new PDO($dsn, env('DB_USER'), env('DB_PASSWORD'));
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $db->query('SET NAMES utf8');
+        $db->query('SET NAMES utf8'); // Pro českou diakritiku
 
         return $db;
     }
