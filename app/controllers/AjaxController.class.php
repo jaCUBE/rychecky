@@ -14,14 +14,15 @@ class AjaxController extends Controller
      */
     public function portfolio()
     {
-        $portfolio = Portfolio::findById($_GET['portfolio_id']); // Položka portfolia
+        $portfolio = Portfolio::findById($this->db, $_GET['portfolio_id']); // Položka portfolia
 
 
         ob_start();
 
         Rychecky::view('ajax/portfolio.ajax', [
             'portfolio' => $portfolio,
-            'gallery' => Gallery::portoflioGallery($portfolio->portfolio_id)
+            'thumbnail' => Gallery::portfolioThumbnail($this->db, $portfolio->portfolio_id),
+            'gallery' => Gallery::portoflioGallery($this->db, $portfolio->portfolio_id)
         ]);
 
         $body = ob_get_clean();

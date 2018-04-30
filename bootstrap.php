@@ -11,9 +11,6 @@ $dotenv->load();
 define('URL', env('URL')); // URL webu jako konstanta
 
 
-require 'database.php';
-
-
 
 if(env('DEVELOPMENT')){ // Hlášení chyb ve vývojovém prosředí
     Tracy\Debugger::enable(); // Tracy ^_^ https://github.com/nette/tracy

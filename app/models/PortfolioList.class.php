@@ -11,10 +11,11 @@ class PortfolioList
 
     /**
      * Stáhne a zpracuje seznam portfolia.
+     * @param PDO $db Připojení k databázi (DI)
      * @return Portfolio[] Seznam portfolia
      */
 
-    public static function all(): array
+    public static function all(PDO $db): array
     {
         $portfolio_list = []; // Seznam portfolia
 
@@ -26,16 +27,20 @@ class PortfolioList
         GROUP BY p.portfolio_id
         ORDER BY p.size DESC'; // SQL pro stažení veškerého portoflia
 
-        $STH = db()->prepare($sql);
+        $STH = $db->prepare($sql);
         $STH->bindParam(':locale', Language::getLocale());
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Portfolio');
         $STH->execute();
 
         while ($portfolio = $STH->fetch()) {  // Prochází jednotlivá portfolia...
             /* @var $portfolio Portfolio */
-            $portfolio_list[] = $portfolio; // Ukládá portfolio do seznamu
+            $portfolio_list[] = [
+                'data' => $portfolio,
+                'thumbnail' => Gallery::portfolioThumbnail($db, $portfolio->portfolio_id)
+            ];
         }
 
         return $portfolio_list;
     }
+
 }

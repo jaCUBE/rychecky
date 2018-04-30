@@ -9,7 +9,11 @@
 {include 'partials/portfolio_controls.latte'}
 
 <div class="isotope">
-    <div n:foreach="$list as $portfolio"
+    <div n:foreach="$list as $item"
+
+            {var $portfolio = $item['data']}
+            {var $thumbnail = $item['thumbnail']}
+
             class="{$portfolio->css()}"
             data-age="{$portfolio->age()}"
             data-name="{? echo replace_czech_characters($portfolio->nameShortest()) }"
@@ -17,7 +21,7 @@
             onclick="portfolio({$portfolio->portfolio_id})">
 
         <div class="image">
-            <img src="{? echo Gallery::portfolioThumbnail($portfolio->portfolio_id)->url() }" alt=""/>
+            <img src="{$thumbnail->url()}" alt=""/>
         </div>
 
         <div class="info">

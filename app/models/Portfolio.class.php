@@ -80,11 +80,12 @@ class Portfolio
 
     /**
      * Stahuje portofolio do této instance třídy.
+     * @param PDO     $db Připojení k databázi (DI)
      * @param integer $portfolio_id ID portfolia
      * @return Portfolio Stažené portfolio
      */
 
-    static function findById(int $portfolio_id): Portfolio
+    static function findById(PDO $db, int $portfolio_id): Portfolio
     {
         $sql = '
       SELECT p.*
@@ -94,7 +95,7 @@ class Portfolio
         AND p.visible = 1
       LIMIT 1'; // SQL pro stažení jednoho portfolia dle ID
 
-        $STH = db()->prepare($sql);
+        $STH = $db->prepare($sql);
         $STH->bindParam(':portfolio_id', $portfolio_id);
         $STH->bindParam(':locale', Language::getLocale());
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Portfolio');

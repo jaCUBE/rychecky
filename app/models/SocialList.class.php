@@ -11,9 +11,10 @@ class SocialList
 
     /**
      * Stáhne a zpracuje seznam ikonek sociálních sítí.
+     * @param PDO $db Připojení k databázi (DI)
      * @return Social[] Seznam sociálních sítí
      */
-    public static function all(): array
+    public static function all(PDO $db): array
     {
         $social_list = []; // Seznam sociálních sítí
 
@@ -23,7 +24,7 @@ class SocialList
       WHERE s.visible = 1
       ORDER BY s.order DESC, s.name ASC'; // SQL pro stažení sociálních sítí
 
-        $STH = db()->prepare($sql);
+        $STH = $db->prepare($sql);
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Social');
         $STH->execute();
 

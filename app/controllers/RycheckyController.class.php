@@ -25,8 +25,8 @@ class RycheckyController extends Controller
     public function index()
     {
         Rychecky::view('info', [
-            'hobby' => HobbyList::all(), // Seznam koníčků
-            'social' => SocialList::all() // Seznam tlačítek pro sociální sítě
+            'hobby' => HobbyList::all($this->db), // Seznam koníčků
+            'social' => SocialList::all($this->db) // Seznam tlačítek pro sociální sítě
         ]);
     }
 
@@ -38,8 +38,8 @@ class RycheckyController extends Controller
     public function skills()
     {
         Rychecky::view('skill', [
-            'list' => SkillList::findByType(SkillListType::selectedSkillType()),
-            'stats' => SkillListType::fetchSkillTypeStats()
+            'list' => SkillList::findByType($this->db, SkillListType::selectedSkillType()),
+            'stats' => SkillListType::fetchSkillTypeStats($this->db)
         ]);
     }
 
@@ -51,7 +51,7 @@ class RycheckyController extends Controller
     public function portfolio()
     {
         Rychecky::view('portfolio', [
-            'list' => PortfolioList::all()
+            'list' => PortfolioList::all($this->db)
         ]);
     }
 
@@ -62,7 +62,7 @@ class RycheckyController extends Controller
     public function experiences()
     {
         Rychecky::view('experiences', [
-            'list' => ExperienceList::all()
+            'list' => ExperienceList::all($this->db)
         ]);
     }
 
@@ -73,7 +73,7 @@ class RycheckyController extends Controller
     public function certificate()
     {
         Rychecky::view('certificate', [
-            'list' => CertificateList::all()
+            'list' => CertificateList::all($this->db)
         ]);
     }
 
@@ -84,7 +84,7 @@ class RycheckyController extends Controller
     public function contact()
     {
         Rychecky::view('contact', [
-            'social' => SocialList::all()
+            'social' => SocialList::all($this->db)
         ]);
     }
 }

@@ -12,10 +12,11 @@ class CertificateList
 
     /**
      * Stáhne a zpracuje seznam certifikátů z databáze.
+     * @param PDO $db Připojení k databázi (DI)
      * @return Certificate[] Seznam certifikátů
      */
 
-    public static function all(): array
+    public static function all(PDO $db): array
     {
         $certificate_list = []; // Seznam certifikátů
 
@@ -26,7 +27,7 @@ class CertificateList
       AND c.visible = 1
     ORDER BY c.issue_date DESC'; // SQL pro stažení certifikátů
 
-        $STH = db()->prepare($sql);
+        $STH = $db->prepare($sql);
         $STH->bindParam(':locale', Language::getLocale());
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Certificate');
         $STH->execute();

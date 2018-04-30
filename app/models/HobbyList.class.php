@@ -11,10 +11,11 @@ class HobbyList
 
     /**
      * Stáhne a zpracuje seznam koníčků.
+     * @param PDO $db Připojení k databázi (DI)
      * @return Hobby[] // Seznam koníčků
      */
 
-    public static function all(): array
+    public static function all(PDO $db): array
     {
         $hobby_list = []; // Seznam koníčků
 
@@ -25,7 +26,7 @@ class HobbyList
       AND h.visible = 1
     ORDER BY RAND()'; // SQL dotaz pro stažení koníčků
 
-        $STH = db()->prepare($sql);
+        $STH = $db->prepare($sql);
         $STH->bindParam(':locale', Language::getLocale());
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Hobby');
         $STH->execute();

@@ -10,14 +10,15 @@ class Gallery
 
     /**
      * Generuje galerii jedné položky portfolia.
+     * @param PDO $db Připojení k databázi (DI)
      * @param int $portfolio_id ID portfolia
      * @return Image[] Galerie portfolia
      */
-    static function portoflioGallery(int $portfolio_id): array
+    static function portoflioGallery(PDO $db, int $portfolio_id): array
     {
         $image_list = [];
 
-        foreach (self::fetchPortfolioImages($portfolio_id) as $image) { // Procházení všech obrázků...
+        foreach (self::fetchPortfolioImages($db, $portfolio_id) as $image) { // Procházení všech obrázků...
             if (!$image->isThumbnail()) { // Vyřazení thumbnaili
                 $image_list[] = $image;
             }
@@ -28,11 +29,12 @@ class Gallery
 
     /**
      * Stahuje všechny obrázky portfolia z databáze.
+     * @param PDO $db Připojení k databázi (DI)
      * @param int $portfolio_id ID portfolia
      * @return Image[] Všechny obrázky portfolia
      */
 
-    static private function fetchPortfolioImages(int $portfolio_id): array
+    static private function fetchPortfolioImages(PDO $db, int $portfolio_id): array
     {
         $image_list = [];
 
@@ -43,7 +45,7 @@ class Gallery
             AND g.visible = 1
           ORDER BY g.order DESC';
 
-        $STH = db()->prepare($sql);
+        $STH = $db->prepare($sql);
         $STH->bindParam(':portfolio_id', $portfolio_id);
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Image');
         $STH->execute();
@@ -59,12 +61,13 @@ class Gallery
 
     /**
      * Generuje thumbnail (náhledový obrázek) pro portfolium.
+     * @param PDO $db Připojení k databázi (DI)
      * @param int $portfolio_id ID portfolia
      * @return Image Thumbnail (náhledová obrázek)
      */
-    static function portfolioThumbnail(int $portfolio_id): Image
+    static function portfolioThumbnail(PDO $db, int $portfolio_id): Image
     {
-        foreach (self::fetchPortfolioImages($portfolio_id) as $image) { // Procházení všech obrázků...
+        foreach (self::fetchPortfolioImages($db, $portfolio_id) as $image) { // Procházení všech obrázků...
             if ($image->isThumbnail()) { // Pouze thumbnail...
                 return $image;
             }

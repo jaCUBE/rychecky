@@ -11,11 +11,12 @@ class SkillList
 
     /**
      * Stahuje seznam dovedností dle typu dovednosti.
+     * @param PDO    $db Připojení k databázi (DI)
      * @param string $type Typ dovedností
      * @return Skill[] Dovednosti daného typu
      */
 
-    public static function findByType(string $type): array
+    public static function findByType(PDO $db, string $type): array
     {
         $skill_list = []; // Seznam dovedností
 
@@ -27,7 +28,7 @@ class SkillList
         AND s.visible = 1
       ORDER BY s.value DESC'; // Stahuje seznam dovedností daného typu
 
-        $STH = db()->prepare($sql);
+        $STH = $db->prepare($sql);
         $STH->bindParam(':locale', Language::getLocale());
         $STH->bindParam(':type', $type);
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Skill');

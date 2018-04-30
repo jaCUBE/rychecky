@@ -12,10 +12,11 @@ class ExperienceList
 
     /**
      * Stáhne a zpracuje seznam zkušeností (práce/vzdělání).
+     * @param PDO $db Připojení k databázi (DI)
      * @return Experience[] Seznam zkušeností
      */
 
-    public static function all(): array
+    public static function all(PDO $db): array
     {
         $experience_list = []; // Seznam zkušeností
 
@@ -26,7 +27,7 @@ class ExperienceList
         AND e.visible = 1
       ORDER BY e.date_start DESC'; // SQL pro stažení seznamu zkušeností
 
-        $STH = db()->prepare($sql);
+        $STH = $db->prepare($sql);
         $STH->bindParam(':locale', Language::getLocale());
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Experience');
         $STH->execute();

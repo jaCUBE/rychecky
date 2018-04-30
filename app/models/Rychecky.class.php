@@ -8,6 +8,25 @@
 
 class Rychecky
 {
+
+
+    /**
+     *
+     * @return PDO
+     */
+
+    public static function connectDatabase(): PDO
+    {
+        $dsn = 'mysql:host=' . env('DB_HOST') . ';dbname=' . env('DB_NAME');
+
+        $db = new PDO($dsn, env('DB_USER'), env('DB_PASSWORD'));
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db->query('SET NAMES utf8');
+
+        return $db;
+    }
+
+
     /**
      * Zobrazuje view pomocí Latte.
      * @param string $name Název view
