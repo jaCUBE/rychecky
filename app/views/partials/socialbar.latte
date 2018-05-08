@@ -1,6 +1,6 @@
 {block socialbar}
     <div class="social-bar">
-        <div class="btn-social" n:foreach="$social as $item"style="background: {$item->color|noescape}"
+        <div class="btn-social" n:foreach="$social as $item" style="background: {$item->color|noescape}"
              title="{$item->name}"
              onclick="location.assign({$item->url});">
             <i class="fa {$item->icon}"></i>
