@@ -10,15 +10,6 @@ class RycheckyController extends Controller
 {
 
     /**
-     * Konstruktor řadiče.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-
-    /**
      *  Zobrazuje titulní stranu.
      */
 

@@ -21,7 +21,7 @@ class Rychecky
 
         $db = new PDO($dsn, env('DB_USER'), env('DB_PASSWORD'));
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $db->query('SET NAMES utf8'); // Pro českou diakritiku
+        $db->query('SET NAMES utf8');
 
         return $db;
     }

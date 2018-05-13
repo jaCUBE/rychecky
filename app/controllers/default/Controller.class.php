@@ -8,7 +8,11 @@
 
 class Controller
 {
+    /**
+     * @var PDO $db Připojení k databázi pro předávání do dalších objektů
+     */
     public $db;
+
 
     /**
      * Konstruktor spouští příslušnou metodu řadiče, která odpovídá akci.
@@ -25,8 +29,13 @@ class Controller
     }
 
 
+    /**
+     * Vytváří připojení k databázi.
+     */
+
     protected function connectDatabase()
     {
         $this->db = Rychecky::connectDatabase();
     }
+
 }
