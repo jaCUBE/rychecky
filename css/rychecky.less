@@ -420,16 +420,17 @@ body {
 .lastfm { // Okno poslední poslouchané skladby na webu
     display: none;
     margin-top: 20px;
-    background: #4D5C6B;
-    color: @col-white;
-    border: 1px solid @col-primary-lighter;
+    background: #c6c6c6;
+    color: @col-primary-lighter;
+    border: 1px solid #7a7a7a;
     border-radius: 3px;
     padding: 4px;
     font-size: 11px;
+    opacity: 0.8;
 
     &:hover {
         cursor: pointer;
-        background: @col-secondary-lighter;
+        opacity: 1.0;
     }
 
     .artist, .track {
