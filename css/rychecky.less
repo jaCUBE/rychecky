@@ -417,6 +417,37 @@ body {
     }
 }
 
+.lastfm { // Okno poslední poslouchané skladby na webu
+    display: none;
+    margin-top: 20px;
+    background: #4D5C6B;
+    color: @col-white;
+    border: 1px solid @col-primary-lighter;
+    border-radius: 3px;
+    padding: 4px;
+    font-size: 11px;
+
+    &:hover {
+        cursor: pointer;
+        background: @col-secondary-lighter;
+    }
+
+    .artist, .track {
+        font-weight: bold;
+    }
+
+    .image {
+        margin-right: 5px;
+
+        img {
+            width: 50px;
+        }
+    }
+
+    .time {
+        font-size: 9px;
+    }
+}
 
 
 footer { // Zápatí webu

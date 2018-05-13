@@ -12,6 +12,12 @@ $(function () {
         initialize_isotope();
     }
 
+    moment.locale($('html').attr('lang')); // Jazyk Moment.js dle jazyku webu
+
+    if ($('.lastfm').length > 0) { // Stahuje právě poslouchanou skladbu z Last.fm
+        lastfm();
+    }
+
     if ($('#gmap-iframe').length > 0) { // Na stránce Kontaktu...
         gmap_resize(); // Změní velikost Google Maps iframe
         $(window).on('resize', gmap_resize); // Změna velikosti iframe při každé změně okna
@@ -126,4 +132,42 @@ function gmap_resize() {
     };
 
     iframe.css(css);
+}
+
+
+/**
+ *  Stahuje a zobrazuje právě poslouchanou skladbu z Last.fm.
+ */
+
+function lastfm() {
+    var html = $('.lastfm'); // Okno Last.fm na webu
+
+    html.on('click', function () { // Po kliknutí přejde na profil písničky
+        window.location = html.data('url');
+    });
+
+    // AJAX dotaz na API Last.fm
+    $.ajax({
+        type: 'GET',
+        url: 'http://ws.audioscrobbler.com/2.0/',
+        data: {
+            'method': 'user.getrecenttracks',
+            'user': 'jaCUBExCZ',
+            'api_key': '50d4c5bbe273d5655dbdfa55c8739b82',
+            'format': 'json'
+        },
+        success: function (data, textStatus, xhr) {
+            html.slideDown(); // Zobrazení okna
+            var track = data.recenttracks.track[0]; // Poslední přehraná písnička
+
+            html.data('url', track.url); // Odkaz na profil
+            html.find('.artist').text(track.artist['#text']); // Název umělce
+            html.find('.track').text(track.name); // Název skladby
+            html.find('.image img').attr('src', track.image[1]['#text']); // Cover
+
+            // Zobrazení času poslechu přes Moment.js (před dvěma hodinami, two hourse ago...)
+            var time = moment.unix(track.date.uts);
+            html.find('.time').text(time.fromNow());
+        }
+    });
 }

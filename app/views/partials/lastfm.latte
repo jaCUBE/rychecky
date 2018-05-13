@@ -1,0 +1,27 @@
+{block lastfm}
+    <div class="lastfm" data-url="">
+        <table>
+            <tr>
+                <td>
+                    <span class="image">
+                        <img src="" alt=""/>
+                    </span>
+                </td>
+                <td>
+                    <div class="title">
+                        <i class="fa fa-music"></i>
+                        {? echo e('Právě poslouchám...', 'Just listening to...') }
+                    </div>
+
+                    <div>
+                        <span class="artist"></span>
+                        –
+                        <span class="track"></span>
+                    </div>
+
+                    <div class="time"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+{/block}
