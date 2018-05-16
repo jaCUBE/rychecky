@@ -354,11 +354,6 @@ body {
                     color: @col-primary-lighter;
                 }
             }
-
-            .bank { // Číslo účtu
-                text-align: left;
-                font-size: 12px;
-            }
         }
 
         #address { // Fyzická adresa
@@ -366,7 +361,17 @@ body {
         }
     }
 
-    #gmap-iframe { // Iframe Google Maps
+    #detail {
+        text-align: center;
+        font-size: 12px;
+        margin: 20px auto;
+
+        span {
+            margin-right: 10px;
+        }
+    }
+
+    iframe { // Iframe Google Maps
         width: 100%;
         border-top: 1px solid @col-primary;
     }

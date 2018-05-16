@@ -4,12 +4,7 @@
 
 <div id="contact">
     <div class="row">
-        <div class="col-lg-7">
-            {include 'partials/socialbar.latte'}
-
-            <hr class="clear"/>
-
-
+        <div class="col-lg-7" style="margin-top: 10px">
             <div class="row" id="contact-table">
                 <div class="col-lg-6" id="channels">
                     <div class="email"><a href="mailto:{? echo env('EMAIL') }"> {? echo env('EMAIL') }</a></div>
@@ -17,11 +12,6 @@
                         <a href="tel:{? echo str_replace(' ', '', env('PHONE')) }">
                             {? echo e('', env('PHONE_PREFIX')) }    {? echo env('PHONE') }
                         </a>
-                    </div>
-                    <br/>
-                    <div class="bank">
-                        <i class="fa fa-institution"></i>
-                        {? echo e('Číslo účtu', 'Bank account') }: {? echo env('BANK') }
                     </div>
                 </div>
 
@@ -31,6 +21,22 @@
                     <div class="city">{? echo env('ADDR_ZIP') } {? echo env('ADDR_CITY') }</div>
                 </div>
             </div>
+
+
+            <div id="detail">
+                <span class="vac">
+                    <i class="fa fa-suitcase"></i>
+                    {? echo e('IČ', 'VAT') }: {? echo env('VAC') }
+                </span>
+                <span class="bank">
+                    <i class="fa fa-institution"></i>
+                    {? echo e('Účet', 'Bank') }: {? echo env('BANK') }
+                </span>
+            </div>
+
+            <hr class="clear"/>
+
+            {include 'partials/socialbar.latte'}
         </div>
 
 
@@ -40,7 +46,9 @@
     </div>
 
 
-    <iframe height="450" frameborder="0" id="gmap-iframe"
+    <iframe height="450"
+            frameborder="0"
+            id="gmap-iframe"
             src="https://www.google.com/maps/embed/v1/place?q={? echo urlencode(Rychecky::fullAddress()) }?>&amp;key={? echo env('GOOGLE_MAPS_API') }&amp;zoom=10">
     </iframe>
 </div>
