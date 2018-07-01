@@ -3,3 +3,4 @@
 /temp/
 .php_cs.cache
 composer.lock
+/_docker/logs

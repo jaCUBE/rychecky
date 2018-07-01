@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  php:
+    # Building image from php:7.1-apache-stretch because mod_rewrite and PDO MySQL driver
+    build: ./_docker/_images/php-7.1
+    container_name: rychecky-php
+    volumes:
+      - ./:/var/www/html
+      - ./_docker/conf/apache/sites-enabled:/etc/apache2/sites-enabled:ro
+      - ./_docker/logs/apache/:/var/log/apache2
+      - ./_docker/logs/php/:/var/log/php
+    networks:
+      - rychecky-network
+    expose:
+      - 80
+    ports:
+      - "80:80"
+
+  mariadb:
+    image: mariadb:10
+    container_name: rychecky-mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_CHARSET=utf8
+      - MYSQL_COLLATION=utf8_czech_ci
+    volumes:
+      - rychecky-db-volume:/var/lib/mysql
+      - ./_docker/conf/mysql/:/etc/mysql/:ro
+      - ./_docker/logs/mysql:/var/log/mysql/
+    networks:
+      - rychecky-network
+    expose:
+      - 3306
+    ports:
+      - "3306:3306"
+
+
+volumes:
+  rychecky-db-volume:
+
+networks:
+  rychecky-network:
