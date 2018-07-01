@@ -3,13 +3,13 @@
 
 
 <h2>
-    <i class="fa fa-briefcase"></i> {? echo e('Zkušenosti', 'Experiences') }
+    <i class="fa fa-briefcase"></i> {php echo e('Zkušenosti', 'Experiences') }
 </h2>
 
 <div id="experiences">
     <ul class="timeline">
         <li n:foreach="$list as $experience"
-                class="event {? echo make_css_name($experience->type) }"
+                class="event {php echo make_css_name($experience->type) }"
                 data-type="{$experience->type}">
 
             <div class="date">
@@ -22,7 +22,7 @@
             <div class="title">{$experience->title}</div>
 
             <div class="company">
-                <i class="fa {? echo $experience->type == 'Zaměstnání' ? 'fa-briefcase' : 'fa-graduation-cap' }"></i>
+                <i class="fa {php echo $experience->type == 'Zaměstnání' ? 'fa-briefcase' : 'fa-graduation-cap' }"></i>
                 {$experience->company}
             </div>
 

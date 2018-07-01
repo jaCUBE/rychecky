@@ -1,6 +1,6 @@
 {block hobby}
     <div class="hobby-list">
-        <div class="hobby" n:foreach="$hobby as $item" style="{? echo array_to_css($item->randomHobbyCss())}">
+        <div class="hobby" n:foreach="$hobby as $item" style="{php echo array_to_css($item->randomHobbyCss())}">
             {$item->name}
         </div>
     </div>

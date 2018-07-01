@@ -3,7 +3,7 @@
 
 
 <h2>
-    <i class="fa fa-database"></i> {? echo e('Dovednosti', 'Skills') }
+    <i class="fa fa-database"></i> {php echo e('Dovednosti', 'Skills') }
 </h2>
 
 
@@ -13,8 +13,8 @@
 
             <div class="list-group">
                 <a n:foreach="$stats as $type => $count"
-                        href="/skills/{? echo make_css_name($type) }"
-                        class="list-group-item {? echo SkillListType::isSelectedType($type) ? 'active' : '' }">
+                        href="/skills/{php echo make_css_name($type) }"
+                        class="list-group-item {php echo SkillListType::isSelectedType($type) ? 'active' : '' }">
                     {$type}
                     <span class="badge badge-light">{$count}</span>
                 </a>

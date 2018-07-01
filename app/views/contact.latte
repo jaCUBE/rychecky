@@ -7,18 +7,18 @@
         <div class="col-lg-7" style="margin-top: 10px">
             <div class="row" id="contact-table">
                 <div class="col-lg-6" id="channels">
-                    <div class="email"><a href="mailto:{? echo env('EMAIL') }"> {? echo env('EMAIL') }</a></div>
+                    <div class="email"><a href="mailto:{php echo env('EMAIL') }"> {php echo env('EMAIL') }</a></div>
                     <div class="tel">
-                        <a href="tel:{? echo str_replace(' ', '', env('PHONE')) }">
-                            {? echo e('', env('PHONE_PREFIX')) }    {? echo env('PHONE') }
+                        <a href="tel:{php echo str_replace(' ', '', env('PHONE')) }">
+                            {php echo e('', env('PHONE_PREFIX')) }    {php echo env('PHONE') }
                         </a>
                     </div>
                 </div>
 
                 <div class="col-lg-6" id="address">
                     <div class="name">Jakub Rychecký</div>
-                    <div class="street">{? echo env('ADDR_STREET') } {? echo env('ADDR_STREET_NUMBER') }</div>
-                    <div class="city">{? echo env('ADDR_ZIP') } {? echo env('ADDR_CITY') }</div>
+                    <div class="street">{php echo env('ADDR_STREET') } {php echo env('ADDR_STREET_NUMBER') }</div>
+                    <div class="city">{php echo env('ADDR_ZIP') } {php echo env('ADDR_CITY') }</div>
                 </div>
             </div>
 
@@ -26,11 +26,11 @@
             <div id="detail">
                 <span class="vac">
                     <i class="fa fa-suitcase"></i>
-                    {? echo e('IČ', 'VAT') }: {? echo env('VAC') }
+                    {php echo e('IČ', 'VAT') }: {php echo env('VAC') }
                 </span>
                 <span class="bank">
                     <i class="fa fa-institution"></i>
-                    {? echo e('Účet', 'Bank') }: {? echo env('BANK') }
+                    {php echo e('Účet', 'Bank') }: {php echo env('BANK') }
                 </span>
             </div>
 
@@ -49,6 +49,6 @@
     <iframe height="450"
             frameborder="0"
             id="gmap-iframe"
-            src="https://www.google.com/maps/embed/v1/place?q={? echo urlencode(Rychecky::fullAddress()) }?>&amp;key={? echo env('GOOGLE_MAPS_API') }&amp;zoom=10">
+            src="https://www.google.com/maps/embed/v1/place?q={php echo urlencode(Rychecky::fullAddress()) }?>&amp;key={php echo env('GOOGLE_MAPS_API') }&amp;zoom=10">
     </iframe>
 </div>

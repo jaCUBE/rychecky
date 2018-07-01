@@ -16,8 +16,8 @@
 
             class="{$portfolio->css()}"
             data-age="{$portfolio->age()}"
-            data-name="{? echo replace_czech_characters($portfolio->nameShortest()) }"
-            data-size="{? echo $portfolio->size * -1}"
+            data-name="{php echo replace_czech_characters($portfolio->nameShortest()) }"
+            data-size="{php echo $portfolio->size * -1}"
             onclick="portfolio({$portfolio->portfolio_id})">
 
         <div class="image">

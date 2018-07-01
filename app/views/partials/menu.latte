@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li n:foreach="$menu as $url => $item"
-                        class="nav-item {? echo Menu::isMenuSelected($url) ? 'active' : '' }">
+                        class="nav-item {php echo Menu::isMenuSelected($url) ? 'active' : '' }">
                     <a href="/{$url}">
                         <i class="fa {$item['icon']}"></i> {$item['name']}
                     </a>
@@ -20,8 +20,8 @@
 
                 <li class="nav-item">
                     <a href="javascript:void(0)" onclick="$('.locale-switcher').submit()">
-                        <img src="/images/flags/{? echo e('gb.png', 'cz.png') }" style="margin-right: 5px;" alt=""/>
-                        {? echo e('English', 'Česky') }
+                        <img src="/images/flags/{php echo e('gb.png', 'cz.png') }" style="margin-right: 5px;" alt=""/>
+                        {php echo e('English', 'Česky') }
                     </a>
                 </li>
             </ul>

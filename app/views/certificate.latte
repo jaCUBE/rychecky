@@ -3,14 +3,14 @@
 
 
 <h2>
-    <i class="fa fa-certificate"></i> {? echo e('Certifikace', 'Certificates') }
+    <i class="fa fa-certificate"></i> {php echo e('Certifikace', 'Certificates') }
 </h2>
 
 <div id="certificate">
     <ul class="timeline">
         <li n:foreach="$list as $certificate"
                 data-type="{$certificate->type}"
-                class="event {? echo make_css_name($certificate->type) }">
+                class="event {php echo make_css_name($certificate->type) }">
 
             <div class="date">
                 <span class="start">{$certificate->issue_date|date:'n/Y'}</span>
@@ -28,7 +28,7 @@
 
             <div class="center">
                 <a href="{$certificate->url}" class="btn btn-sm btn-light">
-                    <i class="fa fa-globe"></i> {? echo e('Certifikát', 'Certificate') }
+                    <i class="fa fa-globe"></i> {php echo e('Certifikát', 'Certificate') }
                 </a>
             </div>
         </li>

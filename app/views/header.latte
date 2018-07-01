@@ -16,7 +16,7 @@
     {block alert}
         <div class="alert alert-success" n:if="1 == 2">
             <i class="fa fa-briefcase"></i>
-            {? echo e(
+            {php echo e(
                 'Hledám nové pracovní příležitosti, kde bych mohl uplatnit a zlepšovat své dovednosti. Budu vděčný za všechny zajímavé nabídky. :)',
                 'I seek new job opportunities to utilize and improve my skills. I will be glad for any interesting offers. :)'
             ) }
@@ -25,6 +25,6 @@
 
 
     <form action="#" method="post" class="locale-switcher">
-        <input type="hidden" name="locale" value="{? echo e('en', 'cs') }"/>
+        <input type="hidden" name="locale" value="{php echo e('en', 'cs') }"/>
     </form>
 </header>

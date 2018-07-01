@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-7">
         <h2>
-            <i class="fa fa-user"></i> {? echo e('O mně', 'About Me') }
+            <i class="fa fa-user"></i> {php echo e('O mně', 'About Me') }
         </h2>
 
 
@@ -65,7 +65,7 @@
 
         <div class="center" style="margin: 20px">
             <a href="http://cv.rychecky.cz/" class="btn btn-lg btn-dark">
-                <i class="fa fa-download"></i> {? echo e('Stáhnout resumé', 'Download Resumé') }
+                <i class="fa fa-download"></i> {php echo e('Stáhnout resumé', 'Download Resumé') }
             </a>
         </div>
 
@@ -75,7 +75,7 @@
 
     <div class="col-md-5">
         <h2>
-            <i class="fa fa-cloud"></i> {? echo e('Zájmy', 'Hobbies') }
+            <i class="fa fa-cloud"></i> {php echo e('Zájmy', 'Hobbies') }
         </h2>
 
         {include 'partials/hobby.latte'}
