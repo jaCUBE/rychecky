@@ -51,9 +51,9 @@ class Image
     {
         if (!empty($this->filename)) {
             return URL . '/images/portfolio/' . $this->portfolio_id . '/' . $this->filename; // URL obrázku
-        } else {
-            return URL . '/images/placeholder.png';
         }
+
+        return URL . '/images/placeholder.png';
     }
 
     /**

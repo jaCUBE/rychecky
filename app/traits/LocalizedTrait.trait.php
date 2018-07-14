@@ -20,8 +20,8 @@ trait LocalizedTrait
      * @return bool Shodný se zvoleným jazykem?
      */
 
-    public function isLocaleRight()
+    public function isLocaleRight(): bool
     {
-        return $this->locale == Language::getLocale();
+        return $this->locale === Language::getLocale();
     }
 }

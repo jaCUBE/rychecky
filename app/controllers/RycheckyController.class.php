@@ -13,7 +13,7 @@ class RycheckyController extends Controller
      *  Zobrazuje titulní stranu.
      */
 
-    public function index()
+    public function index(): void
     {
         Rychecky::view('info', [
             'hobby' => HobbyList::all($this->db), // Seznam koníčků
@@ -26,7 +26,7 @@ class RycheckyController extends Controller
      *  Zobrazuje dovednosti.
      */
 
-    public function skills()
+    public function skills(): void
     {
         Rychecky::view('skill', [
             'list' => SkillList::findByType($this->db, SkillListType::selectedSkillType()),
@@ -39,7 +39,7 @@ class RycheckyController extends Controller
      *  Zobrazuje portfolio.
      */
 
-    public function portfolio()
+    public function portfolio(): void
     {
         Rychecky::view('portfolio', [
             'list' => PortfolioList::all($this->db)
@@ -50,7 +50,7 @@ class RycheckyController extends Controller
     /**
      *  Zobrazuje zkušenosti.
      */
-    public function experiences()
+    public function experiences(): void
     {
         Rychecky::view('experiences', [
             'list' => ExperienceList::all($this->db)
@@ -61,7 +61,7 @@ class RycheckyController extends Controller
     /**
      *  Zobrazuje výčet certifikátů.
      */
-    public function certificate()
+    public function certificate(): void
     {
         Rychecky::view('certificate', [
             'list' => CertificateList::all($this->db)
@@ -72,7 +72,7 @@ class RycheckyController extends Controller
     /**
      *  Zobrazuje kontaktní stránku.
      */
-    public function contact()
+    public function contact(): void
     {
         Rychecky::view('contact', [
             'social' => SocialList::all($this->db)

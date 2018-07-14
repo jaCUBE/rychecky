@@ -57,10 +57,10 @@ class Menu
     public static function isMenuSelected(string $url): bool
     {
         // Zvolená titulní strana (index)
-        $index = (Rychecky::action() == 'index' AND empty($url));
+        $index = (Rychecky::action() === 'index' AND empty($url));
 
         // Zvolená položka menu
-        $selected = Rychecky::action() == $url;
+        $selected = Rychecky::action() === $url;
 
         return $index OR $selected;
     }

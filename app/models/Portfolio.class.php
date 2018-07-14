@@ -85,7 +85,7 @@ class Portfolio
      * @return Portfolio Stažené portfolio
      */
 
-    static function findById(PDO $db, int $portfolio_id): Portfolio
+    public static function findById(PDO $db, int $portfolio_id): Portfolio
     {
         $sql = '
       SELECT p.*
@@ -103,7 +103,7 @@ class Portfolio
 
         $portfolio = $STH->fetch();
 
-        return $portfolio ? $portfolio : new Portfolio();
+        return $portfolio ?: new self();
     }
 
     /**

@@ -17,7 +17,7 @@ class SkillListType
 
     public static function isSelectedType(string $type): bool
     {
-        return make_css_name($type) == self::selectedSkillType();
+        return make_css_name($type) === self::selectedSkillType();
     }
 
     /**
@@ -37,7 +37,7 @@ class SkillListType
 
     public static function fetchSkillTypeStats(PDO $db): array
     {
-        $skill_stats = SkillListType::skillList(); // Seznam typů dovedností pro správné řazení
+        $skill_stats = self::skillList(); // Seznam typů dovedností pro správné řazení
 
         $sql = '
       SELECT s.type, COUNT(*) AS count
@@ -63,7 +63,7 @@ class SkillListType
 
     public static function skillList(): array
     {
-        if (Language::getLocale() == 'cs') {
+        if (Language::getLocale() === 'cs') {
             $skill_type_list = ['Webdev', 'ICT', 'Jazyky', 'Ostatní']; // Seřazený český seznam
         } else {
             $skill_type_list = ['Webdev', 'ICT', 'Languages', 'Others']; // Anglický

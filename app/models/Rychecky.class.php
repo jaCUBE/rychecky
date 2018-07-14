@@ -21,7 +21,7 @@ class Rychecky
 
         $db = new PDO($dsn, env('DB_USER'), env('DB_PASSWORD'));
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $db->query('SET NAMES utf8');
+        $db->exec('SET NAMES utf8');
 
         return $db;
     }
@@ -41,7 +41,7 @@ class Rychecky
         $data['locale'] = Language::getLocale(); // Jazyk pro každý view
 
         $filepath = 'app/views/' . $name . '.latte';
-        $latte->render($filepath, (array)$data);
+        $latte->render($filepath, $data);
     }
 
 

@@ -33,7 +33,7 @@ class Controller
      * Vytváří připojení k databázi.
      */
 
-    protected function connectDatabase()
+    protected function connectDatabase(): void
     {
         $this->db = Rychecky::connectDatabase();
     }

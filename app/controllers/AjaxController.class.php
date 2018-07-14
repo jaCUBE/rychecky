@@ -12,7 +12,7 @@ class AjaxController extends Controller
     /**
      * Vypisuje JSON na AJAX požadavek pro informace konkrétní položky portfolia.
      */
-    public function portfolio()
+    public function portfolio(): void
     {
         $portfolio = Portfolio::findById($this->db, $_GET['portfolio_id']); // Položka portfolia
 

@@ -18,13 +18,13 @@ class Language
     {
         if (!empty($_POST['locale'])) { // Jazyk se právě přepíná...
             $locale = $_POST['locale'];
-        } elseif (Language::getCookie()) { // Jazyk je uložení v cookies...
-            $locale = Language::getCookie();
+        } elseif (self::getCookie()) { // Jazyk je uložení v cookies...
+            $locale = self::getCookie();
         } else {
-            $locale = Language::getBrowserLocale(); // Fallback: jazyk prohlížeče
+            $locale = self::getBrowserLocale(); // Fallback: jazyk prohlížeče
         }
 
-        return $locale == 'cs' ? 'cs' : 'en'; // Nejde mít nic jiného než 'cs' a 'en'
+        return $locale === 'cs' ? 'cs' : 'en'; // Nejde mít nic jiného než 'cs' a 'en'
     }
 
     /**
@@ -46,7 +46,7 @@ class Language
     {
         $locale = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); // Jazyk prohlížeče
 
-        return $locale == 'cs' ? 'cs' : 'en'; // Nejde mít nic jiného než 'cs' a 'en'
+        return $locale === 'cs' ? 'cs' : 'en'; // Nejde mít nic jiného než 'cs' a 'en'
     }
 
     /**

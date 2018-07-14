@@ -14,7 +14,7 @@ class Gallery
      * @param int $portfolio_id ID portfolia
      * @return Image[] Galerie portfolia
      */
-    static function portoflioGallery(PDO $db, int $portfolio_id): array
+    public static function portoflioGallery(PDO $db, int $portfolio_id): array
     {
         $image_list = [];
 
@@ -34,7 +34,7 @@ class Gallery
      * @return Image[] Všechny obrázky portfolia
      */
 
-    static private function fetchPortfolioImages(PDO $db, int $portfolio_id): array
+    private static function fetchPortfolioImages(PDO $db, int $portfolio_id): array
     {
         $image_list = [];
 
@@ -65,7 +65,7 @@ class Gallery
      * @param int $portfolio_id ID portfolia
      * @return Image Thumbnail (náhledová obrázek)
      */
-    static function portfolioThumbnail(PDO $db, int $portfolio_id): Image
+    public static function portfolioThumbnail(PDO $db, int $portfolio_id): Image
     {
         foreach (self::fetchPortfolioImages($db, $portfolio_id) as $image) { // Procházení všech obrázků...
             if ($image->isThumbnail()) { // Pouze thumbnail...
