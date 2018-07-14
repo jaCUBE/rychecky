@@ -26,7 +26,7 @@
                 {$experience->company}
             </div>
 
-            <div class="detail">{$experience->detail}</div>
+            <div class="detail">{$experience->detail|noescape}</div>
             <div class="note">{$experience->note}</div>
         </li>
     </ul>
