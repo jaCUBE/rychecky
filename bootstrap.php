@@ -12,7 +12,7 @@ define('URL', env('URL')); // URL webu jako konstanta
 
 
 // Tracy a chyby pro vývojové/produkční prostředí
-if (env('DEVELOPMENT')) {
+if (env('ENVIRONMENT') === 'dev') {
     Tracy\Debugger::enable(Tracy\Debugger::DEVELOPMENT);
     error_reporting(E_ERROR | E_PARSE);
 }else{
