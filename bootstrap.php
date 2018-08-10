@@ -11,12 +11,13 @@ $dotenv->load();
 define('URL', env('URL')); // URL webu jako konstanta
 
 
-
-if(env('DEVELOPMENT')){ // Hlášení chyb ve vývojovém prosředí
-    Tracy\Debugger::enable(); // Tracy ^_^ https://github.com/nette/tracy
+// Tracy a chyby pro vývojové/produkční prostředí
+if (env('DEVELOPMENT')) {
+    Tracy\Debugger::enable(Tracy\Debugger::DEVELOPMENT);
     error_reporting(E_ERROR | E_PARSE);
 }else{
-    error_reporting(0); // Žádné chyby mimo vývoj
+    Tracy\Debugger::enable(Tracy\Debugger::PRODUCTION);
+    error_reporting(0);
 }
 
 
