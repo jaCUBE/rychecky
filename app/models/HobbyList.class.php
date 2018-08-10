@@ -27,9 +27,10 @@ class HobbyList
     ORDER BY RAND()'; // SQL dotaz pro stažení koníčků
 
         $STH = $db->prepare($sql);
-        $STH->bindParam(':locale', Language::getLocale());
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Hobby');
-        $STH->execute();
+        $STH->execute([
+            'locale' => Language::getLocale(),
+        ]);
 
         while ($hobby = $STH->fetch()) { // Prochází jednotlivé koníčky...
             /* @var $hobby Hobby */

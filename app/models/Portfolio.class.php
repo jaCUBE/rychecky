@@ -96,10 +96,11 @@ class Portfolio
       LIMIT 1'; // SQL pro stažení jednoho portfolia dle ID
 
         $STH = $db->prepare($sql);
-        $STH->bindParam(':portfolio_id', $portfolio_id);
-        $STH->bindParam(':locale', Language::getLocale());
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Portfolio');
-        $STH->execute();
+        $STH->execute([
+            'portfolio_id' => $portfolio_id,
+            'locale' => Language::getLocale(),
+        ]);
 
         $portfolio = $STH->fetch();
 

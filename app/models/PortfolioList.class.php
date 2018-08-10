@@ -28,9 +28,10 @@ class PortfolioList
         ORDER BY p.size DESC'; // SQL pro stažení veškerého portoflia
 
         $STH = $db->prepare($sql);
-        $STH->bindParam(':locale', Language::getLocale());
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Portfolio');
-        $STH->execute();
+        $STH->execute([
+            'locale' => Language::getLocale(),
+        ]);
 
         while ($portfolio = $STH->fetch()) {  // Prochází jednotlivá portfolia...
             /* @var $portfolio Portfolio */

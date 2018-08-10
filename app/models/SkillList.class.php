@@ -29,10 +29,11 @@ class SkillList
       ORDER BY s.value DESC'; // Stahuje seznam dovedností daného typu
 
         $STH = $db->prepare($sql);
-        $STH->bindParam(':locale', Language::getLocale());
-        $STH->bindParam(':type', $type);
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Skill');
-        $STH->execute();
+        $STH->execute([
+            'type' => $type,
+            'locale' => Language::getLocale(),
+        ]);
 
         while ($skill = $STH->fetch()) {  // Prochází jednotlivé dovednosti...
             /* @var $skill Skill */

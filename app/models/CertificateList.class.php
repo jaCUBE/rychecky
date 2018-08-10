@@ -28,9 +28,10 @@ class CertificateList
     ORDER BY c.issue_date DESC'; // SQL pro stažení certifikátů
 
         $STH = $db->prepare($sql);
-        $STH->bindParam(':locale', Language::getLocale());
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Certificate');
-        $STH->execute();
+        $STH->execute([
+            'locale' => Language::getLocale(),
+        ]);
 
         while ($certificate = $STH->fetch()) { // Prochází certifikáty...
             /* @var $certificate Certificate */

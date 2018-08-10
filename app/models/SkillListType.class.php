@@ -46,8 +46,9 @@ class SkillListType
       GROUP BY s.type'; // SQL dotaz pro spočítání typů dovedností
 
         $STH = $db->prepare($sql);
-        $STH->bindParam(':locale', Language::getLocale());
-        $STH->execute();
+        $STH->execute([
+            'locale' => Language::getLocale(),
+        ]);
 
         while ($row = $STH->fetch()) { // Procházení stažených řádků...
             $skill_stats[$row['type']] = $row['count']; // Typ dovednosti => počet

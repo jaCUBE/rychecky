@@ -28,9 +28,10 @@ class ExperienceList
       ORDER BY e.date_start DESC'; // SQL pro stažení seznamu zkušeností
 
         $STH = $db->prepare($sql);
-        $STH->bindParam(':locale', Language::getLocale());
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Experience');
-        $STH->execute();
+        $STH->execute([
+            'locale' => Language::getLocale(),
+        ]);
 
         while ($e = $STH->fetch()) { // Prochá jednotlivé zkušenosti...
             /* @var $e Experience */

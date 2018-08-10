@@ -46,9 +46,10 @@ class Gallery
           ORDER BY g.order DESC';
 
         $STH = $db->prepare($sql);
-        $STH->bindParam(':portfolio_id', $portfolio_id);
         $STH->setFetchMode(PDO::FETCH_CLASS, 'Image');
-        $STH->execute();
+        $STH->execute([
+            'portfolio_id' => $portfolio_id,
+        ]);
 
 
         while ($image = $STH->fetch()) { // Procházení stažených obrázků...
