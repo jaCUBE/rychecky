@@ -52,7 +52,7 @@ class Rychecky
 
     public static function action(): string
     {
-        return $_GET['action'] ?? 'index';
+        return preg_replace('/^(\/)/', '', $_SERVER['REQUEST_URI']);
     }
 
 

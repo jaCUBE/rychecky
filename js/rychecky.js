@@ -41,11 +41,7 @@ function portfolio(portfolio_id) {
 
     $.ajax({
         type: 'GET',
-        url: '/ajax.php',
-        data: {
-            'action': 'portfolio',
-            'portfolio_id': portfolio_id // ID portfolia odeslané v požadavku
-        },
+        url: '/api/portfolio/' + portfolio_id,
         success: function (data, textStatus, xhr) {
             var obj = JSON.parse(data); // Parsuje odpověď
 
