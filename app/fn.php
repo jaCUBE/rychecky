@@ -9,7 +9,7 @@
 
 function e(string $cs = '', string $en = ''): string
 {
-    return Language::getLocale() == 'cs' ? $cs : $en;
+    return Language::getLocale() === 'cs' ? $cs : $en;
 }
 
 

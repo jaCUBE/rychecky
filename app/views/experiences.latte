@@ -22,7 +22,7 @@
             <div class="title">{$experience->title}</div>
 
             <div class="company">
-                <i class="fa {php echo $experience->type == 'Zaměstnání' ? 'fa-briefcase' : 'fa-graduation-cap' }"></i>
+                <i class="fa {php echo $experience->type === 'Zaměstnání' ? 'fa-briefcase' : 'fa-graduation-cap' }"></i>
                 {$experience->company}
             </div>
 
