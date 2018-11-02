@@ -2,8 +2,8 @@ version: "3"
 
 services:
   php:
-    # Building image from php:7.1-apache-stretch because mod_rewrite and PDO MySQL driver
-    build: ./_docker/_images/php-7.1
+    # Building image from php:7.2-apache-stretch because mod_rewrite, PDO MySQL driver, Node.js and Xdebug
+    build: ./_docker/_images/php-7.2
     container_name: rychecky-php
     volumes:
       - ./:/var/www/html
@@ -12,6 +12,8 @@ services:
       - ./_docker/logs/php/:/var/log/php
     networks:
       - rychecky-network
+    environment:
+      XDEBUG_CONFIG: remote_enable=on  remote_host=host.docker.internal remote_port=9000
     expose:
       - 80
     ports:

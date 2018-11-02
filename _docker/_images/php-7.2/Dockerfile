@@ -1,14 +1,18 @@
-FROM php:7.1-apache-stretch
+FROM php:7.2-apache-stretch
 
 LABEL maintainer="Jakub Rychecký <jakub@rychecky.cz>" \
       description="PHP 7.2 with Apache for rychecky.cz"
 
-ENV BUILD_DATE 2018-07-02
-
 RUN apt-get update \
     && apt-get upgrade -y \
     # Basic Linux stuff
-    && apt-get install -y curl wget gnupg2 nano mtr nmap \
+    && apt-get install -y curl \
+                          gnupg2 \
+                          glances \
+                          mtr \
+                          nano \
+                          mc \
+                          wget
     # PDO MySQL driver
     && docker-php-ext-install pdo_mysql \
     # mod_rewrite for Apache
@@ -17,11 +21,18 @@ RUN apt-get update \
     # Composer installation
     && php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');" \
     && php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer \
+    # Xdebug for PHP
+    && pecl install xdebug-2.6.1 \
+    && docker-php-ext-enable xdebug \
+    # Node.js and related tools
+    && curl -sL https://deb.nodesource.com/setup_11.x | bash - \
+    && apt-get install -y nodejs \
     # Timezone settings
     && unlink /etc/localtime \
     && ln -s /usr/share/zoneinfo/Europe/Prague /etc/localtime \
     # Cleanup
     && apt-get autoclean
+
 
 # PHP config
 COPY 40-custom-php.ini /etc/php/7.2/apache2/conf.d/40-custom-php.ini
