@@ -42,15 +42,20 @@ function portfolio(portfolio_id) {
     $.ajax({
         type: 'GET',
         url: '/api/portfolio/' + portfolio_id,
-        success: function (data, textStatus, xhr) {
-            var obj = JSON.parse(data); // Parsuje odpověď
+        success: function (response, textStatus, xhr) {
+            var data = JSON.parse(response).data; // Parsuje odpověď
 
-            modal.find('.modal-title').html(obj.title); // Nastavuje nadpis dialogu
-            modal.find('.modal-body').html(obj.body); // Nastavuje tělo dialogu
+            modal.find('.modal-title').html(data.portfolio.name); // Nastavuje nadpis dialogu
+            modal.find('.modal-body').html(data.html); // Nastavuje tělo dialogu
+            modal.modal('show'); // Zobrazí dialog
+        },
+        beforeSend: function () {
+            $('body').addClass('waiting');
+        },
+        complete: function () {
+            $('body').removeClass('waiting');
         }
     });
-
-    modal.modal('show'); // Zobrazí dialog
 }
 
 

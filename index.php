@@ -86,11 +86,14 @@ $app->get('/api/portfolio/{id}', function (Request $request, Response $response,
         'gallery' => Gallery::portoflioGallery($this->db, $portfolio->portfolio_id)
     ]);
 
-    $body = ob_get_clean();
+    $portfolioHtml = ob_get_clean();
 
     return json_encode([
-        'title' => $portfolio->name,
-        'body' => $body,
+        'id' => $portfolio->portfolio_id,
+        'data' => [
+            'portfolio' => $portfolio,
+            'html' => $portfolioHtml,
+        ],
     ]);
 });
 
