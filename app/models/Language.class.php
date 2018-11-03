@@ -16,8 +16,8 @@ class Language
 
     public static function getLocale(): string
     {
-        if (!empty($_POST['locale'])) { // Jazyk se právě přepíná...
-            $locale = $_POST['locale'];
+        if (!empty($_GET['locale'])) { // Jazyk se právě přepíná...
+            $locale = $_GET['locale'];
         } elseif (self::getCookie()) { // Jazyk je uložení v cookies...
             $locale = self::getCookie();
         } else {
