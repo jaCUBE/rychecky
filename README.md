@@ -11,6 +11,10 @@ I'm just toying with it. :)
 git clone https://github.com/jaCUBE/rychecky
 ```
 
+```
+composer install
+```
+
 # Run
 ```
 docker-compose up -d
