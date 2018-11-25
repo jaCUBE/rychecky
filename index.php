@@ -21,17 +21,24 @@ $container['db'] = Rychecky::connectDatabase();
 $app->get('[/]', function (Request $request, Response $response, array $args) {
     Rychecky::view('info', [
         'hobby' => HobbyList::all($this->db), // Seznam koníčků
-        'social' => SocialList::all($this->db) // Seznam tlačítek pro sociální sítě
+        'social' => SocialList::all($this->db), // Seznam tlačítek pro sociální sítě
     ]);
 });
 
 /**
  * Seznam dovedností
  */
-$app->get('/skills[/]', function (Request $request, Response $response, array $args) {
+$app->get('/skills[/{skillType:.*}]', function (Request $request, Response $response, array $args) {
+    // Get selected skill type with fallback to a default one
+    $skillType = Skill::DEFAULT_SKILL_TYPE;
+    if (!empty($args['skillType'])) {
+        $skillType = $args['skillType'];
+    }
+
     Rychecky::view('skill', [
-        'list' => SkillList::findByType($this->db, SkillListType::selectedSkillType()),
-        'stats' => SkillListType::fetchSkillTypeStats($this->db)
+        'list' => SkillList::findByType($this->db, $skillType),
+        'stats' => SkillListType::fetchSkillTypeStats($this->db),
+        'selectedSkillType' => $skillType,
     ]);
 });
 
@@ -40,7 +47,7 @@ $app->get('/skills[/]', function (Request $request, Response $response, array $a
  */
 $app->get('/portfolio[/]', function (Request $request, Response $response, array $args) {
     Rychecky::view('portfolio', [
-        'list' => PortfolioList::all($this->db)
+        'list' => PortfolioList::all($this->db),
     ]);
 });
 

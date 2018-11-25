@@ -8,6 +8,7 @@
 
 class Skill
 {
+    const DEFAULT_SKILL_TYPE = 'webdev';
 
     use DatabaseRecordTrait, LocalizedTrait;
 

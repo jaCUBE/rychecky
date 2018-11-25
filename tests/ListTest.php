@@ -41,10 +41,7 @@ class ListTest extends TestCase
 
     public function testSkillList()
     {
-        $selected = SkillListType::selectedSkillType();
-        $this->assertInternalType('string', $selected);
-
-        $list = SkillList::findByType($selected);
+        $list = SkillList::findByType('webdev');
         $this->assertInternalType('array', $list);
         $this->assertInstanceOf('Skill', $list[0]);
     }

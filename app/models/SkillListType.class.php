@@ -10,26 +10,6 @@ class SkillListType
 {
 
     /**
-     * Je kontrolovaný typ dovedností ten vybraný? Zvýrazňuje tlačítko.
-     * @param string $type Kontrolovaný typ
-     * @return bool Je typ vybraný?
-     */
-
-    public static function isSelectedType(string $type): bool
-    {
-        return make_css_name($type) === self::selectedSkillType();
-    }
-
-    /**
-     * Zjišťuje, jaký je vybraný typ dovedností.
-     * @return string Vybraný typ dovedností
-     */
-    public static function selectedSkillType(): string
-    {
-        return $_GET['type'] ?? 'webdev';
-    }
-
-    /**
      * Stahuje počet jednotlivých typů dovedností v databázi.
      * @param PDO $db Připojení k databázi (DI)
      * @return integer[] Počet typů dovedností v databázi (typ => počet)

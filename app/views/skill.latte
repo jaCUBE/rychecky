@@ -10,11 +10,10 @@
 <div class="row">
     <div class="col-md-3">
         {block skill_menu}
-
             <div class="list-group">
                 <a n:foreach="$stats as $type => $count"
                         href="/skills/{php echo make_css_name($type) }"
-                        class="list-group-item {php echo SkillListType::isSelectedType($type) ? 'active' : '' }">
+                        class="list-group-item {php echo strcasecmp($type, $selectedSkillType) === 0 ? 'active' : '' }">
                     {$type}
                     <span class="badge badge-light">{$count}</span>
                 </a>
