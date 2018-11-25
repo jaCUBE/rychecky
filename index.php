@@ -16,9 +16,35 @@ $container['db'] = Rychecky::connectDatabase();
 
 
 /**
+ * Odstraňuje lomítko na konci adresy.
+ * @see https://www.slimframework.com/docs/v3/cookbook/route-patterns.html
+ */
+
+$app->add(function (Request $request, Response $response, callable $next) {
+    $uri = $request->getUri();
+    $path = $uri->getPath();
+    if ($path !== '/' && mb_substr($path, -1) === '/') {
+        // permanently redirect paths with a trailing slash
+        // to their non-trailing counterpart
+        $uri = $uri->withPath(substr($path, 0, -1));
+
+        if ($request->getMethod() === 'GET') {
+            return $response->withRedirect((string)$uri, 301);
+        } else {
+            return $next($request->withUri($uri), $response);
+        }
+    }
+
+    return $next($request, $response);
+});
+
+
+
+
+/**
  * Domovská stránka, homepage, index
  */
-$app->get('[/]', function (Request $request, Response $response, array $args) {
+$app->get('/', function (Request $request, Response $response, array $args) {
     Rychecky::view('info', [
         'hobby' => HobbyList::all($this->db), // Seznam koníčků
         'social' => SocialList::all($this->db), // Seznam tlačítek pro sociální sítě
@@ -45,7 +71,7 @@ $app->get('/skills[/{skillType:.*}]', function (Request $request, Response $resp
 /**
  * Porfolio
  */
-$app->get('/portfolio[/]', function (Request $request, Response $response, array $args) {
+$app->get('/portfolio', function (Request $request, Response $response, array $args) {
     Rychecky::view('portfolio', [
         'list' => PortfolioList::all($this->db),
     ]);
@@ -54,7 +80,7 @@ $app->get('/portfolio[/]', function (Request $request, Response $response, array
 /**
  * Zkušenosti
  */
-$app->get('/experiences[/]', function (Request $request, Response $response, array $args) {
+$app->get('/experiences', function (Request $request, Response $response, array $args) {
     Rychecky::view('experiences', [
         'list' => ExperienceList::all($this->db)
     ]);
@@ -63,7 +89,7 @@ $app->get('/experiences[/]', function (Request $request, Response $response, arr
 /**
  * Certifikáty
  */
-$app->get('/certificate[/]', function (Request $request, Response $response, array $args) {
+$app->get('/certificate', function (Request $request, Response $response, array $args) {
     Rychecky::view('certificate', [
         'list' => CertificateList::all($this->db)
     ]);
@@ -72,7 +98,7 @@ $app->get('/certificate[/]', function (Request $request, Response $response, arr
 /**
  * Kontakt
  */
-$app->get('/contact[/]', function (Request $request, Response $response, array $args) {
+$app->get('/contact', function (Request $request, Response $response, array $args) {
     Rychecky::view('contact', [
         'social' => SocialList::all($this->db)
     ]);
