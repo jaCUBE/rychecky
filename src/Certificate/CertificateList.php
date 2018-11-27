@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * Stahuje a zpracovává seznam certifikátů.
+ * @class CertificateList
+ * @author Jakub Rychecký <jakub@rychecky.cz>
+ */
+
+namespace Rychecky\Certificate;
+
+use \PDO;
+use Rychecky\Language;
+
+class CertificateList
+{
+
+    /**
+     * Stáhne a zpracuje seznam certifikátů z databáze.
+     * @param \PDO $db Připojení k databázi (DI)
+     * @return Certificate[] Seznam certifikátů
+     */
+
+    public static function all(PDO $db): array
+    {
+        $certificate_list = []; // Seznam certifikátů
+
+        $sql = '
+    SELECT c.*
+    FROM certificate AS c
+    WHERE c.locale = :locale
+      AND c.visible = 1
+    ORDER BY c.issue_date DESC'; // SQL pro stažení certifikátů
+
+        $STH = $db->prepare($sql);
+        $STH->setFetchMode(PDO::FETCH_CLASS, '\Rychecky\Certificate\Certificate');
+        $STH->execute([
+            'locale' => Language::getLocale(),
+        ]);
+
+        while ($certificate = $STH->fetch()) { // Prochází certifikáty...
+            /* @var $certificate Certificate */
+            $certificate_list[] = $certificate; // Uloží certifikát do pole
+        }
+
+        return $certificate_list;
+    }
+}

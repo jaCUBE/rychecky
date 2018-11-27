@@ -1,19 +1,31 @@
 <?php
 
-require 'bootstrap.php';
-
+namespace Rychecky;
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app = new \Slim\App;
+
+//error_reporting(-1);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+
+
+require 'bootstrap.php';
+
+$app = new \Slim\App([
+    'settings' => [
+        'displayErrorDetails' => true
+    ]
+]);
+
+
 
 /**
  * Database connection to a container
  */
 $container = $app->getContainer();
 $container['db'] = Rychecky::connectDatabase();
-
 
 /**
  * Odstraňuje lomítko na konci adresy.
@@ -46,8 +58,8 @@ $app->add(function (Request $request, Response $response, callable $next) {
  */
 $app->get('/', function (Request $request, Response $response, array $args) {
     Rychecky::view('info', [
-        'hobby' => HobbyList::all($this->db), // Seznam koníčků
-        'social' => SocialList::all($this->db), // Seznam tlačítek pro sociální sítě
+        'hobby' => Hobby\HobbyList::all($this->db), // Seznam koníčků
+        'social' => Social\SocialList::all($this->db), // Seznam tlačítek pro sociální sítě
     ]);
 });
 
@@ -56,14 +68,14 @@ $app->get('/', function (Request $request, Response $response, array $args) {
  */
 $app->get('/skills[/{skillType:.*}]', function (Request $request, Response $response, array $args) {
     // Get selected skill type with fallback to a default one
-    $skillType = Skill::DEFAULT_SKILL_TYPE;
+    $skillType = Skill\Skill::DEFAULT_SKILL_TYPE;
     if (!empty($args['skillType'])) {
         $skillType = $args['skillType'];
     }
 
     Rychecky::view('skill', [
-        'list' => SkillList::findByType($this->db, $skillType),
-        'stats' => SkillListType::fetchSkillTypeStats($this->db),
+        'list' => Skill\SkillList::findByType($this->db, $skillType),
+        'stats' => Skill\SkillListType::fetchSkillTypeStats($this->db),
         'selectedSkillType' => $skillType,
     ]);
 });
@@ -73,7 +85,7 @@ $app->get('/skills[/{skillType:.*}]', function (Request $request, Response $resp
  */
 $app->get('/portfolio', function (Request $request, Response $response, array $args) {
     Rychecky::view('portfolio', [
-        'list' => PortfolioList::all($this->db),
+        'list' => Portfolio\PortfolioList::all($this->db),
     ]);
 });
 
@@ -82,7 +94,7 @@ $app->get('/portfolio', function (Request $request, Response $response, array $a
  */
 $app->get('/experiences', function (Request $request, Response $response, array $args) {
     Rychecky::view('experiences', [
-        'list' => ExperienceList::all($this->db)
+        'list' => Experience\ExperienceList::all($this->db)
     ]);
 });
 
@@ -91,7 +103,7 @@ $app->get('/experiences', function (Request $request, Response $response, array 
  */
 $app->get('/certificate', function (Request $request, Response $response, array $args) {
     Rychecky::view('certificate', [
-        'list' => CertificateList::all($this->db)
+        'list' => Certificate\CertificateList::all($this->db)
     ]);
 });
 
@@ -100,7 +112,7 @@ $app->get('/certificate', function (Request $request, Response $response, array 
  */
 $app->get('/contact', function (Request $request, Response $response, array $args) {
     Rychecky::view('contact', [
-        'social' => SocialList::all($this->db)
+        'social' => Social\SocialList::all($this->db)
     ]);
 });
 
@@ -109,14 +121,14 @@ $app->get('/contact', function (Request $request, Response $response, array $arg
  * === API ===
  */
 $app->get('/api/portfolio/{id}', function (Request $request, Response $response, array $args) {
-    $portfolio = Portfolio::findById($this->db, (int)$args['id']); // Položka portfolia
+    $portfolio = Portfolio\Portfolio::findById($this->db, (int)$args['id']); // Položka portfolia
 
     ob_start();
 
     Rychecky::view('ajax/portfolio.ajax', [
         'portfolio' => $portfolio,
-        'thumbnail' => Gallery::portfolioThumbnail($this->db, $portfolio->portfolio_id),
-        'gallery' => Gallery::portoflioGallery($this->db, $portfolio->portfolio_id)
+        'thumbnail' => Gallery\Gallery::portfolioThumbnail($this->db, $portfolio->portfolio_id),
+        'gallery' => Gallery\Gallery::portoflioGallery($this->db, $portfolio->portfolio_id)
     ]);
 
     $portfolioHtml = ob_get_clean();

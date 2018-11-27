@@ -1,8 +1,7 @@
 <?php
 
-require_once 'autoload.php'; // Načítání tříd
 require_once 'vendor/autoload.php'; // Načítání tříd přes Composer
-require_once 'app/fn.php'; // Helper funkce pro PHP
+require_once 'fn.php'; // Helper funkce pro PHP
 
 
 // Načtení konfigurace před dotenv https://github.com/vlucas/phpdotenv (soubor .env)
@@ -21,4 +20,4 @@ if (env('ENVIRONMENT') === 'dev') {
 }
 
 
-Language::setCookie(Language::getLocale()); // Nastavení zvoleného jazyka do cookies
+Rychecky\Language::setCookie(Rychecky\Language::getLocale()); // Nastavení zvoleného jazyka do cookies
