@@ -3,6 +3,7 @@
 require_once 'vendor/autoload.php'; // Načítání tříd přes Composer
 require_once 'fn.php'; // Helper funkce pro PHP
 
+define('ROOT', __DIR__ . '/');
 
 // Načtení konfigurace před dotenv https://github.com/vlucas/phpdotenv (soubor .env)
 $dotenv = new Dotenv\Dotenv(__DIR__);

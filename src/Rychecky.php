@@ -44,7 +44,7 @@ class Rychecky
 
         $data['locale'] = Language::getLocale(); // Jazyk pro každý view
 
-        $filepath = 'views/' . $name . '.latte';
+        $filepath = ROOT . '/views/' . $name . '.latte';
         $latte->render($filepath, $data);
     }
 
