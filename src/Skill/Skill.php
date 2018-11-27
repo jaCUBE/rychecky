@@ -10,6 +10,7 @@ namespace Rychecky\Skill;
 
 use Rychecky\DatabaseRecordTrait;
 use Rychecky\LocalizedTrait;
+use Rychecky\Language;
 
 class Skill
 {
@@ -41,4 +42,22 @@ class Skill
      * @var string $detail Detailní popis dovednosti
      */
     public $detail;
+
+
+    /**
+     * Provide ordered list of skill types in an array.
+     * @return string[] A ordered list of skill types
+     */
+
+    public static function getSkillTypesList(): array
+    {
+        // Ordered skill types
+        if ('cs' === Language::getLocale()) {
+            $skillTypeList = ['Webdev', 'ICT', 'Jazyky', 'Ostatní'];
+        } else {
+            $skillTypeList = ['Webdev', 'ICT', 'Languages', 'Others'];
+        }
+
+        return array_combine($skillTypeList, $skillTypeList); // Key = value array
+    }
 }

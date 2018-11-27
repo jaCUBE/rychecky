@@ -85,34 +85,6 @@ class Portfolio
     public $interesting;
 
 
-    /**
-     * Stahuje portofolio do této instance třídy.
-     * @param PDO     $db Připojení k databázi (DI)
-     * @param integer $portfolio_id ID portfolia
-     * @return Portfolio Stažené portfolio
-     */
-
-    public static function findById(PDO $db, int $portfolio_id): Portfolio
-    {
-        $sql = '
-      SELECT p.*
-      FROM portfolio AS p
-      WHERE p.portfolio_id = :portfolio_id
-        AND p.locale = :locale
-        AND p.visible = 1
-      LIMIT 1'; // SQL pro stažení jednoho portfolia dle ID
-
-        $STH = $db->prepare($sql);
-        $STH->setFetchMode(PDO::FETCH_CLASS, '\Rychecky\Portfolio\Portfolio');
-        $STH->execute([
-            'portfolio_id' => $portfolio_id,
-            'locale' => Language::getLocale(),
-        ]);
-
-        $portfolio = $STH->fetch();
-
-        return $portfolio ?: new self();
-    }
 
     /**
      * Co nejkratší název položky portfolia.

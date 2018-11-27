@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Záznam jednoho odkazu na sociální sítě.
+ * Social website URL and icon entity.
  * @class Social
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
@@ -12,7 +12,6 @@ use Rychecky\DatabaseRecordTrait;
 
 class Social
 {
-
     use DatabaseRecordTrait;
 
     /**
