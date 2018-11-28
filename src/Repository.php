@@ -13,13 +13,13 @@ use \PDO;
 abstract class Repository
 {
     /**
-     * @var PDO Database connection
+     * @var \PDO Database connection
      */
     private $db;
 
     /**
      * Repository constructor.
-     * @param PDO $db Database connection
+     * @param \PDO $db Database connection
      */
     public function __construct(PDO $db)
     {
@@ -28,7 +28,7 @@ abstract class Repository
 
     /**
      * Get database connection.
-     * @return PDO Database connection
+     * @return \PDO Database connection
      */
     public function getDb(): PDO
     {

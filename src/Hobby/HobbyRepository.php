@@ -9,20 +9,19 @@
 namespace Rychecky\Hobby;
 
 use \PDO;
+use Rychecky\Collection;
 use Rychecky\Language;
 use Rychecky\Repository;
 
 class HobbyRepository extends Repository
 {
-
     /**
-     * Stáhne a zpracuje seznam koníčků.
-     * @return Hobby[] // Seznam koníčků
+     * Fetch and process collection of hobbies.
+     * @return \Rychecky\Collection Collection of all hobbies
      */
-
-    public function fetchAll(): array
+    public function fetchAll(): Collection
     {
-        $hobbyList = [];
+        $hobbyCollection = new Collection();
 
         $sql = '
             SELECT h.*
@@ -39,9 +38,9 @@ class HobbyRepository extends Repository
 
         while ($hobby = $STH->fetch()) {
             /* @var $hobby Hobby */
-            $hobbyList[] = $hobby;
+            $hobbyCollection->push($hobby);
         }
 
-        return $hobbyList;
+        return $hobbyCollection;
     }
 }

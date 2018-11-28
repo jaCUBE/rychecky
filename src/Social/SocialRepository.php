@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Manages social entities in database.
+ * Manages social links entities in database.
  * @class SocialRepository
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
@@ -9,17 +9,18 @@
 namespace Rychecky\Social;
 
 use \PDO;
+use Rychecky\Collection;
 use Rychecky\Repository;
 
 class SocialRepository extends Repository
 {
     /**
      * Download and process all social entities in database.
-     * @return Social[] List of social entities
+     * @return Collection A collection of social links
      */
-    public function fetchAll(): array
+    public function fetchAll(): Collection
     {
-        $socialList = [];
+        $socialCollection = new Collection();
 
         $sql = '
           SELECT s.*
@@ -33,9 +34,9 @@ class SocialRepository extends Repository
 
         while ($social = $STH->fetch()) { // Prochází jednotlivé sociální sítě...
             /* @var $social Social */
-            $socialList[] = $social; // Ukládá sociální síť do pole
+            $socialCollection->push($social);
         }
 
-        return $socialList;
+        return $socialCollection;
     }
 }

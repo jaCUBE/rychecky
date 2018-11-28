@@ -1,28 +1,28 @@
 <?php
 
 /**
- * Stahuje a zpracovává seznam dovedností.
- * @author Jakub Rychecký <jakub@rychecky.cz>
+ * Manages all skills entities.
  * @class SkillRepository
+ * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 namespace Rychecky\Skill;
 
 use \PDO;
+use Rychecky\Collection;
 use Rychecky\Language;
 use Rychecky\Repository;
 
 class SkillRepository extends Repository
 {
-
     /**
      * Download all skills by selected type.
      * @param string $type Skill type
-     * @return Skill[] A list of skills by type
+     * @return Collection A collection of skills
      */
-    public function fetchByType(string $type): array
+    public function fetchByType(string $type): Collection
     {
-        $skillList = [];
+        $skillCollection = new Collection();
 
         $sql = '
           SELECT s.*
@@ -41,20 +41,20 @@ class SkillRepository extends Repository
 
         while ($skill = $STH->fetch()) {
             /* @var $skill Skill */
-            $skillList[] = $skill;
+            $skillCollection->push($skill);
         }
 
-        return $skillList;
+        return $skillCollection;
     }
 
 
     /**
      * Fetch skill types count from database.
-     * @return int[] Skill types counts (type => countr)
+     * @return Collection A collection of sill types counts (type => countr)
      */
-    public function fetchTypeStats(): array
+    public function fetchTypeStats(): Collection
     {
-        $skillStats = Skill::getSkillTypesList(); // Ordered list of skill types
+        $skillCollection = new Collection(Skill::getSkillTypesList());
 
         $sql = '
           SELECT s.type, COUNT(*) AS count
@@ -68,9 +68,9 @@ class SkillRepository extends Repository
         ]);
 
         while ($row = $STH->fetch()) {
-            $skillStats[$row['type']] = $row['count']; // Skill type => count
+            $skillCollection->set($row['type'], (int)$row['count']);
         }
 
-        return $skillStats;
+        return $skillCollection;
     }
 }

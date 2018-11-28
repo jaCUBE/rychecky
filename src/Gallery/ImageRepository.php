@@ -1,26 +1,26 @@
 <?php
 /**
- * Stahuje a zpracovává obrázky pro jednotlivá portfolia.
- * @class HobbyRepository
+ * Manages all image entities.
+ * @class ImageRepository
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 namespace Rychecky\Gallery;
 
 use \PDO;
+use Rychecky\Collection;
 use Rychecky\Repository;
 
 class ImageRepository extends Repository
 {
     /**
-     * Stahuje všechny obrázky portfolia z databáze.
-     * @param int $portfolio_id ID portfolia
-     * @return Image[] Všechny obrázky portfolia
+     * Download and process an image gallery for one portfolio item.
+     * @param int $portfolioId Portfolio ID
+     * @return Collection A collection of images for portfolio
      */
-
-    public function fetchPortfolioImages(int $portfolio_id): array
+    public function fetchPortfolioImages(int $portfolioId): Collection
     {
-        $image_list = [];
+        $imageCollection = new Collection();
 
         $sql = '
           SELECT g.*
@@ -32,50 +32,49 @@ class ImageRepository extends Repository
         $STH = $this->getDb()->prepare($sql);
         $STH->setFetchMode(PDO::FETCH_CLASS, '\Rychecky\Gallery\Image');
         $STH->execute([
-            'portfolio_id' => $portfolio_id,
+            'portfolio_id' => $portfolioId,
         ]);
 
 
-        while ($image = $STH->fetch()) { // Procházení stažených obrázků...
+        while ($image = $STH->fetch()) {
             /* @var $image Image */
-            $image_list[] = $image;
+            $imageCollection->push($image);
         }
 
-        return $image_list;
+        return $imageCollection;
     }
 
     /**
-     * Generuje galerii jedné položky portfolia.
-     * @param int $portfolio_id ID portfolia
-     * @return Image[] Galerie portfolia
+     * Fetch and process gallery images for one portfolio item.
+     * @param int $portfolio_id Portfolio ID
+     * @return Collection A collection of images for portfolio gallery
      */
-    public function portoflioGallery(int $portfolio_id): array
+    public function portoflioGallery(int $portfolio_id): Collection
     {
-        $image_list = [];
+        $imageCollection = new Collection();
 
-        foreach ($this->fetchPortfolioImages($portfolio_id) as $image) { // Procházení všech obrázků...
-            if (!$image->isThumbnail()) { // Vyřazení thumbnaili
-                $image_list[] = $image;
+        foreach ($this->fetchPortfolioImages($portfolio_id) as $image) {
+            if (!$image->isThumbnail()) { // No thumbnails in gallery
+                $imageCollection->push($image);
             }
         }
 
-        return $image_list;
+        return $imageCollection;
     }
 
     /**
-     * Generuje thumbnail (náhledový obrázek) pro portfolium.
-     * @param int $portfolio_id ID portfolia
-     * @return Image Thumbnail (náhledová obrázek)
+     * Fetch and process one image thumbnail for portfolio item.
+     * @param int $portfolio_id Portfolio ID
+     * @return Image Portfolio thumbnail image
      */
     public function portfolioThumbnail(int $portfolio_id): Image
     {
-        foreach ($this->fetchPortfolioImages($portfolio_id) as $image) { // Procházení všech obrázků...
-            if ($image->isThumbnail()) { // Pouze thumbnail...
+        foreach ($this->fetchPortfolioImages($portfolio_id) as $image) {
+            if ($image->isThumbnail()) {
                 return $image;
             }
         }
 
         return new Image(); // Fallback na prázdný objekt obrázku
     }
-
 }

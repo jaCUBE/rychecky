@@ -1,28 +1,28 @@
 <?php
 
 /**
- * Stahuje a zpracovává seznam portfolia.
- * @class PortfolioRepository
+ * Manages all portfolio entities.
+ * @class HobbyRepository
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 namespace Rychecky\Portfolio;
 
 use \PDO;
+use Rychecky\Collection;
 use Rychecky\Language;
 use Rychecky\Gallery\ImageRepository;
 use Rychecky\Repository;
 
 class PortfolioRepository extends Repository
 {
-
     /**
-     * Download and process a list of portfolio entities.
-     * @return Portfolio[] A list of portfolio entities
+     * Download and process a collection of portfolio entities.
+     * @return Collection A collection of portfolio entities
      */
-    public function fetchAll(): array
+    public function fetchAll(): Collection
     {
-        $portfolioList = [];
+        $portfolioCollection = new Collection();
         $imageRepository = new ImageRepository($this->getDb());
 
         $sql = '
@@ -39,21 +39,21 @@ class PortfolioRepository extends Repository
             'locale' => Language::getLocale(),
         ]);
 
-        while ($portfolio = $STH->fetch()) {  // Prochází jednotlivá portfolia...
+        while ($portfolio = $STH->fetch()) {
             /* @var $portfolio Portfolio */
-            $portfolioList[] = [
+            $portfolioCollection->push([
                 'data' => $portfolio,
                 'thumbnail' => $imageRepository->portfolioThumbnail($portfolio->portfolio_id)
-            ];
+            ]);
         }
 
-        return $portfolioList;
+        return $portfolioCollection;
     }
 
     /**
-     * Stahuje portofolio do této instance třídy.
-     * @param int $portfolio_id ID portfolia
-     * @return ?Portfolio Stažené portfolio
+     * Download and process one portfolio by its ID.
+     * @param int $portfolio_id Portfolio ID
+     * @return Portfolio|null Downloaded portfolio
      */
     public function findById(int $portfolio_id): ?Portfolio
     {

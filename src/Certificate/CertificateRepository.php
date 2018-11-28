@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Stahuje a zpracovává seznam certifikátů.
+ * Manages all certificate entities.
  * @class CertificateRepository
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
@@ -9,20 +9,19 @@
 namespace Rychecky\Certificate;
 
 use \PDO;
+use Rychecky\Collection;
 use Rychecky\Language;
 use Rychecky\Repository;
 
 class CertificateRepository extends Repository
 {
-
     /**
-     * Stáhne a zpracuje seznam certifikátů z databáze.
-     * @return Certificate[] Seznam certifikátů
+     * Fetch and process collection of all certificates from data source.
+     * @return \Rychecky\Collection A collection of all certificates
      */
-
-    public function fetchAll(): array
+    public function fetchAll(): Collection
     {
-        $certificateList = [];
+        $certificateCollection = new Collection();
 
         $sql = '
             SELECT c.*
@@ -39,9 +38,9 @@ class CertificateRepository extends Repository
 
         while ($certificate = $STH->fetch()) {
             /* @var $certificate Certificate */
-            $certificateList[] = $certificate;
+            $certificateCollection->push($certificate);
         }
 
-        return $certificateList;
+        return $certificateCollection;
     }
 }

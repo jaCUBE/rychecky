@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Stahuje a zpracovává seznam zkušeností (práce/vzdělání).
+ * Manages all experiences entities.
  * @class ExperienceRepository
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
@@ -9,20 +9,19 @@
 namespace Rychecky\Experience;
 
 use \PDO;
+use Rychecky\Collection;
 use Rychecky\Language;
 use Rychecky\Repository;
 
 class ExperienceRepository extends Repository
 {
-
     /**
-     * Stáhne a zpracuje seznam zkušeností (práce/vzdělání).
-     * @return Experience[] Seznam zkušeností
+     * Download and process collection of all experiences.
+     * @return Collection A collection of experiences
      */
-
-    public function fetchAll(): array
+    public function fetchAll(): Collection
     {
-        $experienceList = [];
+        $experienceCollection = new Collection();
 
         $sql = '
           SELECT e.*
@@ -39,9 +38,9 @@ class ExperienceRepository extends Repository
 
         while ($experience = $STH->fetch()) {
             /* @var $experience Experience */
-            $experienceList[] = $experience;
+            $experienceCollection->push($experience);
         }
 
-        return $experienceList;
+        return $experienceCollection;
     }
 }
