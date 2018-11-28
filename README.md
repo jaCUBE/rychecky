@@ -17,14 +17,5 @@ composer install
 
 # Run
 ```
-docker-compose up -d
+docker-compose up
 ```
-
-<hr />
-
-<p class="center">
-    <img src="http://rychecky.cz/assets/UML/controllers.png" alt="" />
-</p>
-<p class="center">
-    <img src="http://rychecky.cz/assets/UML/database.png" alt="" />
-</p>
