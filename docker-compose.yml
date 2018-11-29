@@ -23,7 +23,7 @@ services:
     image: mariadb:10
     container_name: rychecky-mariadb
     environment:
-      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
       - MYSQL_CHARSET=utf8
       - MYSQL_COLLATION=utf8_czech_ci
     volumes:
