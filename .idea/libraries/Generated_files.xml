@@ -3,10 +3,82 @@
     <properties>
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/public/js/rychecky.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Commenting/DocCommentUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Commenting/FixmeUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Commenting/TodoUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Files/EndFileNewlineUnitTest.3.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Files/EndFileNoNewlineUnitTest.3.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Files/LineEndingsUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Formatting/SpaceAfterNotUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/PHP/LowerCaseConstantUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Strings/UnnecessaryStringConcatUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/WhiteSpace/DisallowSpaceIndentUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/WhiteSpace/DisallowTabIndentUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/MySource/Tests/Objects/AssignThisUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/MySource/Tests/Strings/JoinStringsUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/PEAR/Tests/Functions/FunctionCallSignatureUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Commenting/DocCommentAlignmentUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Commenting/FileCommentUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Commenting/LongConditionClosingCommentUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Commenting/PostStatementCommentUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/ControlStructures/ControlSignatureUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/ControlStructures/ForLoopDeclarationUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Debug/JSLintUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Debug/JavaScriptLintUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Objects/DisallowObjectStringIndexUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Objects/ObjectMemberCommaUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Operators/ComparisonOperatorUsageUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/PHP/DisallowInlineIfUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/PHP/DisallowSizeFunctionsInLoopsUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/FunctionOpeningBraceSpaceUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/LogicalOperatorSpacingUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/PropertyLabelSpacingUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/SemicolonSpacingUnitTest.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/SuperfluousWhitespaceUnitTest.1.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/SuperfluousWhitespaceUnitTest.2.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/SuperfluousWhitespaceUnitTest.3.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/tracy/tracy/.eslintrc.min.js" />
+        <item url="file://$PROJECT_DIR$/vendor/tracy/tracy/tools/open-in-editor/windows/open-editor.min.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/public/js/rychecky.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Commenting/DocCommentUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Commenting/FixmeUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Commenting/TodoUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Files/EndFileNewlineUnitTest.3.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Files/EndFileNoNewlineUnitTest.3.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Files/LineEndingsUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Formatting/SpaceAfterNotUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/PHP/LowerCaseConstantUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/Strings/UnnecessaryStringConcatUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/WhiteSpace/DisallowSpaceIndentUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Generic/Tests/WhiteSpace/DisallowTabIndentUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/MySource/Tests/Objects/AssignThisUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/MySource/Tests/Strings/JoinStringsUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/PEAR/Tests/Functions/FunctionCallSignatureUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Commenting/DocCommentAlignmentUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Commenting/FileCommentUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Commenting/LongConditionClosingCommentUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Commenting/PostStatementCommentUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/ControlStructures/ControlSignatureUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/ControlStructures/ForLoopDeclarationUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Debug/JSLintUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Debug/JavaScriptLintUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Objects/DisallowObjectStringIndexUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Objects/ObjectMemberCommaUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/Operators/ComparisonOperatorUsageUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/PHP/DisallowInlineIfUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/PHP/DisallowSizeFunctionsInLoopsUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/FunctionOpeningBraceSpaceUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/LogicalOperatorSpacingUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/PropertyLabelSpacingUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/SemicolonSpacingUnitTest.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/SuperfluousWhitespaceUnitTest.1.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/SuperfluousWhitespaceUnitTest.2.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/squizlabs/php_codesniffer/src/Standards/Squiz/Tests/WhiteSpace/SuperfluousWhitespaceUnitTest.3.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/tracy/tracy/.eslintrc.min.js" />
+      <root url="file://$PROJECT_DIR$/vendor/tracy/tracy/tools/open-in-editor/windows/open-editor.min.js" />
     </CLASSES>
     <SOURCES />
   </library>
