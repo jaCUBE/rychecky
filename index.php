@@ -25,8 +25,8 @@ $app = new \Slim\App([
  */
 $container = $app->getContainer();
 $container['db'] = Rychecky::connectDatabase();
-phpinfo();
-exit;
+
+
 /**
  * Remove trailing slash in URL.
  * @see https://www.slimframework.com/docs/v3/cookbook/route-patterns.html
