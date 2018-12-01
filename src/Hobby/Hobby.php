@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Koníček (zájem) na webu.
+ * Hobby entity for a website.
  * @class Hobby
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
@@ -10,44 +10,77 @@ namespace Rychecky\Hobby;
 
 use Rychecky\DatabaseRecordTrait;
 use Rychecky\LocalizedTrait;
+use Rychecky\Collection;
 
 class Hobby
 {
-
     use DatabaseRecordTrait, LocalizedTrait;
 
     /**
-     * @var integer $hobby_id ID koníčku
+     * @var int $hobby_id Hobby ID
      */
-    public $hobby_id;
+    private $hobbyId;
 
     /**
-     * @var string $name Název koníčku
+     * @var string $name Hobby name
      */
-    public $name;
+    private $name;
 
     /**
-     * @var float $size Velikost textu tohoto koníčku
+     * @var float $size Size of text
      */
-    public $size;
-
+    private $size;
 
     /**
-     * Generuje náhodný CSS tohoto koníčku dle jeho velikosti.
-     * @return array Náhodné CSS v poli
-     * @throws Exception
+     * Hobby constructor.
+     * @param array $hobbyData
      */
-
-    public function randomHobbyCss(): array
+    public function __construct(array $hobbyData)
     {
-        $css = []; // Iniciace CSS
+        $this->hobbyId = (int)$hobbyData['hobby_id'];
+        $this->name = $hobbyData['name'];
+        $this->size = (int)$hobbyData['size'];
+    }
 
-        $css['font-size'] = $this->size * 0.02 . 'em'; // Velikost
-        $css['margin-left'] = random_int(0, 10) . 'px'; // Odsazení zleva
-        $css['margin-right'] = random_int(0, 10) . 'px'; // Odsazení zprava
-        $css['margin-top'] = random_int(0, 5) . 'px'; // Odsazení zeshora
-        $css['float'] = random_int(0, 1) ? 'left' : 'right'; // 1:1 zarovnání doleva/doprava...
+    /**
+     * Generate random CSS for this hobby.
+     * @return Collection Random CSS style
+     * @throws \Exception
+     */
+    public function randomHobbyCss(): Collection
+    {
+        $cssCollection = new Collection();
 
-        return $css;
+        $cssCollection->set('float', random_int(0, 1) ? 'left' : 'right');
+        $cssCollection->set('font-size', $this->size * 0.02 . 'em');
+        $cssCollection->set('margin-left', random_int(0, 10) . 'px');
+        $cssCollection->set('margin-top', random_int(0, 5) . 'px');
+        $cssCollection->set('margin-right', random_int(0, 10) . 'px');
+
+        return $cssCollection;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHobbyId(): int
+    {
+        return $this->hobbyId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return float
+     */
+    public function getSize(): float
+    {
+        return $this->size;
     }
 }

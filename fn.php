@@ -100,11 +100,11 @@ function replace_czech_characters(string $string): string
 
 /**
  * Převádí pole ve formátu 'atribut => hodnota' na CSS.
- * @param $array Pole 'atribut => hodnota'
- * @return string Výsledné CSS
+ * @param \Rychecky\Collection Collection of CSS properties
+ * @return string In-line CSS style
  */
 
-function array_to_css(array $array): string
+function array_to_css(\Rychecky\Collection $array): string
 {
     $css = '';
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Jeden obrázek na webu rychecky.cz.
+ * Image (picture) entity for portfolio.
  * @class Image
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
@@ -12,62 +12,96 @@ use Rychecky\DatabaseRecordTrait;
 
 class Image
 {
-
     use DatabaseRecordTrait;
 
     /**
-     * ID zkušenosti k této galerii
-     * @var integer $portfolio_id
+     * @var int $portfolioId Binded porfolio ID
      */
-    public $portfolio_id;
+    private $portfolioId;
 
     /**
-     * Název souboru
-     * @var string $filename
+     * @var string $filename Image filename
      */
-    public $filename;
+    private $filename;
 
     /**
-     * Popis obrázku
-     * @var string $title
+     * @var string $title Image title
      */
-    public $title;
+    private $title;
 
     /**
-     * Jedná se o thumbnail?
-     * @var boolean $thumbnail
+     * @var bool $thumbnail Is thumbnail?
      */
-    public $thumbnail;
+    private $thumbnail;
 
     /**
-     * Hodnota pořadí
-     * @var integer $order
+     * @var int $order Order in gallery
      */
-    public $order;
-
+    private $order;
 
     /**
-     * Generuje URL samotného obrázku.
-     * @return string URL obrázku
+     * Image constructor.
+     * @param array $data
      */
-
-    public function url(): string
+    public function __construct(array $data = [])
     {
-        if (!empty($this->filename)) {
-            return URL . '/images/portfolio/' . $this->portfolio_id . '/' . $this->filename; // URL obrázku
+        $this->portfolioId = (int)$data['portfolio_id'];
+        $this->filename = (string)$data['filename'];
+        $this->title = (string)$data['title'];
+        $this->thumbnail = (bool)$data['thumbnail'];
+        $this->order = (int)$data['order'];
+    }
+
+    /**
+     * Generate full URL for image.
+     * @return string Image URL
+     */
+    public function getFullUrl(): string
+    {
+        if (!empty($this->getFilename())) {
+            return URL . '/images/portfolio/' . $this->getPortfolioId() . '/' . $this->getFilename();
         }
 
         return URL . '/images/placeholder.png';
     }
 
     /**
-     * Jedná se o náhled obrázku?
-     * @return boolean Náhled?
+     * @return int
      */
-
-    public function isThumbnail(): bool
+    public function getPortfolioId(): int
     {
-        return (boolean)$this->thumbnail; // Náhled?
+        return $this->portfolioId;
     }
 
+    /**
+     * @return string
+     */
+    public function getFilename(): string
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isThumbnail(): bool
+    {
+        return $this->thumbnail;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOrder(): int
+    {
+        return $this->order;
+    }
 }

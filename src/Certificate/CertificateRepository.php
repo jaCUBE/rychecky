@@ -31,14 +31,12 @@ class CertificateRepository extends Repository
             ORDER BY c.issue_date DESC';
 
         $STH = $this->getDb()->prepare($sql);
-        $STH->setFetchMode(PDO::FETCH_CLASS, '\Rychecky\Certificate\Certificate');
         $STH->execute([
             'locale' => Language::getLocale(),
         ]);
 
-        while ($certificate = $STH->fetch()) {
-            /* @var $certificate Certificate */
-            $certificateCollection->push($certificate);
+        while ($row = $STH->fetch()) {
+            $certificateCollection->push(new Certificate($row));
         }
 
         return $certificateCollection;

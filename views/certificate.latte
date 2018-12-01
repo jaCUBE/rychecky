@@ -9,25 +9,25 @@
 <div id="certificate">
     <ul class="timeline">
         <li n:foreach="$list as $certificate"
-                data-type="{$certificate->type}"
-                class="event {php echo make_css_name($certificate->type) }">
+                data-type="{$certificate->getType()}"
+                class="event {php echo make_css_name($certificate->getType()) }">
 
             <div class="date">
-                <span class="start">{$certificate->issue_date|date:'n/Y'}</span>
+                <span class="start">{$certificate->getIssueDate()|date:'n/Y'}</span>
             </div>
 
             <div class="title">
-                {$certificate->name}
+                {$certificate->getName()}
             </div>
 
             <div class="company">
-                <i class="fa fa-certificate"></i> {$certificate->issue_by}
+                <i class="fa fa-certificate"></i> {$certificate->getIssueBy()}
             </div>
 
-            <div class="detail">{$certificate->detail}</div>
+            <div class="detail">{$certificate->getDetail()}</div>
 
             <div class="center">
-                <a href="{$certificate->url}" class="btn btn-sm btn-light">
+                <a href="{$certificate->getUrl()}" class="btn btn-sm btn-light">
                     <i class="fa fa-globe"></i> {php echo e('Certifikát', 'Certificate') }
                 </a>
             </div>

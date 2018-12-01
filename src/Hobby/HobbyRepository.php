@@ -8,7 +8,6 @@
 
 namespace Rychecky\Hobby;
 
-use \PDO;
 use Rychecky\Collection;
 use Rychecky\Language;
 use Rychecky\Repository;
@@ -31,14 +30,12 @@ class HobbyRepository extends Repository
             ORDER BY RAND()';
 
         $STH = $this->getDb()->prepare($sql);
-        $STH->setFetchMode(PDO::FETCH_CLASS, 'Rychecky\Hobby\Hobby');
         $STH->execute([
             'locale' => Language::getLocale(),
         ]);
 
-        while ($hobby = $STH->fetch()) {
-            /* @var $hobby Hobby */
-            $hobbyCollection->push($hobby);
+        while ($row = $STH->fetch()) {
+            $hobbyCollection->push(new Hobby($row));
         }
 
         return $hobbyCollection;

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Certifikát na webu.
+ * Certificate entity.
  * @class Certificate
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
@@ -13,41 +13,111 @@ use Rychecky\LocalizedTrait;
 
 class Certificate
 {
-
     use DatabaseRecordTrait, LocalizedTrait;
 
     /**
-     * @var integer $certificate_id ID certifikátu
+     * @var int $certificateId Certificate ID
      */
-    public $certificate_id;
+    private $certificateId;
 
     /**
-     * @var string $type Typ certifikátu
+     * @var string $type Certificate type
      */
-    public $type;
+    private $type;
 
     /**
-     * @var string $name Název certifikátu
+     * @var string $name Certificate name
      */
-    public $name;
+    private $name;
 
     /**
-     * @var string $detail Detailní popis certifikátu
+     * @var string $detail Detailed description of certificate
      */
-    public $detail;
+    private $detail;
 
     /**
-     * @var string $issue_date Datum vydání certifikátu
+     * @var string $issueDate Date of certificate issue
      */
-    public $issue_date;
+    private $issueDate;
 
     /**
-     * @var string $issue_by Vydavatel certifikátu
+     * @var string $issueBy Issuer of certificate
      */
-    public $issue_by;
+    private $issueBy;
 
     /**
-     * @var string $url URL certifikátu
+     * @var string $url Certifcate URL
      */
-    public $url;
+    private $url;
+
+    /**
+     * Certificate constructor.
+     * @param array $data Entity row fetched from database
+     */
+    public function __construct(array $data = [])
+    {
+        $this->certificateId = (int)$data['certificate_id'];
+        $this->type = (string)$data['type'];
+        $this->name = (string)$data['name'];
+        $this->detail = (string)$data['detail'];
+        $this->issueDate = (string)$data['isser_date'];
+        $this->issueBy = (string)$data['issue_by'];
+        $this->url = (string)$data['url'];
+    }
+
+    /**
+     * @return int
+     */
+    public function getCertificateId(): int
+    {
+        return $this->certificateId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDetail(): string
+    {
+        return $this->detail;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIssueDate(): string
+    {
+        return $this->issueDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIssueBy(): string
+    {
+        return $this->issueBy;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
 }

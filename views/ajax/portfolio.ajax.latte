@@ -7,16 +7,16 @@
 
         <div class="center">
             <div class="image">
-                <img src="{$thumbnail->url()}" alt=""/>
+                <img src="{$thumbnail->getFullUrl()}" alt=""/>
             </div>
         </div>
 
 
         <div class="gallery">
             <a n:foreach="$gallery as $image"
-                    href="{$image->url()}" data-fancybox="portfolio-{$portfolio->portfolio_id}"
-                    data-caption="{$image->title}" class="fancybox">
-                <img src="{$image->url()}" alt=""/>
+                    href="{$image->getFullUrl()}" data-fancybox="portfolio-{$portfolio->portfolio_id}"
+                    data-caption="{$image->getTitle()}" class="fancybox">
+                <img src="{$image->getFullUrl()}" alt=""/>
             </a>
         </div>
     </div>
