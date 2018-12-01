@@ -8,7 +8,6 @@
 
 namespace Rychecky\Portfolio;
 
-use \PDO;
 use Rychecky\Collection;
 use Rychecky\Language;
 use Rychecky\Gallery\ImageRepository;

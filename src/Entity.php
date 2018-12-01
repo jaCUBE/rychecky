@@ -1,13 +1,12 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: jaCUBE
- * Date: 01.12.2018
- * Time: 2:23
+ * Basic template for all PHP expressed database entities.
+ * @class Repository
+ * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 namespace Rychecky;
-
 
 abstract class Entity
 {
@@ -37,7 +36,7 @@ abstract class Entity
     private $timestamp;
 
     /**
-     * Entity constructor.
+     * Entity constructor. All real entity children are intended to call their parent's constructor.
      * @param array $data Row fetched from database
      */
     public function __construct(array $data = [])

@@ -42,14 +42,15 @@ class ImageRepository extends Repository
 
     /**
      * Fetch and process gallery images for one portfolio item.
-     * @param int $portfolio_id Portfolio ID
+     * @param int $portfolioId Portfolio ID
      * @return \Rychecky\Collection A collection of images for portfolio gallery
      */
-    public function portoflioGallery(int $portfolio_id): Collection
+    public function portoflioGallery(int $portfolioId): Collection
     {
         $imageCollection = new Collection();
 
-        foreach ($this->fetchPortfolioImages($portfolio_id) as $image) {
+        // Search portfolio regular images in gallery
+        foreach ($this->fetchPortfolioImages($portfolioId) as $image) {
             if (!$image->isThumbnail()) { // No thumbnails in gallery
                 $imageCollection->add($image);
             }
@@ -60,12 +61,13 @@ class ImageRepository extends Repository
 
     /**
      * Fetch and process one image thumbnail for portfolio item.
-     * @param int $portfolio_id Portfolio ID
+     * @param int $portfolioId Portfolio ID
      * @return \Rychecky\Gallery\Image Portfolio thumbnail image
      */
-    public function portfolioThumbnail(int $portfolio_id): Image
+    public function portfolioThumbnail(int $portfolioId): Image
     {
-        foreach ($this->fetchPortfolioImages($portfolio_id) as $image) {
+        // Search portfolio thumbnail in gallery
+        foreach ($this->fetchPortfolioImages($portfolioId) as $image) {
             if ($image->isThumbnail()) {
                 return $image;
             }

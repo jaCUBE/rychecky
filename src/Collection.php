@@ -13,6 +13,7 @@ class Collection extends \Slim\Collection
     /**
      * Add value in the end of data array.
      * @param mixed $value Any value
+     * @return void
      */
     public function add($value): void
     {
