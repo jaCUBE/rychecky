@@ -46,7 +46,7 @@ function portfolio(portfolio_id) {
         success: function (response, textStatus, xhr) {
             var data = JSON.parse(response).data; // Parsuje odpověď
 
-            modal.find('.modal-title').html(data.portfolio.name); // Nastavuje nadpis dialogu
+            modal.find('.modal-title').html(data.portfolioName); // Nastavuje nadpis dialogu
             modal.find('.modal-body').html(data.html); // Nastavuje tělo dialogu
             modal.modal('show'); // Zobrazí dialog
         },

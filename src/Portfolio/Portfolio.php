@@ -1,128 +1,140 @@
 <?php
 
 /**
- * Položka portfolia na webu.
+ * Portfolio entity.
  * @class Portfolio
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 namespace Rychecky\Portfolio;
 
-use \PDO;
-use Rychecky\Language;
 use Rychecky\DatabaseRecordTrait;
 use Rychecky\LocalizedTrait;
 
 class Portfolio
 {
-
     use DatabaseRecordTrait, LocalizedTrait;
 
     /**
-     * @var integer $portfolio_id ID portfolia
+     * @var int $portfolioId Portfolio ID
      */
-    public $portfolio_id;
+    private $portfolioId;
 
     /**
-     * @var string $type Typ portfolia
+     * @var string $type Portfolio type
      */
-    public $type;
+    private $type;
 
     /**
-     * @var string $name Název portfolia
+     * @var string $name Portfolio name
      */
-    public $name;
+    private $name;
 
     /**
-     * @var string $name_short Název portfolia (zkrácený)
+     * @var string $nameShort Short portfolio name
      */
-    public $name_short;
+    private $nameShort;
 
     /**
-     * @var string $detail Detailní popis portfolia
+     * @var string $detail Portoflio description
      */
-    public $detail;
+    private $detail;
 
     /**
-     * @var string $detail_short Zkrácený textový popis
+     * @var string $detailShort Short portfolio description
      */
-    public $detail_short;
+    private $detailShort;
 
     /**
-     * @var string $company Název společnosti
+     * @var string $company Company of origin
      */
-    public $company;
+    private $company;
 
     /**
-     * @var string $url URL portfolia
+     * @var string $url Portfolio URL
      */
-    public $url;
+    private $url;
 
     /**
-     * @var string $date_start Datum začátku vývoje položky
+     * @var string $dateStart Cooperation/development start date
      */
-    public $date_start;
+    private $dateStart;
 
     /**
-     * @var string $date_end Datum konce vývoje položky
+     * @var string $dateEnd Cooperation/development end date
      */
-    public $date_end;
-
+    private $dateEnd;
 
     /**
-     * @var integer $size Velikost projektu portfolia
+     * @var int $size Portfolio project size
      */
-    public $size;
+    private $size;
 
     /**
-     * @var string $github URL repozitáře GitHub
+     * @var string $github GitHub repository URL
      */
-    public $github;
+    private $github;
 
     /**
-     * @var boolean $interesting Je tato položka portfolia zajímavá?
+     * @var bool $interesting Is interesting?
      */
-    public $interesting;
-
-
+    private $interesting;
 
     /**
-     * Co nejkratší název položky portfolia.
-     * @return string Nejkratší název
+     * Portfolio constructor.
+     * @param array $data
      */
-
-    public function nameShortest(): string
+    public function __construct(array $data = [])
     {
-        // PHP 7: Null Coalescence https://wiki.php.net/rfc/isset_ternary
-        return $this->name_short ?? $this->name; // Pokud existuje zkrácený, použije se ten
+        $this->portfolioId = (int)$data['portfolio_id'];
+        $this->type = (string)$data['type'];
+        $this->name = (string)$data['name'];
+        $this->nameShort = (string)$data['name_short'];
+        $this->detail = (string)$data['detail'];
+        $this->detailShort = (string)$data['detail_short'];
+        $this->company = (string)$data['company'];
+        $this->url = (string)$data['url'];
+        $this->dateStart = (string)$data['date_start'];
+        $this->dateEnd = (string)$data['date_end'];
+        $this->size = (int)$data['size'];
+        $this->github = (string)$data['github'];
+        $this->interesting = (bool)$data['interesting'];
     }
 
     /**
-     * Stáří této položky portfolia.
-     * @return float Stáří ve dnech
+     * Get the shortest name of portfolio record.
+     * @return string The shortest name
      */
-
-    public function age(): float
+    public function getNameShortest(): string
     {
-        $difference = time() - strtotime($this->date_start); // Počet sekund od začátku vývoje
-        return round($difference / (24 * 60 * 60)); // Převod na dny
+        return $this->nameShort ?? $this->name;
     }
 
     /**
-     * Vrací CSS třídy toho portfolia.
-     * @return string CSS třídy
+     * Age of this portfolio item
+     * @return float Age in days
      */
-
-    public function css(): string
+    public function getAge(): float
     {
-        // Základní třídy
+        // TODO: Get rid of strtotime()
+        $difference = time() - strtotime($this->dateStart);
+        return round($difference / (24 * 60 * 60));
+    }
+
+    /**
+     * Get CSS classes for this portfolio item.
+     * @return string CSS classes
+     */
+    public function getCssClasses(): string
+    {
+        // Basic classes
         $class = ['portfolio', make_css_name($this->type)];
 
-        if ($this->isInteresting()) { // Zajímavé porfoliu?
+        if ($this->isInteresting()) {
             $class[] = 'interesting';
         }
 
-        if ($this->isRunning()) { // Portfolium ve vývoji?
+        if ($this->isRunning()) {
             $class[] = 'running';
         }
 
@@ -130,26 +142,118 @@ class Portfolio
     }
 
     /**
-     * Jedná se o zajímavou položku portfolia?
-     * @return bool Zajímavá položka?
+     * Is this portfolio item still running in development?
+     * @return bool Is under development?
      */
-
-    public function isInteresting(): bool
+    public function isRunning(): bool
     {
-        return (boolean)$this->interesting;
+        $started = !empty($this->dateStart) && strtotime($this->dateStart) <= strtotime('today'); // Začato: datum začátku existuje a proběhlo
+        $ended = !empty($this->dateEnd) && strtotime($this->dateEnd) <= strtotime('today'); // Ukončeno: datum konce existuje a proběhlo
+
+        return $started && !$ended; // Začalo a neskončilo
     }
 
     /**
-     * Je tato položka portfolia právě ve vývoji?
-     * @return bool Je ve vývoji?
+     * @return int
      */
-
-    public function isRunning(): bool
+    public function getPortfolioId(): int
     {
-        $started = !empty($this->date_start) and strtotime($this->date_start) <= strtotime('today'); // Začato: datum začátku existuje a proběhlo
-        $ended = !empty($this->date_end) and strtotime($this->date_end) <= strtotime('today'); // Ukončeno: datum konce existuje a proběhlo
-
-        return $started and !$ended; // Začalo a neskončilo
+        return $this->portfolioId;
     }
 
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameShort(): string
+    {
+        return $this->nameShort;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDetail(): string
+    {
+        return $this->detail;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDetailShort(): string
+    {
+        return $this->detailShort;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCompany(): string
+    {
+        return $this->company;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateStart(): string
+    {
+        return $this->dateStart;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateEnd(): string
+    {
+        return $this->dateEnd;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSize(): int
+    {
+        return $this->size;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGithub(): string
+    {
+        return $this->github;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isInteresting(): bool
+    {
+        return $this->interesting;
+    }
 }

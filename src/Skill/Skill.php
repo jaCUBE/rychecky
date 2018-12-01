@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Jedna dovednost na webu.
+ * Skill entitny.
  * @author Jakub Rychecký <jakub@rychecky.cz>
  * @class Skill
  */
@@ -19,38 +19,50 @@ class Skill
     const DEFAULT_SKILL_TYPE = 'webdev';
 
     /**
-     * @var integer $skill_id ID dovednosti
+     * @var int $skillId Skill ID
      */
-    public $skill_id;
+    private $skillId;
 
     /**
-     * @var string $type Typ dovednosti
+     * @var string $type Skill type
      */
-    public $type;
+    private $type;
 
     /**
-     * @var string $name Název dovednosti
+     * @var string $name Skill name
      */
-    public $name;
+    private $name;
 
     /**
-     * @var integer $value Hodnota dovednosti (0–100)
+     * @var int $value Skill rank (0-100)
      */
-    public $value;
+    private $value;
 
     /**
-     * @var string $detail Detailní popis dovednosti
+     * @var string $detail Detail description of skill
      */
-    public $detail;
+    private $detail;
 
+    /**
+     * Skill constructor.
+     * @param array $data
+     */
+    public function __construct(array $data = [])
+    {
+        $this->skillId = (int)$data['skill_id'];
+        $this->type = (string)$data['type'];
+        $this->name = (string)$data['name'];
+        $this->value = (int)$data['value'];
+        $this->detail = (string)$data['detail'];
+    }
 
     /**
      * Provide ordered list of skill types in an array.
      * @return string[] A ordered list of skill types
      */
-
     public static function getSkillTypesList(): array
     {
+        // TODO: Refactor to Consistency Enum?
         // Ordered skill types
         if ('cs' === Language::getLocale()) {
             $skillTypeList = ['Webdev', 'ICT', 'Jazyky', 'Ostatní'];
@@ -59,5 +71,45 @@ class Skill
         }
 
         return array_combine($skillTypeList, $skillTypeList); // Key = value array
+    }
+
+    /**
+     * @return int
+     */
+    public function getSkillId(): int
+    {
+        return $this->skillId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getValue(): int
+    {
+        return $this->value;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDetail(): string
+    {
+        return $this->detail;
     }
 }

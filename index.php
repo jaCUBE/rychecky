@@ -141,22 +141,22 @@ $app->get('/api/portfolio/{id}', function (Request $request, Response $response,
     $portfolioRepository = new Portfolio\PortfolioRepository($this->db);
     $portfolio = $portfolioRepository->findById((int)$args['id']);
 
+    // TODO: Condition for $portfolio not found
+
     $imageRepository = new ImageRepository($this->db);
 
     ob_start();
-
     Rychecky::view('ajax/portfolio.ajax', [
         'portfolio' => $portfolio,
-        'thumbnail' => $imageRepository->portfolioThumbnail($portfolio->portfolio_id),
-        'gallery' => $imageRepository->portoflioGallery($portfolio->portfolio_id)
+        'thumbnail' => $imageRepository->portfolioThumbnail($portfolio->getPortfolioId()),
+        'gallery' => $imageRepository->portoflioGallery($portfolio->getPortfolioId())
     ]);
-
     $portfolioHtml = ob_get_clean();
 
     return json_encode([
-        'id' => $portfolio->portfolio_id,
+        'id' => $portfolio->getPortfolioId(),
         'data' => [
-            'portfolio' => $portfolio,
+            'portfolioName' => $portfolio->getName(),
             'html' => $portfolioHtml,
         ],
     ]);

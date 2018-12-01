@@ -8,7 +8,6 @@
 
 namespace Rychecky\Social;
 
-use \PDO;
 use Rychecky\Collection;
 use Rychecky\Repository;
 
@@ -29,12 +28,10 @@ class SocialRepository extends Repository
           ORDER BY s.order DESC, s.name ASC';
 
         $STH = $this->getDb()->prepare($sql);
-        $STH->setFetchMode(PDO::FETCH_CLASS, '\Rychecky\Social\Social');
         $STH->execute();
 
-        while ($social = $STH->fetch()) { // Prochází jednotlivé sociální sítě...
-            /* @var $social Social */
-            $socialCollection->push($social);
+        while ($row = $STH->fetch()) { // Prochází jednotlivé sociální sítě...
+            $socialCollection->push(new Social($row));
         }
 
         return $socialCollection;

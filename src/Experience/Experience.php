@@ -16,42 +16,131 @@ class Experience
     use DatabaseRecordTrait, LocalizedTrait;
 
     /**
-     * @var integer $experience_id ID zkušenosti
+     * @var int $experienceId Experience ID
      */
-    public $experience_id;
+    private $experienceId;
 
     /**
-     * @var string $type Typ zkušenosti
+     * @var string $type Experience type
      */
-    public $type;
+    private $type;
 
     /**
-     * @var string $title Název zkušenosti.
+     * @var string $title Title of experience
      */
-    public $title;
+    private $title;
 
     /**
-     * @var string $company Společnost
+     * @var string $company Origin company
      */
-    public $company;
+    private $company;
 
     /**
-     * @var string $date_start Datum začátku zkušenosti
+     * @var string $dateStart Date of experience start
      */
-    public $date_start;
+    private $dateStart;
 
     /**
-     * @var string|boolean $date_end Datum konce zkušenosti
+     * @var string $date_end Date of experience end
      */
-    public $date_end;
+    private $dateEnd;
 
     /**
-     * @var string $detail Detailní popis zkušenosti
+     * @var string $detail Detail description
      */
-    public $detail;
+    private $detail;
 
     /**
-     * @var string $note Poznámka
+     * @var string $note Any note
      */
-    public $note;
+    private $note;
+
+    /**
+     * Experience constructor.
+     * @param array $data
+     */
+    public function __construct(array $data = [])
+    {
+        $this->experienceId = (int)$data['experience_id'];
+        $this->type = (string)$data['type'];
+        $this->title = (string)$data['title'];
+        $this->company = (string)$data['company'];
+        $this->dateStart = (string)$data['date_start'];
+        $this->dateEnd = (string)$data['date_end'];
+        $this->detail = (string)$data['detail'];
+        $this->note = (string)$data['note'];
+    }
+
+    /**
+     * Is experience currently ongoing?
+     * @return bool
+     */
+    public function isCurrent(): bool
+    {
+        return !empty($this->getDateEnd());
+    }
+
+    /**
+     * @return int
+     */
+    public function getExperienceId(): int
+    {
+        return $this->experienceId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCompany(): string
+    {
+        return $this->company;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateStart(): string
+    {
+        return $this->dateStart;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateEnd(): string
+    {
+        return $this->dateEnd;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDetail(): string
+    {
+        return $this->detail;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNote(): string
+    {
+        return $this->note;
+    }
 }

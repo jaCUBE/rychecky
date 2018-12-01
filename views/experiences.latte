@@ -9,25 +9,25 @@
 <div id="experiences">
     <ul class="timeline">
         <li n:foreach="$list as $experience"
-                class="event {php echo make_css_name($experience->type) }"
-                data-type="{$experience->type}">
+                class="event {php echo make_css_name($experience->getType()) }"
+                data-type="{$experience->getType()}">
 
             <div class="date">
-                <span class="start">{$experience->date_start|date:'n/Y'}</span>
-                <span class="end" n:if="$experience->date_end">
-                    – {$experience->date_end|date:'n/Y'}
+                <span class="start">{$experience->getDateStart()|date:'n/Y'}</span>
+                <span class="end" n:if="$experience->getDateEnd()">
+                    – {$experience->getDateEnd()|date:'n/Y'}
                 </span>
             </div>
 
-            <div class="title">{$experience->title}</div>
+            <div class="title">{$experience->getTitle()}</div>
 
             <div class="company">
-                <i class="fa {php echo $experience->type === 'Zaměstnání' ? 'fa-briefcase' : 'fa-graduation-cap' }"></i>
-                {$experience->company}
+                <i class="fa {php echo $experience->getType() === 'Zaměstnání' ? 'fa-briefcase' : 'fa-graduation-cap' }"></i>
+                {$experience->getCompany()}
             </div>
 
-            <div class="detail">{$experience->detail|noescape}</div>
-            <div class="note">{$experience->note}</div>
+            <div class="detail">{$experience->getDetail()|noescape}</div>
+            <div class="note">{$experience->getNote()}</div>
         </li>
     </ul>
 </div>

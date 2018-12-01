@@ -8,7 +8,6 @@
 
 namespace Rychecky\Skill;
 
-use \PDO;
 use Rychecky\Collection;
 use Rychecky\Language;
 use Rychecky\Repository;
@@ -33,15 +32,13 @@ class SkillRepository extends Repository
           ORDER BY s.value DESC';
 
         $STH = $this->getDb()->prepare($sql);
-        $STH->setFetchMode(PDO::FETCH_CLASS, 'Rychecky\Skill\Skill');
         $STH->execute([
             'type' => $type,
             'locale' => Language::getLocale(),
         ]);
 
-        while ($skill = $STH->fetch()) {
-            /* @var $skill Skill */
-            $skillCollection->push($skill);
+        while ($row = $STH->fetch()) {
+            $skillCollection->push(new Skill($row));
         }
 
         return $skillCollection;

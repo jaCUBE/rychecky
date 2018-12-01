@@ -8,7 +8,6 @@
 
 namespace Rychecky\Certificate;
 
-use \PDO;
 use Rychecky\Collection;
 use Rychecky\Language;
 use Rychecky\Repository;

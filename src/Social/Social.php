@@ -15,27 +15,81 @@ class Social
     use DatabaseRecordTrait;
 
     /**
-     * @var integer $social_id
+     * @var int $socialId Social network link ID
      */
-    public $social_id;
+    public $socialId;
 
     /**
-     * @var string $name Název sociální sítě
+     * @var string $name Social network name
      */
     public $name;
 
     /**
-     * @var string $url URL profilu na síti
+     * @var string $url Social network profile URL
      */
     public $url;
 
     /**
-     * @var string $icon Ikona z Font Awesome
+     * @var string $icon Social network Font Awesome icon
      */
     public $icon;
 
     /**
-     * @var string $color HEX kód barvy
+     * @var string $color Color HEX
      */
     public $color;
+
+
+    /**
+     * Social constructor.
+     * @param array $data
+     */
+    public function __construct(array $data = [])
+    {
+        $this->socialId = (int)$data['social_id'];
+        $this->name = (string)$data['name'];
+        $this->url = (string)$data['url'];
+        $this->icon = (string)$data['icon'];
+        $this->color = (string)$data['color'];
+    }
+
+    /**
+     * @return int
+     */
+    public function getSocialId(): int
+    {
+        return $this->socialId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIcon(): string
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColor(): string
+    {
+        return $this->color;
+    }
 }

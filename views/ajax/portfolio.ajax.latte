@@ -14,7 +14,7 @@
 
         <div class="gallery">
             <a n:foreach="$gallery as $image"
-                    href="{$image->getFullUrl()}" data-fancybox="portfolio-{$portfolio->portfolio_id}"
+                    href="{$image->getFullUrl()}" data-fancybox="portfolio-{$portfolio->getPortfolioId()}"
                     data-caption="{$image->getTitle()}" class="fancybox">
                 <img src="{$image->getFullUrl()}" alt=""/>
             </a>
@@ -25,22 +25,22 @@
     <div class="col-md-8">
         <div class="detail">
             <div class="text">
-                {if $portfolio->detail}
-                    {$portfolio->detail|noescape}
+                {if $portfolio->getDetail()}
+                    {$portfolio->getDetail()|noescape}
                 {else}
-                    {$portfolio->detail_short}
+                    {$portfolio->getDetailShort()}
                 {/if}
             </div>
 
             <div class="center">
                 <div class="url">
-                    <a n:if="$portfolio->url" href="{$portfolio->url}" class="btn btn btn-light">
-                        <i class="fa fa-globe"></i> {$portfolio->nameShortest()}
+                    <a n:if="$portfolio->getUrl()" href="{$portfolio->getUrl()}" class="btn btn btn-light">
+                        <i class="fa fa-globe"></i> {$portfolio->getNameShortest()}
                     </a>
                 </div>
 
-                <a n:if="$portfolio->github" href="{$portfolio->github}" class="btn btn-sm btn-secondary">
-                    <i class="fa fa-github"></i> {$portfolio->nameShortest()} GitHub
+                <a n:if="$portfolio->getGithub()" href="{$portfolio->getGithub()}" class="btn btn-sm btn-secondary">
+                    <i class="fa fa-github"></i> {$portfolio->getNameShortest()} GitHub
                 </a>
             </div>
         </div>

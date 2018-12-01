@@ -2,7 +2,7 @@
 
 /**
  * Manages all portfolio entities.
- * @class HobbyRepository
+ * @class PortfolioRepository
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
@@ -34,16 +34,16 @@ class PortfolioRepository extends Repository
             ORDER BY p.size DESC';
 
         $STH = $this->getDb()->prepare($sql);
-        $STH->setFetchMode(PDO::FETCH_CLASS, '\Rychecky\Portfolio\Portfolio');
         $STH->execute([
             'locale' => Language::getLocale(),
         ]);
 
-        while ($portfolio = $STH->fetch()) {
-            /* @var $portfolio Portfolio */
+        while ($data = $STH->fetch()) {
+            $portfolio = new Portfolio($data);
+
             $portfolioCollection->push([
                 'data' => $portfolio,
-                'thumbnail' => $imageRepository->portfolioThumbnail($portfolio->portfolio_id)
+                'thumbnail' => $imageRepository->portfolioThumbnail($portfolio->getPortfolioId())
             ]);
         }
 
@@ -52,10 +52,10 @@ class PortfolioRepository extends Repository
 
     /**
      * Download and process one portfolio by its ID.
-     * @param int $portfolio_id Portfolio ID
+     * @param int $portfolioId Portfolio ID
      * @return Portfolio|null Downloaded portfolio
      */
-    public function findById(int $portfolio_id): ?Portfolio
+    public function findById(int $portfolioId): ?Portfolio
     {
         $sql = '
           SELECT p.*
@@ -66,14 +66,13 @@ class PortfolioRepository extends Repository
           LIMIT 1';
 
         $STH = $this->getDb()->prepare($sql);
-        $STH->setFetchMode(PDO::FETCH_CLASS, '\Rychecky\Portfolio\Portfolio');
         $STH->execute([
-            'portfolio_id' => $portfolio_id,
+            'portfolio_id' => $portfolioId,
             'locale' => Language::getLocale(),
         ]);
 
-        $portfolio = $STH->fetch();
+        $row = $STH->fetch();
 
-        return $portfolio ?: null;
+        return $row ? new Portfolio($row) : null;
     }
 }

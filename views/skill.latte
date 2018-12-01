@@ -25,14 +25,14 @@
     <div class="col-md-9">
         {block skill_list}
             <div class="skill" n:foreach="$list as $skill">
-                <div class="name">{$skill->name|noescape}</div>
+                <div class="name">{$skill->getName()|noescape}</div>
 
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: {$skill->value}%;">
+                    <div class="progress-bar" role="progressbar" style="width: {$skill->getValue()}%;">
                     </div>
                 </div>
 
-                <div class="detail">{$skill->detail}</div>
+                <div class="detail">{$skill->getDetail()}</div>
             </div>
         {/block}
     </div>

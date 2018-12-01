@@ -14,11 +14,11 @@
             {var $portfolio = $item['data']}
             {var $thumbnail = $item['thumbnail']}
 
-            class="{$portfolio->css()}"
-            data-age="{$portfolio->age()}"
-            data-name="{php echo replace_czech_characters($portfolio->nameShortest()) }"
-            data-size="{php echo $portfolio->size * -1}"
-            onclick="portfolio({$portfolio->portfolio_id})">
+            class="{$portfolio->getCssClasses()}"
+            data-age="{$portfolio->getAge()}"
+            data-name="{php echo replace_czech_characters($portfolio->getNameShortest()) }"
+            data-size="{php echo $portfolio->getSize() * -1}"
+            onclick="portfolio({$portfolio->getPortfolioId()})">
 
         <div class="image">
             <img src="{$thumbnail->getFullUrl()}" alt=""/>
@@ -26,14 +26,14 @@
 
         <div class="info">
             <div class="name">
-                {$portfolio->nameShortest()}
+                {$portfolio->getNameShortest()}
 
                 <i class="fa fa-star interesting" title="Zajímavá položka" n:if="$portfolio->isInteresting()"></i>
                 <i class="fa fa-cog running" title="Ve vývoji" n:if="$portfolio->isRunning()"></i>
             </div>
 
             <div class="detail">
-                {php echo $portfolio->detail_short}
+                {php echo $portfolio->getDetailShort()}
             </div>
         </div>
     </div>
