@@ -106,18 +106,20 @@ class Portfolio extends Entity
      */
     public function getNameShortest(): string
     {
-        return $this->nameShort ?? $this->name;
+        return $this->getNameShort() ?? $this->getName();
     }
 
     /**
      * Age of this portfolio item
+     * @throws \Exception
      * @return float Age in days
      */
     public function getAge(): float
     {
-        // TODO: Get rid of strtotime()
-        $difference = time() - strtotime($this->dateStart);
-        return round($difference / (24 * 60 * 60));
+        $date = new \DateTime($this->getDateStart());
+        $now = new \DateTime();
+
+        return $now->diff($date)->days;
     }
 
     /**
@@ -146,10 +148,10 @@ class Portfolio extends Entity
      */
     public function isRunning(): bool
     {
-        $started = !empty($this->dateStart) && strtotime($this->dateStart) <= strtotime('today'); // Začato: datum začátku existuje a proběhlo
-        $ended = !empty($this->dateEnd) && strtotime($this->dateEnd) <= strtotime('today'); // Ukončeno: datum konce existuje a proběhlo
+        $started = !empty($this->getDateStart()) && strtotime($this->getDateStart()) <= strtotime('today');
+        $ended = !empty($this->getDateEnd()) && strtotime($this->getDateEnd()) <= strtotime('today');
 
-        return $started && !$ended; // Začalo a neskončilo
+        return $started && !$ended; // Started but not ended yet
     }
 
     /**
