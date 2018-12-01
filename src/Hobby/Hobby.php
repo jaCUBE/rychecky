@@ -8,14 +8,11 @@
 
 namespace Rychecky\Hobby;
 
-use Rychecky\DatabaseRecordTrait;
-use Rychecky\LocalizedTrait;
+use Rychecky\Entity;
 use Rychecky\Collection;
 
-class Hobby
+class Hobby extends Entity
 {
-    use DatabaseRecordTrait, LocalizedTrait;
-
     /**
      * @var int $hobby_id Hobby ID
      */
@@ -33,13 +30,15 @@ class Hobby
 
     /**
      * Hobby constructor.
-     * @param array $hobbyData
+     * @param array $data Row fetched from database
      */
-    public function __construct(array $hobbyData)
+    public function __construct(array $data = [])
     {
-        $this->hobbyId = (int)$hobbyData['hobby_id'];
-        $this->name = $hobbyData['name'];
-        $this->size = (int)$hobbyData['size'];
+        parent::__construct($data);
+
+        $this->hobbyId = (int)$data['hobby_id'];
+        $this->name = $data['name'];
+        $this->size = (int)$data['size'];
     }
 
     /**

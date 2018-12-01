@@ -8,14 +8,11 @@
 
 namespace Rychecky\Skill;
 
-use Rychecky\DatabaseRecordTrait;
-use Rychecky\LocalizedTrait;
+use Rychecky\Entity;
 use Rychecky\Language;
 
-class Skill
+class Skill extends Entity
 {
-    use DatabaseRecordTrait, LocalizedTrait;
-
     const DEFAULT_SKILL_TYPE = 'webdev';
 
     /**
@@ -45,10 +42,12 @@ class Skill
 
     /**
      * Skill constructor.
-     * @param array $data
+     * @param array $data Row fetched from database
      */
     public function __construct(array $data = [])
     {
+        parent::__construct($data);
+
         $this->skillId = (int)$data['skill_id'];
         $this->type = (string)$data['type'];
         $this->name = (string)$data['name'];

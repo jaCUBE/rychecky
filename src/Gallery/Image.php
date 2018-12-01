@@ -8,12 +8,10 @@
 
 namespace Rychecky\Gallery;
 
-use Rychecky\DatabaseRecordTrait;
+use Rychecky\Entity;
 
-class Image
+class Image extends Entity
 {
-    use DatabaseRecordTrait;
-
     /**
      * @var int $portfolioId Binded porfolio ID
      */
@@ -41,10 +39,12 @@ class Image
 
     /**
      * Image constructor.
-     * @param array $data
+     * @param array $data Row fetched from database
      */
     public function __construct(array $data = [])
     {
+        parent::__construct($data);
+
         $this->portfolioId = (int)$data['portfolio_id'];
         $this->filename = (string)$data['filename'];
         $this->title = (string)$data['title'];

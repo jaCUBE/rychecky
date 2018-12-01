@@ -1,20 +1,17 @@
 <?php
 
 /**
- * Zkušenost (zaměstnání/vzdělání) na webu.
+ * Experience (work/education) entity.
  * @class Experience
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 namespace Rychecky\Experience;
 
-use Rychecky\DatabaseRecordTrait;
-use Rychecky\LocalizedTrait;
+use Rychecky\Entity;
 
-class Experience
+class Experience extends Entity
 {
-    use DatabaseRecordTrait, LocalizedTrait;
-
     /**
      * @var int $experienceId Experience ID
      */
@@ -57,10 +54,12 @@ class Experience
 
     /**
      * Experience constructor.
-     * @param array $data
+     * @param array $data Row fetched from database
      */
     public function __construct(array $data = [])
     {
+        parent::__construct($data);
+
         $this->experienceId = (int)$data['experience_id'];
         $this->type = (string)$data['type'];
         $this->title = (string)$data['title'];

@@ -8,12 +8,10 @@
 
 namespace Rychecky\Social;
 
-use Rychecky\DatabaseRecordTrait;
+use Rychecky\Entity;
 
-class Social
+class Social extends Entity
 {
-    use DatabaseRecordTrait;
-
     /**
      * @var int $socialId Social network link ID
      */
@@ -42,10 +40,12 @@ class Social
 
     /**
      * Social constructor.
-     * @param array $data
+     * @param array $data Row fetched from database
      */
     public function __construct(array $data = [])
     {
+        parent::__construct($data);
+
         $this->socialId = (int)$data['social_id'];
         $this->name = (string)$data['name'];
         $this->url = (string)$data['url'];

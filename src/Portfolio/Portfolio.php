@@ -1,20 +1,17 @@
 <?php
 
 /**
- * Portfolio entity.
+ * Portfolio (website/project) entity.
  * @class Portfolio
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 namespace Rychecky\Portfolio;
 
-use Rychecky\DatabaseRecordTrait;
-use Rychecky\LocalizedTrait;
+use Rychecky\Entity;
 
-class Portfolio
+class Portfolio extends Entity
 {
-    use DatabaseRecordTrait, LocalizedTrait;
-
     /**
      * @var int $portfolioId Portfolio ID
      */
@@ -82,10 +79,12 @@ class Portfolio
 
     /**
      * Portfolio constructor.
-     * @param array $data
+     * @param array $data Row fetched from database
      */
     public function __construct(array $data = [])
     {
+        parent::__construct($data);
+
         $this->portfolioId = (int)$data['portfolio_id'];
         $this->type = (string)$data['type'];
         $this->name = (string)$data['name'];

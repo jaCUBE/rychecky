@@ -8,13 +8,10 @@
 
 namespace Rychecky\Certificate;
 
-use Rychecky\DatabaseRecordTrait;
-use Rychecky\LocalizedTrait;
+use Rychecky\Entity;
 
-class Certificate
+class Certificate extends Entity
 {
-    use DatabaseRecordTrait, LocalizedTrait;
-
     /**
      * @var int $certificateId Certificate ID
      */
@@ -52,10 +49,12 @@ class Certificate
 
     /**
      * Certificate constructor.
-     * @param array $data Entity row fetched from database
+     * @param array $data Row fetched from database
      */
     public function __construct(array $data = [])
     {
+        parent::__construct($data);
+
         $this->certificateId = (int)$data['certificate_id'];
         $this->type = (string)$data['type'];
         $this->name = (string)$data['name'];
