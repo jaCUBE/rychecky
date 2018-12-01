@@ -34,7 +34,7 @@ class ImageRepository extends Repository
         ]);
 
         while ($row = $STH->fetch()) {
-            $imageCollection->push(new Image($row));
+            $imageCollection->add(new Image($row));
         }
 
         return $imageCollection;
@@ -51,7 +51,7 @@ class ImageRepository extends Repository
 
         foreach ($this->fetchPortfolioImages($portfolio_id) as $image) {
             if (!$image->isThumbnail()) { // No thumbnails in gallery
-                $imageCollection->push($image);
+                $imageCollection->add($image);
             }
         }
 

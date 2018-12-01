@@ -14,7 +14,7 @@ class Collection extends \Slim\Collection
      * Add value in the end of data array.
      * @param mixed $value Any value
      */
-    public function push($value): void
+    public function add($value): void
     {
         $this->data[] = $value;
     }

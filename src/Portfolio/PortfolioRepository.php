@@ -41,7 +41,7 @@ class PortfolioRepository extends Repository
         while ($data = $STH->fetch()) {
             $portfolio = new Portfolio($data);
 
-            $portfolioCollection->push([
+            $portfolioCollection->add([
                 'data' => $portfolio,
                 'thumbnail' => $imageRepository->portfolioThumbnail($portfolio->getPortfolioId())
             ]);

@@ -35,7 +35,7 @@ class ExperienceRepository extends Repository
         ]);
 
         while ($row = $STH->fetch()) {
-            $experienceCollection->push(new Experience($row));
+            $experienceCollection->add(new Experience($row));
         }
 
         return $experienceCollection;

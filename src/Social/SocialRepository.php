@@ -31,7 +31,7 @@ class SocialRepository extends Repository
         $STH->execute();
 
         while ($row = $STH->fetch()) { // Prochází jednotlivé sociální sítě...
-            $socialCollection->push(new Social($row));
+            $socialCollection->add(new Social($row));
         }
 
         return $socialCollection;

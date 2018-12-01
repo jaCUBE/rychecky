@@ -35,7 +35,7 @@ class HobbyRepository extends Repository
         ]);
 
         while ($row = $STH->fetch()) {
-            $hobbyCollection->push(new Hobby($row));
+            $hobbyCollection->add(new Hobby($row));
         }
 
         return $hobbyCollection;

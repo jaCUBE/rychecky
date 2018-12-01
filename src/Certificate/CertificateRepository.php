@@ -35,7 +35,7 @@ class CertificateRepository extends Repository
         ]);
 
         while ($row = $STH->fetch()) {
-            $certificateCollection->push(new Certificate($row));
+            $certificateCollection->add(new Certificate($row));
         }
 
         return $certificateCollection;

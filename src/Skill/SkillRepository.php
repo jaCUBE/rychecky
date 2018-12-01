@@ -38,7 +38,7 @@ class SkillRepository extends Repository
         ]);
 
         while ($row = $STH->fetch()) {
-            $skillCollection->push(new Skill($row));
+            $skillCollection->add(new Skill($row));
         }
 
         return $skillCollection;
