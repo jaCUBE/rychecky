@@ -13,7 +13,7 @@ services:
     networks:
       - rychecky-network
     environment:
-      XDEBUG_CONFIG: remote_enable=on  remote_host=host.docker.internal remote_port=9000
+      XDEBUG_CONFIG: remote_enable=on remote_host=$XDEBUG_REMOTE_HOST remote_port=$XDEBUG_REMOTE_PORT
     expose:
       - 80
     ports:
