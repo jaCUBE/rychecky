@@ -13,7 +13,7 @@ use Rychecky\Language;
 
 class Skill extends Entity
 {
-    const DEFAULT_SKILL_TYPE = 'webdev';
+    public const DEFAULT_SKILL_TYPE = 'webdev';
 
     /**
      * @var int $skillId Skill ID
