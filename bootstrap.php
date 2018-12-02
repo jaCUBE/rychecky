@@ -1,7 +1,7 @@
 <?php
 
 require_once 'vendor/autoload.php'; // Načítání tříd přes Composer
-require_once 'fn.php'; // Helper funkce pro PHP
+require_once 'src/fn.php'; // Helper funkce pro PHP
 
 define('ROOT', __DIR__ . '/');
 
