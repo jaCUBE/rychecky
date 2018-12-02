@@ -1,16 +1,16 @@
 <?php
 
-
 namespace Rychecky;
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use Rychecky\Gallery\ImageRepository;
 
-
+// Start rychecky.cz
 require 'bootstrap.php';
 
 // TODO: Make Slim routing beautifier...
+
 
 $app = new \Slim\App([
     'settings' => [
@@ -19,19 +19,20 @@ $app = new \Slim\App([
 ]); // TODO: Remove debug settings!
 
 
+$web = new Rychecky();
 
 /**
  * Database connection to a container
  */
 $container = $app->getContainer();
-$container['db'] = Rychecky::connectDatabase();
+$container['web'] = $web;
+$container['db'] = $web->createDatabaseConnection();
 
 
 /**
  * Remove trailing slash in URL.
  * @see https://www.slimframework.com/docs/v3/cookbook/route-patterns.html
  */
-
 $app->add(function (Request $request, Response $response, callable $next) {
     $uri = $request->getUri();
     $path = $uri->getPath();
@@ -51,6 +52,7 @@ $app->add(function (Request $request, Response $response, callable $next) {
 });
 
 
+
 /*
  * ------------------------------------------------------------
  */
@@ -64,7 +66,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     $hobbyRepository = new Hobby\HobbyRepository($this->db);
     $socialRepository = new Social\SocialRepository($this->db);
 
-    Rychecky::view('info', [
+    $this->web->view('info', [
         'hobby' => $hobbyRepository->fetchAll(),
         'social' => $socialRepository->fetchAll(),
     ]);
@@ -75,7 +77,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
  */
 
 /**
- * Seznam dovedností
+ * Skills.
  */
 $app->get('/skills[/{skillType:.*}]', function (Request $request, Response $response, array $args) {
     // Get selected skill type with fallback to a default one
@@ -83,7 +85,7 @@ $app->get('/skills[/{skillType:.*}]', function (Request $request, Response $resp
 
     $skillRepository = new Skill\SkillRepository($this->db);
 
-    Rychecky::view('skill', [
+    $this->web->view('skill', [
         'list' => $skillRepository->fetchByType($skillType),
         'stats' => $skillRepository->fetchTypeStats(),
         'selectedSkillType' => $skillType,
@@ -91,45 +93,45 @@ $app->get('/skills[/{skillType:.*}]', function (Request $request, Response $resp
 });
 
 /**
- * Porfolio
+ * Porfolio.
  */
 $app->get('/portfolio', function (Request $request, Response $response, array $args) {
     $portolioRepository = new Portfolio\PortfolioRepository($this->db);
 
-    Rychecky::view('portfolio', [
+    $this->web->view('portfolio', [
         'list' => $portolioRepository->fetchAll(),
     ]);
 });
 
 /**
- * Zkušenosti
+ * Experiences.
  */
 $app->get('/experiences', function (Request $request, Response $response, array $args) {
     $experienceRepository = new Experience\ExperienceRepository($this->db);
 
-    Rychecky::view('experiences', [
+    $this->web->view('experiences', [
         'list' => $experienceRepository->fetchAll(),
     ]);
 });
 
 /**
- * Certifikáty
+ * Certificates.
  */
 $app->get('/certificate', function (Request $request, Response $response, array $args) {
     $certificateRepository = new Certificate\CertificateRepository($this->db);
 
-    Rychecky::view('certificate', [
+    $this->web->view('certificate', [
         'list' => $certificateRepository->fetchAll(),
     ]);
 });
 
 /**
- * Kontakt
+ * Contact.
  */
 $app->get('/contact', function (Request $request, Response $response, array $args) {
     $socialRepository = new Social\SocialRepository($this->db);
 
-    Rychecky::view('contact', [
+    $this->web->view('contact', [
         'social' => $socialRepository->fetchAll(),
     ]);
 });
@@ -139,6 +141,9 @@ $app->get('/contact', function (Request $request, Response $response, array $arg
  * ------------------------------------------------------------
  */
 
+/**
+ * API: Portfolio
+ */
 $app->get('/api/portfolio/{id}', function (Request $request, Response $response, array $args) {
     $portfolioRepository = new Portfolio\PortfolioRepository($this->db);
     $portfolio = $portfolioRepository->findById((int)$args['id']);
@@ -148,7 +153,7 @@ $app->get('/api/portfolio/{id}', function (Request $request, Response $response,
     $imageRepository = new ImageRepository($this->db);
 
     ob_start();
-    Rychecky::view('ajax/portfolio.ajax', [
+    $this->web->view('ajax/portfolio.ajax', [
         'portfolio' => $portfolio,
         'thumbnail' => $imageRepository->portfolioThumbnail($portfolio->getPortfolioId()),
         'gallery' => $imageRepository->portoflioGallery($portfolio->getPortfolioId())

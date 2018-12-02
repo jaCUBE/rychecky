@@ -1,73 +1,53 @@
 <?php
 
 /**
- * Třída, která obsahuje pár důležitých věcích pro běh webu (např. připojení k databázi)
+ * Basic class for website.
  * @class Rychecky
  * @author Jakub Rychecký <jakub@rychecky.cz>
  */
 
 namespace Rychecky;
 
-use \PDO as PDO;
+use \PDO;
 
 class Rychecky
 {
-
     /**
-     * Vytváří připojení k databázi.
-     * @return \PDO
+     * Create database connection.
+     * @param string $dsn Data source name (optional with .env fallback)
+     * @param string $dbUser Database user name (optional with .env fallback)
+     * @param string $dbPassword Database password (optional with .env fallback)
+     * @return \PDO PDO connection to database
      */
-
-    public static function connectDatabase(): PDO
+    public function createDatabaseConnection(string $dsn = '', string $dbUser = '', string $dbPassword = ''): PDO
     {
-        // Údaje z .env
-        $dsn = 'mysql:host=' . env('DB_HOST') . ';dbname=' . env('DB_NAME');
+        // Process credentials with fallback to .env
+        $dsn = $dsn ?: 'mysql:host=' . env('DB_HOST') . ';dbname=' . env('DB_NAME');
+        $dbUser = $dbUser ?: env('DB_USER');
+        $dbPassword = $dbPassword ?: env('DB_PASSWORD');
 
-        $db = new PDO($dsn, env('DB_USER'), env('DB_PASSWORD'));
+        // Create PDO connection
+        $db = new PDO($dsn, $dbUser, $dbPassword);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $db->exec('SET NAMES utf8');
 
         return $db;
     }
 
-
     /**
-     * Zobrazuje view pomocí Latte.
+     * Initialize Latte and display view
      * @param string $name Název view
-     * @param array  $data Potřebná data v poli
+     * @param array  $data Array with data for view
      */
-
-    public static function view(string $name, array $data): void
+    public function view(string $name, array $data = []): void
     {
         $latte = new \Latte\Engine;
         $latte->setTempDirectory('temp');
 
-        $data['locale'] = Language::getLocale(); // Jazyk pro každý view
+        $data['locale'] = Language::getLocale(); // Locale injecting for every view
 
+        // Render view from file
         $filepath = ROOT . '/views/' . $name . '.latte';
         $latte->render($filepath, $data);
     }
-
-
-    /**
-     * Poskytuje hodnotu akce z routingu, důležité zejména pro řadič.
-     * @return string Hodnota akce
-     */
-
-    public static function action(): string
-    {
-        return preg_replace('/^(\/)/', '', $_SERVER['REQUEST_URI']);
-    }
-
-
-    /**
-     * Poskytuje celou adresu (ulice, číslo popisné, PSČ, město).
-     * @return string Celá adresa
-     */
-
-    public static function fullAddress(): string
-    {
-        return env('ADDR_STREET') . ' ' . env('ADDR_STREET_NUMBER') . ', ' . env('ADDR_ZIP') . ' ' . env('ADDR_CITY');
-    }
-
 }

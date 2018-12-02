@@ -49,9 +49,11 @@
     </div>
 
 
+    {var $fullAddress = env('ADDR_STREET') . ' ' . env('ADDR_STREET_NUMBER') . ', ' . env('ADDR_ZIP') . ' ' . env('ADDR_CITY')}
+    {var $googleMapsUrl = urlencode($fullAddress) . '&zoom=10&key=' . env('GOOGLE_MAPS_API') }
     <iframe height="450"
             frameborder="0"
             id="gmap-iframe"
-            src="https://www.google.com/maps/embed/v1/place?q={php echo urlencode(\Rychecky\Rychecky::fullAddress()) }?>&amp;key={php echo env('GOOGLE_MAPS_API') }&amp;zoom=10">
+            src="https://www.google.com/maps/embed/v1/place?q={$googleMapsUrl}">
     </iframe>
 </div>

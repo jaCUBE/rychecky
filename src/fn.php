@@ -158,3 +158,12 @@ function env(string $name): string
 {
     return (string)$_ENV[$name] ?? $_SERVER[$name]; // $_ENV má přednost
 }
+
+/**
+ * Poskytuje hodnotu akce z routingu, důležité zejména pro řadič.
+ * @return string Hodnota akce
+ */
+function action(): string
+{
+    return preg_replace('/^(\/)/', '', $_SERVER['REQUEST_URI']);
+}
