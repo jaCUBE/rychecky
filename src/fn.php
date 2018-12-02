@@ -1,24 +1,21 @@
 <?php
 
 /**
- * Vypisuje jeden ze dvou řetězců dle jazyka.
- * @param string $cs Řetězec pro českou mutaci
- * @param string $en Řetězec pro anglickou mutaci
- * @return string Výsledný řetězec
+ * Returns one of two strings accordign to selected language.
+ * @param string $cs String for Czech (cs)
+ * @param string $en String for English (en)
+ * @return string Final string
  */
-
 function e(string $cs = '', string $en = ''): string
 {
     return \Rychecky\Language::getLocale() === 'cs' ? $cs : $en;
 }
 
-
 /**
- * Odstranění české diakritiky z řetězce v parametru.
- * @param string $string Název s předpokládanou diakritikou
- * @return string Řetězec s odstraněnou diakritikou
+ * Remove Czech accute characters from a string.
+ * @param string $string String with Czech characters
+ * @return string String with removed czech characters
  */
-
 function replace_czech_characters(string $string): string
 {
     $original = [
@@ -55,8 +52,8 @@ function replace_czech_characters(string $string): string
         'Ý',
         'Ž',
         'ö',
-        'ü'
-    ]; // Česká diakritika
+        'ü',
+    ];
     $replace = [
         'a',
         'c',
@@ -91,79 +88,48 @@ function replace_czech_characters(string $string): string
         'Y',
         'Z',
         'o',
-        'u'
-    ]; // Znaky bez diakritiky
+        'u',
+    ];
 
-    return str_replace($original, $replace, $string); // Vrací řetězec s odstraněnou diakritikou
+    return str_replace($original, $replace, $string);
 }
 
-
 /**
- * Převádí pole ve formátu 'atribut => hodnota' na CSS.
- * @param \Rychecky\Collection Collection of CSS properties
- * @return string In-line CSS style
+ * Transform any string to CSS name (lowercase, no accuted chars, replaced spaces...)
+ * @param string $string String to make CSS name
+ * @return string CSS-like name for class/id
  */
-
-function array_to_css(\Rychecky\Collection $array): string
-{
-    $css = '';
-
-    foreach ($array as $property => $value) {
-        $css .= $property . ': ' . $value . ';';
-    }
-
-    return $css;
-}
-
-
-/**
- * Převádí řetěžec do formátu názvu CSS třídy.   *
- * @param string $string Vstup k přípravě na CSS třídu.
- * @return string Formátovaný řetězec na CSS třídu.
- */
-
 function make_css_name(string $string): string
 {
-    $string = replace_czech_characters($string); // Odstranění diakritiky
+    $string = replace_czech_characters($string);
 
+    // Replace other special chars
     $original = [':', '.', '/', ' ', '(', ')', ',', '[', ']', '_'];
     $replace = ['', '-', '-', '-', '-', '-', '', '-', '', '-'];
-
     $string = str_replace($original, $replace, $string);
+
     $string = mb_strtolower($string);
 
     return $string;
 }
 
-
 /**
- * Generuje odkaz na JS/CSS soubor společně s jeho hashem v GET kvůli cache.
- * @param string $asset Cesta k JS/CSS souboru
- * @return string URL společně s hashem souboru
+ * Generate JS/CSS URL with hash in GET against caching.
+ * @param string $asset Filepath to CSS/JS
+ * @return string URL with a SHA1 hash of file
  */
-
 function asset_with_hash(string $asset): string
 {
     return URL . '/' . $asset . '?sha1=' . sha1_file($asset);
 }
 
-
 /**
- * Získává hodnotu proměnné prostředí dle názvu (alternativa k getenv(), které fungovalo divně).
- * @param string $name Název proměnné prostředí
- * @return string Hodnota proměnné prostředí
+ * Get environment value (getenv() alternative).
+ * @param string $name Environment property name
+ * @return string Enviroment property value
  */
-
 function env(string $name): string
 {
-    return (string)$_ENV[$name] ?? $_SERVER[$name]; // $_ENV má přednost
-}
-
-/**
- * Poskytuje hodnotu akce z routingu, důležité zejména pro řadič.
- * @return string Hodnota akce
- */
-function action(): string
-{
-    return preg_replace('/^(\/)/', '', $_SERVER['REQUEST_URI']);
+    $value = $_ENV[$name] ?? $_SERVER[$name];
+    return (string)$value;
 }

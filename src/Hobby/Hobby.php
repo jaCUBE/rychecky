@@ -60,6 +60,24 @@ class Hobby extends Entity
     }
 
     /**
+     * Generate CSS for hobby as in-line style.
+     * @param Collection|null $cssCollection Collection of CSS properties and values (optional)
+     * @throws \Exception
+     * @return string In-line CSS for this hobby
+     */
+    public function randomHobbyCssAsInlineString(?Collection $cssCollection = null): string
+    {
+        $cssInline = [];
+        $cssCollection = $cssCollection ?? $this->randomHobbyCss();
+
+        foreach ($cssCollection as $property => $value) {
+            $cssInline[] = $property . ': ' . $value . ';';
+        }
+
+        return implode('; ', $cssInline);
+    }
+
+    /**
      * @return int
      */
     public function getHobbyId(): int
