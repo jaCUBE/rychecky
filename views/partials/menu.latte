@@ -1,4 +1,5 @@
-{var menu = \Rychecky\Menu::generateMenu()}
+{var menu = (new \Rychecky\Menu\Generator())->buildMenu()}
+
 
 {block menu}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -11,16 +12,15 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li n:foreach="$menu as $url => $item"
-                        class="nav-item {php echo \Rychecky\Menu::isMenuSelected($url) ? 'active' : '' }">
-                    <a href="/{$url}">
-                        <i class="fa {$item['icon']}"></i> {$item['name']}
+                <li n:foreach="$menu as $item" class="nav-item {$item->isSelected() ? 'active' : '' }">
+                    <a href="{$item->getUrl()}">
+                        <i class="fa {$item->getIcon()}"></i> {$item->getName()}
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="javascript:void(0)" onclick="$('.locale-switcher').submit()">
-                        <img src="/images/flags/{php echo e('gb.png', 'cz.png') }" style="margin-right: 5px;" alt=""/>
+                        <img src="/images/flags/{e('gb.png', 'cz.png')}" style="margin-right: 5px;" alt=""/>
                         {php echo e('English', 'Česky') }
                     </a>
                 </li>

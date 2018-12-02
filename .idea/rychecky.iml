@@ -39,5 +39,13 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="@types/jquery" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="isotope.pkgd" level="application" />
+    <orderEntry type="library" name="jquery.mousewheel" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="jquery.fancybox" level="application" />
+    <orderEntry type="library" name="cs" level="application" />
+    <orderEntry type="library" name="moment" level="application" />
+    <orderEntry type="library" name="jquery.tooltipster" level="application" />
   </component>
 </module>
