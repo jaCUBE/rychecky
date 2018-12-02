@@ -14,9 +14,9 @@ require 'bootstrap.php';
 
 $app = new \Slim\App([
     'settings' => [
-        'displayErrorDetails' => true
+        'displayErrorDetails' => 'dev' === env('ENVIRONMENT'),
     ]
-]); // TODO: Remove debug settings!
+]);
 
 
 $web = new Rychecky();
