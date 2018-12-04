@@ -6,10 +6,11 @@
     },
     "require": {
         "php": ">=7.1.0",
+        "doctrine/orm": "^2.6",
         "vlucas/phpdotenv": "^2.4",
         "latte/latte": "^2.4",
         "slim/slim": "^3.11",
-        "ext-json": "^1.6",
+        "ext-json": "*",
         "ext-mbstring": "*",
         "ext-pdo": "*"
     },

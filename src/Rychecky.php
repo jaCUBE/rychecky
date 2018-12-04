@@ -8,7 +8,10 @@
 
 namespace Rychecky;
 
-use \PDO;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Setup;
+
+use \PDO; // TODO Remove-after-Doctrine
 
 class Rychecky
 {
@@ -18,6 +21,7 @@ class Rychecky
      * @param string $dbUser Database user name (optional with .env fallback)
      * @param string $dbPassword Database password (optional with .env fallback)
      * @return \PDO PDO connection to database
+     * TODO Remove-after-Doctrine
      */
     public function createDatabaseConnection(string $dsn = '', string $dbUser = '', string $dbPassword = ''): PDO
     {
@@ -32,6 +36,34 @@ class Rychecky
         $db->exec('SET NAMES utf8');
 
         return $db;
+    }
+
+    /**
+     * Create Doctrine ORM Entity Manager with connection to database.
+     * @param array $connectionParameters
+     * @throws \Doctrine\ORM\ORMException
+     * @return EntityManager Created EntityManager.
+     */
+    public function createEntityManager(array $connectionParameters = []): EntityManager
+    {
+        $isDevMode = true;
+        $config = Setup::createAnnotationMetadataConfiguration([__DIR__], $isDevMode, null, null, false);
+
+        // Default parameters from .env file
+        $connectionParametersDefault = [
+            'host' => env('DB_HOST'),
+            'dbname' => env('DB_NAME'),
+            'user' => env('DB_USER'),
+            'password' => env('DB_PASSWORD'),
+            'driver' => 'pdo_mysql',
+            'charset' => 'utf8',
+        ];
+
+        // Parameters from argument has higher priority
+        $connectionParameters = array_merge($connectionParametersDefault, $connectionParameters);
+
+        var_dump($connectionParameters);
+        return EntityManager::create($connectionParameters, $config);
     }
 
     /**

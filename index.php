@@ -26,8 +26,8 @@ $web = new Rychecky();
  */
 $container = $app->getContainer();
 $container['web'] = $web;
-$container['db'] = $web->createDatabaseConnection();
-
+$container['db'] = $web->createDatabaseConnection(); // TODO: Remove-after-Doctrine
+$container['em'] = $web->createEntityManager(['dbname' => 'rychecky_doctrine']);
 
 /**
  * Remove trailing slash in URL.
@@ -58,16 +58,23 @@ $app->add(function (Request $request, Response $response, callable $next) {
  */
 
 
+// TODO: REMOVE! TEMPORARY FOR DOCTRINE ORM MIGRATIONS
+$app->get('/migrate', function (Request $request, Response $response, array $args) {
+    $migrate = new DoctrineMigration($this->db, $this->em);
+    $migrate->migrateHobby();
+});
+
+
 
 /**
  * Homepage, index.
  */
 $app->get('/', function (Request $request, Response $response, array $args) {
-    $hobbyRepository = new Hobby\HobbyRepository($this->db);
+    $hobbyList = $this->em->getRepository(Hobby\Hobby::class)->findByLocale('cs');
     $socialRepository = new Social\SocialRepository($this->db);
 
     $this->web->view('info', [
-        'hobby' => $hobbyRepository->fetchAll(),
+        'hobby' => $hobbyList,
         'social' => $socialRepository->fetchAll(),
     ]);
 });

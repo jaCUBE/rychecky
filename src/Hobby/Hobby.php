@@ -1,44 +1,36 @@
 <?php
 
-/**
- * Hobby entity for a website.
- * @class Hobby
- * @author Jakub Rychecký <jakub@rychecky.cz>
- */
-
 namespace Rychecky\Hobby;
 
-use Rychecky\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Rychecky\EntityDoctrine;
 use Rychecky\Collection;
 
-class Hobby extends Entity
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="hobbies")
+ */
+class Hobby extends EntityDoctrine
 {
     /**
-     * @var int $hobby_id Hobby ID
-     */
-    private $hobbyId;
-
-    /**
-     * @var string $name Hobby name
+     * @ORM\Column(type="string")
+     * @var string $name
      */
     private $name;
 
     /**
-     * @var float $size Size of text
+     * @ORM\Column(type="integer")
+     * @var int $size
      */
     private $size;
 
-    /**
-     * Hobby constructor.
-     * @param array $data Row fetched from database
-     */
-    public function __construct(array $data = [])
+    public function __construct($data = [])
     {
         parent::__construct($data);
 
-        $this->hobbyId = (int)$data['hobby_id'];
-        $this->name = $data['name'];
+        $this->name = (string)$data['name'];
         $this->size = (int)$data['size'];
+        $this->locale = (string)$data['locale'];
     }
 
     /**
@@ -51,7 +43,7 @@ class Hobby extends Entity
         $cssCollection = new Collection();
 
         $cssCollection->set('float', random_int(0, 1) ? 'left' : 'right');
-        $cssCollection->set('font-size', $this->size * 0.02 . 'em');
+        $cssCollection->set('font-size', $this->getSize() * 0.02 . 'em');
         $cssCollection->set('margin-left', random_int(0, 10) . 'px');
         $cssCollection->set('margin-top', random_int(0, 5) . 'px');
         $cssCollection->set('margin-right', random_int(0, 10) . 'px');
@@ -78,25 +70,17 @@ class Hobby extends Entity
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getHobbyId(): int
-    {
-        return $this->hobbyId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function getSize(): float
+    public function getSize()
     {
         return $this->size;
     }
