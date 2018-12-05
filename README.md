@@ -27,6 +27,12 @@ Run Docker container:
 docker-compose up
 ```
 
+# Basic Commands
+Doctrine ORM schema update:
+```
+vendor/bin/doctrine orm:schema-tool:update --force
+```
+
 # Links
 Website: https://rychecky.cz/
 

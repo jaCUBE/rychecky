@@ -14,7 +14,7 @@ require 'bootstrap.php';
 
 $app = new \Slim\App([
     'settings' => [
-        'displayErrorDetails' => 'dev' === env('ENVIRONMENT'),
+        'displayErrorDetails' => Rychecky::isDevEnvironment(),
     ]
 ]);
 
@@ -61,7 +61,11 @@ $app->add(function (Request $request, Response $response, callable $next) {
 // TODO: REMOVE! TEMPORARY FOR DOCTRINE ORM MIGRATIONS
 $app->get('/migrate', function (Request $request, Response $response, array $args) {
     $migrate = new DoctrineMigration($this->db, $this->em);
+
+    $migrate->truncate();
     $migrate->migrateHobby();
+    $migrate->migrateSocial();
+    $migrate->migrateSkill();
 });
 
 
@@ -70,12 +74,12 @@ $app->get('/migrate', function (Request $request, Response $response, array $arg
  * Homepage, index.
  */
 $app->get('/', function (Request $request, Response $response, array $args) {
-    $hobbyList = $this->em->getRepository(Hobby\Hobby::class)->findByLocale('cs');
-    $socialRepository = new Social\SocialRepository($this->db);
+    $hobbyList = $this->em->getRepository(Entity\Hobby::class)->findByLocale('cs');
+    $socialList = $this->em->getRepository(Entity\Social::class)->findAll();
 
     $this->web->view('info', [
         'hobby' => $hobbyList,
-        'social' => $socialRepository->fetchAll(),
+        'social' => $socialList,
     ]);
 });
 
@@ -88,13 +92,20 @@ $app->get('/', function (Request $request, Response $response, array $args) {
  */
 $app->get('/skills[/{skillType:.*}]', function (Request $request, Response $response, array $args) {
     // Get selected skill type with fallback to a default one
-    $skillType = $args['skillType'] ?? Skill\Skill::DEFAULT_SKILL_TYPE;
-
-    $skillRepository = new Skill\SkillRepository($this->db);
+    $skillType = $args['skillType'] ?? Entity\Skill::DEFAULT_SKILL_TYPE;
+    $skillList = $this->em->getRepository(Entity\Skill::class)->findBy(['locale' => 'cs', 'type' => $skillType]);
+    $skillTypeList = $this->em->createQuery( // DQL, TODO: Move to class
+        'SELECT
+            COUNT(s) AS count,
+            s.type
+        FROM ' . Entity\Skill::class . ' AS s
+        WHERE s.locale = \'cs\'
+        GROUP BY s.type'
+    )->getResult();
 
     $this->web->view('skill', [
-        'list' => $skillRepository->fetchByType($skillType),
-        'stats' => $skillRepository->fetchTypeStats(),
+        'list' => $skillList,
+        'stats' => $skillTypeList,
         'selectedSkillType' => $skillType,
     ]);
 });
@@ -136,10 +147,10 @@ $app->get('/certificate', function (Request $request, Response $response, array 
  * Contact.
  */
 $app->get('/contact', function (Request $request, Response $response, array $args) {
-    $socialRepository = new Social\SocialRepository($this->db);
+    $socialList = $this->em->getRepository(Entity\Social::class)->findAll();
 
     $this->web->view('contact', [
-        'social' => $socialRepository->fetchAll(),
+        'social' => $socialList,
     ]);
 });
 

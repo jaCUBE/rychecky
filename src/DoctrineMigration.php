@@ -26,6 +26,22 @@ class DoctrineMigration
         $this->em = $em;
     }
 
+    /**
+     *
+     */
+    public function truncate(): void
+    {
+        $sql = '
+        USE rychecky_doctrine;
+        TRUNCATE hobbies;
+        TRUNCATE portfolio;
+        TRUNCATE social_links;
+        TRUNCATE skills;
+        USE rychecky';
+
+        $this->getDb()->query($sql);
+    }
+
 
     public function migrateHobby(): void
     {
@@ -38,14 +54,66 @@ class DoctrineMigration
         $STH = $this->getDb()->query($sql);
 
         while ($row = $STH->fetch()) {
-            $hobby = new Hobby\Hobby([
+            $hobby = new Entity\Hobby([
                 'name' => $row['name'],
                 'size' => (int)$row['size'],
                 'locale' => $row['locale'],
-                'createdAt' => new \Datetime($row['added']),
+                'createdAt' => $row['added'],
             ]);
 
             $this->getEm()->persist($hobby);
+        }
+
+        $this->getEm()->flush();
+    }
+
+    public function migrateSocial(): void
+    {
+        $sql = '
+          SELECT s.*
+          FROM social AS s
+          WHERE s.visible = 1
+          ORDER BY s.order DESC, s.name ASC;';
+
+        $STH = $this->getDb()->query($sql);
+
+        while ($row = $STH->fetch()) {
+            $social = new Entity\Social([
+                'name' => $row['name'],
+                'url' => $row['url'],
+                'icon' => $row['icon'],
+                'order' => $row['order'],
+                'color' => $row['color'],
+                'createdAt' => $row['added'],
+            ]);
+
+            $this->getEm()->persist($social);
+        }
+
+        $this->getEm()->flush();
+    }
+
+    public function migrateSkill(): void
+    {
+        $sql = '
+          SELECT s.*
+          FROM skill AS s
+          WHERE s.visible = 1
+          ORDER BY s.value DESC';
+
+        $STH = $this->getDb()->query($sql);
+
+        while ($row = $STH->fetch()) {
+            $skill = new Entity\Skill([
+                'type' => $row['type'],
+                'name' => $row['name'],
+                'value' => $row['value'],
+                'detail' => $row['detail'],
+                'locale' => $row['locale'],
+                'createdAt' => $row['added'],
+            ]);
+
+            $this->getEm()->persist($skill);
         }
 
         $this->getEm()->flush();
@@ -66,6 +134,4 @@ class DoctrineMigration
     {
         return $this->em;
     }
-
-
 }

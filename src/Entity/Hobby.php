@@ -1,6 +1,6 @@
 <?php
 
-namespace Rychecky\Hobby;
+namespace Rychecky\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Rychecky\EntityDoctrine;
@@ -8,19 +8,22 @@ use Rychecky\Collection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="hobbies")
+ * @ORM\Table(name="hobbies", indexes={
+ *     @ORM\Index(name="hobbies_idx_locale", columns={"locale"}),
+ *     @ORM\Index(name="hobbies_idx_size", columns={"size"}),
+ * })
  */
 class Hobby extends EntityDoctrine
 {
     /**
      * @ORM\Column(type="string")
-     * @var string $name
+     * @var string
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
-     * @var int $size
+     * @var int
      */
     private $size;
 
@@ -70,17 +73,17 @@ class Hobby extends EntityDoctrine
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getSize()
+    public function getSize(): int
     {
         return $this->size;
     }

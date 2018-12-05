@@ -3,9 +3,10 @@
 require_once 'vendor/autoload.php'; // Načítání tříd přes Composer
 require_once 'src/fn.php'; // Helper funkce pro PHP
 
+define('ROOT', __DIR__ . '/');
+
 $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
-
 
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Rychecky\Rychecky;

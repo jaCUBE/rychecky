@@ -16,6 +16,15 @@ use \PDO; // TODO Remove-after-Doctrine
 class Rychecky
 {
     /**
+     * Is website in dev environment?
+     * @return bool Is dev?
+     */
+    public static function isDevEnvironment(): bool
+    {
+        return 'dev' === env('ENVIRONMENT');
+    }
+
+    /**
      * Create database connection.
      * @param string $dsn Data source name (optional with .env fallback)
      * @param string $dbUser Database user name (optional with .env fallback)
@@ -46,8 +55,14 @@ class Rychecky
      */
     public function createEntityManager(array $connectionParameters = []): EntityManager
     {
-        $isDevMode = true;
-        $config = Setup::createAnnotationMetadataConfiguration([__DIR__], $isDevMode, null, null, false);
+        // Metadata config for entity manager
+        $config = Setup::createAnnotationMetadataConfiguration(
+            [ROOT . '/src/Entity'],
+            self::isDevEnvironment(),
+            null,
+            null,
+            false
+        );
 
         // Default parameters from .env file
         $connectionParametersDefault = [
@@ -62,7 +77,6 @@ class Rychecky
         // Parameters from argument has higher priority
         $connectionParameters = array_merge($connectionParametersDefault, $connectionParameters);
 
-        var_dump($connectionParameters);
         return EntityManager::create($connectionParameters, $config);
     }
 
