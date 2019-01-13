@@ -7,8 +7,8 @@ use Rychecky\EntityDoctrine;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="social_links", indexes={
- *     @ORM\Index(name="social_links_idx_size", columns={"size"}),
+ * @ORM\Table(name="socialLinks", indexes={
+ *     @ORM\Index(name="socialLinksIdxSize", columns={"size"}),
  * })
  */
 class Social extends EntityDoctrine

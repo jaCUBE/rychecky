@@ -25,7 +25,7 @@ abstract class EntityDoctrine
     protected $locale;
 
     /**
-     * @ORM\Column(name="created_at", type="datetime_immutable", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime_immutable", options={"default": "CURRENT_TIMESTAMP"})
      */
     protected $createdAt;
 
@@ -36,7 +36,6 @@ abstract class EntityDoctrine
      */
     public function __construct($data = [])
     {
-        d($data);
         $this->locale = $data['locale'] ?? 'cs'; // TODO: Default language by constant
         $this->createdAt = new \DateTimeImmutable($data['createdAt']);
     }

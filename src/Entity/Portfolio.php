@@ -8,7 +8,7 @@ use Rychecky\EntityDoctrine;
 /**
  * @ORM\Entity
  * @ORM\Table(name="portfolio", indexes={
- *     @ORM\Index(name="portfolio_idx_locale", columns={"locale"}),
+ *     @ORM\Index(name="portfolioIdxLocale", columns={"locale"}),
  * })
  */
 class Portfolio extends EntityDoctrine

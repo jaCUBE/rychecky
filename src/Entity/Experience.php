@@ -1,90 +1,79 @@
 <?php
 
+namespace Rychecky\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Rychecky\EntityDoctrine;
+
 /**
- * Experience (work/education) entity.
- * @class Experience
- * @author Jakub Rychecký <jakub@rychecky.cz>
+ * @ORM\Entity
+ * @ORM\Table(name="experiences", indexes={
+ *     @ORM\Index(name="experiencesIdxDateStart", columns={"dateStart"}),
+ *     @ORM\Index(name="experiencesIdxDateEnd", columns={"dateEnd"}),
+ *     @ORM\Index(name="experiencesIdxLocale", columns={"locale"}),
+ * })
  */
-
-namespace Rychecky\Experience;
-
-use Rychecky\Entity;
-
-class Experience extends Entity
+class Experience extends EntityDoctrine
 {
-    /**
-     * @var int $experienceId Experience ID
-     */
-    private $experienceId;
 
     /**
-     * @var string $type Experience type
+     * @ORM\Column(type="string")
+     * @var string Experience type
      */
     private $type;
 
     /**
-     * @var string $title Title of experience
+     * @ORM\Column(type="string")
+     * @var string Title of experience
      */
     private $title;
 
     /**
-     * @var string $company Origin company
+     * @ORM\Column(type="string")
+     * @var string Origin company
      */
     private $company;
 
     /**
-     * @var string $dateStart Date of experience start
+     * @ORM\Column(type="datetime")
+     * @var \DateTimeImmutable Date of experience start
      */
     private $dateStart;
 
     /**
-     * @var string $date_end Date of experience end
+     * @ORM\Column(type="datetime")
+     * @var \DateTimeImmutable Date of experience end
      */
     private $dateEnd;
 
     /**
-     * @var string $detail Detail description
+     * @ORM\Column(type="text")
+     * @var string Detail description
      */
     private $detail;
 
     /**
-     * @var string $note Any note
+     * @ORM\Column(type="text")
+     * @var string Note
      */
     private $note;
 
     /**
      * Experience constructor.
      * @param array $data Row fetched from database
+     * @throws \Exception
      */
     public function __construct(array $data = [])
     {
         parent::__construct($data);
 
-        $this->experienceId = (int)$data['experience_id'];
         $this->type = (string)$data['type'];
         $this->title = (string)$data['title'];
         $this->company = (string)$data['company'];
-        $this->dateStart = (string)$data['date_start'];
-        $this->dateEnd = (string)$data['date_end'];
+        $this->dateStart = new \DateTimeImmutable($data['dateStart']);
+        $this->dateEnd = new \DateTimeImmutable($data['dateEnd']);
         $this->detail = (string)$data['detail'];
         $this->note = (string)$data['note'];
-    }
-
-    /**
-     * Is experience currently ongoing?
-     * @return bool
-     */
-    public function isCurrent(): bool
-    {
-        return !empty($this->getDateEnd());
-    }
-
-    /**
-     * @return int
-     */
-    public function getExperienceId(): int
-    {
-        return $this->experienceId;
     }
 
     /**
@@ -112,17 +101,17 @@ class Experience extends Entity
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
-    public function getDateStart(): string
+    public function getDateStart(): \DateTime
     {
         return $this->dateStart;
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
-    public function getDateEnd(): string
+    public function getDateEnd(): \DateTime
     {
         return $this->dateEnd;
     }

@@ -8,8 +8,8 @@ use Rychecky\EntityDoctrine;
 /**
  * @ORM\Entity
  * @ORM\Table(name="skills", indexes={
- *     @ORM\Index(name="skills_idx_value", columns={"value"}),
- *     @ORM\Index(name="skills_idx_locale", columns={"locale"}),
+ *     @ORM\Index(name="skillsIdxValue", columns={"value"}),
+ *     @ORM\Index(name="skillsIdxLocale", columns={"locale"}),
  * })
  */
 class Skill extends EntityDoctrine

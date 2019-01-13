@@ -35,7 +35,7 @@ class DoctrineMigration
         USE rychecky_doctrine;
         TRUNCATE hobbies;
         TRUNCATE portfolio;
-        TRUNCATE social_links;
+        TRUNCATE socialLinks;
         TRUNCATE skills;
         USE rychecky';
 
@@ -62,6 +62,33 @@ class DoctrineMigration
             ]);
 
             $this->getEm()->persist($hobby);
+        }
+
+        $this->getEm()->flush();
+    }
+
+    public function migrateExperience(): void
+    {
+        $sql = '
+            SELECT e.*
+            FROM experience AS e 
+            WHERE e.visible = 1';
+
+        $STH = $this->getDb()->query($sql);
+
+        while ($row = $STH->fetch()) {
+            $experience = new Entity\Experience([
+                'type' => $row['type'],
+                'title' => $row['title'],
+                'dateStart' => $row['date_start'],
+                'dateEnd' => $row['date_end'],
+                'detail' => $row['detail'],
+                'note' => $row['note'],
+                'locale' => $row['locale'],
+                'createdAt' => $row['added'],
+            ]);
+
+            $this->getEm()->persist($experience);
         }
 
         $this->getEm()->flush();
@@ -138,8 +165,6 @@ class DoctrineMigration
                 'locale' => $row['locale'],
                 'createdAt' => $row['added'],
             ]);
-
-            d($certificate);
 
             $this->getEm()->persist($certificate);
         }

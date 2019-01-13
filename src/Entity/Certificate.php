@@ -8,50 +8,51 @@ use Rychecky\EntityDoctrine;
 /**
  * @ORM\Entity
  * @ORM\Table(name="certificates", indexes={
- *     @ORM\Index(name="certificate_idx_locale", columns={"locale"}),
+ *     @ORM\Index(name="certificatesIdxLocale", columns={"locale"}),
  * })
  */
 class Certificate extends EntityDoctrine
 {
     /**
      * @ORM\Column(type="string")
-     * @var string $type Certificate type
+     * @var string Certificate type
      */
     private $type;
 
     /**
      * @ORM\Column(type="string")
-     * @var string $name Certificate name
+     * @var string Certificate name
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string")
-     * @var string $detail Detailed description of certificate
+     * @ORM\Column(type="text")
+     * @var string Detailed description of certificate
      */
     private $detail;
 
     /**
      * @ORM\Column(type="datetime")
-     * @var string $issueDate Date of certificate issue
+     * @var string Date of certificate issue
      */
     private $issueDate;
 
     /**
      * @ORM\Column(type="string")
-     * @var string $issueBy Issuer of certificate
+     * @var string Issuer of certificate
      */
     private $issueBy;
 
     /**
      * @ORM\Column(type="string")
-     * @var string $url Certifcate URL
+     * @var string Certifcate URL
      */
     private $url;
 
     /**
      * Certificate constructor.
      * @param array $data Row fetched from database
+     * @throws \Exception
      */
     public function __construct(array $data = [])
     {
@@ -63,15 +64,6 @@ class Certificate extends EntityDoctrine
         $this->issueDate = new \DateTimeImmutable($data['issueDate']);
         $this->issueBy = (string)$data['issueBy'];
         $this->url = (string)$data['url'];
-        $this->locale = (string)$data['locale'];
-    }
-
-    /**
-     * @return int
-     */
-    public function getCertificateId(): int
-    {
-        return $this->certificateId;
     }
 
     /**
@@ -101,7 +93,7 @@ class Certificate extends EntityDoctrine
     /**
      * @return string
      */
-    public function getIssueDate(): string
+    public function getIssueDate(): \DateTime
     {
         return $this->issueDate;
     }

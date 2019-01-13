@@ -9,8 +9,8 @@ use Rychecky\Collection;
 /**
  * @ORM\Entity
  * @ORM\Table(name="hobbies", indexes={
- *     @ORM\Index(name="hobbies_idx_locale", columns={"locale"}),
- *     @ORM\Index(name="hobbies_idx_size", columns={"size"}),
+ *     @ORM\Index(name="hobbiesIdxLocale", columns={"locale"}),
+ *     @ORM\Index(name="hobbiesIdxSize", columns={"size"}),
  * })
  */
 class Hobby extends EntityDoctrine
