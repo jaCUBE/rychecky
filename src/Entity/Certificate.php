@@ -1,48 +1,50 @@
 <?php
 
+namespace Rychecky\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Rychecky\EntityDoctrine;
+
 /**
- * Certificate entity.
- * @class Certificate
- * @author Jakub Rychecký <jakub@rychecky.cz>
+ * @ORM\Entity
+ * @ORM\Table(name="certificates", indexes={
+ *     @ORM\Index(name="certificate_idx_locale", columns={"locale"}),
+ * })
  */
-
-namespace Rychecky\Certificate;
-
-use Rychecky\Entity;
-
-class Certificate extends Entity
+class Certificate extends EntityDoctrine
 {
     /**
-     * @var int $certificateId Certificate ID
-     */
-    private $certificateId;
-
-    /**
+     * @ORM\Column(type="string")
      * @var string $type Certificate type
      */
     private $type;
 
     /**
+     * @ORM\Column(type="string")
      * @var string $name Certificate name
      */
     private $name;
 
     /**
+     * @ORM\Column(type="string")
      * @var string $detail Detailed description of certificate
      */
     private $detail;
 
     /**
+     * @ORM\Column(type="datetime")
      * @var string $issueDate Date of certificate issue
      */
     private $issueDate;
 
     /**
+     * @ORM\Column(type="string")
      * @var string $issueBy Issuer of certificate
      */
     private $issueBy;
 
     /**
+     * @ORM\Column(type="string")
      * @var string $url Certifcate URL
      */
     private $url;
@@ -55,13 +57,13 @@ class Certificate extends Entity
     {
         parent::__construct($data);
 
-        $this->certificateId = (int)$data['certificate_id'];
         $this->type = (string)$data['type'];
         $this->name = (string)$data['name'];
         $this->detail = (string)$data['detail'];
-        $this->issueDate = (string)$data['isser_date'];
-        $this->issueBy = (string)$data['issue_by'];
+        $this->issueDate = new \DateTimeImmutable($data['issueDate']);
+        $this->issueBy = (string)$data['issueBy'];
         $this->url = (string)$data['url'];
+        $this->locale = (string)$data['locale'];
     }
 
     /**

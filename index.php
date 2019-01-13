@@ -66,6 +66,7 @@ $app->get('/migrate', function (Request $request, Response $response, array $arg
     $migrate->migrateHobby();
     $migrate->migrateSocial();
     $migrate->migrateSkill();
+    $migrate->migrateCertificate();
 });
 
 
@@ -136,10 +137,10 @@ $app->get('/experiences', function (Request $request, Response $response, array 
  * Certificates.
  */
 $app->get('/certificate', function (Request $request, Response $response, array $args) {
-    $certificateRepository = new Certificate\CertificateRepository($this->db);
-
+    $certificateList = $this->em->getRepository(Entity\Certificate::class)->findAll();
+    d($certificateList);
     $this->web->view('certificate', [
-        'list' => $certificateRepository->fetchAll(),
+        'list' => $certificateList,
     ]);
 });
 

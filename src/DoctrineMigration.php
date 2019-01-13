@@ -119,6 +119,34 @@ class DoctrineMigration
         $this->getEm()->flush();
     }
 
+    public function migrateCertificate(): void
+    {
+        $sql = '
+          SELECT c.*
+          FROM certificate AS c
+          WHERE c.visible = 1';
+
+        $STH = $this->getDb()->query($sql);
+
+        while ($row = $STH->fetch()) {
+            $certificate = new Entity\Certificate([
+                'type' => $row['type'],
+                'name' => $row['name'],
+                'detail' => $row['detail'],
+                'issueDate' => $row['issue_date'],
+                'issueBy' => $row['issue_by'],
+                'locale' => $row['locale'],
+                'createdAt' => $row['added'],
+            ]);
+
+            d($certificate);
+
+            $this->getEm()->persist($certificate);
+        }
+
+        $this->getEm()->flush();
+    }
+
     /**
      * @return \PDO
      */

@@ -36,6 +36,7 @@ abstract class EntityDoctrine
      */
     public function __construct($data = [])
     {
+        d($data);
         $this->locale = $data['locale'] ?? 'cs'; // TODO: Default language by constant
         $this->createdAt = new \DateTimeImmutable($data['createdAt']);
     }
